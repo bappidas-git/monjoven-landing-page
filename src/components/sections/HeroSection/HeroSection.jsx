@@ -24,10 +24,10 @@ import styles from "./HeroSection.module.css";
 // Hero images with fallbacks
 const HERO_IMAGES = {
   desktop: [
-    "https://placehold.co/1920x800/E8EDF2/2D3561?text=Hero+Image+1920x800",
+    "https://placehold.co/1920x800/1A5276/FFFFFF?text=Monjoven+Hair+Transplant+Clinic",
   ],
   mobile: [
-    "https://placehold.co/768x1000/E8EDF2/2D3561?text=Hero+Image+768x1000",
+    "https://placehold.co/768x1000/1A5276/FFFFFF?text=Monjoven+Hair+Transplant",
   ],
 };
 
@@ -79,14 +79,12 @@ const buttonVariants = {
   },
 };
 
-// TODO: Replace with actual content
 // Trust indicators data
 const trustIndicators = [
-  { icon: "mdi:trophy-outline", text: "10+ Years" },
-  { icon: "mdi:chart-line", text: "Proven Model" },
-  { icon: "mdi:package-variant-closed", text: "10K+ Products" },
-  { icon: "mdi:tag-outline", text: "500+ Partners" },
-  { icon: "mdi:percent-outline", text: "25% Margin" },
+  { icon: "mdi:calendar-check-outline", text: "12+ Years Experience" },
+  { icon: "mdi:check-decagram-outline", text: "5000+ Successful Procedures" },
+  { icon: "mdi:microscope", text: "Micro-FUE Technology" },
+  { icon: "mdi:laser-pointer", text: "Free Post-Op Laser Therapy" },
 ];
 
 const HeroSection = () => {
@@ -165,10 +163,9 @@ const HeroSection = () => {
             >
               {/* Pre-headline Badge */}
               <motion.div variants={badgeVariants}>
-                {/* TODO: Replace with actual content */}
                 <Chip
                   icon={<span className={styles.pulseDot} />}
-                  label="Your Industry-Leading Business"
+                  label="Northeast India's Premier Hair Transplant Clinic"
                   className={styles.launchBadge}
                   sx={{
                     backgroundColor: "#2EC4B6",
@@ -186,7 +183,6 @@ const HeroSection = () => {
 
               {/* Main Headline */}
               <motion.div variants={itemVariants}>
-                {/* TODO: Replace with actual content */}
                 <Typography
                   variant="h1"
                   className={styles.heroTitle}
@@ -204,17 +200,16 @@ const HeroSection = () => {
                     marginTop: "1.5rem",
                   }}
                 >
-                  Partner With
+                  Restore Your Confidence with
                   <span className={styles.orangeText}>
                     {" "}
-                    Your Business Name
+                    World-Class Hair Transplant
                   </span>
                 </Typography>
               </motion.div>
 
               {/* Sub-headline */}
               <motion.div variants={itemVariants}>
-                {/* TODO: Replace with actual content */}
                 <Typography
                   variant="h6"
                   className={styles.heroSubtitle}
@@ -227,8 +222,9 @@ const HeroSection = () => {
                     lineHeight: 1.6,
                   }}
                 >
-                  10+ Years Experience | Proven Business Model | Healthy Margins |
-                  500+ Partners | Multiple Locations | Complete Support
+                  Led by Dr. Porag Neog (MBBS, MS) with 12+ years of experience.
+                  We use the latest Micro-FUE technology to deliver natural,
+                  permanent results at par with international standards.
                 </Typography>
               </motion.div>
 
@@ -237,13 +233,12 @@ const HeroSection = () => {
                 variants={buttonVariants}
                 className={styles.ctaButtons}
               >
-                {/* TODO: Replace with actual content */}
                 <Button
                   variant="contained"
                   size="large"
                   className={styles.primaryCta}
                   onClick={() => {
-                    trackCTAClick('hero_primary_cta', 'hero', 'Get Started Today');
+                    trackCTAClick('hero_primary_cta', 'hero', 'Book Free Consultation');
                     openLeadDrawer("apply-now");
                   }}
                   sx={{
@@ -264,15 +259,16 @@ const HeroSection = () => {
                     transition: "all 0.3s ease",
                   }}
                 >
-                  Get Started Today →
+                  Book Free Consultation →
                 </Button>
                 <Button
                   variant="outlined"
                   size="large"
                   className={styles.secondaryCta}
+                  component="a"
+                  href="tel:+918011002870"
                   onClick={() => {
-                    trackCTAClick('hero_secondary_cta', 'hero', 'Download Brochure');
-                    openLeadDrawer("download-brochure");
+                    trackCTAClick('hero_secondary_cta', 'hero', 'Call Now');
                   }}
                   sx={{
                     borderColor: "rgba(255, 255, 255, 0.6)",
@@ -292,7 +288,7 @@ const HeroSection = () => {
                     transition: "all 0.3s ease",
                   }}
                 >
-                  Download Brochure
+                  Call Now: +91 8011002870
                 </Button>
               </motion.div>
 
@@ -322,7 +318,6 @@ const HeroSection = () => {
               >
                 <div className={styles.formCard}>
                   <div className={styles.formHeader}>
-                    {/* TODO: Replace with actual content */}
                     <Typography
                       variant="h5"
                       sx={{
@@ -333,7 +328,7 @@ const HeroSection = () => {
                         fontSize: "1.25rem",
                       }}
                     >
-                      Enquiry Form
+                      Book Your Free Consultation
                     </Typography>
                     <Typography
                       variant="body2"
@@ -344,19 +339,20 @@ const HeroSection = () => {
                         fontSize: "0.875rem",
                       }}
                     >
-                      Get complete details about our plans
+                      Get expert advice from Dr. Porag Neog
                     </Typography>
                   </div>
                   <div className={styles.formBody}>
                     <UnifiedLeadForm
                       variant="hero"
+                      source="hero"
                       showTitle={false}
                       showSubtitle={false}
                       showCourseFields={true}
                       showTrustBadges={true}
                       showConsent={true}
                       showPhoneButton={false}
-                      submitButtonText="Submit Enquiry"
+                      submitButtonText="Book Free Consultation"
                       formId="hero-form"
                     />
                   </div>
