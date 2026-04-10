@@ -134,13 +134,36 @@
   opacity: 0.6;
 }
 
-/* WhatsApp Button Special Styling */
-.navItem:first-child .navButton:hover {
-  background: rgba(37, 211, 102, 0.1);
+/* Primary CTA Item (Book Now) */
+.primaryItem .navButton {
+  background: linear-gradient(135deg, #FF6B35 0%, #FF8F5E 100%);
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.35);
+  width: 52px;
+  height: 52px;
+  margin-top: -6px;
 }
 
-.navItem:first-child .navIcon {
-  color: #25D366;
+.primaryItem .navIcon {
+  color: #FFFFFF !important;
+}
+
+.primaryItem .navLabel {
+  color: #FF6B35 !important;
+  font-weight: 600 !important;
+}
+
+.primaryItem .navButton:hover {
+  background: linear-gradient(135deg, #E55A28 0%, #FF6B35 100%);
+  box-shadow: 0 6px 16px rgba(255, 107, 53, 0.45);
+}
+
+.primaryItem .navButton:active {
+  background: linear-gradient(135deg, #D04E1F 0%, #E55A28 100%);
+}
+
+/* WhatsApp Button Special Styling */
+.navItem:nth-child(2) .navButton:hover {
+  background: rgba(37, 211, 102, 0.1);
 }
 
 /* Active State Visual Feedback */
