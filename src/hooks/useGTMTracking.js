@@ -21,7 +21,7 @@ const TRACKED_SECTIONS = [
   'highlights',
   'features',
   'location',
-  'cta',
+  'testimonials',
   'contact',
   'secondary-cta',
 ];
