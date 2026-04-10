@@ -1,72 +1,65 @@
 export const statsData = [
   {
     id: 1,
-    icon: "mdi:store-check",
-    /* TODO: Replace with actual content */
-    title: "10+ Years of Proven Success",
+    icon: "mdi:calendar-check",
+    title: "12+ Years of Pioneering Excellence",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proven track record of success.",
-    stat: "10+",
+      "Northeast India's first dedicated hair transplant clinic, delivering world-class results since 2012.",
+    stat: "12+",
     statLabel: "Years Experience",
   },
   {
     id: 2,
-    icon: "mdi:currency-inr",
-    /* TODO: Replace with actual content */
-    title: "Strong Annual Revenue",
+    icon: "mdi:account-heart",
+    title: "5,000+ Successful Procedures",
     description:
-      "Lorem ipsum dolor sit amet, time-tested business model with consistent growth.",
-    stat: "50Cr",
-    statLabel: "Annual Revenue",
+      "Thousands of satisfied patients with natural, permanent hair restoration results.",
+    stat: "5K+",
+    statLabel: "Procedures Done",
   },
   {
     id: 3,
-    icon: "mdi:shopping",
-    /* TODO: Replace with actual content */
-    title: "10,000+ Products",
+    icon: "mdi:trophy-outline",
+    title: "98% Patient Satisfaction",
     description:
-      "Lorem ipsum dolor sit amet, comprehensive inventory across trusted brands.",
-    stat: "10K+",
-    statLabel: "Products",
+      "Consistently high satisfaction rates from patients across India and internationally.",
+    stat: "98%",
+    statLabel: "Satisfaction Rate",
   },
   {
     id: 4,
-    icon: "mdi:account-group",
-    /* TODO: Replace with actual content */
-    title: "500K+ Customers Served",
+    icon: "mdi:earth",
+    title: "International Patient Base",
     description:
-      "Lorem ipsum dolor sit amet, community trust built over years of reliable service.",
-    stat: "500K+",
-    statLabel: "Customers Served",
+      "Trusted by patients from US, Canada, UK, Norway, Saudi Arabia, France, Dubai, Bhutan, and Nepal.",
+    stat: "10+",
+    statLabel: "Countries Served",
   },
   {
     id: 5,
-    icon: "mdi:storefront",
-    /* TODO: Replace with actual content */
-    title: "Multiple Locations",
+    icon: "mdi:map-marker-multiple",
+    title: "Northeast India Coverage",
     description:
-      "Lorem ipsum dolor sit amet, consistently profitable locations proving the business model.",
-    stat: "15+",
-    statLabel: "Locations",
+      "Serving all eight northeastern states as the region's leading hair transplant destination.",
+    stat: "8",
+    statLabel: "NE States Served",
   },
   {
     id: 6,
-    icon: "mdi:handshake",
-    /* TODO: Replace with actual content */
-    title: "500+ Brand Partners",
+    icon: "mdi:microscope",
+    title: "Micro-FUE Technology",
     description:
-      "Lorem ipsum dolor sit amet, access to trusted consumer brands and suppliers.",
-    stat: "500+",
-    statLabel: "Brand Partners",
+      "Using the smallest FUE punch available for minimal scarring and maximum natural results.",
+    stat: "0.6mm",
+    statLabel: "Smallest Punch",
   },
   {
     id: 7,
-    icon: "mdi:percent",
-    /* TODO: Replace with actual content */
-    title: "Healthy Profit Margins",
+    icon: "mdi:shield-check",
+    title: "Strict Operative Protocols",
     description:
-      "Lorem ipsum dolor sit amet, competitive margins with efficient operations.",
-    stat: "25%",
-    statLabel: "Avg. Margin",
+      "Fully dedicated trained team of surgeons and technicians following rigorous safety standards.",
+    stat: "100%",
+    statLabel: "Safety Compliance",
   },
 ];
