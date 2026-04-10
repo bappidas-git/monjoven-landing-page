@@ -42,23 +42,18 @@ import {
 } from "../../../utils/validators";
 import styles from "./UnifiedLeadForm.module.css";
 
-// Investment interest options
-// TODO: Replace with actual content
-const COURSE_OPTIONS = [
-  "Basic Plan",
-  "Standard Plan",
-  "Premium Plan",
-  "Not Sure — Need Guidance",
-];
-
-// Current occupation options
-// TODO: Replace with actual content
-const CLASS_OPTIONS = [
-  "Business Owner",
-  "Professional",
-  "Retired / New Venture",
-  "First-Time Entrepreneur",
-  "Investor / Partner",
+// Service interest options for medical consultations
+const SERVICE_OPTIONS = [
+  "Hair Transplant",
+  "Beard Transplant",
+  "Eyebrow Transplant",
+  "Rhinoplasty",
+  "Liposuction",
+  "Gynecomastia",
+  "PRP Therapy",
+  "Laser Therapy",
+  "Hairfall Consultation",
+  "Other",
 ];
 
 // Initial form state
@@ -66,8 +61,8 @@ const initialFormState = {
   name: "",
   mobile: "",
   email: "",
-  investment_interest: "",
-  current_occupation: "",
+  service_interest: "",
+  message: "",
 };
 
 // Initial error state
@@ -75,8 +70,8 @@ const initialErrorState = {
   name: "",
   mobile: "",
   email: "",
-  investment_interest: "",
-  current_occupation: "",
+  service_interest: "",
+  message: "",
 };
 
 // Privacy Policy Content Component
@@ -465,11 +460,33 @@ const PrivacyPolicyModal = ({ isOpen, onClose }) => {
   );
 };
 
+// Contextual header text based on source
+const getHeaderDefaults = (source) => {
+  switch (source) {
+    case "hero":
+      return {
+        title: "Book Your Free Consultation",
+        subtitle: "Get expert advice from Dr. Porag Neog",
+      };
+    case "contact":
+      return {
+        title: "Request a Callback",
+        subtitle: "Our team will contact you within 24 hours",
+      };
+    default:
+      return {
+        title: "Schedule a Consultation",
+        subtitle: "Take the first step towards your transformation",
+      };
+  }
+};
+
 const UnifiedLeadForm = ({
   variant = "default", // 'default', 'dark', 'hero', 'drawer'
-  title = "Apply Now",
-  subtitle = "Fill in your details and our team will assist you",
-  submitButtonText = "Submit Enquiry",
+  source = "default",
+  title: titleProp,
+  subtitle: subtitleProp,
+  submitButtonText = "Book Free Consultation",
   showTitle = true,
   showSubtitle = true,
   showCourseFields = true,
@@ -481,6 +498,9 @@ const UnifiedLeadForm = ({
   className = "",
   formId = "unified-lead-form",
 }) => {
+  const headerDefaults = getHeaderDefaults(source);
+  const title = titleProp || headerDefaults.title;
+  const subtitle = subtitleProp || headerDefaults.subtitle;
   const navigate = useNavigate();
 
   // Form state
@@ -494,8 +514,8 @@ const UnifiedLeadForm = ({
   const nameRef = useRef(null);
   const mobileRef = useRef(null);
   const emailRef = useRef(null);
-  const courseRef = useRef(null);
-  const classRef = useRef(null);
+  const serviceRef = useRef(null);
+  const messageRef = useRef(null);
 
   // Handle input change
   const handleChange = useCallback(
@@ -542,16 +562,18 @@ const UnifiedLeadForm = ({
           errorMessage = getMobileErrorMessage(formData.mobile);
           break;
         case "email":
-          errorMessage = getEmailErrorMessage(formData.email);
-          break;
-        case "investment_interest":
-          if (showCourseFields && !formData.investment_interest) {
-            errorMessage = "Please select an investment plan";
+          if (formData.email) {
+            errorMessage = getEmailErrorMessage(formData.email);
           }
           break;
-        case "current_occupation":
-          if (showCourseFields && !formData.current_occupation) {
-            errorMessage = "Please select your occupation";
+        case "service_interest":
+          if (showCourseFields && !formData.service_interest) {
+            errorMessage = "Please select a service";
+          }
+          break;
+        case "message":
+          if (formData.message && formData.message.length > 500) {
+            errorMessage = "Message must be 500 characters or less";
           }
           break;
         default:
@@ -571,14 +593,14 @@ const UnifiedLeadForm = ({
     const newErrors = {
       name: getNameErrorMessage(formData.name),
       mobile: getMobileErrorMessage(formData.mobile),
-      email: getEmailErrorMessage(formData.email),
-      investment_interest:
-        showCourseFields && !formData.investment_interest
-          ? "Please select an investment plan"
+      email: formData.email ? getEmailErrorMessage(formData.email) : "",
+      service_interest:
+        showCourseFields && !formData.service_interest
+          ? "Please select a service"
           : "",
-      current_occupation:
-        showCourseFields && !formData.current_occupation
-          ? "Please select your occupation"
+      message:
+        formData.message && formData.message.length > 500
+          ? "Message must be 500 characters or less"
           : "",
     };
 
@@ -587,8 +609,8 @@ const UnifiedLeadForm = ({
       name: true,
       mobile: true,
       email: true,
-      investment_interest: true,
-      current_occupation: true,
+      service_interest: true,
+      message: true,
     });
 
     return Object.values(newErrors).every((error) => !error);
@@ -629,8 +651,8 @@ const UnifiedLeadForm = ({
         name: formData.name.trim(),
         mobile: formData.mobile.trim(),
         email: formData.email.trim(),
-        investment_interest: formData.investment_interest || '',
-        current_occupation: formData.current_occupation || '',
+        service_interest: formData.service_interest || '',
+        message: formData.message || '',
         source: formId || 'general',
       };
 
@@ -640,7 +662,7 @@ const UnifiedLeadForm = ({
       if (result.success) {
         // Push lead form submission + generate_lead conversion events to GTM
         trackFormSubmission(formId || 'general', {
-          investmentInterest: formData.investment_interest,
+          serviceInterest: formData.service_interest,
         });
 
         // Meta Pixel + CAPI dual tracking with shared event_id for deduplication
@@ -685,8 +707,8 @@ const UnifiedLeadForm = ({
 
         // Show success alert ON TOP of drawer
         await showSuccess(
-          'Enquiry Received!',
-          'Thank you for your interest! Our team will contact you within 24 hours.'
+          'Thank You!',
+          "Your consultation request has been received. Dr. Neog's team will contact you within 24 hours to schedule your appointment."
         );
 
         // THEN reset form
@@ -790,7 +812,7 @@ const UnifiedLeadForm = ({
           <TextField
             inputRef={nameRef}
             fullWidth
-            placeholder="Full Name"
+            placeholder="Your Full Name"
             variant="outlined"
             value={formData.name}
             onChange={handleChange("name")}
@@ -831,7 +853,7 @@ const UnifiedLeadForm = ({
           <TextField
             inputRef={mobileRef}
             fullWidth
-            placeholder="Mobile Number"
+            placeholder="XXXXX XXXXX"
             variant="outlined"
             value={formData.mobile}
             onChange={handleChange("mobile")}
@@ -889,7 +911,7 @@ const UnifiedLeadForm = ({
           <TextField
             inputRef={emailRef}
             fullWidth
-            placeholder="Email Address"
+            placeholder="your@email.com"
             type="email"
             variant="outlined"
             value={formData.email}
@@ -920,7 +942,7 @@ const UnifiedLeadForm = ({
           />
         </motion.div>
 
-        {/* Course Interest Field */}
+        {/* Service Interest Field */}
         {showCourseFields && (
           <motion.div
             custom={3}
@@ -930,20 +952,20 @@ const UnifiedLeadForm = ({
           >
             <FormControl
               fullWidth
-              error={touched.investment_interest && !!errors.investment_interest}
+              error={touched.service_interest && !!errors.service_interest}
               className={styles.textField}
             >
               <Select
-                ref={courseRef}
+                ref={serviceRef}
                 displayEmpty
-                value={formData.investment_interest}
-                onChange={handleChange("investment_interest")}
-                onBlur={handleBlur("investment_interest")}
+                value={formData.service_interest}
+                onChange={handleChange("service_interest")}
+                onBlur={handleBlur("service_interest")}
                 disabled={isSubmitting}
                 startAdornment={
                   <InputAdornment position="start">
                     <Icon
-                      icon="mdi:store-outline"
+                      icon="mdi:medical-bag"
                       className={styles.inputIcon}
                       style={
                         variant === "dark" || variant === "drawer"
@@ -957,7 +979,7 @@ const UnifiedLeadForm = ({
                   if (!selected) {
                     return (
                       <span style={{ color: variant === "dark" || variant === "drawer" ? "#FFFFFF80" : undefined, opacity: variant === "dark" || variant === "drawer" ? 1 : 0.5 }}>
-                        Select Plan
+                        Select Service
                       </span>
                     );
                   }
@@ -971,7 +993,7 @@ const UnifiedLeadForm = ({
                   style: { zIndex: 99999 },
                 }}
                 inputProps={{
-                  "aria-label": "Investment interest",
+                  "aria-label": "Service interest",
                 }}
                 sx={
                   variant === "dark" || variant === "drawer"
@@ -979,90 +1001,62 @@ const UnifiedLeadForm = ({
                     : undefined
                 }
               >
-                {COURSE_OPTIONS.map((option) => (
+                {SERVICE_OPTIONS.map((option) => (
                   <MenuItem key={option} value={option}>
                     {option}
                   </MenuItem>
                 ))}
               </Select>
-              {touched.investment_interest && errors.investment_interest && (
-                <FormHelperText>{errors.investment_interest}</FormHelperText>
+              {touched.service_interest && errors.service_interest && (
+                <FormHelperText>{errors.service_interest}</FormHelperText>
               )}
             </FormControl>
           </motion.div>
         )}
 
-        {/* Occupation Field */}
-        {showCourseFields && (
-          <motion.div
-            custom={4}
-            variants={fieldVariants}
-            initial="hidden"
-            animate="visible"
-          >
-            <FormControl
-              fullWidth
-              error={touched.current_occupation && !!errors.current_occupation}
-              className={styles.textField}
-            >
-              <Select
-                ref={classRef}
-                displayEmpty
-                value={formData.current_occupation}
-                onChange={handleChange("current_occupation")}
-                onBlur={handleBlur("current_occupation")}
-                disabled={isSubmitting}
-                startAdornment={
-                  <InputAdornment position="start">
-                    <Icon
-                      icon="mdi:briefcase-outline"
-                      className={styles.inputIcon}
-                      style={
-                        variant === "dark" || variant === "drawer"
-                          ? { color: "#FFFFFF80" }
-                          : undefined
-                      }
-                    />
-                  </InputAdornment>
-                }
-                renderValue={(selected) => {
-                  if (!selected) {
-                    return (
-                      <span style={{ color: variant === "dark" || variant === "drawer" ? "#FFFFFF80" : undefined, opacity: variant === "dark" || variant === "drawer" ? 1 : 0.5 }}>
-                        Select Current Occupation
-                      </span>
-                    );
-                  }
-                  return selected;
-                }}
-                MenuProps={{
-                  PaperProps: {
-                    sx: { zIndex: 99999 },
-                  },
-                  disablePortal: false,
-                  style: { zIndex: 99999 },
-                }}
-                inputProps={{
-                  "aria-label": "Current occupation",
-                }}
-                sx={
-                  variant === "dark" || variant === "drawer"
-                    ? { color: "#FFFFFF", "& .MuiSelect-icon": { color: "#FFFFFF80" } }
-                    : undefined
-                }
-              >
-                {CLASS_OPTIONS.map((option) => (
-                  <MenuItem key={option} value={option}>
-                    {option}
-                  </MenuItem>
-                ))}
-              </Select>
-              {touched.current_occupation && errors.current_occupation && (
-                <FormHelperText>{errors.current_occupation}</FormHelperText>
-              )}
-            </FormControl>
-          </motion.div>
-        )}
+        {/* Brief Message Field */}
+        <motion.div
+          custom={4}
+          variants={fieldVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <TextField
+            inputRef={messageRef}
+            fullWidth
+            placeholder="Describe your concern or preferred consultation time..."
+            variant="outlined"
+            value={formData.message}
+            onChange={handleChange("message")}
+            onBlur={handleBlur("message")}
+            error={touched.message && !!errors.message}
+            helperText={touched.message && errors.message}
+            disabled={isSubmitting}
+            multiline
+            minRows={2}
+            maxRows={4}
+            className={`${styles.textField} ${styles.messageField}`}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start" className={styles.messageAdornment}>
+                  <Icon
+                    icon="mdi:message-text-outline"
+                    className={styles.inputIcon}
+                    style={
+                      variant === "dark" || variant === "drawer"
+                        ? { color: "#FFFFFF80" }
+                        : undefined
+                    }
+                  />
+                </InputAdornment>
+              ),
+            }}
+            inputProps={{
+              "aria-label": "Brief message",
+              maxLength: 500,
+            }}
+          />
+        </motion.div>
 
         {/* Submit Button */}
         <motion.div
@@ -1086,7 +1080,7 @@ const UnifiedLeadForm = ({
               </Box>
             ) : (
               <>
-                <Icon icon="mdi:send" className={styles.submitIcon} />
+                <Icon icon="mdi:calendar-check" className={styles.submitIcon} />
                 <span>{submitButtonText}</span>
               </>
             )}
@@ -1102,7 +1096,6 @@ const UnifiedLeadForm = ({
             animate="visible"
             className={styles.trustBadges}
           >
-            {/* TODO: Replace with actual content */}
             <div
               className={styles.trustBadge}
               style={
@@ -1111,8 +1104,8 @@ const UnifiedLeadForm = ({
                   : undefined
               }
             >
-              <Icon icon="mdi:trophy-award" className={styles.trustIcon} />
-              <span>10+ Years</span>
+              <Icon icon="mdi:shield-lock-outline" className={styles.trustIcon} />
+              <span>100% Confidential</span>
             </div>
             <div
               className={styles.trustBadge}
@@ -1122,8 +1115,8 @@ const UnifiedLeadForm = ({
                   : undefined
               }
             >
-              <Icon icon="mdi:check-decagram" className={styles.trustIcon} />
-              <span>Proven Model</span>
+              <Icon icon="mdi:hand-shake-outline" className={styles.trustIcon} />
+              <span>No Obligation</span>
             </div>
             <div
               className={styles.trustBadge}
@@ -1133,8 +1126,8 @@ const UnifiedLeadForm = ({
                   : undefined
               }
             >
-              <Icon icon="mdi:percent-circle" className={styles.trustIcon} />
-              <span>Strong Margins</span>
+              <Icon icon="mdi:stethoscope" className={styles.trustIcon} />
+              <span>Free Consultation</span>
             </div>
           </motion.div>
         )}
@@ -1170,8 +1163,8 @@ const UnifiedLeadForm = ({
               >
                 Terms & Conditions and Privacy Policy
               </button>
-              {/* TODO: Replace with actual content */}
-              . By submitting this form, I agree to receive communication from us regarding our services.
+
+              . By submitting this form, I agree to receive communication from Monjoven regarding consultation and services.
             </Typography>
           </motion.div>
         )}

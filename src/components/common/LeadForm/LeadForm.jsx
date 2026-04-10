@@ -31,21 +31,18 @@ import {
 } from '../../../utils/validators';
 import styles from './LeadForm.module.css';
 
-// Investment interest options
-const COURSE_OPTIONS = [
-  "500 Sq.Ft. Store (~₹22L)",
-  "700 Sq.Ft. Store (~₹28L)",
-  "1000 Sq.Ft. Store (~₹38L)",
-  "Not Sure — Need Guidance",
-];
-
-// Current occupation options
-const CLASS_OPTIONS = [
-  "Business Owner",
-  "Salaried Professional",
-  "Retired / Looking for New Venture",
-  "First-Time Entrepreneur",
-  "Investor / Partner",
+// Service interest options for medical consultations
+const SERVICE_OPTIONS = [
+  "Hair Transplant",
+  "Beard Transplant",
+  "Eyebrow Transplant",
+  "Rhinoplasty",
+  "Liposuction",
+  "Gynecomastia",
+  "PRP Therapy",
+  "Laser Therapy",
+  "Hairfall Consultation",
+  "Other",
 ];
 
 // Initial form state
@@ -53,8 +50,8 @@ const initialFormState = {
   name: '',
   mobile: '',
   email: '',
-  investment_interest: '',
-  current_occupation: '',
+  service_interest: '',
+  message: '',
 };
 
 // Initial error state
@@ -62,15 +59,15 @@ const initialErrorState = {
   name: '',
   mobile: '',
   email: '',
-  investment_interest: '',
-  current_occupation: '',
+  service_interest: '',
+  message: '',
 };
 
 const LeadForm = ({
   variant = 'default', // 'default', 'compact', 'dark', 'card'
-  title = 'Apply Now',
+  title = 'Schedule a Consultation',
   subtitle = '',
-  submitButtonText = 'Submit',
+  submitButtonText = 'Book Free Consultation',
   showTitle = true,
   showCourseFields = true,
   onSubmitSuccess,
@@ -89,8 +86,8 @@ const LeadForm = ({
   const nameRef = useRef(null);
   const mobileRef = useRef(null);
   const emailRef = useRef(null);
-  const courseRef = useRef(null);
-  const classRef = useRef(null);
+  const serviceRef = useRef(null);
+  const messageRef = useRef(null);
 
   // Reset submit status after delay
   useEffect(() => {
@@ -141,16 +138,18 @@ const LeadForm = ({
         errorMessage = getMobileErrorMessage(formData.mobile);
         break;
       case 'email':
-        errorMessage = getEmailErrorMessage(formData.email);
-        break;
-      case 'investment_interest':
-        if (showCourseFields && !formData.investment_interest) {
-          errorMessage = 'Please select an investment plan';
+        if (formData.email) {
+          errorMessage = getEmailErrorMessage(formData.email);
         }
         break;
-      case 'current_occupation':
-        if (showCourseFields && !formData.current_occupation) {
-          errorMessage = 'Please select your occupation';
+      case 'service_interest':
+        if (showCourseFields && !formData.service_interest) {
+          errorMessage = 'Please select a service';
+        }
+        break;
+      case 'message':
+        if (formData.message && formData.message.length > 500) {
+          errorMessage = 'Message must be 500 characters or less';
         }
         break;
       default:
@@ -168,14 +167,14 @@ const LeadForm = ({
     const newErrors = {
       name: getNameErrorMessage(formData.name),
       mobile: getMobileErrorMessage(formData.mobile),
-      email: getEmailErrorMessage(formData.email),
-      investment_interest:
-        showCourseFields && !formData.investment_interest
-          ? 'Please select an investment plan'
+      email: formData.email ? getEmailErrorMessage(formData.email) : '',
+      service_interest:
+        showCourseFields && !formData.service_interest
+          ? 'Please select a service'
           : '',
-      current_occupation:
-        showCourseFields && !formData.current_occupation
-          ? 'Please select your occupation'
+      message:
+        formData.message && formData.message.length > 500
+          ? 'Message must be 500 characters or less'
           : '',
     };
 
@@ -184,8 +183,8 @@ const LeadForm = ({
       name: true,
       mobile: true,
       email: true,
-      investment_interest: true,
-      current_occupation: true,
+      service_interest: true,
+      message: true,
     });
 
     return Object.values(newErrors).every((error) => !error);
@@ -226,8 +225,8 @@ const LeadForm = ({
           name: formData.name,
           email: formData.email,
           mobile: formData.mobile,
-          investment_interest: formData.investment_interest || '',
-          current_occupation: formData.current_occupation || '',
+          service_interest: formData.service_interest || '',
+          message: formData.message || '',
           source: 'website',
         }),
       });
@@ -273,8 +272,8 @@ const LeadForm = ({
       // Show success message with SweetAlert2
       await showAlert({
         icon: 'success',
-        title: 'Enquiry Received!',
-        text: 'Thank you for your interest! Our team will contact you within 24 hours.',
+        title: 'Thank You!',
+        text: "Your consultation request has been received. Dr. Neog's team will contact you within 24 hours to schedule your appointment.",
         confirmButtonColor: '#2D3561',
         confirmButtonText: 'Great!',
         timer: 3000,
@@ -377,7 +376,7 @@ const LeadForm = ({
           <TextField
             inputRef={nameRef}
             fullWidth
-            placeholder="Full Name"
+            placeholder="Your Full Name"
             variant="outlined"
             value={formData.name}
             onChange={handleChange('name')}
@@ -414,7 +413,7 @@ const LeadForm = ({
           <TextField
             inputRef={mobileRef}
             fullWidth
-            placeholder="Mobile Number"
+            placeholder="XXXXX XXXXX"
             variant="outlined"
             value={formData.mobile}
             onChange={handleChange('mobile')}
@@ -452,7 +451,7 @@ const LeadForm = ({
           <TextField
             inputRef={emailRef}
             fullWidth
-            placeholder="Email Address"
+            placeholder="your@email.com"
             type="email"
             variant="outlined"
             value={formData.email}
@@ -484,25 +483,25 @@ const LeadForm = ({
           />
         </motion.div>
 
-        {/* Course Interest Field */}
+        {/* Service Interest Field */}
         {showCourseFields && (
           <motion.div variants={fieldVariants}>
             <FormControl
               fullWidth
-              error={touched.investment_interest && !!errors.investment_interest}
+              error={touched.service_interest && !!errors.service_interest}
               className={styles.textField}
             >
               <Select
-                ref={courseRef}
+                ref={serviceRef}
                 displayEmpty
-                value={formData.investment_interest}
-                onChange={handleChange('investment_interest')}
-                onBlur={handleBlur('investment_interest')}
+                value={formData.service_interest}
+                onChange={handleChange('service_interest')}
+                onBlur={handleBlur('service_interest')}
                 disabled={isSubmitting}
                 startAdornment={
                   <InputAdornment position="start">
                     <Icon
-                      icon="mdi:store-outline"
+                      icon="mdi:medical-bag"
                       className={styles.inputIcon}
                       style={variant === 'dark' ? { color: '#FFFFFF99' } : undefined}
                     />
@@ -512,7 +511,7 @@ const LeadForm = ({
                   if (!selected) {
                     return (
                       <span style={{ color: variant === 'dark' ? '#FFFFFF80' : undefined, opacity: variant === 'dark' ? 1 : 0.5 }}>
-                        Select Investment Plan
+                        Select Service
                       </span>
                     );
                   }
@@ -522,7 +521,7 @@ const LeadForm = ({
                   root: styles.inputRoot,
                 }}
                 inputProps={{
-                  'aria-label': 'Investment interest',
+                  'aria-label': 'Service interest',
                 }}
                 sx={
                   variant === 'dark'
@@ -530,77 +529,58 @@ const LeadForm = ({
                     : undefined
                 }
               >
-                {COURSE_OPTIONS.map((option) => (
+                {SERVICE_OPTIONS.map((option) => (
                   <MenuItem key={option} value={option}>
                     {option}
                   </MenuItem>
                 ))}
               </Select>
-              {touched.investment_interest && errors.investment_interest && (
-                <FormHelperText>{errors.investment_interest}</FormHelperText>
+              {touched.service_interest && errors.service_interest && (
+                <FormHelperText>{errors.service_interest}</FormHelperText>
               )}
             </FormControl>
           </motion.div>
         )}
 
-        {/* Occupation Field */}
-        {showCourseFields && (
-          <motion.div variants={fieldVariants}>
-            <FormControl
-              fullWidth
-              error={touched.current_occupation && !!errors.current_occupation}
-              className={styles.textField}
-            >
-              <Select
-                ref={classRef}
-                displayEmpty
-                value={formData.current_occupation}
-                onChange={handleChange('current_occupation')}
-                onBlur={handleBlur('current_occupation')}
-                disabled={isSubmitting}
-                startAdornment={
-                  <InputAdornment position="start">
-                    <Icon
-                      icon="mdi:briefcase-outline"
-                      className={styles.inputIcon}
-                      style={variant === 'dark' ? { color: '#FFFFFF99' } : undefined}
-                    />
-                  </InputAdornment>
-                }
-                renderValue={(selected) => {
-                  if (!selected) {
-                    return (
-                      <span style={{ color: variant === 'dark' ? '#FFFFFF80' : undefined, opacity: variant === 'dark' ? 1 : 0.5 }}>
-                        Select Current Occupation
-                      </span>
-                    );
-                  }
-                  return selected;
-                }}
-                classes={{
-                  root: styles.inputRoot,
-                }}
-                inputProps={{
-                  'aria-label': 'Current occupation',
-                }}
-                sx={
-                  variant === 'dark'
-                    ? { color: '#FFFFFF', '& .MuiSelect-icon': { color: '#FFFFFF80' } }
-                    : undefined
-                }
-              >
-                {CLASS_OPTIONS.map((option) => (
-                  <MenuItem key={option} value={option}>
-                    {option}
-                  </MenuItem>
-                ))}
-              </Select>
-              {touched.current_occupation && errors.current_occupation && (
-                <FormHelperText>{errors.current_occupation}</FormHelperText>
-              )}
-            </FormControl>
-          </motion.div>
-        )}
+        {/* Brief Message Field */}
+        <motion.div variants={fieldVariants}>
+          <TextField
+            inputRef={messageRef}
+            fullWidth
+            placeholder="Describe your concern or preferred consultation time..."
+            variant="outlined"
+            value={formData.message}
+            onChange={handleChange('message')}
+            onBlur={handleBlur('message')}
+            error={touched.message && !!errors.message}
+            helperText={touched.message && errors.message}
+            disabled={isSubmitting}
+            multiline
+            minRows={2}
+            maxRows={4}
+            className={styles.textField}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start" style={{ alignSelf: 'flex-start', marginTop: '14px' }}>
+                  <Icon
+                    icon="mdi:message-text-outline"
+                    className={styles.inputIcon}
+                    style={variant === 'dark' ? { color: '#FFFFFF99' } : undefined}
+                  />
+                </InputAdornment>
+              ),
+              classes: {
+                root: styles.inputRoot,
+                focused: styles.inputFocused,
+                error: styles.inputError,
+              },
+            }}
+            inputProps={{
+              'aria-label': 'Brief message',
+              maxLength: 500,
+            }}
+          />
+        </motion.div>
 
         {/* Submit Button */}
         <motion.div variants={fieldVariants} className={styles.submitWrapper}>
@@ -637,7 +617,7 @@ const LeadForm = ({
                   onClose={() => setSubmitStatus(null)}
                 >
                   {submitStatus === 'success'
-                    ? 'Your enquiry has been submitted successfully!'
+                    ? 'Your consultation request has been submitted successfully!'
                     : 'Failed to submit. Please try again.'}
                 </Alert>
               </Collapse>
