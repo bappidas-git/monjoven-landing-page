@@ -498,6 +498,7 @@ const HomePageContent = () => {
             open={isMobileDrawerOpen}
             onClose={handleMobileDrawerClose}
             onOpen={handleMobileDrawerOpen}
+            onBookConsultation={handleEnquiryClick}
           />
         </>
       )}

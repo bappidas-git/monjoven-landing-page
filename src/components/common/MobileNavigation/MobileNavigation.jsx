@@ -13,33 +13,34 @@ import styles from "./MobileNavigation.module.css";
 // Navigation items configuration
 const navItems = [
   {
-    id: "whatsapp",
-    label: "WhatsApp",
-    icon: "ic:baseline-whatsapp",
-    color: "#25D366",
-    action: "whatsapp",
-    href: "https://wa.me/919127062599?text=Hi,%20I%20am%20interested%20in%20your%20services",
-  },
-  {
     id: "call",
     label: "Call",
-    icon: "ic:baseline-phone",
+    icon: "mdi:phone",
     color: "#FF6B35",
     action: "call",
     href: "tel:+918011002870",
   },
   {
+    id: "whatsapp",
+    label: "WhatsApp",
+    icon: "mdi:whatsapp",
+    color: "#25D366",
+    action: "whatsapp",
+    href: "https://api.whatsapp.com/send?phone=919127062599&text=Hi%2C%20I%20would%20like%20to%20book%20a%20consultation",
+  },
+  {
     id: "enquiry",
-    label: "Book Consultation",
-    icon: "mdi:calendar-check-outline",
-    color: "#2EC4B6",
+    label: "Book Now",
+    icon: "mdi:calendar-plus",
+    color: "#FF6B35",
     action: "enquiry",
     badge: true,
+    primary: true,
   },
   {
     id: "menu",
     label: "Menu",
-    icon: "ic:baseline-menu",
+    icon: "mdi:menu",
     color: "#546E7A",
     action: "menu",
   },
@@ -172,7 +173,7 @@ const MobileNavigation = ({
                 key={item.id}
                 className={`${styles.navItem} ${
                   activeItem === item.id ? styles.active : ""
-                }`}
+                } ${item.primary ? styles.primaryItem : ""}`}
                 variants={itemVariants}
                 whileTap="tap"
                 whileHover="hover"
@@ -230,7 +231,7 @@ const MobileNavigation = ({
                     <Icon
                       icon={
                         item.id === "menu" && isDrawerOpen
-                          ? "ic:baseline-close"
+                          ? "mdi:close"
                           : item.icon
                       }
                       className={styles.navIcon}

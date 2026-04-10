@@ -32,7 +32,7 @@ const menuItems = [
   { id: "contact", label: "Contact", icon: "mdi:phone-outline", href: "#contact" },
 ];
 
-const MobileDrawer = ({ open, onClose, onOpen, activeSection = "home" }) => {
+const MobileDrawer = ({ open, onClose, onOpen, onBookConsultation, activeSection = "home" }) => {
   // iOS detection for SwipeableDrawer optimization
   const iOS =
     typeof navigator !== "undefined" &&
@@ -252,32 +252,53 @@ const MobileDrawer = ({ open, onClose, onOpen, activeSection = "home" }) => {
         <Divider className={styles.divider} />
         <Box className={styles.contactInfo}>
           <Typography variant="caption" className={styles.contactLabel}>
-            Need Help?
+            Get in Touch
           </Typography>
-          <Box className={styles.contactActions}>
-            <motion.a
+
+          {/* Contact Details */}
+          <Box className={styles.contactDetails}>
+            <a
               href="tel:+918011002870"
-              className={styles.contactLink}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              className={styles.contactDetailItem}
               onClick={() => trackPhoneClick('+918011002870', 'mobile_drawer')}
             >
-              <Icon icon="ic:baseline-phone" />
-              <span>Call Us</span>
-            </motion.a>
-            <motion.a
-              href="https://wa.me/919127062599?text=Hi,%20I%20am%20interested%20in%20your%20services"
-              className={styles.contactLinkWhatsapp}
+              <Icon icon="mdi:phone" style={{ color: '#FF6B35', fontSize: 18 }} />
+              <span>+91 8011002870</span>
+            </a>
+            <a
+              href="https://api.whatsapp.com/send?phone=919127062599&text=Hi%2C%20I%20would%20like%20to%20book%20a%20consultation"
+              className={styles.contactDetailItem}
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
               onClick={() => trackWhatsAppClick('mobile_drawer')}
             >
-              <Icon icon="ic:baseline-whatsapp" />
-              <span>WhatsApp</span>
-            </motion.a>
+              <Icon icon="mdi:whatsapp" style={{ color: '#25D366', fontSize: 18 }} />
+              <span>+91 9127062599</span>
+            </a>
+            <a
+              href="mailto:dr@monjoven.com"
+              className={styles.contactDetailItem}
+            >
+              <Icon icon="mdi:email-outline" style={{ color: '#2EC4B6', fontSize: 18 }} />
+              <span>dr@monjoven.com</span>
+            </a>
           </Box>
+
+          {/* Book Free Consultation CTA */}
+          <motion.button
+            className={styles.bookConsultationCta}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.97 }}
+            onClick={() => {
+              onClose();
+              if (onBookConsultation) {
+                setTimeout(() => onBookConsultation(), 300);
+              }
+            }}
+          >
+            <Icon icon="mdi:calendar-plus" style={{ fontSize: 20 }} />
+            <span>Book Free Consultation</span>
+          </motion.button>
         </Box>
       </Box>
     </Box>
