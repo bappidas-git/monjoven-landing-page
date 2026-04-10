@@ -178,6 +178,55 @@
   line-height: 1.5 !important;
 }
 
+/* Next Steps Section */
+.nextStepsSection {
+  margin-bottom: 40px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.nextStepsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.nextStepItem {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  padding: 16px 20px;
+  text-align: left;
+}
+
+.stepNumber {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #2EC4B6 0%, #5DD9CE 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #2D3561;
+}
+
+.stepText {
+  font-size: 0.9375rem;
+  font-weight: 400;
+  color: #FFFFFFCC;
+  line-height: 1.5;
+}
+
 /* Highlights Section */
 .highlightsSection {
   margin-bottom: 40px;
@@ -341,44 +390,12 @@
   color: #2EC4B6;
 }
 
-/* Quick Links Section */
-.quickLinksSection {
-  margin-bottom: 40px;
-}
-
-.quickLinksGrid {
+/* CTA Section */
+.ctaSection {
   display: flex;
   justify-content: center;
   gap: 16px;
   flex-wrap: wrap;
-}
-
-.quickLinkCard {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: rgba(46, 196, 182, 0.1);
-  border: 1px solid rgba(46, 196, 182, 0.25);
-  border-radius: 12px;
-  padding: 14px 24px;
-  color: #2EC4B6;
-  font-size: 0.9375rem;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.2s ease;
-}
-
-.quickLinkCard:hover {
-  background: rgba(46, 196, 182, 0.2);
-  border-color: rgba(46, 196, 182, 0.4);
-}
-
-.quickLinkIcon {
-  font-size: 20px;
-}
-
-/* Back Home Button */
-.backHomeWrapper {
   margin-top: 20px;
 }
 
@@ -404,6 +421,32 @@
 }
 
 .backHomeBtn svg {
+  font-size: 20px;
+}
+
+/* WhatsApp Button */
+.whatsappBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #25D366;
+  border: 2px solid #25D366;
+  border-radius: 50px;
+  padding: 14px 28px;
+  color: #FFFFFF;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.whatsappBtn:hover {
+  background: #1ebe5d;
+  border-color: #1ebe5d;
+  color: #FFFFFF;
+}
+
+.whatsappBtn svg {
   font-size: 20px;
 }
 
@@ -466,13 +509,13 @@
     align-items: center;
   }
 
-  .quickLinksGrid {
-    gap: 12px;
+  .nextStepItem {
+    padding: 14px 16px;
   }
 
-  .quickLinkCard {
-    padding: 12px 20px;
-    font-size: 0.875rem;
+  .ctaSection {
+    flex-direction: column;
+    align-items: center;
   }
 }
 
@@ -510,19 +553,8 @@
     font-size: 1.375rem !important;
   }
 
-  .quickLinkCard {
-    width: calc(50% - 6px);
-    flex-direction: column;
-    padding: 16px 12px;
-    gap: 6px;
-    text-align: center;
-  }
-
-  .quickLinkIcon {
-    font-size: 24px;
-  }
-
-  .backHomeBtn {
+  .backHomeBtn,
+  .whatsappBtn {
     width: 100%;
     justify-content: center;
     padding: 14px 24px;

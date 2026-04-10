@@ -13,49 +13,39 @@ import styles from "./ThankYou.module.css";
 import { updatePageSEO } from "../../utils/seo";
 import { seoConfig } from "../../config/seo";
 
-// TODO: Replace with actual content
-// Programme highlights for display
-const projectHighlights = [
+// Trust badges
+const trustBadges = [
   {
-    icon: "mdi:store-check-outline",
-    label: "Proven Business Model",
+    icon: "mdi:calendar-check",
+    label: "12+ Years Experience",
     color: "#2EC4B6",
   },
   {
-    icon: "mdi:percent-circle",
-    label: "Strong Margins",
+    icon: "mdi:account-heart",
+    label: "5,000+ Happy Patients",
     color: "#4CAF50",
   },
   {
-    icon: "mdi:package-variant-closed",
-    label: "10K+ Products",
+    icon: "mdi:shield-lock",
+    label: "100% Confidential",
     color: "#2196F3",
-  },
-  {
-    icon: "mdi:account-group",
-    label: "500+ Partners",
-    color: "#9C27B0",
   },
 ];
 
-// TODO: Replace with actual content
 // Contact details
 const contactInfo = {
-  companyName: "Your Company Pvt. Ltd.",
-  designation: "Business Excellence",
-  phone: "+91-XXXXXXXXXX",
-  email: "info@yourbusiness.com",
-  address: "Your City, Your State",
-  workingHours: "Mon - Sat: 9:00 AM - 7:00 PM",
+  phone: "+91 8011002870",
+  whatsapp: "+91 9127062599",
+  email: "dr@monjoven.com",
+  clinicHours: "Mon - Sat: 9:00 AM - 6:00 PM",
 };
 
-// TODO: Replace with actual content
-// Quick links
-const quickLinks = [
-  { icon: "mdi:medical-bag", label: "Services", href: "/#services" },
-  { icon: "mdi:star-circle", label: "Why Us", href: "/#why-us" },
-  { icon: "mdi:store", label: "Location", href: "/#stores" },
-  { icon: "mdi:headset", label: "Support", href: "/#support" },
+// Next steps after form submission
+const nextSteps = [
+  "Our team will call you to confirm your preferred date and time",
+  "You'll receive a pre-consultation questionnaire via WhatsApp/Email",
+  "Dr. Neog will personally evaluate your case during the consultation",
+  "You'll receive a customized treatment plan and transparent pricing",
 ];
 
 const ThankYou = () => {
@@ -228,25 +218,23 @@ const ThankYou = () => {
             <div className={styles.iconRing2} />
           </motion.div>
 
-          {/* TODO: Replace with actual content */}
           {/* Thank You Message */}
           <motion.div
             variants={itemVariants}
             className={styles.thankYouMessage}
           >
             <Typography variant="h2" className={styles.title}>
-              Thank You for Your Interest!
+              Thank You for Choosing Monjoven!
             </Typography>
             <Typography
               className={styles.subtitle}
               sx={{ color: "#FFFFFFB3 !important" }}
             >
-              Your enquiry has been received. Our team will contact you within
-              24 hours to discuss the details.
+              Your consultation request has been received successfully
             </Typography>
           </motion.div>
 
-          {/* Response Time Notice */}
+          {/* Confirmation Message & Next Steps */}
           <motion.div variants={itemVariants} className={styles.responseNotice}>
             <div className={styles.noticeIcon}>
               <Icon icon="mdi:clock-check-outline" />
@@ -259,24 +247,37 @@ const ThankYou = () => {
                 className={styles.noticeDesc}
                 sx={{ color: "#FFFFFFA6 !important" }}
               >
-                Our team will reach out to discuss the best plan for you
+                Dr. Porag Neog's team will contact you within 24 hours to
+                schedule your personalized consultation. Here's what to expect:
               </Typography>
             </div>
           </motion.div>
 
-          {/* Project Highlights */}
+          {/* Next Steps */}
+          <motion.div variants={itemVariants} className={styles.nextStepsSection}>
+            <ol className={styles.nextStepsList}>
+              {nextSteps.map((step, index) => (
+                <motion.li
+                  key={index}
+                  className={styles.nextStepItem}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.4 + index * 0.1 }}
+                >
+                  <span className={styles.stepNumber}>{index + 1}</span>
+                  <span className={styles.stepText}>{step}</span>
+                </motion.li>
+              ))}
+            </ol>
+          </motion.div>
+
+          {/* Trust Badges */}
           <motion.div
             variants={itemVariants}
             className={styles.highlightsSection}
           >
-            <Typography
-              className={styles.sectionLabel}
-              sx={{ color: "#FFFFFF80 !important" }}
-            >
-              Why Choose Us?
-            </Typography>
             <div className={styles.highlightsGrid}>
-              {projectHighlights.map((item, index) => (
+              {trustBadges.map((item, index) => (
                 <motion.div
                   key={item.label}
                   className={styles.highlightCard}
@@ -300,22 +301,21 @@ const ThankYou = () => {
             </div>
           </motion.div>
 
-          {/* TODO: Replace with actual content */}
           {/* Contact Information Card */}
           <motion.div variants={itemVariants} className={styles.contactCard}>
             <div className={styles.contactHeader}>
               <div className={styles.companyBadge}>
-                <Icon icon="mdi:shield-star" />
-                <span>{contactInfo.designation}</span>
+                <Icon icon="mdi:headset" />
+                <span>Support</span>
               </div>
               <Typography variant="h4" className={styles.companyName}>
-                {contactInfo.companyName}
+                Need Immediate Assistance?
               </Typography>
             </div>
 
             <Grid container spacing={3} className={styles.contactGrid}>
-              {/* Phone Numbers */}
-              <Grid item xs={12} sm={6} md={4}>
+              {/* Phone */}
+              <Grid item xs={12} sm={6}>
                 <div className={styles.contactItem}>
                   <div className={styles.contactIconWrapper}>
                     <Icon icon="mdi:phone" />
@@ -328,7 +328,7 @@ const ThankYou = () => {
                       Call Us
                     </span>
                     <a
-                      href={`tel:${contactInfo.phone}`}
+                      href="tel:+918011002870"
                       className={styles.contactValue}
                     >
                       {contactInfo.phone}
@@ -337,8 +337,33 @@ const ThankYou = () => {
                 </div>
               </Grid>
 
+              {/* WhatsApp */}
+              <Grid item xs={12} sm={6}>
+                <div className={styles.contactItem}>
+                  <div className={styles.contactIconWrapper}>
+                    <Icon icon="mdi:whatsapp" />
+                  </div>
+                  <div className={styles.contactDetails}>
+                    <span
+                      className={styles.contactLabel}
+                      style={{ color: "#FFFFFF80" }}
+                    >
+                      WhatsApp
+                    </span>
+                    <a
+                      href="https://wa.me/919127062599"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.contactValue}
+                    >
+                      {contactInfo.whatsapp}
+                    </a>
+                  </div>
+                </div>
+              </Grid>
+
               {/* Email */}
-              <Grid item xs={12} sm={6} md={4}>
+              <Grid item xs={12} sm={6}>
                 <div className={styles.contactItem}>
                   <div className={styles.contactIconWrapper}>
                     <Icon icon="mdi:email" />
@@ -351,7 +376,7 @@ const ThankYou = () => {
                       Email Us
                     </span>
                     <a
-                      href={`mailto:${contactInfo.email}`}
+                      href="mailto:dr@monjoven.com"
                       className={styles.contactValue}
                     >
                       {contactInfo.email}
@@ -360,8 +385,8 @@ const ThankYou = () => {
                 </div>
               </Grid>
 
-              {/* Working Hours */}
-              <Grid item xs={12} sm={6} md={4}>
+              {/* Clinic Hours */}
+              <Grid item xs={12} sm={6}>
                 <div className={styles.contactItem}>
                   <div className={styles.contactIconWrapper}>
                     <Icon icon="mdi:clock-outline" />
@@ -371,30 +396,10 @@ const ThankYou = () => {
                       className={styles.contactLabel}
                       style={{ color: "#FFFFFF80" }}
                     >
-                      Working Hours
+                      Clinic Hours
                     </span>
                     <span className={styles.contactValue}>
-                      {contactInfo.workingHours}
-                    </span>
-                  </div>
-                </div>
-              </Grid>
-
-              {/* Address */}
-              <Grid item xs={12}>
-                <div className={`${styles.contactItem} ${styles.addressItem}`}>
-                  <div className={styles.contactIconWrapper}>
-                    <Icon icon="mdi:map-marker" />
-                  </div>
-                  <div className={styles.contactDetails}>
-                    <span
-                      className={styles.contactLabel}
-                      style={{ color: "#FFFFFF80" }}
-                    >
-                      Visit Us
-                    </span>
-                    <span className={styles.contactValue}>
-                      {contactInfo.address}
+                      {contactInfo.clinicHours}
                     </span>
                   </div>
                 </div>
@@ -402,50 +407,30 @@ const ThankYou = () => {
             </Grid>
           </motion.div>
 
-          {/* Quick Links */}
+          {/* CTA Buttons */}
           <motion.div
             variants={itemVariants}
-            className={styles.quickLinksSection}
-          >
-            <Typography
-              className={styles.sectionLabel}
-              sx={{ color: "#FFFFFF80 !important" }}
-            >
-              Explore More
-            </Typography>
-            <div className={styles.quickLinksGrid}>
-              {quickLinks.map((link, index) => (
-                <motion.a
-                  key={link.label}
-                  href={link.href}
-                  className={styles.quickLinkCard}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.8 + index * 0.1 }}
-                  whileHover={{ y: -4, scale: 1.05 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <Icon icon={link.icon} className={styles.quickLinkIcon} />
-                  <span>{link.label}</span>
-                </motion.a>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Back to Home Button */}
-          <motion.div
-            variants={itemVariants}
-            className={styles.backHomeWrapper}
+            className={styles.ctaSection}
           >
             <motion.a
               href="/"
               className={styles.backHomeBtn}
-              style={{ color: "#FFFFFFB3" }}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
               <Icon icon="mdi:arrow-left" />
               <span>Back to Home</span>
+            </motion.a>
+            <motion.a
+              href="https://wa.me/919127062599"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.whatsappBtn}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <Icon icon="mdi:whatsapp" />
+              <span>WhatsApp Us Now</span>
             </motion.a>
           </motion.div>
         </motion.div>
