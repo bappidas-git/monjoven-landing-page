@@ -53,9 +53,10 @@ import styles from "./LeadManagement.module.css";
 const STATUS_OPTIONS = [
   { value: "new", label: "New", color: "#2B7BD5", bg: "#EBF5FF" },
   { value: "contacted", label: "Contacted", color: "#F59E0B", bg: "#FFF7ED" },
-  { value: "qualified", label: "Qualified", color: "#8B5CF6", bg: "#F3E8FF" },
-  { value: "converted", label: "Converted", color: "#10B981", bg: "#ECFDF5" },
-  { value: "lost", label: "Lost", color: "#EF4444", bg: "#FEF2F2" },
+  { value: "consultation_booked", label: "Consultation Booked", color: "#8B5CF6", bg: "#F3E8FF" },
+  { value: "procedure_scheduled", label: "Procedure Scheduled", color: "#0097A7", bg: "#E0F7FA" },
+  { value: "completed", label: "Completed", color: "#10B981", bg: "#ECFDF5" },
+  { value: "not_interested", label: "Not Interested", color: "#EF4444", bg: "#FEF2F2" },
 ];
 
 const DATE_RANGE_OPTIONS = [
@@ -89,12 +90,12 @@ const formatShortDate = (dateStr) => {
 
 // Columns config
 const COLUMNS = [
-  { id: "name", label: "Name", sortable: true },
-  { id: "mobile", label: "Mobile", sortable: true, width: 130 },
+  { id: "name", label: "Patient Name", sortable: true },
+  { id: "mobile", label: "Phone", sortable: true, width: 130 },
   { id: "email", label: "Email", sortable: true },
-  { id: "investment_interest", label: "Interest", sortable: true, hideTablet: true },
+  { id: "investment_interest", label: "Service Interest", sortable: true, hideTablet: true },
   { id: "source", label: "Source", sortable: true, width: 140 },
-  { id: "status", label: "Status", sortable: true, width: 120 },
+  { id: "status", label: "Status", sortable: true, width: 150 },
   { id: "submitted_at", label: "Date", sortable: true, width: 100 },
 ];
 
@@ -297,9 +298,9 @@ const LeadManagement = () => {
       {/* Page Header */}
       <div className={styles.pageHeader}>
         <div>
-          <h1 className={styles.pageTitle}>Lead Management</h1>
+          <h1 className={styles.pageTitle}>Consultation Requests</h1>
           <p className={styles.pageSubtitle}>
-            View and manage all your leads in one place.
+            View and manage all consultation requests in one place.
           </p>
         </div>
         <div className={styles.headerActions}>
@@ -373,7 +374,7 @@ const LeadManagement = () => {
             </div>
             <div>
               <p className={styles.statValue}>{stats.totalLeads}</p>
-              <p className={styles.statLabel}>Total Leads</p>
+              <p className={styles.statLabel}>Total Requests</p>
             </div>
           </div>
           <div className={styles.statCard}>
@@ -416,7 +417,7 @@ const LeadManagement = () => {
         <div className={styles.filtersBar}>
           <TextField
             size="small"
-            placeholder="Search by name, email, or mobile..."
+            placeholder="Search by patient name, email, or phone..."
             value={search}
             onChange={(e) => { setSearch(e.target.value); setPage(0); }}
             InputProps={{
@@ -597,11 +598,11 @@ const LeadManagement = () => {
             <div className={styles.emptyIcon}>
               <Icon icon="mdi:account-group-outline" width={64} height={64} />
             </div>
-            <p className={styles.emptyText}>No leads found</p>
+            <p className={styles.emptyText}>No consultation requests found</p>
             <p className={styles.emptySubtext}>
               {hasActiveFilters
                 ? "No results match your current filters. Try adjusting your search or filters."
-                : "New leads will appear here as they come in from your landing page forms."}
+                : "New consultation requests will appear here as they come in from your landing page forms."}
             </p>
             {hasActiveFilters && (
               <Button

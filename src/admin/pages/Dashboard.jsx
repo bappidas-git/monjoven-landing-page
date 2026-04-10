@@ -13,9 +13,10 @@ import styles from './Dashboard.module.css';
 const STATUS_COLORS = {
   new: { color: "#2196F3", bg: "#E3F2FD" },
   contacted: { color: "#FF9800", bg: "#FFF3E0" },
-  qualified: { color: "#9C27B0", bg: "#F3E5F5" },
-  converted: { color: "#4CAF50", bg: "#E8F5E9" },
-  lost: { color: "#F44336", bg: "#FFEBEE" },
+  consultation_booked: { color: "#9C27B0", bg: "#F3E5F5" },
+  procedure_scheduled: { color: "#0097A7", bg: "#E0F7FA" },
+  completed: { color: "#4CAF50", bg: "#E8F5E9" },
+  not_interested: { color: "#F44336", bg: "#FFEBEE" },
 };
 
 const formatDate = () => {
@@ -38,10 +39,10 @@ const Dashboard = () => {
   }, []);
 
   const statCards = [
-    { label: 'Total Leads', value: stats?.totalLeads ?? 0, icon: 'mdi:account-multiple', colorClass: 'statIconBlue' },
-    { label: "Today's Leads", value: stats?.newLeads24h ?? 0, icon: 'mdi:account-plus', colorClass: 'statIconGreen' },
-    { label: "This Week's Leads", value: stats?.weekLeads ?? 0, icon: 'mdi:trending-up', colorClass: 'statIconPink' },
-    { label: 'Conversion Rate', value: `${stats?.conversionRate ?? 0}%`, icon: 'mdi:percent-circle-outline', colorClass: 'statIconTeal' },
+    { label: 'Total Consultation Requests', value: stats?.totalLeads ?? 0, icon: 'mdi:account-multiple', colorClass: 'statIconBlue' },
+    { label: 'Pending Follow-ups', value: stats?.newLeads24h ?? 0, icon: 'mdi:phone-in-talk', colorClass: 'statIconGreen' },
+    { label: 'Consultations Booked', value: stats?.weekLeads ?? 0, icon: 'mdi:calendar-check', colorClass: 'statIconPink' },
+    { label: 'Procedures Scheduled', value: `${stats?.conversionRate ?? 0}%`, icon: 'mdi:medical-bag', colorClass: 'statIconTeal' },
   ];
 
   const recentLeads = stats?.recentLeads || [];
@@ -62,7 +63,7 @@ const Dashboard = () => {
         <div>
           <h1 className={styles.pageTitle}>Dashboard</h1>
           <p className={styles.pageSubtitle}>
-            Welcome back, {user?.username || 'Admin'}. Here&rsquo;s your lead overview.
+            Welcome to Monjoven Lead Management. Here&rsquo;s your consultation overview.
           </p>
         </div>
         <div className={styles.headerDate}>
@@ -105,7 +106,7 @@ const Dashboard = () => {
       {/* Recent Leads Section */}
       <div className={styles.recentSection}>
         <div className={styles.recentHeader}>
-          <h2 className={styles.sectionTitle}>Recent Leads</h2>
+          <h2 className={styles.sectionTitle}>Recent Consultation Requests</h2>
           <Link to="/admin/lms" className={styles.viewAllLink}>
             View All <Icon icon="mdi:arrow-right" width={16} height={16} style={{ verticalAlign: 'middle' }} />
           </Link>
@@ -116,9 +117,9 @@ const Dashboard = () => {
             <div className={styles.emptyIcon}>
               <Icon icon="mdi:inbox-outline" width={56} height={56} />
             </div>
-            <p className={styles.emptyText}>No leads yet</p>
+            <p className={styles.emptyText}>No consultation requests yet</p>
             <p className={styles.emptySubtext}>
-              New leads will appear here as they come in from your landing page forms.
+              New consultation requests will appear here as they come in from your landing page forms.
             </p>
           </div>
         ) : (
@@ -128,8 +129,8 @@ const Dashboard = () => {
               <table className={styles.recentTable}>
                 <thead>
                   <tr>
-                    <th>Name</th>
-                    <th>Mobile</th>
+                    <th>Patient Name</th>
+                    <th>Phone</th>
                     <th>Source</th>
                     <th>Status</th>
                     <th>Date</th>
@@ -245,7 +246,7 @@ const Dashboard = () => {
 
       {/* Footer Badge */}
       <p className={styles.footerBadge}>
-        Powered by Assam Digital | Lead Management System v1.0
+        Monjoven Admin Panel | Lead Management System v1.0
       </p>
     </div>
   );

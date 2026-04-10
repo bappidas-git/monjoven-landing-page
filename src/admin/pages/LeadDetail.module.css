@@ -396,8 +396,8 @@
 }
 
 .trackingChipBlue {
-  background: #EBF5FF;
-  color: #2B7BD5;
+  background: #E0F7F1;
+  color: #148F77;
 }
 
 .trackingChipMuted {
@@ -475,7 +475,7 @@
   border-radius: 12px;
   font-size: 0.8rem;
   font-weight: 600;
-  background: #EBF5FF;
+  background: #E0F7F1;
   color: var(--admin-accent);
 }
 

@@ -37,17 +37,18 @@ import styles from "./LeadDetail.module.css";
 const STATUS_OPTIONS = [
   { value: "new", label: "New", color: "#2B7BD5", bg: "#EBF5FF" },
   { value: "contacted", label: "Contacted", color: "#F59E0B", bg: "#FFF7ED" },
-  { value: "qualified", label: "Qualified", color: "#8B5CF6", bg: "#F3E8FF" },
-  { value: "converted", label: "Converted", color: "#10B981", bg: "#ECFDF5" },
-  { value: "lost", label: "Lost", color: "#EF4444", bg: "#FEF2F2" },
+  { value: "consultation_booked", label: "Consultation Booked", color: "#8B5CF6", bg: "#F3E8FF" },
+  { value: "procedure_scheduled", label: "Procedure Scheduled", color: "#0097A7", bg: "#E0F7FA" },
+  { value: "completed", label: "Completed", color: "#10B981", bg: "#ECFDF5" },
+  { value: "not_interested", label: "Not Interested", color: "#EF4444", bg: "#FEF2F2" },
 ];
 
 const CONVERSION_TYPES = [
-  "Sale",
-  "Qualified Lead",
-  "Meeting Booked",
-  "Site Visit",
-  "Document Signed",
+  "Consultation Completed",
+  "Procedure Booked",
+  "Procedure Completed",
+  "Follow-up Visit",
+  "Referral",
   "Other",
 ];
 
@@ -85,13 +86,13 @@ const NotesSection = ({ leadId, notes, onNoteAdded }) => {
     <div className={styles.card}>
       <h3 className={styles.cardTitle}>
         <Icon icon="mdi:note-text-outline" width={16} />
-        Notes
+        Consultation Notes
       </h3>
       <textarea
         className={styles.noteTextarea}
         value={noteText}
         onChange={(e) => setNoteText(e.target.value)}
-        placeholder="Add a note..."
+        placeholder="Add consultation notes..."
         rows={3}
       />
       <button
@@ -197,8 +198,8 @@ const LeadDetail = () => {
         }
       );
 
-      // Update lead status to converted
-      updateLeadStatus(lead.lead_id, "converted");
+      // Update lead status to completed
+      updateLeadStatus(lead.lead_id, "completed");
 
       // Store conversion value on the lead for Google Ads export
       const allLeads = JSON.parse(localStorage.getItem("lp_submitted_leads") || "[]");
@@ -246,9 +247,9 @@ const LeadDetail = () => {
         <div className={styles.notFoundIcon}>
           <Icon icon="mdi:account-search-outline" width={64} />
         </div>
-        <h2 className={styles.notFoundTitle}>Lead not found</h2>
+        <h2 className={styles.notFoundTitle}>Patient record not found</h2>
         <p className={styles.notFoundText}>
-          The lead you're looking for doesn't exist or has been deleted.
+          The patient record you're looking for doesn't exist or has been deleted.
         </p>
         <button className={styles.backBtn} onClick={() => navigate("/admin/lms")}>
           <Icon icon="mdi:arrow-left" width={16} />
@@ -264,7 +265,7 @@ const LeadDetail = () => {
   const sc = getStatusConfig(lead.status);
 
   const googleAdsStatus = lead.gclid
-    ? lead.status === "converted"
+    ? lead.status === "completed"
       ? { label: "Ready for export", style: "trackingChipGreen" }
       : { label: "GCLID captured", style: "trackingChipBlue" }
     : { label: "No GCLID", style: "trackingChipMuted" };
@@ -283,7 +284,7 @@ const LeadDetail = () => {
             Back to Leads
           </button>
           <div className={styles.headerInfo}>
-            <h1 className={styles.leadName}>{lead.name || "Unknown Lead"}</h1>
+            <h1 className={styles.leadName}>{lead.name || "Unknown Patient"}</h1>
             <p className={styles.leadId}>ID: {lead.lead_id}</p>
           </div>
         </div>
@@ -316,7 +317,7 @@ const LeadDetail = () => {
           <div className={styles.card}>
             <h3 className={styles.cardTitle}>
               <Icon icon="mdi:account-circle-outline" width={16} />
-              Contact Details
+              Patient Details
             </h3>
             <div className={styles.infoGrid}>
               <div className={styles.infoField}>
@@ -351,12 +352,12 @@ const LeadDetail = () => {
           {/* Interest Details */}
           <div className={styles.card}>
             <h3 className={styles.cardTitle}>
-              <Icon icon="mdi:briefcase-outline" width={16} />
-              Interest Details
+              <Icon icon="mdi:medical-bag" width={16} />
+              Service Interest
             </h3>
             <div className={styles.infoGrid}>
               <div className={styles.infoField}>
-                <span className={styles.infoLabel}>Investment Interest / Service Plan</span>
+                <span className={styles.infoLabel}>Service Interest</span>
                 <span className={lead.investment_interest ? styles.infoValue : styles.infoDash}>
                   {lead.investment_interest || "\u2014"}
                 </span>
@@ -598,7 +599,7 @@ const LeadDetail = () => {
         <DialogTitle>Confirm Delete</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Are you sure you want to delete this lead? This action cannot be undone.
+            Are you sure you want to delete this patient record? This action cannot be undone.
           </DialogContentText>
         </DialogContent>
         <DialogActions>
@@ -630,7 +631,7 @@ const LeadDetail = () => {
         <DialogContent>
           <DialogContentText sx={{ mb: 2 }}>
             Record a conversion for{" "}
-            <strong>{lead.name || "this lead"}</strong>. This will send a conversion
+            <strong>{lead.name || "this patient"}</strong>. This will send a conversion
             event to Meta CAPI and{lead.gclid
               ? " mark it for Google Ads offline conversion export"
               : " record it locally"}.
