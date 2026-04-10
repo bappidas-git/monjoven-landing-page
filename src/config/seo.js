@@ -2,23 +2,19 @@
    SEO Configuration
    Central configuration for all SEO-related
    settings, schemas, and page metadata.
-
-   TODO: Replace all placeholder values with
-   your actual business information.
-   See SEO_GUIDE.md for detailed instructions.
    ============================================ */
 
 export const seoConfig = {
   // =========================================
   // Site-level Settings
   // =========================================
-  siteName: 'Your Business Name',
-  siteUrl: 'https://yourbusiness.com',
-  defaultTitle: 'Your Business Name | Tagline',
-  titleTemplate: '%s | Your Business Name',
+  siteName: 'Monjoven',
+  siteUrl: 'https://www.monjoven.com',
+  defaultTitle: 'Monjoven | Hair Transplant & Cosmetic Surgery in Guwahati',
+  titleTemplate: '%s | Monjoven',
   defaultDescription:
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Learn more about our services, plans, and offerings. Get in touch with our team today.',
-  defaultImage: 'https://yourbusiness.com/og-image.jpg',
+    'Monjoven is the first dedicated hair transplant clinic in Northeast India with 12+ years of experience. Expert FUE & FUT hair transplant, cosmetic surgery, and aesthetic treatments in Guwahati, Assam. Consult Dr. Porag Neog today.',
+  defaultImage: 'https://www.monjoven.com/og-image.jpg',
   locale: 'en_IN',
   language: 'en',
 
@@ -26,34 +22,30 @@ export const seoConfig = {
   // Organization Details
   // =========================================
   organization: {
-    name: 'Your Company Pvt. Ltd.',
-    alternateName: 'Your Business Name',
-    url: 'https://yourbusiness.com',
-    logo: 'https://yourbusiness.com/logo.png',
-    email: 'info@yourbusiness.com',
-    phone: '+91-XXXXXXXXXX',
+    name: 'Monjoven Hair Transplant & Cosmetic Surgery',
+    alternateName: 'Monjoven',
+    url: 'https://www.monjoven.com',
+    logo: 'https://www.monjoven.com/assets/img/logo.png',
+    email: 'dr@monjoven.com',
+    phone: '+91 8011002870',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      'Monjoven is Northeast India\'s first dedicated hair transplant clinic, offering advanced FUE & FUT hair restoration, cosmetic surgery, and aesthetic treatments in Guwahati, Assam. Founded by Dr. Porag Neog with over 12 years of experience.',
     address: {
-      streetAddress: '',
-      addressLocality: 'Your City',
-      addressRegion: 'Your State',
+      streetAddress: 'VIP Road, Borbari, Six Mile, Near Pratiksha Hospital',
+      addressLocality: 'Guwahati',
+      addressRegion: 'Assam',
       postalCode: '',
       addressCountry: 'IN',
     },
     sameAs: [
-      // TODO: Add your social media profile URLs
-      // 'https://www.facebook.com/yourbusiness',
-      // 'https://www.instagram.com/yourbusiness',
-      // 'https://www.linkedin.com/company/yourbusiness',
-      // 'https://twitter.com/yourbusiness',
-      // 'https://www.youtube.com/@yourbusiness',
+      'https://www.facebook.com/MONJOVEN/',
+      'https://www.instagram.com/monjoven_',
     ],
     founder: {
-      name: '',
-      jobTitle: '',
+      name: 'Dr. Porag Neog',
+      jobTitle: 'Cosmetic Surgeon & Founder',
     },
-    foundingDate: '',
+    foundingDate: '2012',
   },
 
   // =========================================
@@ -61,51 +53,51 @@ export const seoConfig = {
   // =========================================
   pages: {
     home: {
-      title: 'Your Business Name | Tagline',
+      title: 'Monjoven | Hair Transplant & Cosmetic Surgery in Guwahati',
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Learn more about our services, plans, and offerings.',
-      keywords: 'your business, services, plans, contact us',
+        'Northeast India\'s first dedicated hair transplant clinic. Advanced FUE & FUT hair restoration, cosmetic surgery, and aesthetic treatments by Dr. Porag Neog in Guwahati, Assam. 12+ years of experience. Book your consultation today.',
+      keywords:
+        'hair transplant Guwahati, hair transplant Northeast India, FUE hair transplant, FUT hair transplant, cosmetic surgery Guwahati, hair restoration Assam, Dr Porag Neog, Monjoven clinic, hair loss treatment, aesthetic surgery Guwahati, best hair transplant doctor Assam',
     },
     thankYou: {
-      title: 'Thank You | Your Business Name',
+      title: 'Thank You | Monjoven',
       description: 'Thank you for your enquiry. Our team will contact you shortly.',
       robots: 'noindex, nofollow',
     },
     admin: {
-      title: 'Admin | Your Business Name',
+      title: 'Admin | Monjoven',
       robots: 'noindex, nofollow',
     },
   },
 
   // =========================================
   // FAQ Schema Data
-  // TODO: Replace with actual FAQs
   // =========================================
   faqs: [
     {
-      question: 'What services do you offer?',
+      question: 'What is the hair transplant process at Monjoven?',
       answer:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. We offer multiple service tiers to fit your needs.',
+        'The hair transplant process at Monjoven begins with a detailed consultation with Dr. Porag Neog to assess your hair loss pattern and donor area. On the day of the procedure, local anaesthesia is administered, and healthy hair follicles are extracted and transplanted to the thinning or balding areas. The procedure typically takes 6–8 hours depending on the number of grafts. It is minimally invasive with no major downtime.',
     },
     {
-      question: 'What is the investment required?',
+      question: 'What is the recovery time after a hair transplant?',
       answer:
-        'Lorem ipsum dolor sit amet. We offer flexible investment plans starting from our basic tier up to premium options.',
+        'Most patients can resume normal daily activities within 2–3 days after the procedure. Mild swelling or redness may occur in the first week and subsides quickly. The transplanted hair sheds within 2–4 weeks, which is completely normal. New hair growth begins around 3–4 months, with full results visible in 10–12 months.',
     },
     {
-      question: 'What support do you provide?',
+      question: 'What is the difference between FUE and FUT hair transplant?',
       answer:
-        'Lorem ipsum dolor sit amet. We provide comprehensive support including setup, training, technology, and ongoing operational guidance.',
+        'FUE (Follicular Unit Extraction) involves extracting individual hair follicles one by one, leaving tiny dot scars that are virtually invisible. FUT (Follicular Unit Transplantation) involves removing a strip of scalp from the donor area and dissecting it into individual grafts. FUE has a faster recovery time and no linear scar, while FUT can yield a higher number of grafts in a single session. Dr. Porag Neog will recommend the best method based on your specific needs.',
     },
     {
-      question: 'Where are you located?',
+      question: 'How much does a hair transplant cost at Monjoven?',
       answer:
-        'Lorem ipsum dolor sit amet. We operate across multiple locations and are expanding to new areas.',
+        'The cost of a hair transplant varies depending on the number of grafts required, the technique used (FUE or FUT), and the complexity of the case. We offer a free consultation where Dr. Porag Neog evaluates your condition and provides a detailed cost estimate. Contact us at +91-8011002870 or fill out the enquiry form to book your consultation.',
     },
     {
-      question: 'How do I get started?',
+      question: 'Who is a good candidate for hair transplant surgery?',
       answer:
-        'Lorem ipsum dolor sit amet. Fill out the enquiry form on our website or call us directly. Our team will guide you through the process.',
+        'Good candidates for hair transplant surgery include individuals with pattern baldness, receding hairlines, or thinning hair who have sufficient donor hair at the back or sides of the scalp. Both men and women can benefit from the procedure. Candidates should be in good general health. A consultation with Dr. Porag Neog will determine if you are a suitable candidate based on your hair loss stage, donor area density, and overall health.',
     },
   ],
 
@@ -113,7 +105,7 @@ export const seoConfig = {
   // LocalBusiness Schema Settings
   // =========================================
   localBusiness: {
-    type: 'LocalBusiness', // Can be: Store, Restaurant, ProfessionalService, etc.
+    type: 'MedicalBusiness',
     priceRange: '$$',
     openingHours: {
       days: [
