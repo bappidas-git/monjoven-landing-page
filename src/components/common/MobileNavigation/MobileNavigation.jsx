@@ -11,7 +11,6 @@ import { trackPhoneClick, trackWhatsAppClick, trackNavigation } from "../../../u
 import styles from "./MobileNavigation.module.css";
 
 // Navigation items configuration
-/* TODO: Replace with actual content */
 const navItems = [
   {
     id: "whatsapp",
@@ -19,7 +18,7 @@ const navItems = [
     icon: "ic:baseline-whatsapp",
     color: "#25D366",
     action: "whatsapp",
-    href: "https://wa.me/91XXXXXXXXXX?text=Hi,%20I%20am%20interested%20in%20your%20services",
+    href: "https://wa.me/919127062599?text=Hi,%20I%20am%20interested%20in%20your%20services",
   },
   {
     id: "call",
@@ -27,12 +26,12 @@ const navItems = [
     icon: "ic:baseline-phone",
     color: "#FF6B35",
     action: "call",
-    href: "tel:+91XXXXXXXXXX",
+    href: "tel:+918011002870",
   },
   {
     id: "enquiry",
-    label: "Enquiry",
-    icon: "ic:baseline-storefront",
+    label: "Book Consultation",
+    icon: "mdi:calendar-check-outline",
     color: "#2EC4B6",
     action: "enquiry",
     badge: true,
@@ -87,7 +86,7 @@ const MobileNavigation = ({
         window.open(item.href, "_blank");
         break;
       case "call":
-        trackPhoneClick('+91XXXXXXXXXX', 'mobile_nav');
+        trackPhoneClick('+918011002870', 'mobile_nav');
         window.open(item.href, "_blank");
         break;
       case "enquiry":

@@ -15,18 +15,16 @@ import { Icon } from "@iconify/react";
 import { trackPhoneClick, trackNavigation } from "../../../utils/gtm";
 import styles from "./Header.module.css";
 
-// TODO: Replace with actual content
-const logoUrl =
-  "https://placehold.co/180x50/2D3561/FFFFFF?text=YOUR+LOGO";
+const logoUrl = "https://www.monjoven.com/assets/img/logo.png";
 
 // Navigation items
 const navItems = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
-  { label: "Services", href: "#investment" },
-  { label: "Why Us", href: "#why-us" },
-  { label: "Features", href: "#support" },
-  { label: "Location", href: "#stores" },
+  { label: "Services", href: "#services" },
+  { label: "Why Choose Us", href: "#why-us" },
+  { label: "Results", href: "#results" },
+  { label: "Testimonials", href: "#testimonials" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -170,7 +168,7 @@ const Header = ({ forceCloseMenu = false }) => {
             <div className={styles.logoWrapper}>
               <img
                 src={logoUrl}
-                alt="Your Business Name"
+                alt="Monjoven"
                 className={styles.mainLogo}
                 style={{
                   filter: isScrolled ? "none" : "brightness(0) invert(1)",
@@ -219,12 +217,12 @@ const Header = ({ forceCloseMenu = false }) => {
               transition={{ delay: 0.5, duration: 0.3 }}
             >
               <a
-                href="tel:+91XXXXXXXXXX"
+                href="tel:+918011002870"
                 className={styles.callButton}
-                onClick={() => trackPhoneClick('+91XXXXXXXXXX', 'header_desktop')}
+                onClick={() => trackPhoneClick('+918011002870', 'header_desktop')}
               >
                 <Icon icon="mdi:phone" className={styles.callButtonIcon} />
-                +91-XXXXXXXXXX
+                +91 8011002870
               </a>
             </motion.div>
           )}
@@ -284,15 +282,15 @@ const Header = ({ forceCloseMenu = false }) => {
               </ul>
               <div className={styles.mobileNavCTA}>
                 <a
-                  href="tel:+91XXXXXXXXXX"
+                  href="tel:+918011002870"
                   className={styles.mobileCallButton}
                   onClick={() => {
-                    trackPhoneClick('+91XXXXXXXXXX', 'header_mobile_menu');
+                    trackPhoneClick('+918011002870', 'header_mobile_menu');
                     setIsMobileMenuOpen(false);
                   }}
                 >
                   <Icon icon="mdi:phone" className={styles.callButtonIcon} />
-                  +91-XXXXXXXXXX
+                  +91 8011002870
                 </a>
               </div>
             </nav>
@@ -308,10 +306,10 @@ const getNavIcon = (label) => {
   const icons = {
     Home: "mdi:home-outline",
     About: "mdi:information-outline",
-    Services: "mdi:currency-inr",
-    "Why Us": "mdi:star-outline",
-    Features: "mdi:check-decagram-outline",
-    Location: "mdi:storefront-outline",
+    Services: "mdi:medical-bag",
+    "Why Choose Us": "mdi:star-outline",
+    Results: "mdi:image-multiple-outline",
+    Testimonials: "mdi:format-quote-open",
     Contact: "mdi:phone-outline",
   };
   return icons[label] || "mdi:circle-outline";
