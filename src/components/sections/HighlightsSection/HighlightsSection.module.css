@@ -1,6 +1,6 @@
 /* ============================================
-   Results & Achievements Section Styles
-   Light gray background with trust-building cards
+   Results & Procedures Section Styles
+   Light gray background with image-based cards
    ============================================ */
 
 /* ========== Main Section ========== */
@@ -58,204 +58,110 @@
   font-size: 1rem;
   color: #5C6370;
   text-align: center;
+  max-width: 600px;
 }
 
-/* ========== Results Highlight Cards ========== */
-.resultsGrid {
+/* ========== Highlights Grid ========== */
+.highlightsGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
   margin-bottom: 3rem;
 }
 
-.resultCard {
+.highlightCard {
   background: #FFFFFF;
   border-radius: 16px;
-  padding: 2rem 1.5rem;
-  text-align: center;
+  overflow: hidden;
   border: 1px solid rgba(45, 53, 97, 0.08);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
   transition: box-shadow 0.3s ease, transform 0.3s ease;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
-.resultCard:hover {
+.highlightCard:hover {
   box-shadow: 0 12px 40px rgba(45, 53, 97, 0.12);
 }
 
-.resultCardIcon {
-  width: 56px;
-  height: 56px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(45, 53, 97, 0.06);
-  border-radius: 50%;
-  margin-bottom: 1rem;
-}
-
-.resultCardIcon svg {
-  font-size: 28px;
-}
-
-.resultCardTitle {
-  font-family: 'Poppins', sans-serif;
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: #2D3561;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 0.75rem;
-}
-
-.resultStatWrapper {
-  margin-bottom: 0.5rem;
-}
-
-.resultStatLabel {
-  font-size: 0.95rem;
-  color: #374151;
-  line-height: 1.5;
-  max-width: 280px;
-}
-
-.subStatsRow {
-  margin-top: 0.75rem;
-  padding-top: 0.75rem;
-  border-top: 1px solid rgba(45, 53, 97, 0.08);
+.highlightImageWrap {
   width: 100%;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  background: #E0F7F5;
 }
 
-.subStatText {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: #2EC4B6;
-  letter-spacing: 0.02em;
+.highlightImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
 }
 
-/* ========== Test Types Section ========== */
-.testTypesBlock {
-  margin-bottom: 3rem;
+.highlightCard:hover .highlightImage {
+  transform: scale(1.05);
 }
 
-.testTypesTitle {
-  /* Typography set via sx prop */
-}
-
-.testTypesGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-}
-
-.testTypeCard {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.875rem;
-  padding: 1.25rem;
-  background: #FFFFFF;
-  border-radius: 12px;
-  border: 1px solid rgba(45, 53, 97, 0.06);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
-}
-
-.testTypeCard:hover {
-  box-shadow: 0 8px 28px rgba(45, 53, 97, 0.1);
-}
-
-.testTypeIcon {
-  width: 42px;
-  height: 42px;
-  min-width: 42px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #2D3561 0%, #2D3561 100%);
-  border-radius: 10px;
-}
-
-.testTypeIcon svg {
-  font-size: 22px;
-  color: #FFFFFF;
-}
-
-.testTypeInfo {
+.highlightContent {
+  padding: 1.25rem 1.5rem 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
-}
-
-.testTypeNameRow {
-  display: flex;
-  align-items: center;
   gap: 0.5rem;
-  flex-wrap: wrap;
+  flex: 1;
 }
 
-.testTypeName {
+.highlightTitle {
   font-family: 'Poppins', sans-serif;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #2D3561;
-}
-
-.testTypeTag {
-  display: inline-block;
-  padding: 0.1rem 0.5rem;
-  background: rgba(46, 196, 182, 0.12);
-  color: #2EC4B6;
-  font-size: 0.65rem;
+  font-size: 1rem;
   font-weight: 700;
-  border-radius: 10px;
-  letter-spacing: 0.04em;
+  color: #2D3561;
+  line-height: 1.3;
 }
 
-.testTypeDesc {
-  font-size: 0.8rem;
-  color: #6B7280;
-  line-height: 1.4;
+.highlightDesc {
+  font-size: 0.9rem;
+  color: #5C6370;
+  line-height: 1.55;
 }
 
-/* ========== Products Categories Brands Banner ========== */
-.scholarshipBanner {
-  margin-bottom: 2.5rem;
+/* ========== CTA Banner ========== */
+.ctaBanner {
+  margin-bottom: 0;
   border-radius: 16px;
   overflow: hidden;
-  background: linear-gradient(135deg, #2D3561 0%, #2D3561 100%);
+  background: linear-gradient(135deg, #2D3561 0%, #1B2A4A 100%);
   box-shadow: 0 8px 32px rgba(45, 53, 97, 0.25);
 }
 
-.scholarshipContent {
+.ctaBannerContent {
   display: flex;
   align-items: center;
   gap: 1.5rem;
   padding: 2rem 2.5rem;
 }
 
-.scholarshipIconWrap {
+.ctaIconWrap {
   width: 60px;
   height: 60px;
   min-width: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(46, 196, 182, 0.15);
   border-radius: 50%;
 }
 
-.scholarshipIconWrap svg {
+.ctaIconWrap svg {
   font-size: 30px;
-  color: #FFD700;
+  color: #2EC4B6;
 }
 
-.scholarshipTextBlock {
+.ctaTextBlock {
   flex: 1;
 }
 
-.scholarshipHeading {
+.ctaHeading {
   font-family: 'Poppins', sans-serif;
   font-size: 1.5rem;
   font-weight: 700;
@@ -263,18 +169,18 @@
   margin-bottom: 0.375rem;
 }
 
-.scholarshipDesc {
+.ctaDesc {
   font-size: 0.95rem;
   color: rgba(255, 255, 255, 0.8);
   line-height: 1.5;
 }
 
-.scholarshipCta {
+.ctaButton {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   padding: 0.875rem 1.75rem;
-  background: linear-gradient(135deg, #2EC4B6 0%, #5DD9CE 100%);
+  background: linear-gradient(135deg, #FF6B35 0%, #FF8F5E 100%);
   border: none;
   border-radius: 50px;
   font-size: 0.9rem;
@@ -283,56 +189,16 @@
   cursor: pointer;
   white-space: nowrap;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(46, 196, 182, 0.4);
+  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
 }
 
-.scholarshipCta:hover {
+.ctaButton:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 22px rgba(46, 196, 182, 0.55);
+  box-shadow: 0 6px 22px rgba(255, 107, 53, 0.55);
 }
 
-.scholarshipCta svg {
+.ctaButton svg {
   font-size: 18px;
-}
-
-/* ========== Bottom CTA ========== */
-.bottomCta {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-}
-
-.bottomCtaText {
-  font-size: 1.05rem;
-  color: #374151;
-  font-weight: 500;
-}
-
-.brochureBtn {
-  display: flex;
-  align-items: center;
-  gap: 0.625rem;
-  padding: 0.875rem 2rem;
-  background: #2D3561;
-  border: none;
-  border-radius: 50px;
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: #FFFFFF;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 16px rgba(45, 53, 97, 0.25);
-}
-
-.brochureBtn:hover {
-  background: #2D3561;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 24px rgba(45, 53, 97, 0.35);
-}
-
-.brochureBtn svg {
-  font-size: 20px;
 }
 
 /* ========== Responsive - Large Desktop (1440px+) ========== */
@@ -341,19 +207,15 @@
     padding: 5rem 0;
   }
 
-  .resultsGrid {
+  .highlightsGrid {
     gap: 2rem;
   }
 
-  .resultCard {
-    padding: 2.5rem 2rem;
+  .highlightContent {
+    padding: 1.5rem 1.75rem 1.75rem;
   }
 
-  .testTypesGrid {
-    gap: 1.25rem;
-  }
-
-  .scholarshipContent {
+  .ctaBannerContent {
     padding: 2.5rem 3rem;
   }
 }
@@ -368,42 +230,37 @@
     margin-bottom: 2rem;
   }
 
-  .resultsGrid {
+  .highlightsGrid {
+    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
   }
 
-  .resultCard {
-    padding: 1.5rem 1.25rem;
+  .highlightContent {
+    padding: 1rem 1.25rem 1.25rem;
   }
 
-  .resultCardIcon {
-    width: 48px;
-    height: 48px;
+  .highlightTitle {
+    font-size: 0.95rem;
   }
 
-  .resultCardIcon svg {
-    font-size: 24px;
+  .highlightDesc {
+    font-size: 0.85rem;
   }
 
-  .testTypesGrid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.875rem;
-  }
-
-  .scholarshipContent {
+  .ctaBannerContent {
     padding: 1.75rem 2rem;
     gap: 1.25rem;
   }
 
-  .scholarshipHeading {
+  .ctaHeading {
     font-size: 1.25rem;
   }
 
-  .scholarshipDesc {
+  .ctaDesc {
     font-size: 0.875rem;
   }
 
-  .scholarshipCta {
+  .ctaButton {
     padding: 0.75rem 1.5rem;
     font-size: 0.85rem;
   }
@@ -423,114 +280,58 @@
     font-size: 0.9rem;
   }
 
-  .resultsGrid {
+  .highlightsGrid {
     grid-template-columns: 1fr;
     gap: 1rem;
     margin-bottom: 2.5rem;
   }
 
-  .resultCard {
-    padding: 1.5rem 1.25rem;
+  .highlightContent {
+    padding: 1rem 1.25rem 1.25rem;
   }
 
-  .resultCardIcon {
-    width: 48px;
-    height: 48px;
+  .highlightTitle {
+    font-size: 0.95rem;
   }
 
-  .resultCardIcon svg {
-    font-size: 24px;
-  }
-
-  .resultCardTitle {
-    font-size: 0.8rem;
-  }
-
-  .resultStatLabel {
-    font-size: 0.875rem;
-  }
-
-  .subStatText {
-    font-size: 0.8rem;
-  }
-
-  .testTypesBlock {
-    margin-bottom: 2.5rem;
-  }
-
-  .testTypesGrid {
-    grid-template-columns: 1fr;
-    gap: 0.75rem;
-  }
-
-  .testTypeCard {
-    padding: 1rem;
-  }
-
-  .testTypeIcon {
-    width: 38px;
-    height: 38px;
-    min-width: 38px;
-    border-radius: 8px;
-  }
-
-  .testTypeIcon svg {
-    font-size: 20px;
-  }
-
-  .testTypeName {
+  .highlightDesc {
     font-size: 0.85rem;
   }
 
-  .testTypeDesc {
-    font-size: 0.75rem;
-  }
-
-  .scholarshipBanner {
-    margin-bottom: 2rem;
+  .ctaBanner {
     border-radius: 14px;
   }
 
-  .scholarshipContent {
+  .ctaBannerContent {
     flex-direction: column;
     text-align: center;
     padding: 1.5rem 1.25rem;
     gap: 1rem;
   }
 
-  .scholarshipIconWrap {
+  .ctaIconWrap {
     width: 52px;
     height: 52px;
     min-width: 52px;
   }
 
-  .scholarshipIconWrap svg {
+  .ctaIconWrap svg {
     font-size: 26px;
   }
 
-  .scholarshipHeading {
+  .ctaHeading {
     font-size: 1.25rem;
   }
 
-  .scholarshipDesc {
+  .ctaDesc {
     font-size: 0.875rem;
   }
 
-  .scholarshipCta {
+  .ctaButton {
     padding: 0.75rem 1.5rem;
     font-size: 0.85rem;
     width: 100%;
     justify-content: center;
-  }
-
-  .bottomCtaText {
-    font-size: 0.95rem;
-    text-align: center;
-  }
-
-  .brochureBtn {
-    padding: 0.75rem 1.75rem;
-    font-size: 0.875rem;
   }
 }
 
@@ -540,35 +341,31 @@
     padding: 2rem 0;
   }
 
-  .resultCard {
-    padding: 1.25rem 1rem;
+  .highlightContent {
+    padding: 0.875rem 1rem 1rem;
   }
 
-  .resultCardTitle {
-    font-size: 0.75rem;
+  .highlightTitle {
+    font-size: 0.9rem;
   }
 
-  .resultStatLabel {
+  .highlightDesc {
     font-size: 0.8rem;
   }
 
-  .testTypeCard {
-    padding: 0.875rem;
-  }
-
-  .scholarshipContent {
+  .ctaBannerContent {
     padding: 1.25rem 1rem;
   }
 
-  .scholarshipHeading {
+  .ctaHeading {
     font-size: 1.125rem;
   }
 
-  .scholarshipDesc {
+  .ctaDesc {
     font-size: 0.8rem;
   }
 
-  .brochureBtn {
+  .ctaButton {
     padding: 0.625rem 1.25rem;
     font-size: 0.8125rem;
   }
@@ -576,36 +373,32 @@
 
 /* ========== Hover Effects (Pointer Devices) ========== */
 @media (hover: hover) {
-  .resultCard:hover {
+  .highlightCard:hover {
     transform: translateY(-6px);
-  }
-
-  .testTypeCard:hover {
-    transform: translateY(-4px);
   }
 }
 
 /* ========== Reduced Motion ========== */
 @media (prefers-reduced-motion: reduce) {
-  .resultCard,
-  .testTypeCard,
-  .scholarshipCta,
-  .brochureBtn {
+  .highlightCard,
+  .highlightImage,
+  .ctaButton {
     transition: none;
     animation: none;
   }
 
-  .resultCard:hover,
-  .testTypeCard:hover,
-  .scholarshipCta:hover,
-  .brochureBtn:hover {
+  .highlightCard:hover,
+  .ctaButton:hover {
+    transform: none;
+  }
+
+  .highlightCard:hover .highlightImage {
     transform: none;
   }
 }
 
 /* ========== Focus Styles for Accessibility ========== */
-.scholarshipCta:focus-visible,
-.brochureBtn:focus-visible {
+.ctaButton:focus-visible {
   outline: 2px solid #2EC4B6;
   outline-offset: 2px;
 }
@@ -617,29 +410,19 @@
     background: white;
   }
 
-  .resultCard {
+  .highlightCard {
     background: #f5f5f5;
     border: 1px solid #ddd;
     box-shadow: none;
   }
 
-  .testTypeCard {
-    background: #f5f5f5;
-    border: 1px solid #ddd;
-    box-shadow: none;
-  }
-
-  .scholarshipBanner {
+  .ctaBanner {
     background: #f0f0f0;
     box-shadow: none;
   }
 
-  .scholarshipHeading,
-  .scholarshipDesc {
+  .ctaHeading,
+  .ctaDesc {
     color: #2D3561 !important;
-  }
-
-  .bottomCta {
-    display: none;
   }
 }

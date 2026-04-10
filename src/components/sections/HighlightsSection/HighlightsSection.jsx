@@ -1,13 +1,12 @@
 /* ============================================
-   HighlightsSection Component - Results & Achievements
-   Showcases performance and support ecosystem
+   HighlightsSection Component - Results & Procedures
+   Showcases before/after results and treatment process
    ============================================ */
 
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Container, Typography } from "@mui/material";
 import { Icon } from "@iconify/react";
-import AnimatedCounter from "../../common/AnimatedCounter/AnimatedCounter";
 import { useModal } from "../../../context/ModalContext";
 import styles from "./HighlightsSection.module.css";
 
@@ -35,79 +34,54 @@ const itemVariants = {
   },
 };
 
-// TODO: Replace with actual content
-// Results highlight data
-const resultsData = [
+// Highlights data — before/after results and procedures
+const highlightsData = [
   {
     id: 1,
-    icon: "mdi:cart-outline",
-    iconColor: "#FFD700",
-    title: "Multiple Revenue Streams",
-    stat: null,
-    statLabel:
-      "Lorem ipsum dolor sit amet, multiple service lines for diversified revenue from day one",
-    subStats: null,
+    image:
+      "https://placehold.co/600x400/1A5276/FFFFFF?text=Before+After+Hair+Transplant",
+    title: "Hair Transplant Results",
+    description:
+      "Natural, dense hair growth achieved through our Micro-FUE technique with the smallest punch size for minimal scarring.",
   },
   {
     id: 2,
-    icon: "mdi:chart-line",
-    iconColor: "#42A5F5",
-    title: "Proven & Profitable",
-    stat: null,
-    statLabel:
-      "Lorem ipsum dolor sit amet, multiple locations all consistently profitable",
-    subStats: null,
+    image:
+      "https://placehold.co/600x400/148F77/FFFFFF?text=Before+After+Beard+Transplant",
+    title: "Beard Transplant Results",
+    description:
+      "Full, natural-looking beard achieved with precision FUE extraction and custom design for each patient.",
   },
   {
     id: 3,
-    icon: "mdi:hospital-building",
-    iconColor: "#66BB6A",
-    title: "Network Advantage",
-    stat: null,
-    statLabel:
-      "Lorem ipsum dolor sit amet, built-in customer base through established brand presence",
-    subStats: null,
-  },
-];
-
-// TODO: Replace with actual content
-// Product categories data
-const testTypes = [
-  {
-    icon: "mdi:pill",
-    name: "Primary Services",
-    tag: null,
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing",
+    image:
+      "https://placehold.co/600x400/1A5276/FFFFFF?text=FUE+Procedure+Process",
+    title: "Our FUE Process",
+    description:
+      "Individual follicles extracted using micro punches (0.6-1.25mm) and reinserted at natural angles for seamless results.",
   },
   {
-    icon: "mdi:cart-outline",
-    name: "Secondary Services",
-    tag: null,
-    description: "Lorem ipsum dolor sit amet, sed do eiusmod",
+    id: 4,
+    image:
+      "https://placehold.co/600x400/148F77/FFFFFF?text=FUT+Procedure+Process",
+    title: "Our FUT Process",
+    description:
+      "Strip harvesting under local anesthesia with individual graft separation for maximum coverage in a single session.",
   },
   {
-    icon: "mdi:spray-bottle",
-    name: "Consulting",
-    tag: null,
-    description: "Lorem ipsum dolor sit amet, tempor incididunt",
+    id: 5,
+    image: "https://placehold.co/600x400/1A5276/FFFFFF?text=Post+Op+Care",
+    title: "Comprehensive Post-Op Care",
+    description:
+      "Free laser therapy for 4 months, 2 weeks follow-up care, and 24/7 telephonic support for complete peace of mind.",
   },
   {
-    icon: "mdi:baby-carriage",
-    name: "Support Services",
-    tag: null,
-    description: "Lorem ipsum dolor sit amet, ut labore et dolore",
-  },
-  {
-    icon: "mdi:lipstick",
-    name: "Digital Solutions",
-    tag: null,
-    description: "Lorem ipsum dolor sit amet, magna aliqua",
-  },
-  {
-    icon: "mdi:cup-water",
-    name: "Custom Solutions",
-    tag: null,
-    description: "Lorem ipsum dolor sit amet, ut enim ad minim",
+    id: 6,
+    image:
+      "https://placehold.co/600x400/148F77/FFFFFF?text=Monjoven+Clinic+Interior",
+    title: "World-Class Facility",
+    description:
+      "Clean, well-organized clinic environment with luxury amenities, complimentary meals, and a dedicated team of specialists.",
   },
 ];
 
@@ -116,16 +90,12 @@ const HighlightsSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
   const { openLeadDrawer } = useModal();
 
-  const handleScholarshipClick = () => {
+  const handleConsultationClick = () => {
     openLeadDrawer("get-details");
   };
 
-  const handleBrochureClick = () => {
-    openLeadDrawer("download-brochure");
-  };
-
   return (
-    <section className={styles.resultsSection} id="why-us" ref={ref}>
+    <section className={styles.resultsSection} id="results" ref={ref}>
       <Container maxWidth="xl">
         <motion.div
           variants={containerVariants}
@@ -134,8 +104,7 @@ const HighlightsSection = () => {
         >
           {/* Section Header */}
           <motion.div variants={itemVariants} className={styles.sectionHeader}>
-            {/* TODO: Replace with actual content */}
-            <span className={styles.sectionBadge}>WHY CHOOSE US</span>
+            <span className={styles.sectionBadge}>OUR RESULTS</span>
             <Typography
               variant="h2"
               className={styles.sectionTitle}
@@ -149,165 +118,86 @@ const HighlightsSection = () => {
                 lineHeight: 1.2,
               }}
             >
-              Why Partner With{" "}
-              <span className={styles.highlightText}>Us?</span>
+              Real Patients, Real{" "}
+              <span className={styles.highlightText}>Transformations</span>
             </Typography>
             <div className={styles.titleUnderline}>
               <span className={styles.underlineBar} />
             </div>
             <Typography className={styles.sectionSubtitle}>
-              A complete ecosystem designed for your success
+              See the life-changing results our patients have achieved through
+              our advanced hair transplant and cosmetic procedures
             </Typography>
           </motion.div>
 
-          {/* Results Highlight Cards */}
-          <motion.div variants={itemVariants} className={styles.resultsGrid}>
-            {resultsData.map((card, index) => (
+          {/* Highlight Cards Grid */}
+          <motion.div variants={itemVariants} className={styles.highlightsGrid}>
+            {highlightsData.map((card, index) => (
               <motion.div
                 key={card.id}
-                className={styles.resultCard}
+                className={styles.highlightCard}
                 whileHover={{ y: -6, transition: { duration: 0.25 } }}
                 initial={{ opacity: 0, y: 30 }}
                 animate={
                   isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
                 }
-                transition={{ delay: 0.2 + index * 0.15 }}
+                transition={{ delay: 0.2 + index * 0.12 }}
               >
-                <div className={styles.resultCardIcon}>
-                  <Icon icon={card.icon} style={{ color: card.iconColor }} />
+                <div className={styles.highlightImageWrap}>
+                  <img
+                    src={card.image}
+                    alt={card.title}
+                    className={styles.highlightImage}
+                    loading="lazy"
+                  />
                 </div>
-                <Typography className={styles.resultCardTitle}>
-                  {card.title}
-                </Typography>
-                {card.stat !== null && (
-                  <div className={styles.resultStatWrapper}>
-                    <AnimatedCounter
-                      value={card.stat}
-                      suffix={card.statSuffix}
-                      duration={2}
-                      delay={0.3 + index * 0.15}
-                      variant="large"
-                      color="dark"
-                    />
-                  </div>
-                )}
-                <Typography className={styles.resultStatLabel}>
-                  {card.statLabel}
-                </Typography>
-                {card.subStats && (
-                  <div className={styles.subStatsRow}>
-                    <Typography className={styles.subStatText}>
-                      {card.subStats}
-                    </Typography>
-                  </div>
-                )}
+                <div className={styles.highlightContent}>
+                  <Typography className={styles.highlightTitle}>
+                    {card.title}
+                  </Typography>
+                  <Typography className={styles.highlightDesc}>
+                    {card.description}
+                  </Typography>
+                </div>
               </motion.div>
             ))}
           </motion.div>
 
-          {/* Test Types Section */}
-          <motion.div variants={itemVariants} className={styles.testTypesBlock}>
-            <Typography
-              variant="h3"
-              className={styles.testTypesTitle}
-              sx={{
-                fontFamily: "'Poppins', sans-serif",
-                fontWeight: 700,
-                fontSize: { xs: "1.25rem", sm: "1.5rem", md: "1.75rem" },
-                color: "#2D3561",
-                textAlign: "center",
-                marginBottom: "1.5rem",
-              }}
-            >
-              Product Categories
-            </Typography>
-            <div className={styles.testTypesGrid}>
-              {testTypes.map((test, index) => (
-                <motion.div
-                  key={test.name}
-                  className={styles.testTypeCard}
-                  whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={
-                    isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
-                  }
-                  transition={{ delay: 0.4 + index * 0.08 }}
-                >
-                  <div className={styles.testTypeIcon}>
-                    <Icon icon={test.icon} />
-                  </div>
-                  <div className={styles.testTypeInfo}>
-                    <div className={styles.testTypeNameRow}>
-                      <Typography className={styles.testTypeName}>
-                        {test.name}
-                      </Typography>
-                      {test.tag && (
-                        <span className={styles.testTypeTag}>{test.tag}</span>
-                      )}
-                    </div>
-                    <Typography className={styles.testTypeDesc}>
-                      {test.description}
-                    </Typography>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Franchise CTA Banner */}
+          {/* CTA Banner */}
           <motion.div
             variants={itemVariants}
-            className={styles.scholarshipBanner}
+            className={styles.ctaBanner}
           >
-            <div className={styles.scholarshipContent}>
-              <div className={styles.scholarshipIconWrap}>
-                <Icon icon="mdi:store" />
+            <div className={styles.ctaBannerContent}>
+              <div className={styles.ctaIconWrap}>
+                <Icon icon="mdi:calendar-check" />
               </div>
-              <div className={styles.scholarshipTextBlock}>
-                {/* TODO: Replace with actual content */}
+              <div className={styles.ctaTextBlock}>
                 <Typography
-                  className={styles.scholarshipHeading}
+                  className={styles.ctaHeading}
                   sx={{ color: "#fff", fontWeight: "bold" }}
                 >
-                  Healthy Margins | Strong ROI
+                  Ready for Your Transformation?
                 </Typography>
                 <Typography
-                  className={styles.scholarshipDesc}
+                  className={styles.ctaDesc}
                   sx={{ color: "#fff" }}
                 >
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. With
-                  streamlined operations and optimized pricing, every partner
-                  can expect healthy, predictable returns.
+                  Book a free consultation with our specialists and take the
+                  first step toward your new look. Personalized treatment plans
+                  tailored to your goals.
                 </Typography>
               </div>
               <motion.button
-                className={styles.scholarshipCta}
-                onClick={handleScholarshipClick}
+                className={styles.ctaButton}
+                onClick={handleConsultationClick}
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.97 }}
               >
-                <span>Get Detailed Projections →</span>
+                <span>Book Your Consultation</span>
                 <Icon icon="mdi:arrow-right" />
               </motion.button>
             </div>
-          </motion.div>
-
-          {/* Bottom CTA */}
-          <motion.div variants={itemVariants} className={styles.bottomCta}>
-            {/* TODO: Replace with actual content */}
-            <Typography className={styles.bottomCtaText}>
-              500+ Brand Partnerships — Lorem ipsum dolor sit amet, access
-              trusted brands through our distribution network
-            </Typography>
-            <motion.button
-              className={styles.brochureBtn}
-              onClick={handleBrochureClick}
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-            >
-              <Icon icon="mdi:download" />
-              <span>Download Brochure</span>
-            </motion.button>
           </motion.div>
         </motion.div>
       </Container>
