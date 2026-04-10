@@ -10,8 +10,8 @@ import styles from './AdminTopbar.module.css';
 
 const navItems = [
   { label: 'Dashboard', path: '/admin/dashboard', icon: 'mdi:view-dashboard' },
-  { label: 'Lead Management', path: '/admin/lms', icon: 'mdi:account-group' },
-  { label: 'Guideline', path: '/admin/guideline', icon: 'mdi:book-open-page-variant' },
+  { label: 'Consultation Requests', path: '/admin/lms', icon: 'mdi:account-group' },
+  { label: 'Guidelines', path: '/admin/guideline', icon: 'mdi:book-open-page-variant' },
 ];
 
 const AdminTopbar = () => {
@@ -58,12 +58,12 @@ const AdminTopbar = () => {
     <header className={styles.topbar}>
       <div className={styles.topbarLeft}>
         <img
-          src="https://assamdigital.com/wp-content/uploads/2022/04/logo.png"
-          alt="Assam Digital"
+          src="https://www.monjoven.com/assets/img/logo.png"
+          alt="Monjoven"
           className={styles.logo}
         />
         <span className={styles.divider} />
-        <span className={styles.badge}>LMS</span>
+        <span className={styles.badge}>Admin</span>
       </div>
 
       <nav className={styles.desktopNav}>
@@ -111,8 +111,8 @@ const AdminTopbar = () => {
             {/* Logo at top */}
             <div className={styles.mobileMenuHeader}>
               <img
-                src="https://assamdigital.com/wp-content/uploads/2022/04/logo.png"
-                alt="Assam Digital"
+                src="https://www.monjoven.com/assets/img/logo.png"
+                alt="Monjoven"
                 className={styles.mobileMenuLogo}
               />
             </div>
@@ -151,7 +151,7 @@ const AdminTopbar = () => {
             </div>
 
             {/* Footer */}
-            <p className={styles.mobileMenuFooter}>Powered by Assam Digital</p>
+            <p className={styles.mobileMenuFooter}>Monjoven Admin Panel</p>
           </div>
         </div>
       )}

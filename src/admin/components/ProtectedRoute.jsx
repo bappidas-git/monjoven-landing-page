@@ -21,7 +21,7 @@ const ProtectedRoute = ({ children }) => {
           backgroundColor: '#F8FAFC',
         }}
       >
-        <CircularProgress sx={{ color: '#2EC4B6' }} />
+        <CircularProgress sx={{ color: '#148F77' }} />
       </Box>
     );
   }

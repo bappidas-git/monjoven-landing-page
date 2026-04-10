@@ -41,12 +41,12 @@ const AdminLogin = () => {
         <div className={styles.loginHeader}>
           <div className={styles.loginLogo}>
             <img
-              src="https://assamdigital.com/wp-content/uploads/2022/04/logo.png"
-              alt="Assam Digital"
+              src="https://www.monjoven.com/assets/img/logo.png"
+              alt="Monjoven"
             />
           </div>
-          <h1 className={styles.loginTitle}>Lead Management System</h1>
-          <p className={styles.loginSubtitle}>Powered by Assam Digital</p>
+          <h1 className={styles.loginTitle}>Monjoven Admin Panel</h1>
+          <p className={styles.loginSubtitle}>Lead Management System</p>
         </div>
 
         <form onSubmit={handleSubmit} className={styles.form}>
@@ -66,7 +66,7 @@ const AdminLogin = () => {
               sx={{
                 '& .MuiOutlinedInput-root': {
                   '&.Mui-focused fieldset': {
-                    borderColor: '#2B7BD5',
+                    borderColor: '#148F77',
                   },
                 },
               }}
@@ -89,7 +89,7 @@ const AdminLogin = () => {
               sx={{
                 '& .MuiOutlinedInput-root': {
                   '&.Mui-focused fieldset': {
-                    borderColor: '#2B7BD5',
+                    borderColor: '#148F77',
                   },
                 },
               }}
@@ -102,7 +102,7 @@ const AdminLogin = () => {
               size="small"
               checked={rememberMe}
               onChange={(e) => setRememberMe(e.target.checked)}
-              sx={{ padding: 0, color: '#2B7BD5', '&.Mui-checked': { color: '#2B7BD5' } }}
+              sx={{ padding: 0, color: '#148F77', '&.Mui-checked': { color: '#148F77' } }}
             />
             <label htmlFor="remember" className={styles.rememberLabel}>
               Remember me
