@@ -274,7 +274,7 @@ const LeadForm = ({
         icon: 'success',
         title: 'Thank You!',
         text: "Your consultation request has been received. Dr. Neog's team will contact you within 24 hours to schedule your appointment.",
-        confirmButtonColor: '#2D3561',
+        confirmButtonColor: '#1A5276',
         confirmButtonText: 'Great!',
         timer: 3000,
         timerProgressBar: true,

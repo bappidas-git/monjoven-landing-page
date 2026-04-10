@@ -23,7 +23,7 @@ export const MODAL_TYPES = {
 };
 
 // Drawer title mapping based on source/context
-// {/* TODO: Replace with actual content */}
+// Monjoven drawer title configuration
 export const DRAWER_TITLES = {
   'apply-now': {
     title: 'Get Started',

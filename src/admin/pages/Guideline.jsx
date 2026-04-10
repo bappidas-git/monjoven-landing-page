@@ -5,7 +5,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { TextField, IconButton, CircularProgress } from '@mui/material';
+import { TextField, IconButton } from '@mui/material';
 import { Icon } from '@iconify/react';
 import styles from './Guideline.module.css';
 import PabblySetupGuide from './guidelineContent/PabblySetupGuide';

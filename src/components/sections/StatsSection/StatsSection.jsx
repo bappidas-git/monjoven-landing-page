@@ -95,7 +95,7 @@ const StatsSection = () => {
                 fontFamily: "'Poppins', sans-serif",
                 fontWeight: 700,
                 fontSize: { xs: '1.75rem', sm: '2rem', md: '2.5rem' },
-                color: '#2D3561',
+                color: '#1A5276',
                 marginBottom: { xs: '0.75rem', md: '1rem' },
               }}
             >

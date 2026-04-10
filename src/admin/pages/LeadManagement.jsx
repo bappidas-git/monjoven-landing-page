@@ -70,18 +70,6 @@ const DATE_RANGE_OPTIONS = [
 const getStatusConfig = (status) =>
   STATUS_OPTIONS.find((s) => s.value === status) || STATUS_OPTIONS[0];
 
-const formatDate = (dateStr) => {
-  if (!dateStr) return "—";
-  const d = new Date(dateStr);
-  return d.toLocaleDateString("en-IN", {
-    day: "2-digit",
-    month: "short",
-    year: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
-  });
-};
-
 const formatShortDate = (dateStr) => {
   if (!dateStr) return "—";
   const d = new Date(dateStr);

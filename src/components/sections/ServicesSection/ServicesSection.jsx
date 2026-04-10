@@ -121,7 +121,7 @@ const ServicesSection = () => {
       variants={isMobile ? undefined : cardVariants}
       initial={isMobile ? undefined : "hidden"}
       animate={isMobile ? undefined : isInView ? "visible" : "hidden"}
-      whileHover={{ y: -6, boxShadow: "0 12px 40px rgba(45, 53, 97, 0.15)" }}
+      whileHover={{ y: -6, boxShadow: "0 12px 40px rgba(26, 82, 118, 0.15)" }}
       transition={{ duration: 0.3 }}
     >
       {/* Badge */}
@@ -211,14 +211,14 @@ const ServicesSection = () => {
             <Chip
               label="Our Services"
               sx={{
-                backgroundColor: "rgba(46, 196, 182, 0.12)",
-                color: "#2EC4B6",
+                backgroundColor: "rgba(20, 143, 119, 0.12)",
+                color: "#148F77",
                 fontWeight: 700,
                 fontSize: "0.7rem",
                 letterSpacing: "0.1em",
                 height: "28px",
                 borderRadius: "20px",
-                border: "1px solid rgba(46, 196, 182, 0.3)",
+                border: "1px solid rgba(20, 143, 119, 0.3)",
               }}
             />
             <Typography
@@ -228,7 +228,7 @@ const ServicesSection = () => {
                 fontFamily: "'Poppins', sans-serif",
                 fontWeight: 700,
                 fontSize: { xs: "1.5rem", sm: "1.75rem", md: "2.25rem" },
-                color: "#2D3561",
+                color: "#1A5276",
                 marginTop: "0.75rem",
                 textAlign: "center",
                 lineHeight: 1.2,
@@ -383,8 +383,8 @@ const ServicesSection = () => {
                     borderRadius: "50%",
                     objectFit: "cover",
                     flexShrink: 0,
-                    border: "3px solid #2EC4B6",
-                    boxShadow: "0 4px 12px rgba(46, 196, 182, 0.25)",
+                    border: "3px solid #148F77",
+                    boxShadow: "0 4px 12px rgba(20, 143, 119, 0.25)",
                   }}
                 />
                 <Box>
@@ -392,7 +392,7 @@ const ServicesSection = () => {
                     variant="h6"
                     sx={{
                       fontWeight: 700,
-                      color: "#1B2A4A",
+                      color: "#1B2631",
                       fontSize: { xs: "1rem", md: "1.15rem" },
                       fontFamily: "Poppins, sans-serif",
                     }}
@@ -428,7 +428,7 @@ const ServicesSection = () => {
                   }
                 }}
                 sx={{
-                  background: "linear-gradient(135deg, #2EC4B6, #5DD9CE)",
+                  background: "linear-gradient(135deg, #148F77, #1ABC9C)",
                   color: "#FFF",
                   fontWeight: 600,
                   borderRadius: "12px",
@@ -436,10 +436,10 @@ const ServicesSection = () => {
                   textTransform: "none",
                   fontSize: "0.95rem",
                   whiteSpace: "nowrap",
-                  boxShadow: "0 4px 14px rgba(46, 196, 182, 0.3)",
+                  boxShadow: "0 4px 14px rgba(20, 143, 119, 0.3)",
                   "&:hover": {
-                    background: "linear-gradient(135deg, #1FA89B, #2EC4B6)",
-                    boxShadow: "0 6px 20px rgba(46, 196, 182, 0.4)",
+                    background: "linear-gradient(135deg, #1FA89B, #148F77)",
+                    boxShadow: "0 6px 20px rgba(20, 143, 119, 0.4)",
                   },
                 }}
               >

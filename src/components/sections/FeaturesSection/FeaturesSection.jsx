@@ -101,7 +101,7 @@ const FeaturesSection = () => {
                 fontFamily: "'Inter', sans-serif",
                 fontWeight: 600,
                 fontSize: { xs: "0.75rem", md: "0.85rem" },
-                color: "#2EC4B6",
+                color: "#148F77",
                 textTransform: "uppercase",
                 letterSpacing: "0.1em",
                 textAlign: "center",
@@ -117,7 +117,7 @@ const FeaturesSection = () => {
                 fontFamily: "'Poppins', sans-serif",
                 fontWeight: 700,
                 fontSize: { xs: "1.5rem", sm: "1.75rem", md: "2.25rem" },
-                color: "#2D3561",
+                color: "#1A5276",
                 textAlign: "center",
                 lineHeight: 1.2,
               }}
@@ -181,7 +181,7 @@ const FeaturesSection = () => {
                   <Icon
                     icon={categoryAccentIcons[activeTab]}
                     className={styles.lottiePlayer}
-                    style={{ width: '100%', height: '100%', color: '#2EC4B6' }}
+                    style={{ width: '100%', height: '100%', color: '#148F77' }}
                   />
                 </div>
 
@@ -222,7 +222,7 @@ const FeaturesSection = () => {
                   <div className={styles.mobileCategoryLottie}>
                     <Icon
                       icon={categoryAccentIcons[category.id]}
-                      style={{ width: '100%', height: '100%', color: '#2EC4B6' }}
+                      style={{ width: '100%', height: '100%', color: '#148F77' }}
                     />
                   </div>
                   <h3 className={styles.mobileCategoryTitle}>
@@ -278,7 +278,7 @@ const FeaturesSection = () => {
                 fontFamily: "'Poppins', sans-serif",
                 fontWeight: 600,
                 fontSize: { xs: "1.1rem", md: "1.35rem" },
-                color: "#2D3561",
+                color: "#1A5276",
                 textAlign: "center",
                 marginBottom: "1rem",
               }}
@@ -292,18 +292,18 @@ const FeaturesSection = () => {
               endIcon={<Icon icon="mdi:arrow-right" />}
               sx={{
                 background:
-                  "linear-gradient(135deg, #2EC4B6 0%, #5DD9CE 100%)",
+                  "linear-gradient(135deg, #148F77 0%, #1ABC9C 100%)",
                 color: "#fff",
                 fontWeight: 700,
                 fontSize: { xs: "0.9rem", md: "1rem" },
                 padding: { xs: "12px 28px", md: "14px 36px" },
                 borderRadius: "50px",
                 textTransform: "none",
-                boxShadow: "0 8px 32px rgba(46, 196, 182, 0.3)",
+                boxShadow: "0 8px 32px rgba(20, 143, 119, 0.3)",
                 "&:hover": {
                   background:
-                    "linear-gradient(135deg, #5DD9CE 0%, #2EC4B6 100%)",
-                  boxShadow: "0 12px 40px rgba(46, 196, 182, 0.4)",
+                    "linear-gradient(135deg, #1ABC9C 0%, #148F77 100%)",
+                  boxShadow: "0 12px 40px rgba(20, 143, 119, 0.4)",
                   transform: "translateY(-2px)",
                 },
               }}

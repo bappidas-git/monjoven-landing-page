@@ -382,7 +382,7 @@ const LegalModal = ({ isOpen, onClose, title, children }) => {
 
 // Quick Links data
 const quickLinks = [
-  { label: "Home", href: "#hero" },
+  { label: "Home", href: "#home" },
   { label: "About Us", href: "#about" },
   { label: "Services", href: "#services" },
   { label: "Why Choose Us", href: "#why-us" },
@@ -607,15 +607,14 @@ const Footer = () => {
         <div className={styles.developerBar}>
           <Container maxWidth="xl">
             <p className={styles.developerText}>
-              {/* TODO: Replace with actual content */}
               Designed and Developed by{" "}
               <a
-                href="https://yourdeveloper.com"
+                href="https://www.monjoven.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.developerLink}
               >
-                Your Developer
+                Monjoven
               </a>
             </p>
           </Container>

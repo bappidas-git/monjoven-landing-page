@@ -18,7 +18,7 @@ const trustBadges = [
   {
     icon: "mdi:calendar-check",
     label: "12+ Years Experience",
-    color: "#2EC4B6",
+    color: "#148F77",
   },
   {
     icon: "mdi:account-heart",
@@ -126,7 +126,7 @@ const ThankYou = () => {
         ...defaults,
         particleCount,
         origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
-        colors: ["#2EC4B6", "#5DD9CE", "#FFD700", "#FFA500"],
+        colors: ["#148F77", "#1ABC9C", "#FFD700", "#FFA500"],
       });
 
       // Right side confetti
@@ -134,7 +134,7 @@ const ThankYou = () => {
         ...defaults,
         particleCount,
         origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
-        colors: ["#2EC4B6", "#5DD9CE", "#FFD700", "#FFA500"],
+        colors: ["#148F77", "#1ABC9C", "#FFD700", "#FFA500"],
       });
     }, 250);
 
@@ -143,7 +143,7 @@ const ThankYou = () => {
       particleCount: 100,
       spread: 70,
       origin: { y: 0.6 },
-      colors: ["#2EC4B6", "#5DD9CE", "#FFD700", "#4CAF50", "#2196F3"],
+      colors: ["#148F77", "#1ABC9C", "#FFD700", "#4CAF50", "#2196F3"],
     });
   }, []);
 

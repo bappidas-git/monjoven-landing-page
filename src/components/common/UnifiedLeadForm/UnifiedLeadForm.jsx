@@ -6,7 +6,7 @@
    - Consent text
    - Redirect to Thank You page
    - Customizable title, subtitle, and phone CTA
-   TODO: Replace brand-specific content with actual content
+   Monjoven Hair Transplant & Cosmetic Surgery
    ============================================ */
 
 import React, { useState, useCallback, useRef } from "react";
@@ -83,16 +83,17 @@ const PrivacyPolicyContent = () => (
           fontSize: "16px",
           fontWeight: 600,
           marginBottom: "12px",
-          color: "#2D3561",
+          color: "#1A5276",
         }}
       >
         Introduction
       </h3>
       <p style={{ fontSize: "14px", lineHeight: 1.6, color: "#374151" }}>
-        Your Company Pvt. Ltd. ("we," "our," or "us") respects your privacy
-        and is committed to protecting your personal data. This Privacy Policy
-        explains how we collect, use, disclose, and safeguard your information
-        when you visit our website or engage with our services.
+        Monjoven Hair Transplant & Cosmetic Surgery ("we," "our," or "us")
+        respects your privacy and is committed to protecting your personal
+        and medical data. This Privacy Policy explains how we collect, use,
+        disclose, and safeguard your information when you visit our website
+        or engage with our services.
       </p>
     </section>
 
@@ -102,7 +103,7 @@ const PrivacyPolicyContent = () => (
           fontSize: "16px",
           fontWeight: 600,
           marginBottom: "12px",
-          color: "#2D3561",
+          color: "#1A5276",
         }}
       >
         Information We Collect
@@ -155,7 +156,7 @@ const PrivacyPolicyContent = () => (
           fontSize: "16px",
           fontWeight: 600,
           marginBottom: "12px",
-          color: "#2D3561",
+          color: "#1A5276",
         }}
       >
         How We Use Your Information
@@ -205,7 +206,7 @@ const PrivacyPolicyContent = () => (
           fontSize: "16px",
           fontWeight: 600,
           marginBottom: "12px",
-          color: "#2D3561",
+          color: "#1A5276",
         }}
       >
         Information Sharing
@@ -230,8 +231,8 @@ const PrivacyPolicyContent = () => (
         }}
       >
         <li style={{ marginBottom: "6px" }}>
-          <strong>Your Company Pvt. Ltd.:</strong> We share inquiry details within our
-          group for processing your enquiry interests.
+          <strong>Monjoven Hair Transplant & Cosmetic Surgery:</strong> We share inquiry details within our
+          team for processing your consultation requests.
         </li>
         <li style={{ marginBottom: "6px" }}>
           <strong>Service Providers:</strong> Third-party vendors who assist us
@@ -260,7 +261,7 @@ const PrivacyPolicyContent = () => (
           fontSize: "16px",
           fontWeight: 600,
           marginBottom: "12px",
-          color: "#2D3561",
+          color: "#1A5276",
         }}
       >
         Data Security
@@ -280,7 +281,7 @@ const PrivacyPolicyContent = () => (
           fontSize: "16px",
           fontWeight: 600,
           marginBottom: "12px",
-          color: "#2D3561",
+          color: "#1A5276",
         }}
       >
         Your Rights
@@ -326,7 +327,7 @@ const PrivacyPolicyContent = () => (
           fontSize: "16px",
           fontWeight: 600,
           marginBottom: "12px",
-          color: "#2D3561",
+          color: "#1A5276",
         }}
       >
         Contact Us
@@ -343,11 +344,11 @@ const PrivacyPolicyContent = () => (
           marginTop: "8px",
         }}
       >
-        <strong>Your Company Pvt. Ltd.</strong>
+        <strong>Monjoven Hair Transplant & Cosmetic Surgery</strong>
         <br />
-        Email: info@yourbusiness.com
+        Email: dr@monjoven.com
         <br />
-        Phone: +91-XXXXXXXXXX
+        Phone: +91-8011002870
       </p>
     </section>
 
@@ -429,7 +430,7 @@ const PrivacyPolicyModal = ({ isOpen, onClose }) => {
                   fontSize: "18px",
                   fontWeight: 600,
                   margin: 0,
-                  color: "#2D3561",
+                  color: "#1A5276",
                 }}
               >
                 Privacy Policy
@@ -735,7 +736,7 @@ const UnifiedLeadForm = ({
       console.error('Form submission error:', error);
       await showError(
         'Something went wrong',
-        'Please try again or call us directly at +91-XXXXXXXXXX.'
+        'Please try again or call us directly at +91-8011002870.'
       );
     } finally {
       setIsSubmitting(false);
@@ -1179,10 +1180,9 @@ const UnifiedLeadForm = ({
           >
             Or call us directly
           </Typography>
-          {/* TODO: Replace with actual content */}
-          <a href="tel:+91XXXXXXXXXX" className={styles.phoneLink}>
+          <a href="tel:+918011002870" className={styles.phoneLink}>
             <Icon icon="mdi:phone" />
-            <span>+91-XXXXXXXXXX</span>
+            <span>+91-8011002870</span>
           </a>
         </div>
       )}
