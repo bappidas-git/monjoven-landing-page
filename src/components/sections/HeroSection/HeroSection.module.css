@@ -26,7 +26,7 @@
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: linear-gradient(135deg, #2D3561 0%, #1E2440 50%, #2D3561 100%);
+  background: linear-gradient(135deg, #1A5276 0%, #0D2B45 50%, #1A5276 100%);
 }
 
 /* Subtle radial gradient overlays for visual interest */
@@ -84,9 +84,9 @@
   z-index: 3;
   background: linear-gradient(
     135deg,
-    rgba(45, 53, 97, 0.82) 0%,
-    rgba(13, 23, 84, 0.78) 50%,
-    rgba(45, 53, 97, 0.85) 100%
+    rgba(26, 82, 118, 0.85) 0%,
+    rgba(13, 43, 69, 0.82) 50%,
+    rgba(26, 82, 118, 0.88) 100%
   );
 }
 
@@ -240,7 +240,7 @@
 
 .formHeader {
   padding: 1.25rem 1.5rem;
-  background: linear-gradient(135deg, #2D3561 0%, #152238 100%);
+  background: linear-gradient(135deg, #1A5276 0%, #0D2B45 100%);
   position: relative;
   overflow: hidden;
 }
@@ -383,9 +383,9 @@
   .heroOverlay {
     background: linear-gradient(
       180deg,
-      rgba(45, 53, 97, 0.88) 0%,
-      rgba(13, 23, 84, 0.80) 40%,
-      rgba(45, 53, 97, 0.90) 100%
+      rgba(26, 82, 118, 0.90) 0%,
+      rgba(13, 43, 69, 0.85) 40%,
+      rgba(26, 82, 118, 0.92) 100%
     );
   }
 }
@@ -429,9 +429,9 @@
   .heroOverlay {
     background: linear-gradient(
       135deg,
-      rgba(45, 53, 97, 0.98) 0%,
-      rgba(45, 53, 97, 0.9) 50%,
-      rgba(45, 53, 97, 0.8) 100%
+      rgba(26, 82, 118, 0.98) 0%,
+      rgba(13, 43, 69, 0.92) 50%,
+      rgba(26, 82, 118, 0.85) 100%
     );
   }
 }
