@@ -1,19 +1,88 @@
 /* ============================================
    CTASection Component
-   "Your Dream Franchise is One Step Away"
-   Dark indigo CTA with stats and franchise application buttons
+   Patient Testimonials & Social Proof
+   with CTA for booking consultations
    ============================================ */
 
-import React from "react";
+import React, { useState } from "react";
 import { Container, Typography } from "@mui/material";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Icon } from "@iconify/react";
 import Button from "../../common/Button/Button";
 import { useModal } from "../../../context/ModalContext";
 import styles from "./CTASection.module.css";
 
+const testimonials = [
+  {
+    name: "Kausar Shofi Ahmed",
+    location: "Guwahati, Assam",
+    rating: 5,
+    text: "I am very satisfied with the results of my hair transplant at Monjoven. Dr. Neog and his team are highly skilled and excellent. The entire process was smooth and comfortable.",
+    procedure: "Hair Transplant",
+  },
+  {
+    name: "Medini Saharia",
+    location: "Assam",
+    rating: 5,
+    text: "Amazing experience at Monjoven. The staff is very professional and caring. Dr. Porag Neog explained everything clearly and the results exceeded my expectations.",
+    procedure: "Hair Transplant",
+  },
+  {
+    name: "Irfan Khan",
+    location: "International Patient",
+    rating: 5,
+    text: "I've had three transplant sessions at Monjoven across 2017-2021. Every time the results were outstanding. Dr. Neog is truly one of the best in this field.",
+    procedure: "Hair Transplant (3 sessions)",
+  },
+  {
+    name: "Biki Patowary",
+    location: "Assam",
+    rating: 5,
+    text: "The clinic environment is top-notch and the team is well-mannered and always smiling. My hair transplant results look completely natural. Highly recommend Monjoven!",
+    procedure: "Hair Transplant",
+  },
+  {
+    name: "Dipankar Borah",
+    location: "Northeast India",
+    rating: 5,
+    text: "Best hair transplant clinic in Northeast India. The procedure was painless and the results are incredible. Dr. Neog and his team made me feel comfortable throughout.",
+    procedure: "Hair Transplant",
+  },
+  {
+    name: "Manash Baishya",
+    location: "Assam",
+    rating: 5,
+    text: "Monjoven gave me back my confidence. The micro-FUE technique they use ensures minimal scarring and the most natural-looking results. Worth every penny!",
+    procedure: "Micro-FUE Hair Transplant",
+  },
+];
+
+const trustBadges = [
+  { value: "5,000+", label: "Happy Patients", icon: "mdi:account-group" },
+  { value: "4.9/5", label: "Average Rating", icon: "mdi:star-circle" },
+  { value: "12+", label: "Years Trusted", icon: "mdi:shield-check" },
+];
+
+const CARDS_PER_VIEW = 3;
+
 const CTASection = () => {
   const { openLeadDrawer } = useModal();
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const totalPages = Math.ceil(testimonials.length / CARDS_PER_VIEW);
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % totalPages);
+  };
+
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev - 1 + totalPages) % totalPages);
+  };
+
+  const visibleTestimonials = testimonials.slice(
+    currentIndex * CARDS_PER_VIEW,
+    currentIndex * CARDS_PER_VIEW + CARDS_PER_VIEW
+  );
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -38,6 +107,20 @@ const CTASection = () => {
     },
   };
 
+  const cardVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, ease: "easeOut" },
+    },
+    exit: {
+      opacity: 0,
+      y: -20,
+      transition: { duration: 0.3 },
+    },
+  };
+
   const pulseVariants = {
     initial: { scale: 1 },
     animate: {
@@ -50,21 +133,32 @@ const CTASection = () => {
     },
   };
 
-  const handleApplyNow = () => {
-    openLeadDrawer("apply-now");
+  const handleBookConsultation = () => {
+    openLeadDrawer("book-consultation");
   };
 
-  /* TODO: Replace with actual content */
-  const stats = [
-    { value: "10+", label: "Years", icon: "mdi:trophy-award" },
-    { value: "50Cr", label: "Revenue", icon: "mdi:currency-inr" },
-    { value: "25%", label: "Margin", icon: "mdi:percent-circle" },
-    { value: "30%", label: "ROI", icon: "mdi:chart-line" },
-  ];
+  const renderStars = (rating) => {
+    return Array.from({ length: 5 }, (_, i) => (
+      <Icon
+        key={i}
+        icon={i < rating ? "mdi:star" : "mdi:star-outline"}
+        className={i < rating ? styles.starFilled : styles.starEmpty}
+      />
+    ));
+  };
+
+  const getInitials = (name) => {
+    return name
+      .split(" ")
+      .map((n) => n[0])
+      .join("")
+      .toUpperCase()
+      .slice(0, 2);
+  };
 
   return (
-    <section id="cta" className={styles.section}>
-      {/* Background Overlay Image */}
+    <section id="testimonials" className={styles.section}>
+      {/* Background */}
       <div className={styles.bgOverlay} />
       <div className={styles.bgPattern} />
 
@@ -76,70 +170,161 @@ const CTASection = () => {
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
         >
-          {/* Headline */}
-          <motion.div variants={itemVariants}>
-            {/* TODO: Replace with actual content */}
+          {/* Section Header */}
+          <motion.div variants={itemVariants} className={styles.sectionHeader}>
+            <Typography variant="overline" className={styles.overline}>
+              Patient Testimonials
+            </Typography>
             <Typography variant="h3" className={styles.title}>
-              Join Our{" "}
-              <span className={styles.highlight}>Success Story</span>
+              What Our <span className={styles.highlight}>Patients Say</span>
+            </Typography>
+            <Typography variant="body1" className={styles.subtitle}>
+              Real experiences from patients who trusted Monjoven for their
+              transformation
             </Typography>
           </motion.div>
 
-          {/* Subtext */}
-          <motion.div variants={itemVariants}>
-            <Typography
-              variant="body1"
-              className={styles.description}
-              sx={{ color: "#fff" }}
-            >
-              {/* TODO: Replace with actual content */}
-              Lorem ipsum dolor sit amet. Partner with a proven business model.
-              Complete support. Limited territories available.
-            </Typography>
+          {/* Testimonial Cards */}
+          <motion.div variants={itemVariants} className={styles.testimonialGrid}>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentIndex}
+                className={styles.cardsWrapper}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                variants={{
+                  hidden: {},
+                  visible: { transition: { staggerChildren: 0.1 } },
+                  exit: {},
+                }}
+              >
+                {visibleTestimonials.map((testimonial) => (
+                  <motion.div
+                    key={testimonial.name}
+                    className={styles.testimonialCard}
+                    variants={cardVariants}
+                  >
+                    <div className={styles.quoteIcon}>
+                      <Icon icon="mdi:format-quote-open" />
+                    </div>
+
+                    <div className={styles.cardHeader}>
+                      <div className={styles.avatar}>
+                        {getInitials(testimonial.name)}
+                      </div>
+                      <div className={styles.cardHeaderInfo}>
+                        <span className={styles.patientName}>
+                          {testimonial.name}
+                        </span>
+                        <span className={styles.patientLocation}>
+                          <Icon icon="mdi:map-marker-outline" />
+                          {testimonial.location}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className={styles.stars}>
+                      {renderStars(testimonial.rating)}
+                    </div>
+
+                    <p className={styles.testimonialText}>
+                      &ldquo;{testimonial.text}&rdquo;
+                    </p>
+
+                    <div className={styles.procedureBadge}>
+                      <Icon icon="mdi:medical-bag" />
+                      {testimonial.procedure}
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Carousel Navigation */}
+            {totalPages > 1 && (
+              <div className={styles.carouselNav}>
+                <button
+                  className={styles.navBtn}
+                  onClick={handlePrev}
+                  aria-label="Previous testimonials"
+                >
+                  <Icon icon="mdi:chevron-left" />
+                </button>
+                <div className={styles.dots}>
+                  {Array.from({ length: totalPages }, (_, i) => (
+                    <button
+                      key={i}
+                      className={`${styles.dot} ${
+                        i === currentIndex ? styles.dotActive : ""
+                      }`}
+                      onClick={() => setCurrentIndex(i)}
+                      aria-label={`Go to page ${i + 1}`}
+                    />
+                  ))}
+                </div>
+                <button
+                  className={styles.navBtn}
+                  onClick={handleNext}
+                  aria-label="Next testimonials"
+                >
+                  <Icon icon="mdi:chevron-right" />
+                </button>
+              </div>
+            )}
           </motion.div>
 
-          {/* Stats Row */}
-          <motion.div variants={itemVariants} className={styles.statsRow}>
-            {stats.map((stat, index) => (
-              <React.Fragment key={stat.label}>
-                {index > 0 && <div className={styles.statDivider} />}
-                <div className={styles.statItem}>
-                  <Icon icon={stat.icon} className={styles.statIcon} />
-                  <span className={styles.statValue}>{stat.value}</span>
-                  <span className={styles.statLabel}>{stat.label}</span>
+          {/* Trust Badges */}
+          <motion.div variants={itemVariants} className={styles.trustBadges}>
+            {trustBadges.map((badge, index) => (
+              <React.Fragment key={badge.label}>
+                {index > 0 && <div className={styles.badgeDivider} />}
+                <div className={styles.badgeItem}>
+                  <Icon icon={badge.icon} className={styles.badgeIcon} />
+                  <span className={styles.badgeValue}>{badge.value}</span>
+                  <span className={styles.badgeLabel}>{badge.label}</span>
                 </div>
               </React.Fragment>
             ))}
           </motion.div>
 
-          {/* CTA Buttons */}
-          <motion.div variants={itemVariants} className={styles.ctaButtons}>
-            <motion.div
-              variants={pulseVariants}
-              initial="initial"
-              animate="animate"
-            >
-              <Button
-                variant="primary"
-                size="large"
-                endIcon="mdi:arrow-right"
-                onClick={handleApplyNow}
-                className={styles.primaryBtn}
-              >
-                Get Started Now
-              </Button>
-            </motion.div>
+          {/* CTA Area */}
+          <motion.div variants={itemVariants} className={styles.ctaArea}>
+            <Typography variant="h4" className={styles.ctaTitle}>
+              Ready to Start Your Transformation?
+            </Typography>
+            <Typography variant="body1" className={styles.ctaSubtext}>
+              Book a free consultation with Dr. Porag Neog and discover the best
+              treatment plan for you
+            </Typography>
 
-            {/* TODO: Replace with actual content */}
-            <Button
-              variant="outline"
-              size="large"
-              startIcon="mdi:phone-outline"
-              href="tel:+91XXXXXXXXXX"
-              className={styles.secondaryBtn}
-            >
-              Call: +91-XXXXXXXXXX
-            </Button>
+            <div className={styles.ctaButtons}>
+              <motion.div
+                variants={pulseVariants}
+                initial="initial"
+                animate="animate"
+              >
+                <Button
+                  variant="primary"
+                  size="large"
+                  endIcon="mdi:arrow-right"
+                  onClick={handleBookConsultation}
+                  className={styles.primaryBtn}
+                >
+                  Book Free Consultation
+                </Button>
+              </motion.div>
+
+              <Button
+                variant="outline"
+                size="large"
+                startIcon="mdi:phone-outline"
+                href="tel:+918011002870"
+                className={styles.secondaryBtn}
+              >
+                Call +91 8011002870
+              </Button>
+            </div>
           </motion.div>
         </motion.div>
       </Container>
