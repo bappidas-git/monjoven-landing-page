@@ -51,46 +51,44 @@ const ContactSection = () => {
     },
   };
 
-  // TODO: Replace with actual content
   // Contact info items
   const contactInfo = [
     {
+      icon: "mdi:map-marker-outline",
+      title: "Clinic Address",
+      content: "VIP Road, Borbari, Six Mile, Near Pratiksha Hospital, Guwahati, Assam",
+    },
+    {
       icon: "mdi:phone-outline",
-      title: "Phone",
-      content: "+91-XXXXXXXXXX",
-      href: "tel:+91XXXXXXXXXX",
+      title: "Call Us",
+      content: "+91 8011002870",
+      href: "tel:+918011002870",
     },
     {
       icon: "mdi:whatsapp",
       title: "WhatsApp",
-      content: "Quick Chat",
-      href: "https://wa.me/91XXXXXXXXXX?text=Hi,%20I%20am%20interested%20in%20your%20services",
+      content: "+91 9127062599",
+      href: "https://api.whatsapp.com/send?phone=919127062599",
       external: true,
     },
     {
       icon: "mdi:email-outline",
-      title: "Email",
-      content: "info@yourbusiness.com",
-      href: "mailto:info@yourbusiness.com",
-    },
-
-    {
-      icon: "mdi:map-marker-outline",
-      title: "Address",
-      content: "Your Company Pvt. Ltd., Your City, Your State",
+      title: "Email Us",
+      content: "dr@monjoven.com",
+      href: "mailto:dr@monjoven.com",
     },
     {
       icon: "mdi:clock-outline",
-      title: "Hours",
-      content: "Mon-Sat, 9:00 AM - 7:00 PM",
+      title: "Clinic Hours",
+      content: "Mon - Sat: 9:00 AM - 6:00 PM",
     },
   ];
 
   const handleRequestCallback = () => {
-    openLeadDrawer("default", {
+    openLeadDrawer("contact", {
       title: "Request a Callback",
       subtitle:
-        "Fill in your details and our team will call you back",
+        "Fill in your details and our team will reach out to you",
     });
   };
 
@@ -105,23 +103,27 @@ const ContactSection = () => {
         >
           {/* Section Header */}
           <motion.div variants={itemVariants} className={styles.sectionHeader}>
+            <Typography variant="overline" className={styles.sectionOverline}>
+              Get In Touch
+            </Typography>
             <Typography variant="h2" className={styles.sectionTitle}>
-              Get in <span className={styles.highlight}>Touch</span>
+              Visit Our Clinic or Book a{" "}
+              <span className={styles.highlight}>Consultation</span>
             </Typography>
             <Typography variant="body1" className={styles.sectionSubtitle}>
-              Have questions? Our team is ready to help
+              Located in Guwahati, Assam — easily accessible from all parts of
+              Northeast India
             </Typography>
           </motion.div>
 
           {/* Quick Action Buttons (mobile-first, visible on all) */}
           <motion.div variants={itemVariants} className={styles.quickActions}>
-            {/* TODO: Replace with actual content */}
-            <a href="tel:+91XXXXXXXXXX" className={styles.quickActionBtn}>
+            <a href="tel:+918011002870" className={styles.quickActionBtn}>
               <Icon icon="mdi:phone" className={styles.quickActionIcon} />
               <span>Call Now</span>
             </a>
             <a
-              href="https://wa.me/91XXXXXXXXXX?text=Hi,%20I%20am%20interested%20in%20your%20services"
+              href="https://api.whatsapp.com/send?phone=919127062599"
               target="_blank"
               rel="noopener noreferrer"
               className={`${styles.quickActionBtn} ${styles.quickActionWhatsapp}`}
@@ -202,16 +204,17 @@ const ContactSection = () => {
                 {/* Form Header */}
                 <div className={styles.formHeader}>
                   <Typography variant="h5" className={styles.formTitle}>
-                    Enquiry Form
+                    Request a Callback
                   </Typography>
                   <Typography variant="body2" className={styles.formSubtitle}>
-                    Fill in your details and we'll get back to you
+                    Fill in your details and our team will reach out to you
                   </Typography>
                 </div>
 
                 {/* Unified Lead Form */}
                 <UnifiedLeadForm
                   variant="default"
+                  source="contact"
                   showTitle={false}
                   showSubtitle={false}
                   showTrustBadges={true}
