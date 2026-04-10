@@ -1,7 +1,7 @@
 {
-  "short_name": "Your Business",
-  "name": "Your Business Name - Landing Page",
-  "description": "Learn more about our services and get in touch with our team.",
+  "short_name": "Monjoven",
+  "name": "Monjoven - Hair Transplant & Cosmetic Surgery",
+  "description": "Northeast India's premier hair transplant and cosmetic surgery clinic",
   "icons": [
     {
       "src": "favicon.ico",
@@ -24,9 +24,9 @@
   "start_url": ".",
   "display": "standalone",
   "orientation": "portrait-primary",
-  "theme_color": "#2D3561",
+  "theme_color": "#1A5276",
   "background_color": "#FFFFFF",
-  "categories": ["business"],
+  "categories": ["business", "health"],
   "lang": "en",
   "dir": "ltr",
   "scope": "/",

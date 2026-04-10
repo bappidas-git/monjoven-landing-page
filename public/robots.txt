@@ -1,11 +1,5 @@
-# robots.txt — Landing Page Boilerplate
-# TODO: Replace yourbusiness.com with your actual domain
-
 User-agent: *
 Allow: /
 Disallow: /admin/
-Disallow: /admin/login
-Disallow: /thank-you
 
-# Sitemap location
-Sitemap: https://yourbusiness.com/sitemap.xml
+Sitemap: https://www.monjoven.com/sitemap.xml
