@@ -12,6 +12,7 @@ import {
 } from "@mui/material";
 import { Icon } from "@iconify/react";
 import AnimatedCounter from "../../common/AnimatedCounter/AnimatedCounter";
+import { useModal } from "../../../context/ModalContext";
 import styles from "./AboutSection.module.css";
 
 // Animation variants
@@ -38,96 +39,81 @@ const itemVariants = {
   },
 };
 
-// TODO: Replace with actual content
 // Stats data
 const keyStats = [
   {
-    value: "10",
+    value: "12",
     suffix: "+",
-    label: "Years of Experience",
+    label: "Years Experience",
     icon: "mdi:trophy-award",
     color: "#2EC4B6",
   },
   {
-    value: "50",
-    suffix: "Cr",
-    label: "Annual Revenue",
-    icon: "mdi:currency-inr",
+    value: "5000",
+    suffix: "+",
+    label: "Successful Procedures",
+    icon: "mdi:check-decagram",
     color: "#2D3561",
   },
   {
-    value: "10000",
-    suffix: "+",
-    label: "Products",
-    icon: "mdi:package-variant-closed",
+    value: "98",
+    suffix: "%",
+    label: "Patient Satisfaction",
+    icon: "mdi:heart-pulse",
     color: "#2EC4B6",
   },
   {
-    value: "500",
-    suffix: "K+",
-    label: "Customers Served",
-    icon: "mdi:account-group",
+    value: "8",
+    suffix: "",
+    label: "NE States Served",
+    icon: "mdi:map-marker-multiple",
     color: "#2D3561",
-  },
-  {
-    value: "15",
-    suffix: "+",
-    label: "Locations",
-    icon: "mdi:store",
-    color: "#2EC4B6",
   },
 ];
 
-// Image grid data
-const gridImages = [
-  {
-    src: "https://placehold.co/400x300/E8EDF2/2D3561?text=About+Image+1+400x300",
-    alt: "Business location exterior",
-  },
-  {
-    src: "https://placehold.co/400x300/E8EDF2/2D3561?text=About+Image+2+400x300",
-    alt: "Customer shopping experience",
-  },
-  {
-    src: "https://placehold.co/400x300/E8EDF2/2D3561?text=About+Image+3+400x300",
-    alt: "Product showcase",
-  },
-];
+// Doctor profile data
+const doctorProfile = {
+  image: "https://placehold.co/400x500/1A5276/FFFFFF?text=Dr.+Porag+Neog",
+  name: "Dr. Porag Neog",
+  credentials: "MBBS, MS",
+  title: "Cosmetic Surgeon & Founder",
+  bio: "Highly trained cosmetic surgeon with 12+ years specializing in hair transplant using the smallest FUE punch (micro-FUE) technology.",
+};
+
+// Clinic image
+const clinicImage = {
+  src: "https://placehold.co/600x400/1A5276/FFFFFF?text=Monjoven+Clinic+Interior",
+  alt: "Monjoven Clinic Interior",
+};
 
 // Key differentiators data
 const differentiators = [
   {
-    icon: "mdi:store-check",
-    title: "Multi-Category Offering",
-    description: "Lorem ipsum dolor sit amet, multiple product lines under one roof",
+    icon: "mdi:medal-outline",
+    title: "12+ Years of Proven Excellence",
+    description: "Pioneering hair transplant and cosmetic surgery in Northeast India since 2012",
   },
   {
-    icon: "mdi:chart-line",
-    title: "Proven Business Model",
-    description: "Lorem ipsum dolor sit amet, profitable across all locations",
+    icon: "mdi:microscope",
+    title: "Smallest FUE Punch Technology",
+    description: "Advanced micro-FUE technology for natural, undetectable results with minimal scarring",
   },
   {
-    icon: "mdi:tag-multiple",
-    title: "500+ Brand Partners",
-    description: "Lorem ipsum dolor sit amet, access to leading consumer brands",
+    icon: "mdi:earth",
+    title: "International Standard Results",
+    description: "World-class outcomes that match the best clinics globally, right here in Northeast India",
   },
   {
-    icon: "mdi:account-star",
-    title: "End-to-End Support",
-    description: "Lorem ipsum dolor sit amet, complete setup and ongoing assistance",
+    icon: "mdi:account-group",
+    title: "Globally Trusted by Patients",
+    description: "Patients from across India and internationally — US, Canada, UK, Norway, Saudi Arabia, France, Dubai, Bhutan, and Nepal",
   },
 ];
 
 const AboutSection = () => {
   const ref = React.useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
-
-  const handleViewInvestment = () => {
-    const investmentSection = document.getElementById("investment");
-    if (investmentSection) {
-      investmentSection.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+  const { openLeadDrawer } = useModal();
 
   return (
     <section className={styles.overviewSection} id="about" ref={ref}>
@@ -144,8 +130,7 @@ const AboutSection = () => {
         >
           {/* Section Header */}
           <motion.div variants={itemVariants} className={styles.sectionHeader}>
-            <span className={styles.badge}>PROVEN SUCCESS</span>
-            {/* TODO: Replace with actual content */}
+            <span className={styles.badge}>ABOUT MONJOVEN</span>
             <Typography
               variant="h2"
               className={styles.sectionTitle}
@@ -157,7 +142,7 @@ const AboutSection = () => {
                 letterSpacing: "-0.01em",
               }}
             >
-              About Our Company
+              Northeast India's First Dedicated Hair Transplant Clinic
             </Typography>
             <Typography
               variant="h3"
@@ -170,7 +155,7 @@ const AboutSection = () => {
                 marginTop: "0.5rem",
               }}
             >
-              A Trusted Name in the Industry Since 2014
+              Restoring Youthfulness & Confidence Since 2012
             </Typography>
           </motion.div>
 
@@ -208,23 +193,24 @@ const AboutSection = () => {
           <div className={styles.contentGrid}>
             {/* Left Column - Text */}
             <motion.div variants={itemVariants} className={styles.textColumn}>
-              {/* TODO: Replace with actual content */}
               <Typography className={styles.contentParagraph}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Our company has been a
-                trusted name in the industry for over a decade.
+                Founded in 2012 by Dr. Porag Neog (MBBS, MS), Monjoven is
+                Northeast India's first dedicated clinic for hair loss solutions
+                and hair transplant. The name "Monjoven" means "My Youth" —
+                reflecting our mission to restore youthfulness and confidence in
+                every patient who walks through our doors.
               </Typography>
               <Typography className={styles.contentParagraph}>
-                Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. With multiple profitable
-                locations, thousands of products, and a dedicated team, we are
-                now expanding through partnerships.
+                With over a decade of pioneering excellence in hair transplants
+                and cosmetic surgery, Monjoven delivers international-standard
+                results using advanced micro-FUE technology. Our patients travel
+                from across India and internationally — from the US, Canada, UK,
+                Norway, Saudi Arabia, France, Dubai, Bhutan, and Nepal — trusting
+                us with their transformation journey.
               </Typography>
               <Button
                 variant="contained"
-                onClick={handleViewInvestment}
+                onClick={() => openLeadDrawer("apply-now")}
                 className={styles.ctaButton}
                 endIcon={<Icon icon="mdi:arrow-right" />}
                 sx={{
@@ -246,27 +232,48 @@ const AboutSection = () => {
                   },
                 }}
               >
-                View Plans →
+                Book Free Consultation
               </Button>
             </motion.div>
 
-            {/* Right Column - Image Grid */}
+            {/* Right Column - Doctor Profile & Clinic Image */}
             <motion.div variants={itemVariants} className={styles.imageColumn}>
-              {gridImages.map((img, index) => (
-                <motion.div
-                  key={index}
-                  className={styles.imageWrapper}
-                  whileHover={{ scale: 1.03 }}
-                  transition={{ duration: 0.3 }}
-                >
+              <motion.div
+                className={styles.doctorCard}
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className={styles.doctorImageWrapper}>
                   <img
-                    src={img.src}
-                    alt={img.alt}
-                    className={styles.gridImage}
+                    src={doctorProfile.image}
+                    alt={doctorProfile.name}
+                    className={styles.doctorImage}
                     loading="lazy"
                   />
-                </motion.div>
-              ))}
+                </div>
+                <div className={styles.doctorInfo}>
+                  <h3 className={styles.doctorName}>{doctorProfile.name}</h3>
+                  <span className={styles.doctorCredentials}>
+                    {doctorProfile.credentials}
+                  </span>
+                  <span className={styles.doctorTitle}>
+                    {doctorProfile.title}
+                  </span>
+                  <p className={styles.doctorBio}>{doctorProfile.bio}</p>
+                </div>
+              </motion.div>
+              <motion.div
+                className={styles.imageWrapper}
+                whileHover={{ scale: 1.03 }}
+                transition={{ duration: 0.3 }}
+              >
+                <img
+                  src={clinicImage.src}
+                  alt={clinicImage.alt}
+                  className={styles.gridImage}
+                  loading="lazy"
+                />
+              </motion.div>
             </motion.div>
           </div>
 
@@ -275,7 +282,6 @@ const AboutSection = () => {
             variants={itemVariants}
             className={styles.differentiatorsRow}
           >
-            {/* TODO: Replace with actual content */}
             <Typography
               variant="h4"
               className={styles.differentiatorsTitle}
@@ -288,7 +294,7 @@ const AboutSection = () => {
                 marginBottom: { xs: "1.5rem", md: "2rem" },
               }}
             >
-              What Sets Us Apart
+              Why Choose Monjoven
             </Typography>
             <div className={styles.differentiatorsGrid}>
               {differentiators.map((item, index) => (
