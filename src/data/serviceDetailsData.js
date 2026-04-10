@@ -1,29 +1,41 @@
 export const serviceDetailsData = [
   {
-    id: 'plan-basic',
-    /* TODO: Replace with actual content */
-    title: 'Basic Plan',
-    image: 'https://placehold.co/600x400/E8EDF2/2D3561?text=Service+1+600x400',
-    commencement: 'Launch within 30-45 days of agreement',
-    frequency: 'Setup Fee + Infrastructure + Initial Stock + Software + Security Deposit',
-    highlights: ['Total: Contact for pricing', 'Best for small locations', 'Staff: 3-4 members', 'Full turnkey setup included'],
+    id: "hair-transplant",
+    title: "Hair Transplant (FUE & FUT)",
+    image: "https://placehold.co/600x400/1A5276/FFFFFF?text=Hair+Transplant+Procedure",
+    commencement: "Procedure performed in a single day session",
+    frequency: "Micro-FUE with 0.6mm-1.25mm punch | FUT Strip Method | Local Anesthesia",
+    highlights: [
+      "Smallest FUE punch for minimal scarring",
+      "Natural angle & density placement",
+      "Free 4-month laser therapy post-procedure",
+      "Free 2-week follow-up care",
+    ],
   },
   {
-    id: 'plan-standard',
-    /* TODO: Replace with actual content */
-    title: 'Standard Plan',
-    image: 'https://placehold.co/600x400/E8EDF2/2D3561?text=Service+2+600x400',
-    commencement: 'Launch within 30-45 days of agreement',
-    frequency: 'Setup Fee + Infrastructure + Initial Stock + Software + Security Deposit',
-    highlights: ['Total: Contact for pricing', 'Best for mid-size locations', 'Staff: 4-5 members', 'Wider service range'],
+    id: "beard-transplant",
+    title: "Beard & Eyebrow Transplant",
+    image: "https://placehold.co/600x400/1A5276/FFFFFF?text=Beard+Transplant",
+    commencement: "Single-session procedure with local anesthesia",
+    frequency: "FUE extraction | Precision placement | Custom design",
+    highlights: [
+      "Natural-looking beard density",
+      "Eyebrow restoration available",
+      "Covers scars and patches",
+      "Permanent results with natural growth",
+    ],
   },
   {
-    id: 'plan-premium',
-    /* TODO: Replace with actual content */
-    title: 'Premium Plan',
-    image: 'https://placehold.co/600x400/E8EDF2/2D3561?text=Service+3+600x400',
-    commencement: 'Launch within 30-45 days of agreement',
-    frequency: 'Setup Fee + Infrastructure + Initial Stock + Software + Security Deposit',
-    highlights: ['Total: Contact for pricing', 'Best for prime locations', 'Staff: 5-6 members', 'Maximum coverage'],
+    id: "cosmetic-surgery",
+    title: "Cosmetic & Reconstructive Surgery",
+    image: "https://placehold.co/600x400/1A5276/FFFFFF?text=Cosmetic+Surgery",
+    commencement: "Consultation required before scheduling",
+    frequency: "Rhinoplasty | Liposuction | Gynecomastia | Hymenoplasty",
+    highlights: [
+      "Board-certified cosmetic surgeon",
+      "Strict operative protocols",
+      "State-of-the-art facility",
+      "Personalized treatment plans",
+    ],
   },
 ];
