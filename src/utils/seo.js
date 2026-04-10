@@ -229,6 +229,27 @@ export function generateLocalBusinessSchema(config) {
     schema.url = org.url;
   }
 
+  // MedicalBusiness-specific properties
+  if (biz.medicalSpecialty) {
+    schema.medicalSpecialty = biz.medicalSpecialty;
+  }
+
+  if (biz.isAcceptingNewPatients !== undefined) {
+    schema.isAcceptingNewPatients = biz.isAcceptingNewPatients;
+  }
+
+  if (biz.hasMap) {
+    schema.hasMap = biz.hasMap;
+  }
+
+  if (biz.availableService && biz.availableService.length > 0) {
+    schema.availableService = biz.availableService.map((service) => ({
+      '@type': 'MedicalProcedure',
+      name: service.name,
+      description: service.description,
+    }));
+  }
+
   return schema;
 }
 
