@@ -211,7 +211,7 @@ cp -r build/* /home/master/applications/your-app/public_html/`}
           <tbody>
             <tr>
               <td className={styles.guideTableCell}>Netlify</td>
-              <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>public/_redirects</code> with <code className={styles.guideInlineCode}>/* /index.html 200</code></td>
+              <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>public/_redirects</code> with <code className={styles.guideInlineCode}>{"/* /index.html 200"}</code></td>
             </tr>
             <tr>
               <td className={styles.guideTableCell}>Vercel</td>

@@ -30,7 +30,7 @@ const formatDate = () => {
 };
 
 const Dashboard = () => {
-  const { user } = useAdminAuth();
+  useAdminAuth();
   const navigate = useNavigate();
   const [stats, setStats] = useState(null);
 

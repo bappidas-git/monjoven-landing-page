@@ -199,7 +199,7 @@ const MobileDrawer = ({ open, onClose, onOpen, onBookConsultation, activeSection
                         py: 1.5,
                         transition: "all 0.2s ease",
                         "&:hover": {
-                          backgroundColor: "rgba(46, 196, 182, 0.08)",
+                          backgroundColor: "rgba(20, 143, 119, 0.08)",
                         },
                       }}
                     >
@@ -208,7 +208,7 @@ const MobileDrawer = ({ open, onClose, onOpen, onBookConsultation, activeSection
                         sx={{
                           minWidth: 44,
                           color:
-                            activeSection === item.id ? "#2EC4B6" : "#6B7280",
+                            activeSection === item.id ? "#148F77" : "#6B7280",
                         }}
                       >
                         <Icon icon={item.icon} style={{ fontSize: 22 }} />
@@ -220,7 +220,7 @@ const MobileDrawer = ({ open, onClose, onOpen, onBookConsultation, activeSection
                           "& .MuiTypography-root": {
                             fontWeight: activeSection === item.id ? 600 : 500,
                             color:
-                              activeSection === item.id ? "#2EC4B6" : "#374151",
+                              activeSection === item.id ? "#148F77" : "#374151",
                             fontSize: "0.95rem",
                           },
                         }}
@@ -262,7 +262,7 @@ const MobileDrawer = ({ open, onClose, onOpen, onBookConsultation, activeSection
               className={styles.contactDetailItem}
               onClick={() => trackPhoneClick('+918011002870', 'mobile_drawer')}
             >
-              <Icon icon="mdi:phone" style={{ color: '#FF6B35', fontSize: 18 }} />
+              <Icon icon="mdi:phone" style={{ color: '#E74C3C', fontSize: 18 }} />
               <span>+91 8011002870</span>
             </a>
             <a
@@ -279,7 +279,7 @@ const MobileDrawer = ({ open, onClose, onOpen, onBookConsultation, activeSection
               href="mailto:dr@monjoven.com"
               className={styles.contactDetailItem}
             >
-              <Icon icon="mdi:email-outline" style={{ color: '#2EC4B6', fontSize: 18 }} />
+              <Icon icon="mdi:email-outline" style={{ color: '#148F77', fontSize: 18 }} />
               <span>dr@monjoven.com</span>
             </a>
           </Box>

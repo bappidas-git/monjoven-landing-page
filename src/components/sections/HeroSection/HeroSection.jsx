@@ -168,7 +168,7 @@ const HeroSection = () => {
                   label="Northeast India's Premier Hair Transplant Clinic"
                   className={styles.launchBadge}
                   sx={{
-                    backgroundColor: "#2EC4B6",
+                    backgroundColor: "#148F77",
                     color: "#FFFFFF",
                     fontWeight: 600,
                     fontSize: "0.875rem",
@@ -242,7 +242,7 @@ const HeroSection = () => {
                     openLeadDrawer("apply-now");
                   }}
                   sx={{
-                    backgroundColor: "#FF6B35",
+                    backgroundColor: "#E74C3C",
                     color: "#FFFFFF",
                     fontWeight: 700,
                     fontSize: "1rem",
@@ -250,10 +250,10 @@ const HeroSection = () => {
                     borderRadius: "12px",
                     textTransform: "none",
                     fontFamily: "'Poppins', sans-serif",
-                    boxShadow: "0 4px 20px rgba(255, 107, 53, 0.4)",
+                    boxShadow: "0 4px 20px rgba(231, 76, 60, 0.4)",
                     "&:hover": {
                       backgroundColor: "#FF8C5A",
-                      boxShadow: "0 6px 24px rgba(255, 107, 53, 0.5)",
+                      boxShadow: "0 6px 24px rgba(231, 76, 60, 0.5)",
                       transform: "translateY(-2px)",
                     },
                     transition: "all 0.3s ease",

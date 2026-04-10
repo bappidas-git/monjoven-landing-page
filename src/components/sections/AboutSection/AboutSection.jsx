@@ -46,28 +46,28 @@ const keyStats = [
     suffix: "+",
     label: "Years Experience",
     icon: "mdi:trophy-award",
-    color: "#2EC4B6",
+    color: "#148F77",
   },
   {
     value: "5000",
     suffix: "+",
     label: "Successful Procedures",
     icon: "mdi:check-decagram",
-    color: "#2D3561",
+    color: "#1A5276",
   },
   {
     value: "98",
     suffix: "%",
     label: "Patient Satisfaction",
     icon: "mdi:heart-pulse",
-    color: "#2EC4B6",
+    color: "#148F77",
   },
   {
     value: "8",
     suffix: "",
     label: "NE States Served",
     icon: "mdi:map-marker-multiple",
-    color: "#2D3561",
+    color: "#1A5276",
   },
 ];
 
@@ -138,7 +138,7 @@ const AboutSection = () => {
                 fontFamily: "'Poppins', sans-serif",
                 fontWeight: 700,
                 fontSize: { xs: "1.75rem", sm: "2rem", md: "2.75rem" },
-                color: "#2D3561",
+                color: "#1A5276",
                 letterSpacing: "-0.01em",
               }}
             >
@@ -215,19 +215,19 @@ const AboutSection = () => {
                 endIcon={<Icon icon="mdi:arrow-right" />}
                 sx={{
                   background:
-                    "linear-gradient(135deg, #2EC4B6 0%, #5DD9CE 100%)",
+                    "linear-gradient(135deg, #148F77 0%, #1ABC9C 100%)",
                   color: "#ffffff",
                   fontWeight: 700,
                   fontSize: { xs: "0.9375rem", md: "1rem" },
                   padding: { xs: "12px 28px", md: "14px 36px" },
                   borderRadius: "50px",
                   textTransform: "none",
-                  boxShadow: "0 8px 30px rgba(46, 196, 182, 0.3)",
+                  boxShadow: "0 8px 30px rgba(20, 143, 119, 0.3)",
                   marginTop: "1.5rem",
                   "&:hover": {
                     background:
-                      "linear-gradient(135deg, #5DD9CE 0%, #2EC4B6 100%)",
-                    boxShadow: "0 12px 40px rgba(46, 196, 182, 0.45)",
+                      "linear-gradient(135deg, #1ABC9C 0%, #148F77 100%)",
+                    boxShadow: "0 12px 40px rgba(20, 143, 119, 0.45)",
                     transform: "translateY(-2px)",
                   },
                 }}
@@ -289,7 +289,7 @@ const AboutSection = () => {
                 fontFamily: "'Poppins', sans-serif",
                 fontWeight: 700,
                 fontSize: { xs: "1.25rem", sm: "1.5rem", md: "1.75rem" },
-                color: "#2D3561",
+                color: "#1A5276",
                 textAlign: "center",
                 marginBottom: { xs: "1.5rem", md: "2rem" },
               }}
