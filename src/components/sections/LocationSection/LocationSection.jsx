@@ -57,34 +57,32 @@ const LocationSection = () => {
   };
 
   const handleGetDirections = () => {
-    // TODO: Replace with actual content
     window.open(
-      "https://www.google.com/maps/search/Your+Business+Location",
+      "https://www.google.com/maps/search/Monjoven+Clinic+Six+Mile+Guwahati",
       "_blank",
       "noopener,noreferrer",
     );
   };
 
-  // TODO: Replace with actual content
   const connectivityHighlights = [
     {
-      icon: "mdi:truck-delivery",
-      title: "Own logistics network for reliable delivery",
+      icon: "mdi:airplane",
+      title: "Well-connected by air — Guwahati LGBI Airport nearby",
       color: "#FF9800",
     },
     {
-      icon: "mdi:warehouse",
-      title: "Multiple warehouse locations for seamless supply chain",
+      icon: "mdi:train",
+      title: "Accessible by rail from all Northeast states",
       color: "#2196F3",
     },
     {
-      icon: "mdi:earth",
-      title: "Service territories available across the region",
+      icon: "mdi:hospital-building",
+      title: "Located near Pratiksha Hospital, Six Mile, Guwahati",
       color: "#9C27B0",
     },
     {
-      icon: "mdi:rocket-launch",
-      title: "Rapid launch — 30-45 days from agreement",
+      icon: "mdi:account-group",
+      title: "Patients visiting from all 8 Northeastern states",
       color: "#4CAF50",
     },
   ];
@@ -93,12 +91,11 @@ const LocationSection = () => {
     <section id="stores" className={styles.section}>
       <Container maxWidth="xl">
         {/* Section Title */}
-        {/* TODO: Replace with actual content */}
         <SectionTitle
           badge="LOCATIONS"
-          title="Our"
-          highlight="Locations"
-          subtitle="Lorem ipsum dolor sit amet — expanding across the region"
+          title="Serving All of"
+          highlight="Northeast India"
+          subtitle="Conveniently located in Guwahati with patients visiting from across the Northeast and beyond"
           align="center"
           variant="light"
           badgeVariant="gold"
@@ -119,7 +116,7 @@ const LocationSection = () => {
               >
                 <div className={styles.centreHeader}>
                   <div className={styles.centreIconWrapper}>
-                    <Icon icon="mdi:school" />
+                    <Icon icon="mdi:hospital-building" />
                   </div>
                   <div>
                     <Typography variant="h5" className={styles.centreName}>
@@ -150,7 +147,6 @@ const LocationSection = () => {
                         variant="body2"
                         className={styles.contactValue}
                       >
-                        {/* TODO: Replace with actual content */}
                         <a href={`tel:${locationData.phone}`}>{locationData.phoneDisplay}</a>
                       </Typography>
                     </div>
@@ -187,21 +183,20 @@ const LocationSection = () => {
                 <div className={styles.mapContainer}>
                   <div className={styles.mapPlaceholder}>
                     <img
-                      src="https://placehold.co/800x400/E8EDF2/2D3561?text=Map+Placeholder+800x400"
-                      alt="Business Location Map"
+                      src="https://placehold.co/800x400/1A5276/FFFFFF?text=Northeast+India+Service+Map"
+                      alt="Monjoven Clinic Location Map - Six Mile, Guwahati"
                       className={styles.mapImage}
                     />
-                    {/* TODO: Replace with actual content */}
                     <div className={styles.mapOverlay}>
                       <Icon
                         icon="mdi:map-marker"
                         className={styles.mapPinIcon}
                       />
                       <Typography variant="h6" className={styles.mapTitle}>
-                        Your Business Name
+                        Monjoven Clinic
                       </Typography>
                       <Typography variant="body2" className={styles.mapAddress}>
-                        Your City, Your State
+                        Six Mile, Guwahati, Assam
                       </Typography>
                       <Button
                         variant="primary"
@@ -234,8 +229,7 @@ const LocationSection = () => {
               className={styles.areasTitle}
               sx={{ marginBottom: "1.5rem" }}
             >
-              {/* TODO: Replace with actual content */}
-              Service Areas
+              Nearby Areas We Serve
             </Typography>
           </motion.div>
           <motion.div variants={itemVariants} className={styles.areasGrid}>
@@ -295,7 +289,6 @@ const LocationSection = () => {
         </motion.div>
 
         {/* Bottom CTA */}
-        {/* TODO: Replace with actual content */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -309,7 +302,7 @@ const LocationSection = () => {
               className={styles.ctaTitle}
               sx={{ color: "#fff", marginBottom: "2rem" }}
             >
-              Want to open a location in your city?
+              Ready to Transform Your Look? Visit Us Today
             </Typography>
           </motion.div>
           <motion.div variants={itemVariants} className={styles.ctaButtons}>
@@ -319,13 +312,13 @@ const LocationSection = () => {
               startIcon="mdi:directions"
               onClick={handleGetDirections}
             >
-              Check Availability
+              Get Directions
             </Button>
             <Button
               variant="outline"
               size="large"
               startIcon="mdi:phone"
-              href="tel:+91XXXXXXXXXX"
+              href="tel:+918011002870"
             >
               Call Us
             </Button>
