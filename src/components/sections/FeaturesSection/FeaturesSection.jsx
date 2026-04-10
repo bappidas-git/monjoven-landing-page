@@ -1,6 +1,6 @@
 /* ============================================
-   FeaturesSection Component - Benefits of Joining
-   Tabbed benefits showcase with franchise highlights and CTA
+   FeaturesSection Component - Why Choose Monjoven
+   Tabbed benefits showcase with clinic highlights and CTA
    ============================================ */
 
 import React, { useState, useRef } from "react";
@@ -13,26 +13,26 @@ import styles from "./FeaturesSection.module.css";
 
 // Category icons (replacing Lottie animations)
 const categoryIcons = {
-  1: "mdi:school",
+  1: "mdi:chip",
   2: "mdi:hand-heart",
-  3: "mdi:rocket-launch",
+  3: "mdi:star-circle",
 };
 
 // Accent icons for decorative display (replacing Lottie)
 const categoryAccentIcons = {
-  1: "mdi:calculator-variant",
+  1: "mdi:microscope",
   2: "mdi:shield-check",
-  3: "mdi:tree",
+  3: "mdi:trophy-outline",
 };
 
-// Course highlights strip items
+// Highlights strip items
 const courseHighlights = [
-  { icon: "mdi:map-marker-check", label: "Location Support" },
-  { icon: "mdi:store-check", label: "Turnkey Setup" },
-  { icon: "mdi:account-group", label: "Staff Training" },
-  { icon: "mdi:cog-sync", label: "Technology Platform" },
-  { icon: "mdi:package-variant-closed", label: "Automated Inventory" },
-  { icon: "mdi:bullhorn", label: "Marketing Support" },
+  { icon: "mdi:microscope", label: "Micro-FUE" },
+  { icon: "mdi:laser-pointer", label: "Laser Therapy" },
+  { icon: "mdi:needle", label: "PRP Therapy" },
+  { icon: "mdi:phone-in-talk", label: "24/7 Support" },
+  { icon: "mdi:doctor", label: "Expert Surgeon" },
+  { icon: "mdi:earth", label: "Global Patients" },
 ];
 
 // Animation variants
@@ -79,14 +79,14 @@ const FeaturesSection = () => {
   const [activeTab, setActiveTab] = useState(featuresData[0]?.id ?? 1);
   const { openLeadDrawer } = useModal();
 
-  const handleApplyNow = () => {
-    openLeadDrawer("apply-now");
+  const handleConsultation = () => {
+    openLeadDrawer("consultation");
   };
 
   const activeCategory = featuresData.find((c) => c.id === activeTab) || featuresData[0];
 
   return (
-    <section className={styles.benefitsSection} id="support" ref={ref}>
+    <section className={styles.benefitsSection} id="why-us" ref={ref}>
       <Container maxWidth="xl">
         <motion.div
           variants={containerVariants}
@@ -95,6 +95,21 @@ const FeaturesSection = () => {
         >
           {/* Section Header */}
           <motion.div variants={itemVariants} className={styles.sectionHeader}>
+            <Typography
+              className={styles.overline}
+              sx={{
+                fontFamily: "'Inter', sans-serif",
+                fontWeight: 600,
+                fontSize: { xs: "0.75rem", md: "0.85rem" },
+                color: "#2EC4B6",
+                textTransform: "uppercase",
+                letterSpacing: "0.1em",
+                textAlign: "center",
+                marginBottom: "0.5rem",
+              }}
+            >
+              Why Choose Us
+            </Typography>
             <Typography
               variant="h2"
               className={styles.sectionTitle}
@@ -107,8 +122,8 @@ const FeaturesSection = () => {
                 lineHeight: 1.2,
               }}
             >
-              Complete Business{" "}
-              <span className={styles.accentText}>Ecosystem</span>
+              The Monjoven{" "}
+              <span className={styles.accentText}>Advantage</span>
             </Typography>
             <Typography
               className={styles.sectionSubtitle}
@@ -120,7 +135,7 @@ const FeaturesSection = () => {
                 marginTop: "0.75rem",
               }}
             >
-              Lorem ipsum dolor sit amet — we build your success from day one
+              Experience the difference of Northeast India's most trusted hair transplant and cosmetic surgery clinic
             </Typography>
           </motion.div>
 
@@ -268,12 +283,12 @@ const FeaturesSection = () => {
                 marginBottom: "1rem",
               }}
             >
-              Ready to get started?
+              Ready to transform your look?
             </Typography>
             <Button
               variant="contained"
               className={styles.ctaButton}
-              onClick={handleApplyNow}
+              onClick={handleConsultation}
               endIcon={<Icon icon="mdi:arrow-right" />}
               sx={{
                 background:
@@ -293,7 +308,7 @@ const FeaturesSection = () => {
                 },
               }}
             >
-              Apply Now →
+              Schedule Your Consultation
             </Button>
           </motion.div>
         </motion.div>
