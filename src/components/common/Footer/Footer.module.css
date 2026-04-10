@@ -5,7 +5,7 @@
 
 /* Footer Base */
 .footer {
-  background: #1E2440;
+  background: var(--primary-dark);
   color: var(--white);
   margin-top: auto;
 }
@@ -233,7 +233,7 @@ a.contactValue:hover {
 }
 
 .developerLink {
-  background: linear-gradient(135deg, #2EC4B6 0%, #5DD9CE 50%, #2EC4B6 100%);
+  background: var(--accent-gold-gradient-horizontal);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -285,7 +285,7 @@ a.contactValue:hover {
   align-items: center;
   justify-content: space-between;
   padding: var(--space-5) var(--space-6);
-  background: linear-gradient(135deg, #1E2440 0%, #2D3561 100%);
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-dark-alt) 100%);
   border-bottom: 3px solid var(--accent-gold);
 }
 
