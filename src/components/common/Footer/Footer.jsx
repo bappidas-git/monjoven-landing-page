@@ -334,7 +334,7 @@ const LegalModal = ({ isOpen, onClose, title, children }) => {
 const quickLinks = [
   { label: "About Us", href: "#about" },
   { label: "Why Us", href: "#why-us" },
-  { label: "Services", href: "#investment" },
+  { label: "Services", href: "#services" },
   { label: "Location", href: "#stores" },
   {
     label: "Website",
@@ -346,9 +346,9 @@ const quickLinks = [
 // TODO: Replace with actual content
 // Franchise links data
 const franchiseLinks = [
-  { label: "Basic Plan", href: "#investment" },
-  { label: "Standard Plan", href: "#investment" },
-  { label: "Premium Plan", href: "#investment" },
+  { label: "Hair Transplant", href: "#services" },
+  { label: "Beard Transplant", href: "#services" },
+  { label: "Cosmetic Surgery", href: "#services" },
   { label: "Support & Training", href: "#support" },
   {
     label: "Our Website",

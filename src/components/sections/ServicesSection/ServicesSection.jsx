@@ -1,7 +1,6 @@
 /* ============================================
-   CoursesSection Component - Generic Boilerplate
-   Showcases plans with cards grid
-   and comparison table
+   ServicesSection Component
+   Showcases medical procedure cards
    ============================================ */
 
 import React, { useRef, useEffect } from "react";
@@ -64,33 +63,32 @@ const cardVariants = {
 };
 
 // Comparison data
-// TODO: Replace with actual content
 const comparisonData = {
-  headers: ["Component", "BASIC", "STANDARD", "PREMIUM"],
+  headers: ["Feature", "Hair Transplant", "Beard Transplant", "Cosmetic Surgery"],
   rows: [
     {
-      label: "Setup Fee",
-      values: ["Contact us", "Contact us", "Contact us"],
+      label: "Procedure Duration",
+      values: ["6-8 Hours", "4-6 Hours", "Varies"],
     },
     {
-      label: "Infrastructure",
-      values: ["Contact us", "Contact us", "Contact us"],
+      label: "Anesthesia",
+      values: ["Local", "Local", "Local / General"],
     },
     {
-      label: "Initial Stock",
-      values: ["Contact us", "Contact us", "Contact us"],
+      label: "Recovery Time",
+      values: ["7-10 Days", "5-7 Days", "1-4 Weeks"],
     },
     {
-      label: "Software + License",
-      values: ["Contact us", "Contact us", "Contact us"],
+      label: "Results Visible",
+      values: ["6-12 Months", "4-8 Months", "2-6 Months"],
     },
     {
-      label: "Security Deposit",
-      values: ["Contact us", "Contact us", "Contact us"],
+      label: "Sessions Required",
+      values: ["1 Session", "1 Session", "Consultation Based"],
     },
     {
-      label: "Grand Total",
-      values: ["Contact us", "Contact us", "Contact us"],
+      label: "Follow-up Care",
+      values: ["Included", "Included", "Included"],
       isBold: true,
     },
   ],
@@ -109,15 +107,15 @@ const ServicesSection = () => {
     return () => removeSchema('schema-services');
   }, []);
 
-  const handleGetCourseDetails = (courseName) => {
+  const handleBookConsultation = (serviceName) => {
     openLeadDrawer("get-course-details", {
-      subtitle: `Get details for ${courseName}`,
+      subtitle: `Book consultation for ${serviceName}`,
     });
   };
 
-  const renderCourseCard = (course, index) => (
+  const renderServiceCard = (service, index) => (
     <motion.div
-      key={course.id}
+      key={service.id}
       className={styles.courseCard}
       custom={index}
       variants={isMobile ? undefined : cardVariants}
@@ -127,49 +125,49 @@ const ServicesSection = () => {
       transition={{ duration: 0.3 }}
     >
       {/* Badge */}
-      {course.badge && (
+      {service.badge && (
         <div
           className={`${styles.courseBadge} ${
-            course.badge === "Premium" ? styles.premiumBadge : ""
+            service.badge === "Premium" ? styles.premiumBadge : ""
           }`}
         >
           <Icon
             icon={
-              course.badge === "Most Popular" ? "mdi:star" : "mdi:diamond-stone"
+              service.badge === "Most Popular" ? "mdi:star" : "mdi:diamond-stone"
             }
           />
-          <span>{course.badge}</span>
+          <span>{service.badge}</span>
         </div>
       )}
 
       {/* Icon */}
       <div className={styles.courseIconWrapper}>
-        <Icon icon={course.icon} className={styles.courseIcon} />
+        <Icon icon={service.icon} className={styles.courseIcon} />
       </div>
 
-      {/* Course Name */}
-      <Typography className={styles.courseName}>{course.name}</Typography>
+      {/* Service Name */}
+      <Typography className={styles.courseName}>{service.name}</Typography>
 
       {/* Target & Duration */}
       <div className={styles.courseMeta}>
         <div className={styles.metaItem}>
-          <Icon icon="mdi:account-school" />
-          <span>{course.target}</span>
+          <Icon icon="mdi:account-check" />
+          <span>{service.target}</span>
         </div>
         <div className={styles.metaItem}>
           <Icon icon="mdi:clock-outline" />
-          <span>{course.duration}</span>
+          <span>{service.duration}</span>
         </div>
       </div>
 
       {/* Description */}
       <Typography className={styles.courseDescription}>
-        {course.description}
+        {service.description}
       </Typography>
 
       {/* Features */}
       <div className={styles.courseFeatures}>
-        {course.features.map((feature, idx) => (
+        {service.features.map((feature, idx) => (
           <div key={idx} className={styles.courseFeatureItem}>
             <Icon icon="mdi:check-circle" />
             <span>{feature}</span>
@@ -180,24 +178,24 @@ const ServicesSection = () => {
       {/* Frequency */}
       <div className={styles.courseFrequency}>
         <Icon icon="mdi:calendar-week" />
-        <span>{course.frequency}</span>
+        <span>{service.frequency}</span>
       </div>
 
       {/* CTA Button */}
       <motion.button
         className={styles.courseCtaBtn}
-        onClick={() => handleGetCourseDetails(course.name)}
+        onClick={() => handleBookConsultation(service.name)}
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
       >
-        <span>Get Plan Details</span>
+        <span>Book Consultation</span>
         <Icon icon="mdi:arrow-right" />
       </motion.button>
     </motion.div>
   );
 
   return (
-    <section className={styles.coursesSection} id="investment" ref={ref}>
+    <section className={styles.coursesSection} id="services" ref={ref}>
       {/* Background */}
       <div className={styles.bgOverlay} />
       <div className={styles.bgPattern} />
@@ -210,9 +208,8 @@ const ServicesSection = () => {
         >
           {/* Section Header */}
           <motion.div variants={itemVariants} className={styles.sectionHeader}>
-            {/* TODO: Replace with actual content */}
             <Chip
-              label="PLANS"
+              label="Our Services"
               sx={{
                 backgroundColor: "rgba(46, 196, 182, 0.12)",
                 color: "#2EC4B6",
@@ -237,8 +234,8 @@ const ServicesSection = () => {
                 lineHeight: 1.2,
               }}
             >
-              {/* TODO: Replace with actual content */}
-              Choose Your <span className={styles.accentText}>Plan</span>
+              Advanced Hair &{" "}
+              <span className={styles.accentText}>Cosmetic Procedures</span>
             </Typography>
             <Typography
               className={styles.sectionSubtitle}
@@ -250,12 +247,12 @@ const ServicesSection = () => {
                 maxWidth: "480px",
               }}
             >
-              {/* TODO: Replace with actual content */}
-              Lorem ipsum dolor sit amet — flexible plans for every need
+              World-class treatments tailored to your needs, performed by
+              experienced specialists using the latest technology
             </Typography>
           </motion.div>
 
-          {/* Course Cards */}
+          {/* Service Cards */}
           <motion.div variants={itemVariants}>
             {isMobile ? (
               <Swiper
@@ -267,16 +264,16 @@ const ServicesSection = () => {
                 autoplay={{ delay: 4000, disableOnInteraction: true }}
                 className={styles.swiperContainer}
               >
-                {servicesData.map((course, index) => (
-                  <SwiperSlide key={course.id}>
-                    {renderCourseCard(course, index)}
+                {servicesData.map((service, index) => (
+                  <SwiperSlide key={service.id}>
+                    {renderServiceCard(service, index)}
                   </SwiperSlide>
                 ))}
               </Swiper>
             ) : (
               <div className={styles.coursesGrid}>
-                {servicesData.map((course, index) =>
-                  renderCourseCard(course, index),
+                {servicesData.map((service, index) =>
+                  renderServiceCard(service, index),
                 )}
               </div>
             )}
@@ -333,11 +330,10 @@ const ServicesSection = () => {
               <Icon icon="mdi:headset" className={styles.ctaIcon} />
               <div className={styles.ctaText}>
                 <span className={styles.ctaTitle}>
-                  {/* TODO: Replace with actual content */}
-                  Not sure which plan is right for you?
+                  Not sure which procedure is right for you?
                 </span>
                 <span className={styles.ctaSubtitle}>
-                  Our team will help you choose the best plan
+                  Our specialists will help you choose the best treatment
                 </span>
               </div>
             </div>
@@ -347,13 +343,12 @@ const ServicesSection = () => {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              {/* TODO: Replace with actual content */}
-              <span>Talk to Our Team →</span>
+              <span>Book Consultation →</span>
               <Icon icon="mdi:arrow-right" />
             </motion.button>
           </motion.div>
 
-          {/* === Foundation Course CTA Banner === */}
+          {/* === Doctor CTA Banner === */}
           <motion.div
             className={styles.foundationBanner}
             initial={{ opacity: 0, y: 20 }}
@@ -378,11 +373,10 @@ const ServicesSection = () => {
               <Box
                 sx={{ display: "flex", alignItems: "center", gap: 2, flex: 1 }}
               >
-                {/* TODO: Replace with actual content */}
                 <Box
                   component="img"
-                  src="https://placehold.co/96x96/E8EDF2/2D3561?text=Founder+Photo"
-                  alt="Company Founder"
+                  src="https://placehold.co/96x96/E8EDF2/2D3561?text=Doctor+Photo"
+                  alt="Lead Surgeon"
                   sx={{
                     width: { xs: 56, md: 64 },
                     height: { xs: 56, md: 64 },
@@ -403,7 +397,7 @@ const ServicesSection = () => {
                       fontFamily: "Poppins, sans-serif",
                     }}
                   >
-                    A Message from Our Founder
+                    A Message from Our Lead Surgeon
                   </Typography>
                   <Typography
                     sx={{
@@ -412,10 +406,9 @@ const ServicesSection = () => {
                       mt: 0.5,
                     }}
                   >
-                    {/* TODO: Replace with actual content */}
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Sed do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. — Your Founder Name, CEO
+                    Every procedure at Monjoven is performed with precision,
+                    care, and the latest techniques to ensure you get the best
+                    possible results. Your transformation journey starts here.
                   </Typography>
                 </Box>
               </Box>
@@ -450,8 +443,7 @@ const ServicesSection = () => {
                   },
                 }}
               >
-                {/* TODO: Replace with actual content */}
-                Learn More About Our Vision →
+                Learn More About Us →
               </Button>
             </Box>
           </motion.div>
