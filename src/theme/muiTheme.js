@@ -8,46 +8,46 @@ import { createTheme, alpha } from '@mui/material/styles';
 // Color palette matching CSS variables
 const colors = {
   primary: {
-    main: '#2D3561',
-    light: '#4A5888',
-    dark: '#1E2440',
+    main: '#1A5276',
+    light: '#2980B9',
+    dark: '#154360',
     contrastText: '#FFFFFF',
   },
   secondary: {
-    main: '#2EC4B6',
-    light: '#5DD9CE',
-    dark: '#1FA89B',
+    main: '#148F77',
+    light: '#1ABC9C',
+    dark: '#0E6655',
     contrastText: '#FFFFFF',
   },
   orange: {
-    main: '#FF6B35',
-    light: '#FF8F66',
-    dark: '#E55A25',
-    50: '#FFF3E0',
-    100: '#FFE0B2',
-    200: '#FFCC80',
-    300: '#FFB74D',
-    400: '#FF8F66',
-    500: '#FF6B35',
-    600: '#E55A25',
-    700: '#BF360C',
-    800: '#9E2A00',
-    900: '#7F1D00',
+    main: '#E74C3C',
+    light: '#EC7063',
+    dark: '#C0392B',
+    50: '#FDEDEC',
+    100: '#FADBD8',
+    200: '#F5B7B1',
+    300: '#F1948A',
+    400: '#EC7063',
+    500: '#E74C3C',
+    600: '#C0392B',
+    700: '#A93226',
+    800: '#922B21',
+    900: '#7B241C',
   },
   navy: {
-    main: '#2D3561',
-    light: '#4A5888',
-    dark: '#1E2440',
-    50: '#ECEEF5',
-    100: '#C5CAE9',
-    200: '#9FA8DA',
-    300: '#7986CB',
-    400: '#6B7AB0',
-    500: '#4A5888',
-    600: '#3A4578',
-    700: '#2D3561',
-    800: '#2D3561',
-    900: '#1E2440',
+    main: '#1A5276',
+    light: '#2980B9',
+    dark: '#154360',
+    50: '#EBF5FB',
+    100: '#D6EAF8',
+    200: '#AED6F1',
+    300: '#85C1E9',
+    400: '#5DADE2',
+    500: '#2980B9',
+    600: '#1F6F96',
+    700: '#1A5276',
+    800: '#1A5276',
+    900: '#154360',
   },
   success: {
     main: '#2E7D32',
@@ -88,24 +88,24 @@ const colors = {
   background: {
     default: '#FFFFFF',
     paper: '#FFFFFF',
-    dark: '#2D3561',
+    dark: '#1A5276',
     light: '#F8FAFC',
   },
   text: {
-    primary: '#1B2A4A',
+    primary: '#1B2631',
     secondary: '#546E7A',
     disabled: '#90A4AE',
-    dark: '#1B2A4A',
+    dark: '#1B2631',
     light: '#FFFFFF',
   },
   iconColors: {
-    gold: '#2EC4B6',
+    gold: '#148F77',
     green: '#4CAF50',
     purple: '#9C27B0',
-    orange: '#FF9800',
+    orange: '#E74C3C',
     pink: '#E91E63',
     red: '#F44336',
-    teal: '#009688',
+    teal: '#148F77',
     blue: '#2196F3',
   },
   cardBg: {
@@ -268,8 +268,8 @@ const shadows = [
 ];
 
 // Teal shadow for buttons and highlights
-const orangeShadow = '0 4px 14px rgba(46, 196, 182, 0.25)';
-const orangeShadowHover = '0 6px 20px rgba(46, 196, 182, 0.35)';
+const orangeShadow = '0 4px 14px rgba(20, 143, 119, 0.25)';
+const orangeShadowHover = '0 6px 20px rgba(20, 143, 119, 0.35)';
 
 // Create theme
 const theme = createTheme({
