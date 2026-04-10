@@ -23,48 +23,13 @@ import styles from "./MobileDrawer.module.css";
 
 // Navigation menu items
 const menuItems = [
-  {
-    id: "home",
-    label: "Home",
-    icon: "ic:outline-home",
-    href: "#home",
-  },
-  {
-    id: "about",
-    label: "About",
-    icon: "ic:outline-info",
-    href: "#about",
-  },
-  {
-    id: "investment",
-    label: "Services",
-    icon: "mdi:currency-inr",
-    href: "#investment",
-  },
-  {
-    id: "why-us",
-    label: "Why Us",
-    icon: "ic:outline-star",
-    href: "#why-us",
-  },
-  {
-    id: "support",
-    label: "Features",
-    icon: "ic:outline-verified",
-    href: "#support",
-  },
-  {
-    id: "stores",
-    label: "Location",
-    icon: "ic:outline-storefront",
-    href: "#stores",
-  },
-  {
-    id: "contact",
-    label: "Contact",
-    icon: "ic:outline-phone",
-    href: "#contact",
-  },
+  { id: "home", label: "Home", icon: "ic:outline-home", href: "#home" },
+  { id: "about", label: "About Us", icon: "mdi:information-outline", href: "#about" },
+  { id: "services", label: "Services", icon: "mdi:medical-bag", href: "#services" },
+  { id: "why-us", label: "Why Choose Us", icon: "mdi:star-outline", href: "#why-us" },
+  { id: "results", label: "Results", icon: "mdi:image-multiple-outline", href: "#results" },
+  { id: "testimonials", label: "Testimonials", icon: "mdi:format-quote-open", href: "#testimonials" },
+  { id: "contact", label: "Contact", icon: "mdi:phone-outline", href: "#contact" },
 ];
 
 const MobileDrawer = ({ open, onClose, onOpen, activeSection = "home" }) => {
@@ -192,11 +157,10 @@ const MobileDrawer = ({ open, onClose, onOpen, activeSection = "home" }) => {
       {/* Header */}
       <Box className={styles.drawerHeader}>
         <Box className={styles.logoSection}>
-          {/* TODO: Replace with actual content */}
           <img
-            src="https://placehold.co/180x50/2D3561/FFFFFF?text=YOUR+LOGO"
-            alt="Your Business Name"
-            style={{ height: "28px", width: "auto" }}
+            src="https://www.monjoven.com/assets/img/logo.png"
+            alt="Monjoven"
+            style={{ height: "32px", width: "auto" }}
           />
         </Box>
         <IconButton
@@ -292,17 +256,17 @@ const MobileDrawer = ({ open, onClose, onOpen, activeSection = "home" }) => {
           </Typography>
           <Box className={styles.contactActions}>
             <motion.a
-              href="tel:+91XXXXXXXXXX"
+              href="tel:+918011002870"
               className={styles.contactLink}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              onClick={() => trackPhoneClick('+91XXXXXXXXXX', 'mobile_drawer')}
+              onClick={() => trackPhoneClick('+918011002870', 'mobile_drawer')}
             >
               <Icon icon="ic:baseline-phone" />
               <span>Call Us</span>
             </motion.a>
             <motion.a
-              href="https://wa.me/91XXXXXXXXXX?text=Hi,%20I%20am%20interested%20in%20your%20services"
+              href="https://wa.me/919127062599?text=Hi,%20I%20am%20interested%20in%20your%20services"
               className={styles.contactLinkWhatsapp}
               target="_blank"
               rel="noopener noreferrer"
