@@ -1,32 +1,80 @@
 export const featuresData = [
   {
     id: 1,
-    category: 'Setup & Launch',
+    category: "Advanced Technology",
     items: [
-      { icon: 'mdi:map-marker-check', title: 'Location Analysis', description: 'Lorem ipsum dolor sit amet, expert site selection and feasibility assessment' },
-      { icon: 'mdi:palette', title: 'Complete Branding', description: 'Lorem ipsum dolor sit amet, full brand identity and visual design package' },
-      { icon: 'mdi:tools', title: 'Turnkey Setup', description: 'Lorem ipsum dolor sit amet, end-to-end interior and infrastructure setup' },
-      { icon: 'mdi:account-multiple-plus', title: 'Hiring & Training', description: 'Lorem ipsum dolor sit amet, comprehensive staff recruitment and training' },
+      {
+        icon: "mdi:microscope",
+        title: "Micro-FUE Technology",
+        description: "Smallest FUE punch (0.6mm-1.25mm) for minimal scarring and maximum graft survival rate",
+      },
+      {
+        icon: "mdi:laser-pointer",
+        title: "Free Laser Therapy",
+        description: "Complimentary 4-month post-transplant laser therapy to boost hair growth and healing",
+      },
+      {
+        icon: "mdi:needle",
+        title: "PRP Therapy",
+        description: "Platelet-Rich Plasma therapy for non-surgical hair restoration and enhanced results",
+      },
+      {
+        icon: "mdi:image-filter-hdr",
+        title: "Natural Results",
+        description: "Natural angle and density placement ensuring results at par with international standards",
+      },
     ],
   },
   {
     id: 2,
-    category: 'Operations & Technology',
+    category: "Patient Care & Support",
     items: [
-      { icon: 'mdi:laptop', title: 'Technology Platform', description: 'Lorem ipsum dolor sit amet, complete ordering, inventory, and billing system' },
-      { icon: 'mdi:truck-delivery', title: 'Logistics Network', description: 'Lorem ipsum dolor sit amet, reliable delivery and supply chain management' },
-      { icon: 'mdi:package-variant-closed', title: 'Automated Inventory', description: 'Lorem ipsum dolor sit amet, auto-replenishment and stock management' },
-      { icon: 'mdi:ticket-confirmation', title: 'Support System', description: 'Lorem ipsum dolor sit amet, dedicated support platform for issue resolution' },
+      {
+        icon: "mdi:phone-in-talk",
+        title: "24/7 Telephonic Support",
+        description: "Round-the-clock post-procedure support for any questions or concerns during recovery",
+      },
+      {
+        icon: "mdi:calendar-check",
+        title: "Free Follow-Up Care",
+        description: "Complimentary 2-week follow-up care ensuring optimal healing and results",
+      },
+      {
+        icon: "mdi:food-apple",
+        title: "Luxury Clinic Experience",
+        description: "Comfortable clinic environment with complimentary meals and snacks during procedures",
+      },
+      {
+        icon: "mdi:shield-check",
+        title: "Strict Safety Protocols",
+        description: "Rigorous operative protocols with a fully dedicated team of trained surgeons and technicians",
+      },
     ],
   },
   {
     id: 3,
-    category: 'Marketing & Growth',
+    category: "Experience & Trust",
     items: [
-      { icon: 'mdi:bullhorn', title: 'Brand Marketing', description: 'Lorem ipsum dolor sit amet, multi-channel marketing campaigns' },
-      { icon: 'mdi:facebook', title: 'Digital Promotion', description: 'Lorem ipsum dolor sit amet, social media marketing and online campaigns' },
-      { icon: 'mdi:billboard', title: 'Offline Marketing', description: 'Lorem ipsum dolor sit amet, banners, standees, pamphlets, and local campaigns' },
-      { icon: 'mdi:shield-check', title: 'Quality Assurance', description: 'Lorem ipsum dolor sit amet, strict quality control and return policies' },
+      {
+        icon: "mdi:doctor",
+        title: "Expert Surgeon",
+        description: "Led by Dr. Porag Neog (MBBS, MS) with over 12 years of specialized cosmetic surgery experience",
+      },
+      {
+        icon: "mdi:trophy-outline",
+        title: "Pioneer in Northeast India",
+        description: "First dedicated hair transplant clinic in the entire Northeast India region since 2012",
+      },
+      {
+        icon: "mdi:earth",
+        title: "Global Patient Trust",
+        description: "Patients from 10+ countries including US, UK, Canada, Norway, Saudi Arabia, and more",
+      },
+      {
+        icon: "mdi:star-outline",
+        title: "Celebrity Clientele",
+        description: "Trusted by notable personalities and celebrities for discreet, high-quality procedures",
+      },
     ],
   },
 ];
