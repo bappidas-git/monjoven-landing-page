@@ -16,8 +16,14 @@ import styles from "./SecondaryCTASection.module.css";
 const benefits = [
   { text: "Free initial consultation & assessment", icon: "mdi:check-circle" },
   { text: "Personalized treatment plan", icon: "mdi:check-circle" },
-  { text: "Transparent pricing with no hidden costs", icon: "mdi:check-circle" },
-  { text: "Flexible scheduling to suit your convenience", icon: "mdi:check-circle" },
+  {
+    text: "Transparent pricing with no hidden costs",
+    icon: "mdi:check-circle",
+  },
+  {
+    text: "Flexible scheduling to suit your convenience",
+    icon: "mdi:check-circle",
+  },
 ];
 
 const trustIndicators = [
@@ -65,7 +71,10 @@ const SecondaryCTASection = () => {
             {/* Left Column - Text Content */}
             <div className={styles.textColumn}>
               {/* Overline */}
-              <motion.div variants={itemVariants} className={styles.badgeWrapper}>
+              <motion.div
+                variants={itemVariants}
+                className={styles.badgeWrapper}
+              >
                 <span className={styles.badge}>Take the First Step</span>
               </motion.div>
 
@@ -88,8 +97,8 @@ const SecondaryCTASection = () => {
                   sx={{ color: "rgba(255,255,255,0.9)" }}
                 >
                   Dr. Porag Neog personally evaluates every case. Book your free
-                  consultation today and get a customized treatment plan designed
-                  just for you.
+                  consultation today and get a customized treatment plan
+                  designed just for you.
                 </Typography>
               </motion.div>
 
@@ -98,7 +107,10 @@ const SecondaryCTASection = () => {
                 <ul className={styles.benefitsList}>
                   {benefits.map((benefit) => (
                     <li key={benefit.text} className={styles.benefitItem}>
-                      <Icon icon={benefit.icon} className={styles.benefitIcon} />
+                      <Icon
+                        icon={benefit.icon}
+                        className={styles.benefitIcon}
+                      />
                       <span>{benefit.text}</span>
                     </li>
                   ))}
@@ -114,7 +126,7 @@ const SecondaryCTASection = () => {
                     trackCTAClick(
                       "secondary_cta_book",
                       "secondary_cta",
-                      "Book Free Consultation"
+                      "Book Free Consultation",
                     );
                     openLeadDrawer("book-meeting");
                   }}
@@ -135,14 +147,11 @@ const SecondaryCTASection = () => {
                     trackCTAClick(
                       "secondary_cta_whatsapp",
                       "secondary_cta",
-                      "WhatsApp Us"
+                      "WhatsApp Us",
                     )
                   }
                 >
-                  <Icon
-                    icon="mdi:whatsapp"
-                    style={{ fontSize: "1.3rem" }}
-                  />
+                  <Icon icon="mdi:whatsapp" style={{ fontSize: "1.3rem" }} />
                   WhatsApp Us
                 </a>
               </motion.div>

@@ -7,7 +7,7 @@
 .section {
   position: relative;
   padding: var(--space-16) 0;
-  background: linear-gradient(135deg, #1A5276 0%, #0E3D5C 60%, #1A5276 100%);
+  background: linear-gradient(135deg, #1a5276 0%, #0e3d5c 60%, #1a5276 100%);
   overflow: hidden;
 }
 
@@ -68,9 +68,9 @@
   background: rgba(20, 143, 119, 0.2);
   backdrop-filter: blur(8px);
   border-radius: var(--radius-full);
-  color: #148F77;
+  color: #ffffff;
   font-size: var(--fs-sm);
-  font-weight: var(--fw-bold);
+  font-weight: 100;
   letter-spacing: var(--ls-wide);
   border: 1px solid rgba(20, 143, 119, 0.3);
   text-transform: uppercase;
@@ -113,7 +113,7 @@
 
 .benefitIcon {
   font-size: 1.25rem;
-  color: #148F77;
+  color: #148f77;
   flex-shrink: 0;
 }
 
@@ -135,18 +135,20 @@
   align-items: center;
   gap: var(--space-2);
   padding: var(--space-3) var(--space-6);
-  background: #25D366;
+  background: #25d366;
   color: #ffffff;
   font-size: var(--fs-base);
   font-weight: var(--fw-semibold);
   border-radius: var(--radius-lg);
   text-decoration: none;
-  transition: background 0.2s ease, transform 0.2s ease;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
   box-shadow: 0 4px 16px rgba(37, 211, 102, 0.35);
 }
 
 .whatsappBtn:hover {
-  background: #1EBE5D;
+  background: #1ebe5d;
   transform: translateY(-2px);
 }
 
@@ -163,7 +165,7 @@
 }
 
 .phoneLink:hover {
-  color: #148F77;
+  color: #148f77;
 }
 
 .phoneIcon {
@@ -190,7 +192,7 @@
 
 .trustIcon {
   font-size: 1.1rem;
-  color: #148F77;
+  color: #148f77;
 }
 
 /* Image Column */
