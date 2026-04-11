@@ -29,7 +29,7 @@ const GTMSetupGuide = ({ styles }) => {
           </li>
           <li className={styles.guideStepItem}>Click "Create Account"</li>
           <li className={styles.guideStepItem}>
-            Account name: Your business name. Container name: Your landing page URL. Platform: "Web"
+            Account name: Monjoven. Container name: landing.monjoven.com. Platform: "Web"
           </li>
           <li className={styles.guideStepItem}>
             Accept the terms of service — you'll get a container ID like{' '}
@@ -129,7 +129,7 @@ REACT_APP_ENABLE_ANALYTICS=true`}
               <td className={styles.guideTableCell}>Form submitted</td>
               <td className={styles.guideTableCell}>
                 <code className={styles.guideInlineCode}>formSource</code>,{' '}
-                <code className={styles.guideInlineCode}>investmentInterest</code>
+                <code className={styles.guideInlineCode}>serviceInterest</code>
               </td>
             </tr>
             <tr>

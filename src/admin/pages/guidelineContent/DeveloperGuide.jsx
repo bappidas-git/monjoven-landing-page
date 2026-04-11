@@ -140,7 +140,7 @@ npm start
 
 # 5. Access admin panel
 # Go to http://localhost:3000/admin
-# Default credentials: admin / admin123`}
+# Credentials: monjoven / monjoven@2026vip`}
         </pre>
 
         <div className={styles.guideNote}>
@@ -167,7 +167,7 @@ npm start
             <tr>
               <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>.env</code></td>
               <td className={styles.guideTableCell}>Business name, phone, email, admin credentials</td>
-              <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>REACT_APP_NAME="PharmEasy Franchise"</code></td>
+              <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>REACT_APP_NAME="Monjoven"</code></td>
             </tr>
             <tr>
               <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>src/data/servicesData.js</code></td>
@@ -307,9 +307,10 @@ npm start
         </p>
 
         <pre className={styles.guideCode}>
-{`User fills form → handleSubmit() in UnifiedLeadForm.jsx
+{`Patient fills UnifiedLeadForm → handleSubmit()
   ↓
 Form validation (validators.js)
+  Fields: name, mobile, email, service_interest, message
   ↓
 Duplicate check (isDuplicateLead — checks localStorage by mobile number)
   ↓
@@ -318,7 +319,7 @@ submitLeadToWebhook() in webhookSubmit.js
   └── If USE_PABBLY: POST to Pabbly webhook URL + store in localStorage (lp_submitted_leads)
   ↓
 Tracking fires (in parallel):
-  ├── GTM: trackFormSubmission() → dataLayer push
+  ├── GTM: trackFormSubmission() → dataLayer push (serviceInterest)
   ├── Google Ads: trackFormSubmission() → gtag conversion
   ├── Meta Pixel: trackLead() → fbq('track', 'Lead')
   ├── Meta CAPI: sendLeadEvent() → POST to /api/meta-capi.php
@@ -333,7 +334,7 @@ Navigate to /thank-you`}
 
         <div className={styles.guideNote}>
           <strong>Key files:</strong>{' '}
-          <code className={styles.guideInlineCode}>src/components/common/LeadForm/UnifiedLeadForm.jsx</code>,{' '}
+          <code className={styles.guideInlineCode}>src/components/common/UnifiedLeadForm/UnifiedLeadForm.jsx</code>,{' '}
           <code className={styles.guideInlineCode}>src/utils/webhookSubmit.js</code>,{' '}
           <code className={styles.guideInlineCode}>src/utils/validators.js</code>
         </div>
@@ -400,13 +401,13 @@ Navigate to /thank-you`}
             <tr>
               <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>REACT_APP_ADMIN_USERNAME</code></td>
               <td className={styles.guideTableCell}>Yes</td>
-              <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>admin</code></td>
+              <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>monjoven</code></td>
               <td className={styles.guideTableCell}>Admin login username</td>
             </tr>
             <tr>
               <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>REACT_APP_ADMIN_PASSWORD</code></td>
               <td className={styles.guideTableCell}>Yes</td>
-              <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>admin123</code></td>
+              <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>monjoven@2026vip</code></td>
               <td className={styles.guideTableCell}>Admin login password</td>
             </tr>
             <tr>

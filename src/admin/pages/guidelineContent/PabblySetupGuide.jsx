@@ -14,11 +14,12 @@ const PabblySetupGuide = ({ styles }) => {
         </p>
         <p className={styles.guideParagraph}>
           Think of Pabbly as a bridge between your landing page form and your Google
-          Sheet/Email/CRM. When someone fills out the form, Pabbly automatically sends that
-          data wherever you want.
+          Sheet/Email/CRM. When someone fills out the consultation form on{' '}
+          <code className={styles.guideInlineCode}>landing.monjoven.com</code>, Pabbly
+          automatically sends that data wherever you want.
         </p>
         <div className={styles.guideNote}>
-          <strong>How it works:</strong> Form Submit → webhookSubmit.js → Pabbly Webhook →
+          <strong>How it works:</strong> UnifiedLeadForm Submit → webhookSubmit.js → Pabbly Webhook →
           Google Sheets / Email / CRM
         </div>
       </div>
@@ -47,7 +48,7 @@ const PabblySetupGuide = ({ styles }) => {
         <ol className={styles.guideStepList}>
           <li className={styles.guideStepItem}>After login, click "Create Workflow"</li>
           <li className={styles.guideStepItem}>
-            Name it something like "Landing Page Lead Capture"
+            Name it something like "Monjoven - Lead Capture"
           </li>
           <li className={styles.guideStepItem}>
             For the Trigger app, search and select "Webhook / API"
@@ -99,7 +100,7 @@ const PabblySetupGuide = ({ styles }) => {
           <li className={styles.guideStepItem}>
             Start your landing page: <code className={styles.guideInlineCode}>npm start</code>
           </li>
-          <li className={styles.guideStepItem}>Go to the landing page and fill in a test form</li>
+          <li className={styles.guideStepItem}>Go to the landing page and fill in the consultation form</li>
           <li className={styles.guideStepItem}>Submit the form</li>
           <li className={styles.guideStepItem}>
             Go back to Pabbly → your workflow → click "History"
@@ -153,11 +154,11 @@ const PabblySetupGuide = ({ styles }) => {
           <li className={styles.guideStepItem}>
             If using Gmail: connect your Google account
           </li>
-          <li className={styles.guideStepItem}>Set recipient: your sales team email</li>
+          <li className={styles.guideStepItem}>Set recipient: dr@monjoven.com or your sales team email</li>
           <li className={styles.guideStepItem}>
             Subject:{' '}
             <code className={styles.guideInlineCode}>
-              {'New Lead: {{name}} - {{investment_interest}}'}
+              {'New Consultation: {{name}} - {{service_interest}}'}
             </code>
           </li>
           <li className={styles.guideStepItem}>
@@ -171,7 +172,7 @@ const PabblySetupGuide = ({ styles }) => {
       <h2 className={styles.guideTitle}>Lead Data Fields Reference</h2>
       <div className={styles.guideSection}>
         <p className={styles.guideParagraph}>
-          These are all the fields sent by the landing page form to your Pabbly webhook:
+          These are all the fields sent by the UnifiedLeadForm to your Pabbly webhook:
         </p>
         <table className={styles.guideTable}>
           <thead className={styles.guideTableHead}>
@@ -184,8 +185,8 @@ const PabblySetupGuide = ({ styles }) => {
           <tbody>
             <tr>
               <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>name</code></td>
-              <td className={styles.guideTableCell}>John Doe</td>
-              <td className={styles.guideTableCell}>Person's full name</td>
+              <td className={styles.guideTableCell}>Rahul Sharma</td>
+              <td className={styles.guideTableCell}>Patient's full name</td>
             </tr>
             <tr>
               <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>mobile</code></td>
@@ -194,18 +195,18 @@ const PabblySetupGuide = ({ styles }) => {
             </tr>
             <tr>
               <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>email</code></td>
-              <td className={styles.guideTableCell}>john@example.com</td>
-              <td className={styles.guideTableCell}>Email address</td>
+              <td className={styles.guideTableCell}>rahul@example.com</td>
+              <td className={styles.guideTableCell}>Email address (optional)</td>
             </tr>
             <tr>
-              <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>investment_interest</code></td>
-              <td className={styles.guideTableCell}>Premium Plan</td>
-              <td className={styles.guideTableCell}>Selected plan/service</td>
+              <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>service_interest</code></td>
+              <td className={styles.guideTableCell}>Hair Transplant</td>
+              <td className={styles.guideTableCell}>Selected service (Hair Transplant, Rhinoplasty, PRP Therapy, etc.)</td>
             </tr>
             <tr>
-              <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>current_occupation</code></td>
-              <td className={styles.guideTableCell}>Business Owner</td>
-              <td className={styles.guideTableCell}>Person's occupation</td>
+              <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>message</code></td>
+              <td className={styles.guideTableCell}>Interested in FUE technique</td>
+              <td className={styles.guideTableCell}>Additional message from patient (optional)</td>
             </tr>
             <tr>
               <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>source</code></td>
@@ -224,12 +225,12 @@ const PabblySetupGuide = ({ styles }) => {
             </tr>
             <tr>
               <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>submitted_at</code></td>
-              <td className={styles.guideTableCell}>2026-04-01T10:30:00.000Z</td>
+              <td className={styles.guideTableCell}>2026-04-11T10:30:00.000Z</td>
               <td className={styles.guideTableCell}>When the form was submitted</td>
             </tr>
             <tr>
               <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>page_url</code></td>
-              <td className={styles.guideTableCell}>https://example.com/?utm_source=google</td>
+              <td className={styles.guideTableCell}>https://landing.monjoven.com/?utm_source=google</td>
               <td className={styles.guideTableCell}>Full page URL</td>
             </tr>
             <tr>
@@ -244,12 +245,12 @@ const PabblySetupGuide = ({ styles }) => {
             </tr>
             <tr>
               <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>utm_campaign</code></td>
-              <td className={styles.guideTableCell}>spring_sale</td>
+              <td className={styles.guideTableCell}>hair_transplant_guwahati</td>
               <td className={styles.guideTableCell}>Campaign name</td>
             </tr>
             <tr>
               <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>utm_term</code></td>
-              <td className={styles.guideTableCell}>buy+plan</td>
+              <td className={styles.guideTableCell}>hair+transplant+guwahati</td>
               <td className={styles.guideTableCell}>Search keyword</td>
             </tr>
             <tr>
@@ -275,8 +276,9 @@ const PabblySetupGuide = ({ styles }) => {
       <h2 className={styles.guideTitle}>Form Sources Reference</h2>
       <div className={styles.guideSection}>
         <p className={styles.guideParagraph}>
-          The <code className={styles.guideInlineCode}>source</code> field tells you which form on the
-          landing page the lead came from:
+          The <code className={styles.guideInlineCode}>source</code> field tells you which form on{' '}
+          <code className={styles.guideInlineCode}>landing.monjoven.com</code> the lead came from.
+          All forms use the UnifiedLeadForm component:
         </p>
         <table className={styles.guideTable}>
           <thead className={styles.guideTableHead}>
@@ -288,23 +290,19 @@ const PabblySetupGuide = ({ styles }) => {
           <tbody>
             <tr>
               <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>hero-form</code></td>
-              <td className={styles.guideTableCell}>Main form on the right side of Hero section (desktop)</td>
+              <td className={styles.guideTableCell}>Main consultation form in the Hero section</td>
             </tr>
             <tr>
               <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>contact-form</code></td>
               <td className={styles.guideTableCell}>Enquiry form in the Contact section</td>
             </tr>
             <tr>
-              <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>foundation-course</code></td>
-              <td className={styles.guideTableCell}>Form in the Secondary CTA section</td>
+              <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>unified-lead-form</code></td>
+              <td className={styles.guideTableCell}>Default form (no specific formId prop set)</td>
             </tr>
             <tr>
               <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>drawer-form-apply-now</code></td>
-              <td className={styles.guideTableCell}>Slide-in drawer — Apply Now</td>
-            </tr>
-            <tr>
-              <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>drawer-form-download-brochure</code></td>
-              <td className={styles.guideTableCell}>Slide-in drawer — Download Brochure</td>
+              <td className={styles.guideTableCell}>Slide-in drawer — Book Consultation</td>
             </tr>
             <tr>
               <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>drawer-form-request-callback</code></td>
@@ -313,6 +311,10 @@ const PabblySetupGuide = ({ styles }) => {
             <tr>
               <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>drawer-form-get-details</code></td>
               <td className={styles.guideTableCell}>Slide-in drawer — Get Details</td>
+            </tr>
+            <tr>
+              <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>drawer-form-download-brochure</code></td>
+              <td className={styles.guideTableCell}>Slide-in drawer — Download Brochure</td>
             </tr>
           </tbody>
         </table>
@@ -350,13 +352,13 @@ const PabblySetupGuide = ({ styles }) => {
             </tr>
             <tr>
               <td className={styles.guideTableCell}>D</td>
-              <td className={styles.guideTableCell}>Plan</td>
-              <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>{'{{investment_interest}}'}</code></td>
+              <td className={styles.guideTableCell}>Service Interest</td>
+              <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>{'{{service_interest}}'}</code></td>
             </tr>
             <tr>
               <td className={styles.guideTableCell}>E</td>
-              <td className={styles.guideTableCell}>Occupation</td>
-              <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>{'{{current_occupation}}'}</code></td>
+              <td className={styles.guideTableCell}>Message</td>
+              <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>{'{{message}}'}</code></td>
             </tr>
             <tr>
               <td className={styles.guideTableCell}>F</td>
@@ -398,6 +400,26 @@ const PabblySetupGuide = ({ styles }) => {
               <td className={styles.guideTableCell}>UTM Campaign</td>
               <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>{'{{utm_campaign}}'}</code></td>
             </tr>
+            <tr>
+              <td className={styles.guideTableCell}>N</td>
+              <td className={styles.guideTableCell}>UTM Term</td>
+              <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>{'{{utm_term}}'}</code></td>
+            </tr>
+            <tr>
+              <td className={styles.guideTableCell}>O</td>
+              <td className={styles.guideTableCell}>UTM Content</td>
+              <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>{'{{utm_content}}'}</code></td>
+            </tr>
+            <tr>
+              <td className={styles.guideTableCell}>P</td>
+              <td className={styles.guideTableCell}>GCLID</td>
+              <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>{'{{gclid}}'}</code></td>
+            </tr>
+            <tr>
+              <td className={styles.guideTableCell}>Q</td>
+              <td className={styles.guideTableCell}>User Agent</td>
+              <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>{'{{user_agent}}'}</code></td>
+            </tr>
           </tbody>
         </table>
         <div className={styles.guideTip}>
@@ -413,13 +435,13 @@ const PabblySetupGuide = ({ styles }) => {
           Use this template for the email body in your Pabbly email notification action:
         </p>
         <pre className={styles.guideCode}>
-{`New lead received from {{source}}
+{`New consultation request from {{source}}
 
 Name: {{name}}
 Mobile: {{mobile}}
 Email: {{email}}
-Plan Interest: {{investment_interest}}
-Occupation: {{current_occupation}}
+Service Interest: {{service_interest}}
+Message: {{message}}
 
 Submitted: {{submitted_at}}
 Page: {{page_url}}
@@ -451,7 +473,7 @@ UTM Source: {{utm_source}} | Campaign: {{utm_campaign}}`}
   "action": "status_update",
   "lead_id": "a1b2c3d4-e5f6...",
   "new_status": "contacted",
-  "timestamp": "2026-04-01T10:30:00.000Z"
+  "timestamp": "2026-04-11T10:30:00.000Z"
 }`}
         </pre>
       </div>
@@ -460,7 +482,7 @@ UTM Source: {{utm_source}} | Campaign: {{utm_campaign}}`}
       <h2 className={styles.guideTitle}>Testing Checklist</h2>
       <div className={styles.guideSection}>
         <ol className={styles.guideStepList}>
-          <li className={styles.guideStepItem}>Submit a test form on the landing page</li>
+          <li className={styles.guideStepItem}>Submit a test consultation form on the landing page</li>
           <li className={styles.guideStepItem}>
             Check Pabbly workflow history — data should appear within 30 seconds
           </li>
@@ -472,7 +494,7 @@ UTM Source: {{utm_source}} | Campaign: {{utm_campaign}}`}
           </li>
           <li className={styles.guideStepItem}>
             Check the admin panel at{' '}
-            <code className={styles.guideInlineCode}>/admin/lms</code> — lead should appear
+            <code className={styles.guideInlineCode}>landing.monjoven.com/admin/lms</code> — lead should appear
           </li>
           <li className={styles.guideStepItem}>
             Try submitting the same phone number again — should show "Already Registered"
@@ -526,7 +548,7 @@ UTM Source: {{utm_source}} | Campaign: {{utm_campaign}}`}
               <td className={styles.guideTableCell}>
                 UTM parameters must be in the landing page URL (e.g.,{' '}
                 <code className={styles.guideInlineCode}>
-                  ?utm_source=google&utm_medium=cpc
+                  landing.monjoven.com/?utm_source=google&utm_medium=cpc
                 </code>).
               </td>
             </tr>

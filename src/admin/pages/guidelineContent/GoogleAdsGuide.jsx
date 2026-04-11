@@ -58,7 +58,7 @@ const GoogleAdsGuide = ({ styles }) => {
           <li className={styles.guideStepItem}>Select campaign type: "Search"</li>
           <li className={styles.guideStepItem}>
             Campaign name: something descriptive like{' '}
-            <code className={styles.guideInlineCode}>Landing Page - Lead Gen - [City]</code>
+            <code className={styles.guideInlineCode}>Monjoven - Hair Transplant - Guwahati</code>
           </li>
           <li className={styles.guideStepItem}>
             Networks: Uncheck "Display Network" and "Search Partners" (focus budget on Google
@@ -98,14 +98,16 @@ const GoogleAdsGuide = ({ styles }) => {
 
         <h3 className={styles.guideSubtitle}>Example Keywords</h3>
         <p className={styles.guideParagraph}>
-          For a generic service business, your keywords might look like:
+          For Monjoven Hair Transplant & Cosmetic Surgery, your keywords might look like:
         </p>
         <pre className={styles.guideCode}>
-{`"best [service] in [city]"
-"[service] near me"
-"[service] provider [city]"
-"affordable [service] [city]"
-"top [service] company"`}
+{`"best hair transplant in guwahati"
+"hair transplant near me"
+"hair transplant cost guwahati"
+"fue hair transplant assam"
+"rhinoplasty guwahati"
+"cosmetic surgery guwahati"
+"prp hair treatment guwahati"`}
         </pre>
 
         <h3 className={styles.guideSubtitle}>Match Types</h3>
@@ -179,24 +181,25 @@ Wikipedia`}
 
         <h3 className={styles.guideSubtitle}>Example Headlines</h3>
         <pre className={styles.guideCode}>
-{`Best [Service] in [City]
-Trusted by 500+ Customers
-Get a Free Quote Today
-[Service] Starting at ₹X,XXX
-#1 Rated [Service] Provider`}
+{`Best Hair Transplant in Guwahati
+FUE Hair Transplant by Dr. Neog
+Book Free Consultation Today
+Hair Transplant Starting at ₹40,000
+#1 Cosmetic Surgery in Assam
+Natural-Looking Hair Restoration`}
         </pre>
 
         <h3 className={styles.guideSubtitle}>Example Descriptions</h3>
         <pre className={styles.guideCode}>
-{`Looking for reliable [service] in [city]? Get a free consultation today. 10+ years of experience. Call now!
-Professional [service] with guaranteed results. Book your free appointment online. Limited slots available.`}
+{`Looking for hair transplant in Guwahati? Get a free consultation with Dr. Porag Neog. Advanced FUE technique. Book now!
+Professional hair transplant & cosmetic surgery at Monjoven. Natural results guaranteed. Limited consultation slots available.`}
         </pre>
 
         <h3 className={styles.guideSubtitle}>Tips for Better Ads</h3>
         <ol className={styles.guideStepList}>
-          <li className={styles.guideStepItem}>Include your unique selling points (experience, price, guarantee)</li>
-          <li className={styles.guideStepItem}>Use numbers and statistics ("500+ customers", "10+ years")</li>
-          <li className={styles.guideStepItem}>Include a clear call-to-action ("Get Free Quote", "Book Now", "Call Today")</li>
+          <li className={styles.guideStepItem}>Include your unique selling points (Dr. Neog's expertise, FUE technique, natural results)</li>
+          <li className={styles.guideStepItem}>Use numbers and statistics ("1000+ procedures", "10+ years experience")</li>
+          <li className={styles.guideStepItem}>Include a clear call-to-action ("Book Free Consultation", "Call Now", "Get Expert Advice")</li>
           <li className={styles.guideStepItem}>Include your target keyword in at least 2-3 headlines</li>
           <li className={styles.guideStepItem}>Write at least 10 headlines and 4 descriptions for best results</li>
         </ol>
@@ -215,15 +218,15 @@ Professional [service] with guaranteed results. Book your free appointment onlin
           <tbody>
             <tr>
               <td className={styles.guideTableCell}>Sitelinks</td>
-              <td className={styles.guideTableCell}>Additional links below your ad (e.g., "About Us", "Pricing", "Contact")</td>
+              <td className={styles.guideTableCell}>Additional links below your ad (e.g., "Hair Transplant", "Rhinoplasty", "Contact Us")</td>
             </tr>
             <tr>
               <td className={styles.guideTableCell}>Callouts</td>
-              <td className={styles.guideTableCell}>Short highlight phrases (e.g., "Free Consultation", "24/7 Support")</td>
+              <td className={styles.guideTableCell}>Short highlight phrases (e.g., "Free Consultation", "Advanced FUE", "Natural Results")</td>
             </tr>
             <tr>
               <td className={styles.guideTableCell}>Structured Snippets</td>
-              <td className={styles.guideTableCell}>List of services or features under a category header (e.g., "Services: Plumbing, Electrical, HVAC")</td>
+              <td className={styles.guideTableCell}>List of services under a category header (e.g., "Services: Hair Transplant, Rhinoplasty, PRP Therapy, Liposuction")</td>
             </tr>
           </tbody>
         </table>
