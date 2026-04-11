@@ -426,12 +426,11 @@ const Footer = () => {
               <div className={styles.footerBrand}>
                 <div className={styles.logoWrapper}>
                   <img
-                    src="https://www.monjoven.com/assets/img/logo.png"
+                    src="https://res.cloudinary.com/dn9gyaiik/image/upload/v1775884051/logo_in_white_bpsszm.png"
                     alt="Monjoven Hair Transplant & Cosmetic Surgery"
                     style={{
                       height: "36px",
                       width: "auto",
-                      filter: "brightness(0) invert(1)",
                     }}
                   />
                 </div>

@@ -16,6 +16,8 @@ import { trackPhoneClick, trackNavigation } from "../../../utils/gtm";
 import styles from "./Header.module.css";
 
 const logoUrl = "https://www.monjoven.com/assets/img/logo.png";
+const whiteLogoUrl =
+  "https://res.cloudinary.com/dn9gyaiik/image/upload/v1775884051/logo_in_white_bpsszm.png";
 
 // Navigation items
 const navItems = [
@@ -167,11 +169,10 @@ const Header = ({ forceCloseMenu = false }) => {
           >
             <div className={styles.logoWrapper}>
               <img
-                src={logoUrl}
+                src={isScrolled ? logoUrl : whiteLogoUrl}
                 alt="Monjoven"
                 className={styles.mainLogo}
                 style={{
-                  filter: isScrolled ? "none" : "brightness(0) invert(1)",
                   height: "40px",
                   width: "auto",
                 }}

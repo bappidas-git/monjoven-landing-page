@@ -69,12 +69,7 @@
   height: 60px;
   width: auto;
   object-fit: contain;
-  filter: brightness(0) invert(1);
-  transition: filter var(--transition-base);
-}
-
-.scrolled .mainLogo {
-  filter: none;
+  transition: opacity var(--transition-base);
 }
 
 .logoDivider {
