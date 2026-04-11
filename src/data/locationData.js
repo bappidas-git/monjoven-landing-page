@@ -11,7 +11,7 @@ export const locationData = {
   website: "www.monjoven.com",
   whatsapp: "919127062599",
   mapUrl:
-    "https://placehold.co/800x400/1A5276/FFFFFF?text=Monjoven+Clinic+Location+Map",
+    "https://res.cloudinary.com/dn9gyaiik/image/upload/v1775885388/Map_Image_tezkg3.png",
   warehouses: [],
   nearbyAreas: [
     "Six Mile",
