@@ -39,7 +39,7 @@ const highlightsData = [
   {
     id: 1,
     image:
-      "https://placehold.co/600x400/1A5276/FFFFFF?text=Before+After+Hair+Transplant",
+      "https://res.cloudinary.com/dn9gyaiik/image/upload/v1775884048/Before_and_after_hair_tansplant_enseie.png",
     title: "Hair Transplant Results",
     description:
       "Natural, dense hair growth achieved through our Micro-FUE technique with the smallest punch size for minimal scarring.",
@@ -47,7 +47,7 @@ const highlightsData = [
   {
     id: 2,
     image:
-      "https://placehold.co/600x400/148F77/FFFFFF?text=Before+After+Beard+Transplant",
+      "https://res.cloudinary.com/dn9gyaiik/image/upload/v1775884049/beard_transplant_tjg6ev.png",
     title: "Beard Transplant Results",
     description:
       "Full, natural-looking beard achieved with precision FUE extraction and custom design for each patient.",
@@ -55,7 +55,7 @@ const highlightsData = [
   {
     id: 3,
     image:
-      "https://placehold.co/600x400/1A5276/FFFFFF?text=FUE+Procedure+Process",
+      "https://res.cloudinary.com/dn9gyaiik/image/upload/v1775884053/fue_procedure_skz7zt.png",
     title: "Our FUE Process",
     description:
       "Individual follicles extracted using micro punches (0.6-1.25mm) and reinserted at natural angles for seamless results.",
@@ -63,14 +63,15 @@ const highlightsData = [
   {
     id: 4,
     image:
-      "https://placehold.co/600x400/148F77/FFFFFF?text=FUT+Procedure+Process",
+      "https://res.cloudinary.com/dn9gyaiik/image/upload/v1775884050/FUT_Procedure_mkieqo.png",
     title: "Our FUT Process",
     description:
       "Strip harvesting under local anesthesia with individual graft separation for maximum coverage in a single session.",
   },
   {
     id: 5,
-    image: "https://placehold.co/600x400/1A5276/FFFFFF?text=Post+Op+Care",
+    image:
+      "https://res.cloudinary.com/dn9gyaiik/image/upload/v1775884051/post_up_care_h4wblq.png",
     title: "Comprehensive Post-Op Care",
     description:
       "Free laser therapy for 4 months, 2 weeks follow-up care, and 24/7 telephonic support for complete peace of mind.",
@@ -78,7 +79,7 @@ const highlightsData = [
   {
     id: 6,
     image:
-      "https://placehold.co/600x400/148F77/FFFFFF?text=Monjoven+Clinic+Interior",
+      "https://res.cloudinary.com/dn9gyaiik/image/upload/v1775884052/Monjoven_Clinic_Interior_pravha.png",
     title: "World-Class Facility",
     description:
       "Clean, well-organized clinic environment with luxury amenities, complimentary meals, and a dedicated team of specialists.",
@@ -164,10 +165,7 @@ const HighlightsSection = () => {
           </motion.div>
 
           {/* CTA Banner */}
-          <motion.div
-            variants={itemVariants}
-            className={styles.ctaBanner}
-          >
+          <motion.div variants={itemVariants} className={styles.ctaBanner}>
             <div className={styles.ctaBannerContent}>
               <div className={styles.ctaIconWrap}>
                 <Icon icon="mdi:calendar-check" />
@@ -179,10 +177,7 @@ const HighlightsSection = () => {
                 >
                   Ready for Your Transformation?
                 </Typography>
-                <Typography
-                  className={styles.ctaDesc}
-                  sx={{ color: "#fff" }}
-                >
+                <Typography className={styles.ctaDesc} sx={{ color: "#fff" }}>
                   Book a free consultation with our specialists and take the
                   first step toward your new look. Personalized treatment plans
                   tailored to your goals.

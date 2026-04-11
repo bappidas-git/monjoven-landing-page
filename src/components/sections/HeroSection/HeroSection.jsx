@@ -24,10 +24,10 @@ import styles from "./HeroSection.module.css";
 // Hero images with fallbacks
 const HERO_IMAGES = {
   desktop: [
-    "https://placehold.co/1920x800/1A5276/FFFFFF?text=Monjoven+Hair+Transplant+Clinic",
+    "https://res.cloudinary.com/dn9gyaiik/image/upload/v1775884050/Hero_Image_Desktop_V_pcpj89.png",
   ],
   mobile: [
-    "https://placehold.co/768x1000/1A5276/FFFFFF?text=Monjoven+Hair+Transplant",
+    "https://res.cloudinary.com/dn9gyaiik/image/upload/v1775884050/Hero_Image_Mobile_V_k4r8vx.png",
   ],
 };
 
@@ -238,7 +238,11 @@ const HeroSection = () => {
                   size="large"
                   className={styles.primaryCta}
                   onClick={() => {
-                    trackCTAClick('hero_primary_cta', 'hero', 'Book Free Consultation');
+                    trackCTAClick(
+                      "hero_primary_cta",
+                      "hero",
+                      "Book Free Consultation",
+                    );
                     openLeadDrawer("apply-now");
                   }}
                   sx={{
@@ -268,7 +272,7 @@ const HeroSection = () => {
                   component="a"
                   href="tel:+918011002870"
                   onClick={() => {
-                    trackCTAClick('hero_secondary_cta', 'hero', 'Call Now');
+                    trackCTAClick("hero_secondary_cta", "hero", "Call Now");
                   }}
                   sx={{
                     borderColor: "rgba(255, 255, 255, 0.6)",

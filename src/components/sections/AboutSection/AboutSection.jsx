@@ -5,11 +5,7 @@
 
 import React from "react";
 import { motion, useInView } from "framer-motion";
-import {
-  Container,
-  Typography,
-  Button,
-} from "@mui/material";
+import { Container, Typography, Button } from "@mui/material";
 import { Icon } from "@iconify/react";
 import AnimatedCounter from "../../common/AnimatedCounter/AnimatedCounter";
 import { useModal } from "../../../context/ModalContext";
@@ -73,7 +69,8 @@ const keyStats = [
 
 // Doctor profile data
 const doctorProfile = {
-  image: "https://placehold.co/400x500/1A5276/FFFFFF?text=Dr.+Porag+Neog",
+  image:
+    "https://res.cloudinary.com/dn9gyaiik/image/upload/v1775884050/Dr._Image_Porag_neong_pyergn.png",
   name: "Dr. Porag Neog",
   credentials: "MBBS, MS",
   title: "Cosmetic Surgeon & Founder",
@@ -82,7 +79,7 @@ const doctorProfile = {
 
 // Clinic image
 const clinicImage = {
-  src: "https://placehold.co/600x400/1A5276/FFFFFF?text=Monjoven+Clinic+Interior",
+  src: "https://res.cloudinary.com/dn9gyaiik/image/upload/v1775884050/Clinic_Image_cj0glm.png",
   alt: "Monjoven Clinic Interior",
 };
 
@@ -91,22 +88,26 @@ const differentiators = [
   {
     icon: "mdi:medal-outline",
     title: "12+ Years of Proven Excellence",
-    description: "Pioneering hair transplant and cosmetic surgery in Northeast India since 2012",
+    description:
+      "Pioneering hair transplant and cosmetic surgery in Northeast India since 2012",
   },
   {
     icon: "mdi:microscope",
     title: "Smallest FUE Punch Technology",
-    description: "Advanced micro-FUE technology for natural, undetectable results with minimal scarring",
+    description:
+      "Advanced micro-FUE technology for natural, undetectable results with minimal scarring",
   },
   {
     icon: "mdi:earth",
     title: "International Standard Results",
-    description: "World-class outcomes that match the best clinics globally, right here in Northeast India",
+    description:
+      "World-class outcomes that match the best clinics globally, right here in Northeast India",
   },
   {
     icon: "mdi:account-group",
     title: "Globally Trusted by Patients",
-    description: "Patients from across India and internationally — US, Canada, UK, Norway, Saudi Arabia, France, Dubai, Bhutan, and Nepal",
+    description:
+      "Patients from across India and internationally — US, Canada, UK, Norway, Saudi Arabia, France, Dubai, Bhutan, and Nepal",
   },
 ];
 
@@ -205,8 +206,8 @@ const AboutSection = () => {
                 and cosmetic surgery, Monjoven delivers international-standard
                 results using advanced micro-FUE technology. Our patients travel
                 from across India and internationally — from the US, Canada, UK,
-                Norway, Saudi Arabia, France, Dubai, Bhutan, and Nepal — trusting
-                us with their transformation journey.
+                Norway, Saudi Arabia, France, Dubai, Bhutan, and Nepal —
+                trusting us with their transformation journey.
               </Typography>
               <Button
                 variant="contained"
