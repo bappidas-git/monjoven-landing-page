@@ -21,7 +21,11 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { servicesData } from "../../../data/servicesData";
 import { useModal } from "../../../context/ModalContext";
-import { injectSchema, removeSchema, generateServiceSchema } from "../../../utils/seo";
+import {
+  injectSchema,
+  removeSchema,
+  generateServiceSchema,
+} from "../../../utils/seo";
 import styles from "./ServicesSection.module.css";
 
 // Animation variants
@@ -64,7 +68,12 @@ const cardVariants = {
 
 // Comparison data
 const comparisonData = {
-  headers: ["Feature", "Hair Transplant", "Beard Transplant", "Cosmetic Surgery"],
+  headers: [
+    "Feature",
+    "Hair Transplant",
+    "Beard Transplant",
+    "Cosmetic Surgery",
+  ],
   rows: [
     {
       label: "Procedure Duration",
@@ -103,8 +112,8 @@ const ServicesSection = () => {
 
   // Inject Service schema for structured data
   useEffect(() => {
-    injectSchema('schema-services', generateServiceSchema(servicesData));
-    return () => removeSchema('schema-services');
+    injectSchema("schema-services", generateServiceSchema(servicesData));
+    return () => removeSchema("schema-services");
   }, []);
 
   const handleBookConsultation = (serviceName) => {
@@ -133,7 +142,9 @@ const ServicesSection = () => {
         >
           <Icon
             icon={
-              service.badge === "Most Popular" ? "mdi:star" : "mdi:diamond-stone"
+              service.badge === "Most Popular"
+                ? "mdi:star"
+                : "mdi:diamond-stone"
             }
           />
           <span>{service.badge}</span>
@@ -375,7 +386,7 @@ const ServicesSection = () => {
               >
                 <Box
                   component="img"
-                  src="https://placehold.co/96x96/E8EDF2/2D3561?text=Doctor+Photo"
+                  src="https://res.cloudinary.com/dn9gyaiik/image/upload/v1775886740/doc-small-photo_rasnle.png"
                   alt="Lead Surgeon"
                   sx={{
                     width: { xs: 56, md: 64 },

@@ -5,19 +5,14 @@
 
 import React, { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  Container,
-  IconButton,
-  useMediaQuery,
-  useTheme,
-} from "@mui/material";
+import { Container, IconButton, useMediaQuery, useTheme } from "@mui/material";
 import { Icon } from "@iconify/react";
 import { trackPhoneClick, trackNavigation } from "../../../utils/gtm";
 import styles from "./Header.module.css";
 
 const logoUrl = "https://www.monjoven.com/assets/img/logo.png";
 const whiteLogoUrl =
-  "https://res.cloudinary.com/dn9gyaiik/image/upload/v1775884051/logo_in_white_bpsszm.png";
+  "https://res.cloudinary.com/dn9gyaiik/image/upload/v1775887476/MONJOVEN-LOGO_hqpdnc.png";
 
 // Navigation items
 const navItems = [
@@ -196,7 +191,7 @@ const Header = ({ forceCloseMenu = false }) => {
                   <a
                     href={item.href}
                     onClick={(e) => {
-                      trackNavigation('desktop_nav', 'click', item.label);
+                      trackNavigation("desktop_nav", "click", item.label);
                       scrollToSection(e, item.href);
                     }}
                     className={`${styles.navLink} ${activeSection === item.href.substring(1) ? styles.active : ""}`}
@@ -220,7 +215,9 @@ const Header = ({ forceCloseMenu = false }) => {
               <a
                 href="tel:+918011002870"
                 className={styles.callButton}
-                onClick={() => trackPhoneClick('+918011002870', 'header_desktop')}
+                onClick={() =>
+                  trackPhoneClick("+918011002870", "header_desktop")
+                }
               >
                 <Icon icon="mdi:phone" className={styles.callButtonIcon} />
                 +91 8011002870
@@ -234,7 +231,7 @@ const Header = ({ forceCloseMenu = false }) => {
               className={styles.menuButton}
               onClick={() => {
                 const newState = !isMobileMenuOpen;
-                trackNavigation('mobile_menu', newState ? 'open' : 'close');
+                trackNavigation("mobile_menu", newState ? "open" : "close");
                 setIsMobileMenuOpen(newState);
               }}
               aria-label="Toggle menu"
@@ -286,7 +283,7 @@ const Header = ({ forceCloseMenu = false }) => {
                   href="tel:+918011002870"
                   className={styles.mobileCallButton}
                   onClick={() => {
-                    trackPhoneClick('+918011002870', 'header_mobile_menu');
+                    trackPhoneClick("+918011002870", "header_mobile_menu");
                     setIsMobileMenuOpen(false);
                   }}
                 >

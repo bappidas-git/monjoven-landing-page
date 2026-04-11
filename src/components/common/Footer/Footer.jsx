@@ -61,21 +61,15 @@ const PrivacyPolicyContent = () => (
       <h3>How We Use Your Information</h3>
       <p>We use the collected information for the following purposes:</p>
       <ul>
-        <li>
-          To respond to your inquiries and provide treatment information
-        </li>
+        <li>To respond to your inquiries and provide treatment information</li>
         <li>To schedule consultations and medical appointments</li>
-        <li>
-          To maintain accurate patient records and treatment histories
-        </li>
+        <li>To maintain accurate patient records and treatment histories</li>
         <li>
           To send relevant health updates and promotional communications (with
           your consent)
         </li>
         <li>To improve our website and services based on patient feedback</li>
-        <li>
-          To comply with legal and medical regulatory obligations
-        </li>
+        <li>To comply with legal and medical regulatory obligations</li>
       </ul>
     </section>
 
@@ -85,8 +79,8 @@ const PrivacyPolicyContent = () => (
         We treat all medical and health-related data with the highest level of
         confidentiality. Patient medical records, consultation notes,
         before/after photographs, and treatment histories are stored securely
-        and access is restricted to authorized medical personnel only. We do
-        not share your medical data with third parties without your explicit
+        and access is restricted to authorized medical personnel only. We do not
+        share your medical data with third parties without your explicit
         consent, except as required by law.
       </p>
     </section>
@@ -405,9 +399,21 @@ const serviceLinks = [
 
 // Social media links
 const socialLinks = [
-  { icon: "mdi:facebook", href: "https://www.facebook.com/MONJOVEN/", label: "Facebook" },
-  { icon: "mdi:instagram", href: "https://www.instagram.com/monjoven_", label: "Instagram" },
-  { icon: "mdi:whatsapp", href: "https://api.whatsapp.com/send?phone=919127062599", label: "WhatsApp" },
+  {
+    icon: "mdi:facebook",
+    href: "https://www.facebook.com/MONJOVEN/",
+    label: "Facebook",
+  },
+  {
+    icon: "mdi:instagram",
+    href: "https://www.instagram.com/monjoven_",
+    label: "Instagram",
+  },
+  {
+    icon: "mdi:whatsapp",
+    href: "https://api.whatsapp.com/send?phone=919127062599",
+    label: "WhatsApp",
+  },
 ];
 
 const Footer = () => {
@@ -426,7 +432,7 @@ const Footer = () => {
               <div className={styles.footerBrand}>
                 <div className={styles.logoWrapper}>
                   <img
-                    src="https://res.cloudinary.com/dn9gyaiik/image/upload/v1775884051/logo_in_white_bpsszm.png"
+                    src="https://res.cloudinary.com/dn9gyaiik/image/upload/v1775887476/MONJOVEN-LOGO_hqpdnc.png"
                     alt="Monjoven Hair Transplant & Cosmetic Surgery"
                     style={{
                       height: "36px",
@@ -608,12 +614,12 @@ const Footer = () => {
             <p className={styles.developerText}>
               Designed and Developed by{" "}
               <a
-                href="https://www.monjoven.com"
+                href="https://www.assamdigital.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.developerLink}
               >
-                Monjoven
+                Assam Digital
               </a>
             </p>
           </Container>
