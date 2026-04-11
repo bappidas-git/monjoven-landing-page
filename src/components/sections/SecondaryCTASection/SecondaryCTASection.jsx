@@ -180,7 +180,7 @@ const SecondaryCTASection = () => {
             <motion.div variants={itemVariants} className={styles.imageColumn}>
               <Box
                 component="img"
-                src="https://placehold.co/600x500/0a7d6a/FFFFFF?text=Book+Your+Consultation+Today&font=poppins"
+                src="https://res.cloudinary.com/dn9gyaiik/image/upload/v1775889576/Book_your_consultation_today_vv54ox.png"
                 alt="Indian woman greeting with Namaskar - Book your consultation today"
                 className={styles.ctaImage}
               />

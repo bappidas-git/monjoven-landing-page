@@ -79,7 +79,7 @@ const doctorProfile = {
 
 // Clinic image
 const clinicImage = {
-  src: "https://res.cloudinary.com/dn9gyaiik/image/upload/v1775884050/Clinic_Image_cj0glm.png",
+  src: "https://res.cloudinary.com/dn9gyaiik/image/upload/v1775887560/monjoven-clinic-interior_urbcsh.png",
   alt: "Monjoven Clinic Interior",
 };
 
