@@ -163,21 +163,22 @@
   align-items: center;
   gap: var(--space-2);
   padding: var(--space-2) var(--space-4);
-  background: var(--accent-gold);
-  color: var(--primary-dark);
+  background: var(--accent-orange);
+  color: var(--white);
   font-size: var(--fs-sm);
   font-weight: var(--fw-semibold);
   text-decoration: none;
   border-radius: var(--radius-lg);
   transition: all var(--transition-fast);
   white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
 }
 
 .callButton:hover {
-  background: var(--primary-dark);
-  color: var(--accent-gold);
+  background: var(--accent-orange-dark);
+  color: var(--white);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(20, 143, 119, 0.3);
+  box-shadow: 0 4px 16px rgba(255, 107, 53, 0.45);
 }
 
 .callButtonIcon {
@@ -191,18 +192,19 @@
   gap: var(--space-2);
   width: 100%;
   padding: var(--space-3) var(--space-4);
-  background: var(--accent-gold);
-  color: var(--primary-dark);
+  background: var(--accent-orange);
+  color: var(--white);
   font-size: var(--fs-base);
   font-weight: var(--fw-semibold);
   text-decoration: none;
   border-radius: var(--radius-lg);
   transition: all var(--transition-fast);
+  box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
 }
 
 .mobileCallButton:hover {
-  background: var(--primary-dark);
-  color: var(--accent-gold);
+  background: var(--accent-orange-dark);
+  color: var(--white);
 }
 
 /* Menu Button */

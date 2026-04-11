@@ -369,11 +369,11 @@
 
 .primaryBtn {
   min-width: 260px;
-  box-shadow: 0 8px 25px rgba(20, 143, 119, 0.4);
+  box-shadow: 0 8px 25px rgba(255, 107, 53, 0.45);
 }
 
 .primaryBtn:hover {
-  box-shadow: 0 12px 35px rgba(20, 143, 119, 0.5);
+  box-shadow: 0 12px 35px rgba(255, 107, 53, 0.55);
 }
 
 .secondaryBtn {

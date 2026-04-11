@@ -20,19 +20,19 @@ const colors = {
     contrastText: '#FFFFFF',
   },
   orange: {
-    main: '#E74C3C',
-    light: '#EC7063',
-    dark: '#C0392B',
-    50: '#FDEDEC',
-    100: '#FADBD8',
-    200: '#F5B7B1',
-    300: '#F1948A',
-    400: '#EC7063',
-    500: '#E74C3C',
-    600: '#C0392B',
-    700: '#A93226',
-    800: '#922B21',
-    900: '#7B241C',
+    main: '#FF6B35',
+    light: '#FF8C5A',
+    dark: '#E85A20',
+    50: '#FFF3ED',
+    100: '#FFE0CC',
+    200: '#FFCAAA',
+    300: '#FFB088',
+    400: '#FF8C5A',
+    500: '#FF6B35',
+    600: '#E85A20',
+    700: '#CC4D1A',
+    800: '#A63F15',
+    900: '#803110',
   },
   navy: {
     main: '#1A5276',
@@ -102,7 +102,7 @@ const colors = {
     gold: '#148F77',
     green: '#4CAF50',
     purple: '#9C27B0',
-    orange: '#E74C3C',
+    orange: '#FF6B35',
     pink: '#E91E63',
     red: '#F44336',
     teal: '#148F77',
@@ -267,9 +267,9 @@ const shadows = [
   '0 40px 152px rgba(0, 0, 0, 0.28)',
 ];
 
-// Teal shadow for buttons and highlights
-const orangeShadow = '0 4px 14px rgba(20, 143, 119, 0.25)';
-const orangeShadowHover = '0 6px 20px rgba(20, 143, 119, 0.35)';
+// Orange shadow for CTA buttons and highlights
+const orangeShadow = '0 4px 14px rgba(255, 107, 53, 0.35)';
+const orangeShadowHover = '0 6px 20px rgba(255, 107, 53, 0.45)';
 
 // Create theme
 const theme = createTheme({
@@ -399,11 +399,11 @@ const theme = createTheme({
           },
         },
         containedPrimary: {
-          background: `linear-gradient(135deg, ${colors.secondary.main} 0%, ${colors.secondary.light} 100%)`,
+          background: `linear-gradient(135deg, ${colors.orange.main} 0%, ${colors.orange.light} 100%)`,
           color: '#FFFFFF',
           boxShadow: orangeShadow,
           '&:hover': {
-            background: `linear-gradient(135deg, ${colors.secondary.light} 0%, ${colors.secondary.main} 100%)`,
+            background: `linear-gradient(135deg, ${colors.orange.light} 0%, ${colors.orange.main} 100%)`,
             boxShadow: orangeShadowHover,
             transform: 'translateY(-2px)',
           },
@@ -1112,7 +1112,7 @@ const theme = createTheme({
           },
         },
         primary: {
-          background: `linear-gradient(135deg, ${colors.secondary.main} 0%, ${colors.secondary.light} 100%)`,
+          background: `linear-gradient(135deg, ${colors.orange.main} 0%, ${colors.orange.light} 100%)`,
           color: '#FFFFFF',
         },
       },
@@ -1121,11 +1121,11 @@ const theme = createTheme({
     MuiSpeedDial: {
       styleOverrides: {
         fab: {
-          background: `linear-gradient(135deg, ${colors.secondary.main} 0%, ${colors.secondary.light} 100%)`,
+          background: `linear-gradient(135deg, ${colors.orange.main} 0%, ${colors.orange.light} 100%)`,
           color: '#FFFFFF',
           boxShadow: orangeShadow,
           '&:hover': {
-            background: `linear-gradient(135deg, ${colors.secondary.light} 0%, ${colors.secondary.main} 100%)`,
+            background: `linear-gradient(135deg, ${colors.orange.light} 0%, ${colors.orange.main} 100%)`,
             boxShadow: orangeShadowHover,
           },
         },

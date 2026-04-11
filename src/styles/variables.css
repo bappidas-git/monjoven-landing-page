@@ -20,9 +20,11 @@
   --accent-gold-gradient-horizontal: linear-gradient(90deg, #148F77 0%, #1ABC9C 50%, #148F77 100%);
 
   /* ========== Accent Orange - CTAs Only ========== */
-  --accent-orange: #E74C3C;
-  --accent-orange-light: #EC7063;
-  --accent-orange-dark: #C0392B;
+  --accent-orange: #FF6B35;
+  --accent-orange-light: #FF8C5A;
+  --accent-orange-dark: #E85A20;
+  --accent-orange-gradient: linear-gradient(135deg, #FF6B35 0%, #FF8C5A 100%);
+  --accent-orange-gradient-reverse: linear-gradient(135deg, #FF8C5A 0%, #FF6B35 100%);
 
   /* ========== Neutral Colors ========== */
   --white: #FFFFFF;
@@ -41,8 +43,8 @@
   --icon-green-bg: rgba(76, 175, 80, 0.15);
   --icon-purple: #9C27B0;
   --icon-purple-bg: rgba(156, 39, 176, 0.15);
-  --icon-orange: #E74C3C;
-  --icon-orange-bg: rgba(231, 76, 60, 0.15);
+  --icon-orange: #FF6B35;
+  --icon-orange-bg: rgba(255, 107, 53, 0.15);
   --icon-pink: #E91E63;
   --icon-pink-bg: rgba(233, 30, 99, 0.15);
   --icon-red: #F44336;
@@ -79,8 +81,8 @@
   --shadow-gold: rgba(20, 143, 119, 0.3);
   --shadow-card: 0 2px 12px rgba(26, 82, 118, 0.08);
   --shadow-card-hover: 0 8px 30px rgba(26, 82, 118, 0.12);
-  --shadow-button: 0 4px 14px rgba(20, 143, 119, 0.25);
-  --shadow-button-hover: 0 6px 20px rgba(20, 143, 119, 0.35);
+  --shadow-button: 0 4px 14px rgba(255, 107, 53, 0.35);
+  --shadow-button-hover: 0 6px 20px rgba(255, 107, 53, 0.45);
 
   /* ========== Typography ========== */
   --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
