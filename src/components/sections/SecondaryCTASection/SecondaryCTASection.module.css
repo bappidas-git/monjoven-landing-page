@@ -157,15 +157,22 @@
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-  color: rgba(255, 255, 255, 0.85);
+  color: #FFFFFF;
   font-size: var(--fs-base);
-  font-weight: var(--fw-medium);
+  font-weight: var(--fw-semibold);
   text-decoration: none;
-  transition: color 0.2s ease;
+  padding: var(--space-3) var(--space-6);
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  border-radius: var(--radius-xl);
+  transition: all 0.25s ease;
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .phoneLink:hover {
-  color: #148f77;
+  color: #FFFFFF;
+  border-color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-2px);
 }
 
 .phoneIcon {

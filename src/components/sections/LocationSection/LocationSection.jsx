@@ -283,6 +283,7 @@ const LocationSection = () => {
               size="large"
               startIcon="mdi:phone"
               href="tel:+918011002870"
+              className={styles.callUsBtn}
             >
               Call Us
             </Button>
