@@ -67,7 +67,7 @@ npm start
 npm run build
 ```
 
-Default admin credentials: `admin` / `admin123` (change in `.env`).
+Admin credentials: `monjoven` / `monjoven@2026vip` (configured in `.env`).
 
 ## Folder Structure
 

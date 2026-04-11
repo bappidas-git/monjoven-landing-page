@@ -37,7 +37,7 @@ Every event the codebase pushes to `window.dataLayer`:
 | Event Name | When It Fires | Key Parameters | File & Line |
 |---|---|---|---|
 | `virtual_pageview` | Route change | `page_path`, `page_title` | `src/utils/gtm.js:59` |
-| `lead_form_submission` | Form submitted | `formSource`, `investmentInterest` | `src/utils/gtm.js:71` |
+| `lead_form_submission` | Form submitted | `formSource`, `serviceInterest` | `src/utils/gtm.js:71` |
 | `generate_lead` | Form submitted (GA4 format) | `currency`, `value`, `lead_source`, `method` | `src/utils/gtm.js:77` |
 | `cta_click` | CTA button clicked | `cta_name`, `cta_location`, `cta_text` | `src/utils/gtm.js:92` |
 | `phone_click` | Phone number clicked | `phone_number`, `click_location` | `src/utils/gtm.js:105` |

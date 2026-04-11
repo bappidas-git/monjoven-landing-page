@@ -28,8 +28,8 @@ Key variables to update:
 | `REACT_APP_WHATSAPP_NUMBER` | WhatsApp number (no dashes) |
 | `REACT_APP_SALES_EMAIL` | Sales email address |
 | `REACT_APP_OFFICE_ADDRESS` | Full office address |
-| `REACT_APP_ADMIN_USERNAME` | Admin panel username |
-| `REACT_APP_ADMIN_PASSWORD` | Admin panel password |
+| `REACT_APP_ADMIN_USERNAME` | Admin panel username (default: `monjoven`) |
+| `REACT_APP_ADMIN_PASSWORD` | Admin panel password (default: `monjoven@2026vip`) |
 
 ## 3. Update Brand Colors
 
@@ -189,7 +189,7 @@ After deployment, verify:
 
 - [ ] Landing page loads at your domain
 - [ ] All sections render correctly
-- [ ] Lead form submissions work (check Pabbly webhook logs)
+- [ ] UnifiedLeadForm submissions work (check Pabbly webhook logs)
 - [ ] Thank You page shows after form submission
 - [ ] Admin panel accessible at `/admin`
 - [ ] GTM fires events (check browser console for `dataLayer`)

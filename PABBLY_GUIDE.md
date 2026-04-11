@@ -2,16 +2,16 @@
 
 ## 1. Overview
 
-This boilerplate uses **Pabbly Connect** to capture form leads via webhook.
-When a visitor submits any lead form, the data flows through a single utility function
+This landing page uses **Pabbly Connect** to capture consultation leads via webhook.
+When a visitor submits the UnifiedLeadForm on `landing.monjoven.com`, the data flows through a single utility function
 and lands in your Pabbly workflow for processing.
 
 **Flow:**
 ```
-Form Submit → webhookSubmit.js → Pabbly Webhook → Google Sheets / Email / CRM
+UnifiedLeadForm Submit → webhookSubmit.js → Pabbly Webhook → Google Sheets / Email / CRM
 ```
 
-All forms (hero, contact, drawer variants, secondary CTA) use the same webhook endpoint configured in `src/utils/webhookSubmit.js`.
+All forms (hero, contact, drawer variants) use the same webhook endpoint configured in `src/utils/webhookSubmit.js`.
 
 ---
 
@@ -25,32 +25,32 @@ All forms (hero, contact, drawer variants, secondary CTA) use the same webhook e
    const USE_PABBLY = true;
    const DUMMY_MODE = false;
    ```
-4. **Test with a form submission** — Fill out any form on your landing page and submit.
+4. **Test with a form submission** — Fill out the consultation form on your landing page and submit.
 5. **Check Pabbly** — Open your workflow history and confirm the webhook received the payload.
 
 ---
 
 ## 3. Lead Data Fields
 
-Every submission sends these fields to the webhook:
+Every submission from the UnifiedLeadForm sends these fields to the webhook:
 
 | Field Name            | Example                              | Description                        |
 |-----------------------|--------------------------------------|------------------------------------|
-| `name`                | `John Doe`                           | Applicant's full name              |
-| `mobile`              | `9876543210`                         | Mobile number                      |
-| `email`               | `john@example.com`                   | Email address                      |
-| `investment_interest` | `Premium Plan`                       | Selected investment/plan option    |
-| `current_occupation`  | `Business Owner`                     | Applicant's occupation             |
+| `name`                | `Rahul Sharma`                       | Patient's full name                |
+| `mobile`              | `9876543210`                         | Mobile number (10 digits)          |
+| `email`               | `rahul@example.com`                  | Email address (optional)           |
+| `service_interest`    | `Hair Transplant`                    | Selected service (Hair Transplant, Rhinoplasty, PRP Therapy, etc.) |
+| `message`             | `Interested in FUE technique`        | Additional message from patient (optional) |
 | `source`              | `hero-form`                          | Form identifier (see Section 4)   |
 | `lead_id`             | `a1b2c3d4-e5f6-4g7h-8i9j-k0l1m2n3` | Auto-generated UUID                |
 | `status`              | `new`                                | Initial lead status                |
-| `submitted_at`        | `2026-04-01T10:30:00.000Z`          | ISO 8601 timestamp                 |
-| `page_url`            | `https://example.com/?utm_source=google` | Full page URL at submission   |
+| `submitted_at`        | `2026-04-11T10:30:00.000Z`          | ISO 8601 timestamp                 |
+| `page_url`            | `https://landing.monjoven.com/?utm_source=google` | Full page URL at submission   |
 | `user_agent`          | `Mozilla/5.0 ...`                    | Browser user-agent string          |
 | `utm_source`          | `google`                             | UTM source parameter               |
 | `utm_medium`          | `cpc`                                | UTM medium parameter               |
-| `utm_campaign`        | `spring_sale`                        | UTM campaign parameter             |
-| `utm_term`            | `buy+plan`                           | UTM term parameter                 |
+| `utm_campaign`        | `hair_transplant_guwahati`           | UTM campaign parameter             |
+| `utm_term`            | `hair+transplant+guwahati`           | UTM term parameter                 |
 | `utm_content`         | `ad_variant_a`                       | UTM content parameter              |
 | `gclid`               | `EAIaIQobChMI...`                    | Google Click ID (from URL or stored) |
 
@@ -58,21 +58,17 @@ Every submission sends these fields to the webhook:
 
 ## 4. Form Sources
 
-The `source` field identifies which form generated the lead:
+The `source` field identifies which form on `landing.monjoven.com` generated the lead:
 
 | Source Value                       | Form Location                              |
 |------------------------------------|--------------------------------------------|
-| `hero-form`                        | HeroSection — right-side desktop form      |
+| `hero-form`                        | HeroSection — main consultation form       |
 | `contact-form`                     | ContactSection — enquiry form              |
 | `unified-lead-form`               | UnifiedLeadForm — default (no formId prop) |
-| `foundation-course`               | SecondaryCTASection — inline CTA form      |
-| `drawer-form-apply-now`           | LeadFormDrawer — Hero/Features/CTA apply   |
-| `drawer-form-download-brochure`   | LeadFormDrawer — brochure download         |
+| `drawer-form-apply-now`           | LeadFormDrawer — Book Consultation         |
 | `drawer-form-request-callback`    | LeadFormDrawer — callback request          |
-| `drawer-form-schedule-site-visit` | LeadFormDrawer — site visit booking        |
-| `drawer-form-get-course-details`  | LeadFormDrawer — course details request    |
 | `drawer-form-get-details`         | LeadFormDrawer — general details request   |
-| `drawer-form-book-free-demo`      | LeadFormDrawer — free demo booking         |
+| `drawer-form-download-brochure`   | LeadFormDrawer — brochure download         |
 
 ---
 
@@ -85,8 +81,8 @@ In Pabbly, add a **Google Sheets** action and map columns like this:
 | A      | Name                 | `{{name}}`               |
 | B      | Mobile               | `{{mobile}}`             |
 | C      | Email                | `{{email}}`              |
-| D      | Investment Interest  | `{{investment_interest}}`|
-| E      | Occupation           | `{{current_occupation}}` |
+| D      | Service Interest     | `{{service_interest}}`   |
+| E      | Message              | `{{message}}`            |
 | F      | Source               | `{{source}}`             |
 | G      | Lead ID              | `{{lead_id}}`            |
 | H      | Status               | `{{status}}`             |
@@ -111,17 +107,17 @@ Add an **Email** action step in your Pabbly workflow after the webhook trigger:
 1. **Action:** Select "Send Email" (use Pabbly's built-in SMTP or connect Gmail/Outlook).
 2. **Subject:**
    ```
-   New Lead: {{name}} - {{investment_interest}}
+   New Consultation: {{name}} - {{service_interest}}
    ```
 3. **Body:**
    ```
-   New lead received from {{source}}
+   New consultation request from {{source}}
 
    Name: {{name}}
    Mobile: {{mobile}}
    Email: {{email}}
-   Investment Interest: {{investment_interest}}
-   Occupation: {{current_occupation}}
+   Service Interest: {{service_interest}}
+   Message: {{message}}
 
    Submitted: {{submitted_at}}
    Page: {{page_url}}
@@ -147,16 +143,16 @@ Submissions are logged to the browser console and stored in localStorage (no net
 curl -X POST "YOUR_PABBLY_WEBHOOK_URL" \
   -H "Content-Type: application/json" \
   -d '{
-    "name": "Test User",
+    "name": "Test Patient",
     "mobile": "9876543210",
     "email": "test@example.com",
-    "investment_interest": "Premium Plan",
-    "current_occupation": "Developer",
+    "service_interest": "Hair Transplant",
+    "message": "Interested in FUE technique",
     "source": "hero-form",
     "lead_id": "test-001",
     "status": "new",
-    "submitted_at": "2026-04-01T10:00:00.000Z",
-    "page_url": "http://localhost:3000",
+    "submitted_at": "2026-04-11T10:00:00.000Z",
+    "page_url": "https://landing.monjoven.com",
     "user_agent": "curl/test",
     "utm_source": "test",
     "utm_medium": "",
@@ -204,7 +200,7 @@ The admin webhook sends JSON payloads with an `action` field to identify the eve
   "lead_id": "a1b2c3d4-e5f6-4g7h-8i9j-k0l1m2n3",
   "new_status": "contacted",
   "old_status": "new",
-  "timestamp": "2026-04-01T10:30:00.000Z"
+  "timestamp": "2026-04-11T10:30:00.000Z"
 }
 ```
 
@@ -214,7 +210,7 @@ The admin webhook sends JSON payloads with an `action` field to identify the eve
   "action": "note_added",
   "lead_id": "a1b2c3d4-e5f6-4g7h-8i9j-k0l1m2n3",
   "note_text": "Called and left voicemail",
-  "timestamp": "2026-04-01T11:00:00.000Z"
+  "timestamp": "2026-04-11T11:00:00.000Z"
 }
 ```
 
@@ -223,7 +219,7 @@ The admin webhook sends JSON payloads with an `action` field to identify the eve
 {
   "action": "lead_deleted",
   "lead_id": "a1b2c3d4-e5f6-4g7h-8i9j-k0l1m2n3",
-  "timestamp": "2026-04-01T11:30:00.000Z"
+  "timestamp": "2026-04-11T11:30:00.000Z"
 }
 ```
 
@@ -257,7 +253,7 @@ Create a separate Google Sheet (or a new tab) and map columns:
 |-------|-----|
 | Form submits but Pabbly shows nothing | Verify `USE_PABBLY = true` and `DUMMY_MODE = false` in `webhookSubmit.js` |
 | 404 / 400 from webhook | Double-check the `WEBHOOK_URL` — regenerate in Pabbly if expired |
-| Leads missing UTM data | Ensure landing page URL includes `?utm_source=...` query params |
+| Leads missing UTM data | Ensure landing page URL includes `?utm_source=...` query params (e.g., `landing.monjoven.com/?utm_source=google&utm_medium=cpc`) |
 | GCLID not captured | Check that `gclidManager.js` is imported and Google Ads auto-tagging is on |
 | CORS error in browser console | Pabbly webhooks accept cross-origin POST by default — check for typos in the URL |
 | Duplicate leads appearing | `isDuplicateLead()` checks localStorage by mobile number — clear storage to reset |

@@ -12,12 +12,12 @@ All meta tags are in `public/index.html` under the `<!-- SEO Meta Tags -->` sect
 
 | Tag | Location in `index.html` | What to Change | Example |
 |-----|--------------------------|----------------|---------|
-| `<title>` | Line ~171 | Business name + primary keyword, max 60 chars | `<title>Acme Plumbing \| Emergency Plumber in Dallas</title>` |
-| `meta description` | Line ~51 | Summarize offer + CTA, max 160 chars | `content="Acme Plumbing offers 24/7 emergency plumbing in Dallas. Call now for a free estimate."` |
-| `meta keywords` | Line ~55 | Comma-separated target keywords | `content="emergency plumber dallas, 24/7 plumbing, drain repair"` |
-| `meta author` | Line ~58 | Legal entity name | `content="Acme Plumbing LLC"` |
+| `<title>` | Line ~171 | Business name + primary keyword, max 60 chars | `<title>Monjoven \| Hair Transplant & Cosmetic Surgery in Guwahati</title>` |
+| `meta description` | Line ~51 | Summarize offer + CTA, max 160 chars | `content="Monjoven offers Advanced hair transplant & cosmetic surgery by Dr. Porag Neog. Book free consultation today."` |
+| `meta keywords` | Line ~55 | Comma-separated target keywords | `content="hair transplant guwahati, cosmetic surgery assam, fue hair transplant, rhinoplasty guwahati"` |
+| `meta author` | Line ~58 | Legal entity name | `content="Monjoven LLC"` |
 | `meta robots` | Line ~59 | `index, follow` for landing page | `content="index, follow"` |
-| `canonical` | Line ~105 | Production URL of this page | `href="https://acmeplumbing.com/"` |
+| `canonical` | Line ~105 | Production URL of this page | `href="https://landing.monjoven.com/"` |
 
 **Title format:** `{Page Title} | {Business Name}` — keep under 60 characters.
 
@@ -32,8 +32,8 @@ admin:    { robots: 'noindex, nofollow' },
 **Geo tags:** Add these below the author meta tag in `index.html` if targeting a specific location:
 
 ```html
-<meta name="geo.region" content="US-TX" />
-<meta name="geo.placename" content="Dallas" />
+<meta name="geo.region" content="IN-AS" />
+<meta name="geo.placename" content="Guwahati" />
 ```
 
 ---
@@ -45,14 +45,14 @@ Located in `public/index.html` under `<!-- Open Graph / Facebook -->` (lines ~65
 | Tag | Example Value |
 |-----|---------------|
 | `og:type` | `website` |
-| `og:url` | `https://acmeplumbing.com/` |
-| `og:title` | `Acme Plumbing \| Emergency Plumber in Dallas` |
-| `og:description` | `24/7 emergency plumbing in Dallas. Call now for a free estimate.` |
-| `og:image` | `https://acmeplumbing.com/og-image.jpg` |
+| `og:url` | `https://landing.monjoven.com/` |
+| `og:title` | `Monjoven \| Hair Transplant & Cosmetic Surgery in Guwahati` |
+| `og:description` | `Advanced hair transplant & cosmetic surgery by Dr. Porag Neog. Book free consultation today.` |
+| `og:image` | `https://landing.monjoven.com/og-image.jpg` |
 | `og:image:width` | `1200` |
 | `og:image:height` | `630` |
-| `og:image:alt` | `Acme Plumbing team at work` |
-| `og:site_name` | `Acme Plumbing` |
+| `og:image:alt` | `Monjoven team at work` |
+| `og:site_name` | `Monjoven` |
 | `og:locale` | `en_US` |
 
 **OG image requirements:**
@@ -73,10 +73,10 @@ Located in `public/index.html` under `<!-- Twitter Card -->` (lines ~89-100).
 | Tag | Example Value |
 |-----|---------------|
 | `twitter:card` | `summary_large_image` |
-| `twitter:url` | `https://acmeplumbing.com/` |
-| `twitter:title` | `Acme Plumbing \| Emergency Plumber in Dallas` |
-| `twitter:description` | `24/7 emergency plumbing in Dallas. Call now for a free estimate.` |
-| `twitter:image` | `https://acmeplumbing.com/og-image.jpg` |
+| `twitter:url` | `https://landing.monjoven.com/` |
+| `twitter:title` | `Monjoven \| Hair Transplant & Cosmetic Surgery in Guwahati` |
+| `twitter:description` | `Advanced hair transplant & cosmetic surgery by Dr. Porag Neog. Book free consultation today.` |
+| `twitter:image` | `https://landing.monjoven.com/og-image.jpg` |
 
 Keep the `twitter:title` and `twitter:description` consistent with OG tags. Use the same image file.
 
@@ -96,15 +96,15 @@ Fields to update:
 
 | Field | Where in `seo.js` | Example |
 |-------|-------------------|---------|
-| `name` | `organization.name` | `"Acme Plumbing LLC"` |
-| `url` | `organization.url` | `"https://acmeplumbing.com"` |
-| `logo` | `organization.logo` | `"https://acmeplumbing.com/logo.png"` |
+| `name` | `organization.name` | `"Monjoven LLC"` |
+| `url` | `organization.url` | `"https://landing.monjoven.com"` |
+| `logo` | `organization.logo` | `"https://landing.monjoven.com/logo.png"` |
 | `phone` | `organization.phone` | `"+1-214-555-0100"` |
-| `email` | `organization.email` | `"info@acmeplumbing.com"` |
-| `address` | `organization.address` | `{ addressLocality: "Dallas", addressRegion: "TX", addressCountry: "US" }` |
-| `founder` | `organization.founder` | `{ name: "John Smith", jobTitle: "CEO" }` |
+| `email` | `organization.email` | `"dr@monjoven.com"` |
+| `address` | `organization.address` | `{ addressLocality: "Guwahati", addressRegion: "Assam", addressCountry: "IN" }` |
+| `founder` | `organization.founder` | `{ name: "Dr. Porag Neog", jobTitle: "Founder & Chief Surgeon" }` |
 | `foundingDate` | `organization.foundingDate` | `"2015-03-01"` |
-| `sameAs` | `organization.sameAs` | `["https://facebook.com/acmeplumbing", "https://instagram.com/acmeplumbing"]` |
+| `sameAs` | `organization.sameAs` | `["https://www.facebook.com/MONJOVEN/", "https://www.instagram.com/monjoven_"]` |
 
 ### LocalBusiness Schema
 
@@ -114,7 +114,7 @@ Fields to update:
 
 | Field | Where in `seo.js` | Example |
 |-------|-------------------|---------|
-| `type` | `localBusiness.type` | `"ProfessionalService"` (or `Store`, `Restaurant`, etc.) |
+| `type` | `localBusiness.type` | `"MedicalBusiness"` (or `"Physician"`) |
 | `priceRange` | `localBusiness.priceRange` | `"$$"` |
 | `openingHours` | `localBusiness.openingHours` | `{ days: ["Monday"..."Friday"], opens: "08:00", closes: "18:00" }` |
 | `geo` | `localBusiness.geo` | `{ latitude: "32.7767", longitude: "-96.7970" }` |
@@ -132,8 +132,8 @@ Write 5-8 real FAQs about your business. Each entry uses this format:
 ```js
 // src/config/seo.js → faqs array
 {
-  question: 'How quickly can you respond to an emergency?',
-  answer: 'We offer 60-minute response times across the Dallas metro area, 24/7.'
+  question: 'What hair transplant techniques does Monjoven offer?',
+  answer: 'We offer advanced FUE (Follicular Unit Extraction) and other modern hair restoration techniques at our Guwahati clinic.'
 }
 ```
 
@@ -145,7 +145,7 @@ The generator outputs this JSON-LD structure:
   "name": "How quickly can you respond to an emergency?",
   "acceptedAnswer": {
     "@type": "Answer",
-    "text": "We offer 60-minute response times across the Dallas metro area, 24/7."
+    "text": "We offer advanced FUE (Follicular Unit Extraction) and other modern hair restoration techniques at our Guwahati clinic."
   }
 }
 ```
@@ -168,7 +168,7 @@ For a single-page landing page, only one breadcrumb is needed:
       "@type": "ListItem",
       "position": 1,
       "name": "Home",
-      "item": "https://acmeplumbing.com/"
+      "item": "https://landing.monjoven.com/"
     }
   ]
 }
@@ -212,7 +212,7 @@ Update the domain and `lastmod` date:
 
 ```xml
 <url>
-  <loc>https://acmeplumbing.com/</loc>
+  <loc>https://landing.monjoven.com/</loc>
   <lastmod>2026-04-01</lastmod>
   <changefreq>weekly</changefreq>
   <priority>1.0</priority>
@@ -233,7 +233,7 @@ Disallow: /admin/
 Disallow: /admin/login
 Disallow: /thank-you
 
-Sitemap: https://acmeplumbing.com/sitemap.xml
+Sitemap: https://landing.monjoven.com/sitemap.xml
 ```
 
 ---
