@@ -67,7 +67,7 @@ const LeadForm = ({
   variant = 'default', // 'default', 'compact', 'dark', 'card'
   title = 'Schedule a Consultation',
   subtitle = '',
-  submitButtonText = 'Book Free Consultation',
+  submitButtonText = 'Book Consultation',
   showTitle = true,
   showCourseFields = true,
   onSubmitSuccess,

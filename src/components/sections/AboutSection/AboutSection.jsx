@@ -233,7 +233,7 @@ const AboutSection = () => {
                   },
                 }}
               >
-                Book Free Consultation
+                Book Consultation
               </Button>
             </motion.div>
 

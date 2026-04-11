@@ -1,7 +1,7 @@
 /* ============================================
    SecondaryCTASection Component
    Final conversion push CTA before footer
-   Focused on booking a free consultation
+   Focused on booking a consultation
    ============================================ */
 
 import React from "react";
@@ -85,7 +85,7 @@ const SecondaryCTASection = () => {
                   className={styles.title}
                   sx={{ color: "#fff" }}
                 >
-                  Your Transformation Begins with a Free Consultation
+                  Your Transformation Begins with a Consultation
                 </Typography>
               </motion.div>
 
@@ -126,7 +126,7 @@ const SecondaryCTASection = () => {
                     trackCTAClick(
                       "secondary_cta_book",
                       "secondary_cta",
-                      "Book Free Consultation",
+                      "Book Consultation",
                     );
                     openLeadDrawer("book-meeting");
                   }}
@@ -135,7 +135,7 @@ const SecondaryCTASection = () => {
                     icon="mdi:calendar-check"
                     style={{ marginRight: 8, fontSize: "1.2rem" }}
                   />
-                  Book Free Consultation
+                  Book Consultation
                 </Button>
 
                 <a

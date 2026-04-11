@@ -55,7 +55,7 @@ export const seoConfig = {
     home: {
       title: 'Monjoven | Hair Transplant & Cosmetic Surgery in Guwahati, Assam',
       description:
-        'Northeast India\'s first dedicated hair transplant clinic. Led by Dr. Porag Neog (MBBS, MS) with 12+ years experience. Advanced Micro-FUE technology, free post-op care. Book your free consultation today.',
+        'Northeast India\'s first dedicated hair transplant clinic. Led by Dr. Porag Neog (MBBS, MS) with 12+ years experience. Advanced Micro-FUE technology, free post-op care. Book your consultation today.',
       keywords:
         'hair transplant guwahati, fue hair transplant assam, hair transplant northeast india, cosmetic surgery guwahati, dr porag neog, monjoven, beard transplant, rhinoplasty assam, prp therapy guwahati',
     },
@@ -108,7 +108,7 @@ export const seoConfig = {
     {
       question: 'How much does a hair transplant cost at Monjoven?',
       answer:
-        'The cost depends on the number of grafts required, technique used (FUE or FUT), and the extent of hair loss. We offer transparent pricing with no hidden costs. Book a free consultation with Dr. Porag Neog for a personalized assessment and detailed cost estimate.',
+        'The cost depends on the number of grafts required, technique used (FUE or FUT), and the extent of hair loss. We offer transparent pricing with no hidden costs. Book a consultation with Dr. Porag Neog for a personalized assessment and detailed cost estimate.',
     },
     {
       question: 'Who is a good candidate for hair transplant?',

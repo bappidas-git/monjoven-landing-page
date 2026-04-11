@@ -178,7 +178,7 @@ const HighlightsSection = () => {
                   Ready for Your Transformation?
                 </Typography>
                 <Typography className={styles.ctaDesc} sx={{ color: "#fff" }}>
-                  Book a free consultation with our specialists and take the
+                  Book a consultation with our specialists and take the
                   first step toward your new look. Personalized treatment plans
                   tailored to your goals.
                 </Typography>

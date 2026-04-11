@@ -284,7 +284,7 @@ const MobileDrawer = ({ open, onClose, onOpen, onBookConsultation, activeSection
             </a>
           </Box>
 
-          {/* Book Free Consultation CTA */}
+          {/* Book Consultation CTA */}
           <motion.button
             className={styles.bookConsultationCta}
             whileHover={{ scale: 1.02 }}
@@ -297,7 +297,7 @@ const MobileDrawer = ({ open, onClose, onOpen, onBookConsultation, activeSection
             }}
           >
             <Icon icon="mdi:calendar-plus" style={{ fontSize: 20 }} />
-            <span>Book Free Consultation</span>
+            <span>Book Consultation</span>
           </motion.button>
         </Box>
       </Box>
