@@ -4,7 +4,7 @@
    ============================================ */
 
 import React from "react";
-import { Container, Grid, Typography, Chip } from "@mui/material";
+import { Container, Grid, Typography } from "@mui/material";
 import { motion } from "framer-motion";
 import { Icon } from "@iconify/react";
 import SectionTitle from "../../common/SectionTitle/SectionTitle";
@@ -183,7 +183,7 @@ const LocationSection = () => {
                 <div className={styles.mapContainer}>
                   <div className={styles.mapPlaceholder}>
                     <img
-                      src="https://placehold.co/800x400/1A5276/FFFFFF?text=Northeast+India+Service+Map"
+                      src="https://res.cloudinary.com/dn9gyaiik/image/upload/v1775885388/Map_Image_tezkg3.png"
                       alt="Monjoven Clinic Location Map - Six Mile, Guwahati"
                       className={styles.mapImage}
                     />
@@ -213,42 +213,6 @@ const LocationSection = () => {
               </motion.div>
             </Grid>
           </Grid>
-        </motion.div>
-
-        {/* Areas Served Section */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          className={styles.areasSection}
-        >
-          <motion.div variants={itemVariants}>
-            <Typography
-              variant="h5"
-              className={styles.areasTitle}
-              sx={{ marginBottom: "1.5rem" }}
-            >
-              Nearby Areas We Serve
-            </Typography>
-          </motion.div>
-          <motion.div variants={itemVariants} className={styles.areasGrid}>
-            {locationData.nearbyAreas.map((area, index) => (
-              <motion.div
-                key={area}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.03, duration: 0.3 }}
-              >
-                <Chip
-                  label={area}
-                  className={styles.areaPill}
-                  icon={<Icon icon="mdi:map-marker" />}
-                />
-              </motion.div>
-            ))}
-          </motion.div>
         </motion.div>
 
         {/* Connectivity Highlights - 2x2 Grid */}
