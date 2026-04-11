@@ -45,15 +45,15 @@
   min-height: 52px;
 }
 
-/* Primary Variant - Gold Gradient */
+/* Primary Variant - Orange CTA Gradient */
 .primary {
-  background: var(--accent-gold-gradient);
-  color: var(--primary-dark);
+  background: var(--accent-orange-gradient);
+  color: var(--white);
   box-shadow: var(--shadow-button);
 }
 
 .primary:hover {
-  background: linear-gradient(135deg, var(--accent-gold-light) 0%, var(--accent-gold) 100%);
+  background: var(--accent-orange-gradient-reverse);
   box-shadow: var(--shadow-button-hover);
   transform: translateY(-2px);
 }
@@ -309,7 +309,7 @@
   }
 
   .primary:hover {
-    background: var(--accent-gold-gradient);
+    background: var(--accent-orange-gradient);
   }
 
   .secondary:hover {

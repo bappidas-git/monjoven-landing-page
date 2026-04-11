@@ -246,7 +246,7 @@ const HeroSection = () => {
                     openLeadDrawer("apply-now");
                   }}
                   sx={{
-                    backgroundColor: "#E74C3C",
+                    backgroundColor: "#FF6B35",
                     color: "#FFFFFF",
                     fontWeight: 700,
                     fontSize: "1rem",
@@ -254,10 +254,10 @@ const HeroSection = () => {
                     borderRadius: "12px",
                     textTransform: "none",
                     fontFamily: "'Poppins', sans-serif",
-                    boxShadow: "0 4px 20px rgba(231, 76, 60, 0.4)",
+                    boxShadow: "0 4px 20px rgba(255, 107, 53, 0.4)",
                     "&:hover": {
-                      backgroundColor: "#FF8C5A",
-                      boxShadow: "0 6px 24px rgba(231, 76, 60, 0.5)",
+                      backgroundColor: "#E85A20",
+                      boxShadow: "0 6px 24px rgba(255, 107, 53, 0.55)",
                       transform: "translateY(-2px)",
                     },
                     transition: "all 0.3s ease",
