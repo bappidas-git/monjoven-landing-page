@@ -305,6 +305,19 @@
   flex-wrap: wrap;
 }
 
+.callUsBtn {
+  border-color: rgba(255, 255, 255, 0.7) !important;
+  color: #FFFFFF !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(4px);
+}
+
+.callUsBtn:hover {
+  background: rgba(255, 255, 255, 0.18) !important;
+  border-color: #FFFFFF !important;
+  color: #FFFFFF !important;
+}
+
 /* ========== Background Decorations ========== */
 .bgDecoration1 {
   position: absolute;

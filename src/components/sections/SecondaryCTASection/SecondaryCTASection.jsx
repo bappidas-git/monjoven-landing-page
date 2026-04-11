@@ -176,11 +176,12 @@ const SecondaryCTASection = () => {
             </div>
 
             {/* Right Column - Image */}
+            {/* TODO: Replace placeholder below with actual image of Indian lady with Namaskar posture (600x500px recommended) */}
             <motion.div variants={itemVariants} className={styles.imageColumn}>
               <Box
                 component="img"
-                src="https://placehold.co/600x500/148F77/FFFFFF?text=Book+Your+Consultation+Today"
-                alt="Book your consultation today"
+                src="https://placehold.co/600x500/0a7d6a/FFFFFF?text=Book+Your+Consultation+Today&font=poppins"
+                alt="Indian woman greeting with Namaskar - Book your consultation today"
                 className={styles.ctaImage}
               />
             </motion.div>
