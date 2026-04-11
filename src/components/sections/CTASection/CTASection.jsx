@@ -294,7 +294,7 @@ const CTASection = () => {
               Ready to Start Your Transformation?
             </Typography>
             <Typography variant="body1" className={styles.ctaSubtext}>
-              Book a free consultation with Dr. Porag Neog and discover the best
+              Book a consultation with Dr. Porag Neog and discover the best
               treatment plan for you
             </Typography>
 
@@ -311,7 +311,7 @@ const CTASection = () => {
                   onClick={handleBookConsultation}
                   className={styles.primaryBtn}
                 >
-                  Book Free Consultation
+                  Book Consultation
                 </Button>
               </motion.div>
 

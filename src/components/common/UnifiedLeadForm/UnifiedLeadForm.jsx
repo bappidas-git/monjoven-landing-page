@@ -466,7 +466,7 @@ const getHeaderDefaults = (source) => {
   switch (source) {
     case "hero":
       return {
-        title: "Book Your Free Consultation",
+        title: "Book Your Consultation",
         subtitle: "Get expert advice from Dr. Porag Neog",
       };
     case "contact":
@@ -487,7 +487,7 @@ const UnifiedLeadForm = ({
   source = "default",
   title: titleProp,
   subtitle: subtitleProp,
-  submitButtonText = "Book Free Consultation",
+  submitButtonText = "Book Consultation",
   showTitle = true,
   showSubtitle = true,
   showCourseFields = true,
@@ -1128,7 +1128,7 @@ const UnifiedLeadForm = ({
               }
             >
               <Icon icon="mdi:stethoscope" className={styles.trustIcon} />
-              <span>Free Consultation</span>
+              <span>Consultation</span>
             </div>
           </motion.div>
         )}

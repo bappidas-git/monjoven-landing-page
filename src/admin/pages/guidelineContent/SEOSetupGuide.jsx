@@ -48,7 +48,7 @@ const SEOSetupGuide = ({ styles }) => {
           <li className={styles.guideStepItem}>
             Example:
             <pre className={styles.guideCode}>
-{`<meta name="description" content="Advanced hair transplant & cosmetic surgery in Guwahati by Dr. Porag Neog. FUE technique, natural results. Book free consultation!">`}
+{`<meta name="description" content="Advanced hair transplant & cosmetic surgery in Guwahati by Dr. Porag Neog. FUE technique, natural results. Book consultation!">`}
             </pre>
           </li>
         </ol>

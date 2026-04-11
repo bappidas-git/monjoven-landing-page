@@ -15,7 +15,7 @@ import styles from './LeadFormDrawer.module.css';
 const LeadFormDrawer = ({
   isOpen,
   onClose,
-  title = 'Book Your Free Consultation',
+  title = 'Book Your Consultation',
   subtitle = 'Fill in your details and our specialist will contact you',
   source = 'general',
   onSubmitSuccess,
@@ -150,7 +150,7 @@ const LeadFormDrawer = ({
                 showTrustBadges={true}
                 showConsent={true}
                 showPhoneButton={true}
-                submitButtonText="Book Free Consultation"
+                submitButtonText="Book Consultation"
                 onClose={onClose}
                 onSubmitSuccess={onSubmitSuccess}
                 formId={`drawer-form-${source}`}

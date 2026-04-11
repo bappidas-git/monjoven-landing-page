@@ -183,7 +183,7 @@ Wikipedia`}
         <pre className={styles.guideCode}>
 {`Best Hair Transplant in Guwahati
 FUE Hair Transplant by Dr. Neog
-Book Free Consultation Today
+Book Consultation Today
 Hair Transplant Starting at ₹40,000
 #1 Cosmetic Surgery in Assam
 Natural-Looking Hair Restoration`}
@@ -191,7 +191,7 @@ Natural-Looking Hair Restoration`}
 
         <h3 className={styles.guideSubtitle}>Example Descriptions</h3>
         <pre className={styles.guideCode}>
-{`Looking for hair transplant in Guwahati? Get a free consultation with Dr. Porag Neog. Advanced FUE technique. Book now!
+{`Looking for hair transplant in Guwahati? Get a consultation with Dr. Porag Neog. Advanced FUE technique. Book now!
 Professional hair transplant & cosmetic surgery at Monjoven. Natural results guaranteed. Limited consultation slots available.`}
         </pre>
 
@@ -199,7 +199,7 @@ Professional hair transplant & cosmetic surgery at Monjoven. Natural results gua
         <ol className={styles.guideStepList}>
           <li className={styles.guideStepItem}>Include your unique selling points (Dr. Neog's expertise, FUE technique, natural results)</li>
           <li className={styles.guideStepItem}>Use numbers and statistics ("1000+ procedures", "10+ years experience")</li>
-          <li className={styles.guideStepItem}>Include a clear call-to-action ("Book Free Consultation", "Call Now", "Get Expert Advice")</li>
+          <li className={styles.guideStepItem}>Include a clear call-to-action ("Book Consultation", "Call Now", "Get Expert Advice")</li>
           <li className={styles.guideStepItem}>Include your target keyword in at least 2-3 headlines</li>
           <li className={styles.guideStepItem}>Write at least 10 headlines and 4 descriptions for best results</li>
         </ol>
@@ -222,7 +222,7 @@ Professional hair transplant & cosmetic surgery at Monjoven. Natural results gua
             </tr>
             <tr>
               <td className={styles.guideTableCell}>Callouts</td>
-              <td className={styles.guideTableCell}>Short highlight phrases (e.g., "Free Consultation", "Advanced FUE", "Natural Results")</td>
+              <td className={styles.guideTableCell}>Short highlight phrases (e.g., "Consultation", "Advanced FUE", "Natural Results")</td>
             </tr>
             <tr>
               <td className={styles.guideTableCell}>Structured Snippets</td>

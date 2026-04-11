@@ -241,7 +241,7 @@ const HeroSection = () => {
                     trackCTAClick(
                       "hero_primary_cta",
                       "hero",
-                      "Book Free Consultation",
+                      "Book Consultation",
                     );
                     openLeadDrawer("apply-now");
                   }}
@@ -263,7 +263,7 @@ const HeroSection = () => {
                     transition: "all 0.3s ease",
                   }}
                 >
-                  Book Free Consultation →
+                  Book Consultation →
                 </Button>
                 <Button
                   variant="outlined"
@@ -332,7 +332,7 @@ const HeroSection = () => {
                         fontSize: "1.25rem",
                       }}
                     >
-                      Book Your Free Consultation
+                      Book Your Consultation
                     </Typography>
                     <Typography
                       variant="body2"
@@ -356,7 +356,7 @@ const HeroSection = () => {
                       showTrustBadges={true}
                       showConsent={true}
                       showPhoneButton={false}
-                      submitButtonText="Book Free Consultation"
+                      submitButtonText="Book Consultation"
                       formId="hero-form"
                     />
                   </div>
