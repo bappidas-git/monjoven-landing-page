@@ -127,6 +127,13 @@ export const submitLeadToWebhook = async (leadData) => {
   }
 
   // === PABBLY WEBHOOK MODE ===
+  // Store the lead in localStorage FIRST so the admin panel reflects it
+  // regardless of the webhook's CORS/response behavior. Pabbly webhook
+  // endpoints often do not return CORS headers the browser can read, which
+  // would otherwise make `response.ok` false (or throw) even though Pabbly
+  // received the data successfully.
+  storeLeadForLMS(enrichedData, false);
+
   try {
     const response = await fetch(WEBHOOK_URL, {
       method: "POST",
@@ -137,9 +144,6 @@ export const submitLeadToWebhook = async (leadData) => {
     });
 
     if (response.ok) {
-      // Also store a copy in localStorage for the LMS
-      storeLeadForLMS(enrichedData, false);
-
       return { success: true, message: "Lead submitted successfully" };
     } else {
       console.error("Webhook error:", response.status, response.statusText);
