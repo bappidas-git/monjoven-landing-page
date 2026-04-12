@@ -86,13 +86,13 @@ const NotesSection = ({ leadId, notes, onNoteAdded }) => {
     <div className={styles.card}>
       <h3 className={styles.cardTitle}>
         <Icon icon="mdi:note-text-outline" width={16} />
-        Consultation Notes
+        Notes
       </h3>
       <textarea
         className={styles.noteTextarea}
         value={noteText}
         onChange={(e) => setNoteText(e.target.value)}
-        placeholder="Add consultation notes..."
+        placeholder="Add notes..."
         rows={3}
       />
       <button
@@ -358,14 +358,8 @@ const LeadDetail = () => {
             <div className={styles.infoGrid}>
               <div className={styles.infoField}>
                 <span className={styles.infoLabel}>Service Interest</span>
-                <span className={lead.investment_interest ? styles.infoValue : styles.infoDash}>
-                  {lead.investment_interest || "\u2014"}
-                </span>
-              </div>
-              <div className={styles.infoField}>
-                <span className={styles.infoLabel}>Current Occupation</span>
-                <span className={lead.current_occupation ? styles.infoValue : styles.infoDash}>
-                  {lead.current_occupation || "\u2014"}
+                <span className={lead.service_interest ? styles.infoValue : styles.infoDash}>
+                  {lead.service_interest || "\u2014"}
                 </span>
               </div>
             </div>

@@ -82,7 +82,7 @@ const COLUMNS = [
   { id: "name", label: "Patient Name", sortable: true },
   { id: "mobile", label: "Phone", sortable: true, width: 130 },
   { id: "email", label: "Email", sortable: true },
-  { id: "investment_interest", label: "Service Interest", sortable: true, hideTablet: true },
+  { id: "service_interest", label: "Service Interest", sortable: true, hideTablet: true },
   { id: "source", label: "Source", sortable: true, width: 140 },
   { id: "status", label: "Status", sortable: true, width: 150 },
   { id: "submitted_at", label: "Date", sortable: true, width: 100 },
@@ -722,7 +722,7 @@ const LeadManagement = () => {
                           {!(isTablet) && (
                             <TableCell>
                               <Typography variant="body2" sx={{ fontSize: "0.8125rem", color: "var(--admin-text-secondary)" }}>
-                                {lead.investment_interest || "—"}
+                                {lead.service_interest || "—"}
                               </Typography>
                             </TableCell>
                           )}
