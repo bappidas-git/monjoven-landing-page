@@ -44,6 +44,7 @@ import {
   exportLeadsCSV,
   importLeadsCSV,
   getLeadStats,
+  syncLeadsFromServer,
 } from "../utils/leadService";
 import { exportGoogleAdsCSV } from "../utils/googleAdsExport";
 import useMediaQuery from "../../hooks/useMediaQuery";
@@ -143,6 +144,17 @@ const LeadManagement = () => {
   useEffect(() => {
     loadData();
   }, [loadData]);
+
+  // Refresh from the server on mount so newly submitted leads from
+  // other browsers/devices appear without requiring a full app reload.
+  useEffect(() => {
+    syncLeadsFromServer().then((result) => {
+      if (!result.error && result.added > 0) {
+        loadData();
+      }
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // Sorting
   const sortedLeads = useMemo(() => {

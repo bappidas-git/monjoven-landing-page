@@ -5,13 +5,114 @@
    ============================================ */
 
 import { isPabblyMode } from './adminConfig';
+import { getConfig } from '../../utils/webhookSubmit';
 
 // Pabbly webhook for admin actions (status change, notes, deletions)
 // Set this to your Pabbly admin workflow webhook URL
 const ADMIN_WEBHOOK_URL = process.env.REACT_APP_ADMIN_PABBLY_WEBHOOK_URL || "";
 
+// Shared secret used to authenticate against /api/leads.php admin actions.
+// Must match ADMIN_API_KEY in public/api/config.php on the server.
+const LEADS_ADMIN_KEY = process.env.REACT_APP_LEADS_ADMIN_KEY || "";
+
 const LEADS_KEY = "lp_submitted_leads";
 const TEST_LEADS_KEY = "lp_test_leads";
+
+/**
+ * Build the URL for the leads API. Returns empty string when disabled.
+ */
+const getLeadsApiUrl = () => {
+  const { LEADS_API_URL } = getConfig();
+  return LEADS_API_URL || "";
+};
+
+/**
+ * Fire-and-forget admin call to the leads API.
+ */
+const callLeadsApi = (action, body) => {
+  const url = getLeadsApiUrl();
+  if (!url || !LEADS_ADMIN_KEY) return Promise.resolve();
+  return fetch(`${url}?action=${action}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "X-Admin-Key": LEADS_ADMIN_KEY,
+    },
+    body: JSON.stringify(body),
+    keepalive: true,
+  }).catch((err) => console.error(`[LeadsAPI] ${action} failed:`, err));
+};
+
+/**
+ * Pull every lead from the server-side store and merge any new ones into
+ * localStorage. Existing local records are preserved so admin-only state
+ * (status changes, notes, activity) isn't overwritten on every sync.
+ *
+ * Returns { synced: number, added: number, error?: string }.
+ */
+export const syncLeadsFromServer = async () => {
+  const url = getLeadsApiUrl();
+  if (!url) {
+    return { synced: 0, added: 0, error: "LEADS_API_URL not configured" };
+  }
+  if (!LEADS_ADMIN_KEY) {
+    return {
+      synced: 0,
+      added: 0,
+      error: "REACT_APP_LEADS_ADMIN_KEY not set — cannot authenticate",
+    };
+  }
+
+  try {
+    const response = await fetch(`${url}?action=list`, {
+      method: "GET",
+      headers: { "X-Admin-Key": LEADS_ADMIN_KEY },
+    });
+    if (!response.ok) {
+      return {
+        synced: 0,
+        added: 0,
+        error: `Server returned ${response.status}`,
+      };
+    }
+    const data = await response.json();
+    const serverLeads = Array.isArray(data.leads) ? data.leads : [];
+
+    const localLeads = JSON.parse(localStorage.getItem(LEADS_KEY) || "[]");
+    const localIds = new Set(localLeads.map((l) => l.lead_id));
+
+    let added = 0;
+    serverLeads.forEach((lead) => {
+      if (!lead || !lead.lead_id) return;
+      if (localIds.has(lead.lead_id)) return;
+      // New lead from another browser/device — import it with sensible
+      // defaults for admin-only fields.
+      localLeads.push({
+        ...lead,
+        status: lead.status || "new",
+        notes: Array.isArray(lead.notes) ? lead.notes : [],
+        activity: Array.isArray(lead.activity)
+          ? lead.activity
+          : [
+              {
+                action: "Lead created",
+                status: lead.status || "new",
+                timestamp: lead.submitted_at || new Date().toISOString(),
+              },
+            ],
+      });
+      added++;
+    });
+
+    if (added > 0) {
+      localStorage.setItem(LEADS_KEY, JSON.stringify(localLeads));
+    }
+    return { synced: serverLeads.length, added };
+  } catch (err) {
+    console.error("[LeadsAPI] sync failed:", err);
+    return { synced: 0, added: 0, error: err.message || "Network error" };
+  }
+};
 
 /**
  * Get all leads from both production and test storage
@@ -132,6 +233,12 @@ export const updateLeadStatus = (id, status) => {
 
   saveLeads(leads);
 
+  // Mirror to shared server store so other admins see the change.
+  callLeadsApi("update", {
+    lead_id: id,
+    patch: { status: lead.status, activity: lead.activity },
+  });
+
   // If Pabbly mode, also send to webhook
   if (isPabblyMode() && ADMIN_WEBHOOK_URL) {
     fetch(ADMIN_WEBHOOK_URL, {
@@ -175,6 +282,12 @@ export const addLeadNote = (id, noteText) => {
 
   saveLeads(leads);
 
+  // Mirror to shared server store so notes persist across admins.
+  callLeadsApi("update", {
+    lead_id: id,
+    patch: { notes: lead.notes, activity: lead.activity },
+  });
+
   // If Pabbly mode, also send to webhook
   if (isPabblyMode() && ADMIN_WEBHOOK_URL) {
     fetch(ADMIN_WEBHOOK_URL, {
@@ -200,6 +313,9 @@ export const deleteLead = (id) => {
   const filtered = leads.filter((l) => l.lead_id !== id);
   saveLeads(filtered);
 
+  // Mirror delete to shared server store.
+  callLeadsApi("delete", { lead_ids: [id] });
+
   // If Pabbly mode, also send to webhook
   if (isPabblyMode() && ADMIN_WEBHOOK_URL) {
     fetch(ADMIN_WEBHOOK_URL, {
@@ -224,6 +340,11 @@ export const deleteLeads = (ids) => {
   const leads = getAllLeadsRaw();
   const filtered = leads.filter((l) => !idSet.has(l.lead_id));
   saveLeads(filtered);
+
+  // Mirror bulk delete to shared server store.
+  if (ids.length > 0) {
+    callLeadsApi("delete", { lead_ids: ids });
+  }
 
   // If Pabbly mode, also send to webhook for each deleted lead
   if (isPabblyMode() && ADMIN_WEBHOOK_URL) {

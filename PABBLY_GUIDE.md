@@ -247,7 +247,38 @@ Create a separate Google Sheet (or a new tab) and map columns:
 
 ---
 
-## 9. Troubleshooting
+## 9. Shared Lead Store (admin panel visibility)
+
+The admin panel's LMS reads from browser `localStorage` — which is **per
+device**. Without a shared backing store, a visitor submitting a lead on
+their phone would never appear in the admin's browser. To fix that, the
+project ships a lightweight PHP endpoint that every submission is mirrored
+to, and that the admin panel reads from on load.
+
+**Files:**
+- `public/api/leads.php` — storage endpoint (POST create / GET list / POST update / POST delete). Writes to `public/api/data/leads.json`.
+- `public/api/config.php` — defines `ADMIN_API_KEY` (copy from `config.example.php`).
+
+**Setup:**
+
+1. Copy `public/api/config.example.php` to `public/api/config.php` on your server.
+2. Set `ADMIN_API_KEY` to a long random string.
+3. In `.env`, set the matching shared secret for the admin build:
+   ```env
+   REACT_APP_LEADS_API_URL="/api/leads.php"
+   REACT_APP_LEADS_ADMIN_KEY="<same-value-as-ADMIN_API_KEY>"
+   ```
+4. Rebuild the admin panel (`npm run build`) so the env vars are baked in.
+5. Make sure `public/api/data/` is writable by the PHP process.
+
+**How it works:**
+- On lead submit, `webhookSubmit.js` POSTs to Pabbly **and** to `/api/leads.php?action=create` (fire-and-forget).
+- On admin panel load, `AdminLayout.jsx` calls `syncLeadsFromServer()` which GETs `?action=list` and merges any new leads into localStorage.
+- Status/notes/delete actions from the admin panel POST to `?action=update` / `?action=delete` so other admins stay in sync.
+
+---
+
+## 10. Troubleshooting
 
 | Issue | Fix |
 |-------|-----|
@@ -257,3 +288,4 @@ Create a separate Google Sheet (or a new tab) and map columns:
 | GCLID not captured | Check that `gclidManager.js` is imported and Google Ads auto-tagging is on |
 | CORS error in browser console | Pabbly webhooks accept cross-origin POST by default — check for typos in the URL |
 | Duplicate leads appearing | `isDuplicateLead()` checks localStorage by mobile number — clear storage to reset |
+| Admin panel empty even though Pabbly receives leads | Confirm `public/api/config.php` exists with `ADMIN_API_KEY`, that `REACT_APP_LEADS_ADMIN_KEY` matches, and that `public/api/data/` is writable. Check browser DevTools Network tab for calls to `/api/leads.php`. |

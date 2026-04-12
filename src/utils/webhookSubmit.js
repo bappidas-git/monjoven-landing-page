@@ -21,6 +21,13 @@ const USE_PABBLY = true;
 // Dummy endpoint for testing (simulates success after 1.5s)
 const DUMMY_MODE = false;
 
+// Server-side lead storage endpoint. Admin panel reads leads from here
+// so submissions made on one browser are visible to admins on another.
+// Override via REACT_APP_LEADS_API_URL if your PHP endpoint lives
+// elsewhere. Leave blank to disable server persistence.
+const LEADS_API_URL =
+  process.env.REACT_APP_LEADS_API_URL || "/api/leads.php";
+
 // localStorage keys
 const LEADS_KEY = "lp_submitted_leads";
 const TEST_LEADS_KEY = "lp_test_leads";
@@ -134,6 +141,21 @@ export const submitLeadToWebhook = async (leadData) => {
   // received the data successfully.
   storeLeadForLMS(enrichedData, false);
 
+  // Persist the lead to the shared server-side store so the admin panel
+  // can see leads submitted from OTHER browsers/devices. localStorage
+  // alone is per-device and would otherwise leave the admin empty. Run
+  // fire-and-forget so a server outage doesn't block the Pabbly POST.
+  if (LEADS_API_URL) {
+    fetch(LEADS_API_URL + "?action=create", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ lead: enrichedData }),
+      keepalive: true,
+    }).catch((err) => {
+      console.error("[LeadsAPI] create failed:", err);
+    });
+  }
+
   try {
     const response = await fetch(WEBHOOK_URL, {
       method: "POST",
@@ -188,4 +210,5 @@ export const getConfig = () => ({
   USE_PABBLY,
   DUMMY_MODE,
   WEBHOOK_URL,
+  LEADS_API_URL,
 });
