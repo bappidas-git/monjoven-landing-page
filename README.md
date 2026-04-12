@@ -116,8 +116,9 @@ See **[CUSTOMIZATION_GUIDE.md](CUSTOMIZATION_GUIDE.md)** for a complete step-by-
 4. **Images** — Replace `placehold.co` URLs with your actual images
 5. **SEO** — Update meta tags and schemas in `public/index.html` and `src/config/seo.js`
 6. **Webhook** — Configure Pabbly URL in `src/utils/webhookSubmit.js` (see [PABBLY_GUIDE.md](PABBLY_GUIDE.md))
-7. **Analytics** — Set up GTM container (see [GTM_GUIDE.md](GTM_GUIDE.md))
-8. **Deploy** — Run `npm run build` and deploy the `build/` folder
+7. **Lead Management** — Copy `public/api/config.example.php` → `config.php`, set `ADMIN_API_KEY`, and set the matching `REACT_APP_LEADS_ADMIN_KEY` in `.env` (see [PABBLY_GUIDE.md](PABBLY_GUIDE.md) Part B)
+8. **Analytics** — Set up GTM container (see [GTM_GUIDE.md](GTM_GUIDE.md))
+9. **Deploy** — Run `npm run build` and deploy the `build/` folder
 
 ## Routes
 

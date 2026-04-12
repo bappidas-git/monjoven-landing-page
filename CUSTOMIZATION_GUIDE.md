@@ -30,6 +30,9 @@ Key variables to update:
 | `REACT_APP_OFFICE_ADDRESS` | Full office address |
 | `REACT_APP_ADMIN_USERNAME` | Admin panel username (default: `monjoven`) |
 | `REACT_APP_ADMIN_PASSWORD` | Admin panel password (default: `monjoven@2026vip`) |
+| `REACT_APP_LEADS_API_URL` | Path to `leads.php` (default: `/api/leads.php`). Required for Admin Panel. |
+| `REACT_APP_LEADS_ADMIN_KEY` | Secret shared with `ADMIN_API_KEY` in `public/api/config.php`. Required for Admin Panel. |
+| `REACT_APP_ADMIN_PABBLY_WEBHOOK_URL` | Optional — only for mirroring admin actions to a second Pabbly workflow. Leave blank otherwise. |
 
 ## 3. Update Brand Colors
 
@@ -122,17 +125,42 @@ Update `name`, `short_name`, and theme colors.
 
 See `SEO_GUIDE.md` for detailed SEO configuration.
 
-## 8. Configure Pabbly Webhook
+## 8. Configure Pabbly Webhook (Lead Capture)
 
-1. Create a Pabbly Connect account
-2. Set up a webhook trigger workflow
-3. Copy the webhook URL
-4. Update `src/utils/webhookSubmit.js`:
-   - Set `WEBHOOK_URL` to your Pabbly webhook URL
-   - Set `USE_PABBLY = true`
-   - Set `DUMMY_MODE = false`
+This sends each form submission to Google Sheets / Email / your CRM.
 
-See `PABBLY_GUIDE.md` for detailed setup instructions.
+1. Create a Pabbly Connect account — https://www.pabbly.com/connect/
+2. Set up a workflow with a **Webhook** trigger and copy the webhook URL.
+3. Open `src/utils/webhookSubmit.js` and set:
+   - `WEBHOOK_URL` = your Pabbly webhook URL
+   - `USE_PABBLY = true`
+   - `DUMMY_MODE = false`
+4. Save and rebuild.
+
+See `PABBLY_GUIDE.md` Part A for a full, step-by-step walkthrough (including Google Sheets column mapping and email notifications).
+
+## 8b. Configure Lead Management (Admin Panel)
+
+The Admin Panel (`/admin`) must be able to see leads submitted from **any** device. To do this, the project stores every lead on your server in a small JSON file via `public/api/leads.php`. Set it up once:
+
+1. On your server, copy **`public/api/config.example.php`** to **`public/api/config.php`**.
+2. Open `config.php` and set `ADMIN_API_KEY` to a long random string:
+   ```php
+   define('ADMIN_API_KEY', 'Zk8pQ3mX9yL2wN7bV5rT1jH6cD4fG0aE');
+   ```
+3. Put the **same value** in your project's `.env` file:
+   ```env
+   REACT_APP_LEADS_API_URL="/api/leads.php"
+   REACT_APP_LEADS_ADMIN_KEY="Zk8pQ3mX9yL2wN7bV5rT1jH6cD4fG0aE"
+   ```
+4. Run `npm run build` and redeploy (env values are baked in at build time).
+5. Make sure the `public/api/data/` folder is writable by the PHP process (usually automatic on cPanel).
+
+> **Requirement:** Your hosting must support PHP. If you're on Netlify/Vercel (static only), host `leads.php` on any cheap PHP host (Hostinger, cPanel, etc.) and use the full URL in `REACT_APP_LEADS_API_URL`.
+
+> **Optional — skip by default:** `REACT_APP_ADMIN_PABBLY_WEBHOOK_URL` is only needed if you want admin actions (status changes, notes, deletions) to also flow into a **second** Pabbly workflow. Lead Management works perfectly without it.
+
+See `PABBLY_GUIDE.md` Part B for full details.
 
 ## 9. Set Up Google Tag Manager
 
@@ -208,6 +236,7 @@ After deployment, verify:
 | Contact info | `.env`, `src/data/locationData.js` |
 | SEO meta tags | `public/index.html`, `src/config/seo.js` |
 | Webhook URL | `src/utils/webhookSubmit.js` |
+| Lead Management API key | `public/api/config.php` (server) + `.env` (`REACT_APP_LEADS_ADMIN_KEY`) |
 | GTM container ID | `.env`, `public/index.html` |
 | Admin credentials | `.env` |
 | Favicon / icons | `public/` directory |

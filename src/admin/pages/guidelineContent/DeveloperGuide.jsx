@@ -489,10 +489,28 @@ Navigate to /thank-you`}
               <td className={styles.guideTableCell}>Hero background video URL</td>
             </tr>
             <tr>
-              <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>REACT_APP_ADMIN_PABBLY_WEBHOOK_URL</code></td>
-              <td className={styles.guideTableCell}>No</td>
+              <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>REACT_APP_LEADS_API_URL</code></td>
+              <td className={styles.guideTableCell}>Yes (for Admin Panel)</td>
+              <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>/api/leads.php</code></td>
+              <td className={styles.guideTableCell}>Path/URL to the shared leads storage endpoint</td>
+            </tr>
+            <tr>
+              <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>REACT_APP_LEADS_ADMIN_KEY</code></td>
+              <td className={styles.guideTableCell}>Yes (for Admin Panel)</td>
               <td className={styles.guideTableCell}>—</td>
-              <td className={styles.guideTableCell}>Pabbly webhook for admin actions</td>
+              <td className={styles.guideTableCell}>
+                Shared secret that must match <code className={styles.guideInlineCode}>ADMIN_API_KEY</code> in <code className={styles.guideInlineCode}>public/api/config.php</code>. Protects list/update/delete endpoints.
+              </td>
+            </tr>
+            <tr>
+              <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>REACT_APP_ADMIN_PABBLY_WEBHOOK_URL</code></td>
+              <td className={styles.guideTableCell}>No (Optional)</td>
+              <td className={styles.guideTableCell}>—</td>
+              <td className={styles.guideTableCell}>
+                Secondary Pabbly webhook to mirror admin actions (status changes, notes, deletions)
+                to an external workflow. Not required for Lead Management — the shared leads.php
+                already syncs admin actions across devices.
+              </td>
             </tr>
           </tbody>
         </table>

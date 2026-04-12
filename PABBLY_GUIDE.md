@@ -1,115 +1,113 @@
-# Pabbly Connect Integration Guide
+# Pabbly Connect + Lead Management Setup Guide
 
-## 1. Overview
+> **Who is this for?** Anyone — even if you've never touched code before. Just follow each step in order.
 
-This landing page uses **Pabbly Connect** to capture consultation leads via webhook.
-When a visitor submits the UnifiedLeadForm on `landing.monjoven.com`, the data flows through a single utility function
-and lands in your Pabbly workflow for processing.
+---
 
-**Flow:**
+## 1. The Big Picture (in plain English)
+
+When a visitor fills the form on your landing page, their details need to reach **three** places:
+
+| Where | Why it matters | Who reads it |
+|-------|----------------|--------------|
+| 📮 **Pabbly Connect** | Forwards the lead to Google Sheets, Email, WhatsApp, or CRM | Your sales team |
+| 🗄️ **Your web server's `leads.json` file** | A shared filing cabinet every admin can read from | The Admin Panel |
+| 💾 **Visitor's browser** | Prevents duplicate submissions from the same phone | The landing page itself |
+
 ```
-UnifiedLeadForm Submit → webhookSubmit.js → Pabbly Webhook → Google Sheets / Email / CRM
+Visitor submits form
+        │
+        ├──▶ Pabbly webhook      ──▶  Google Sheet / Email / CRM
+        │
+        ├──▶ Your server         ──▶  Admin Panel (all devices)
+        │    (/api/leads.php)         (/admin/lms)
+        │
+        └──▶ Visitor's browser   ──▶  "Duplicate" check
 ```
 
-All forms (hero, contact, drawer variants) use the same webhook endpoint configured in `src/utils/webhookSubmit.js`.
+All of this happens in **under 2 seconds** — the visitor just sees a "Thank You" page.
 
 ---
 
-## 2. Quick Setup
+## 2. What You Need Before You Start
 
-1. **Create a Pabbly workflow** — Go to [Pabbly Connect](https://www.pabbly.com/connect/) → Create Workflow → Select **Webhook** as the trigger.
-2. **Copy the webhook URL** — Pabbly generates a unique URL like `https://connect.pabbly.com/webhook-listener/webhook/...`
-3. **Configure `src/utils/webhookSubmit.js`:**
-   ```js
-   const WEBHOOK_URL = "https://connect.pabbly.com/webhook-listener/webhook/YOUR_URL_HERE";
-   const USE_PABBLY = true;
-   const DUMMY_MODE = false;
-   ```
-4. **Test with a form submission** — Fill out the consultation form on your landing page and submit.
-5. **Check Pabbly** — Open your workflow history and confirm the webhook received the payload.
+| Thing | Where to get it | Cost |
+|-------|----------------|------|
+| A Pabbly Connect account | https://www.pabbly.com/connect/ | Free tier available |
+| A Google account (for Sheets) | https://accounts.google.com | Free |
+| Your landing page hosted on a PHP-capable server (cPanel, VPS, etc.) | — | Your existing hosting |
+| Access to the `.env` file of your project | Your code editor / hosting file manager | — |
+
+> **⚠️ Important:** The Lead Management system uses a small PHP file (`public/api/leads.php`) to store leads. Your hosting must support PHP (most shared hosting does — Netlify / Vercel static hosting do NOT). If you use Netlify/Vercel, put the PHP file on any cheap PHP host (Hostinger, cPanel) and point `REACT_APP_LEADS_API_URL` to that full URL.
 
 ---
 
-## 3. Lead Data Fields
+## 3. Part A — Set Up the Main Pabbly Webhook (for Google Sheets / Email / CRM)
 
-Every submission from the UnifiedLeadForm sends these fields to the webhook:
+### Step 1: Create a Pabbly Workflow
 
-| Field Name            | Example                              | Description                        |
-|-----------------------|--------------------------------------|------------------------------------|
-| `name`                | `Rahul Sharma`                       | Patient's full name                |
-| `mobile`              | `9876543210`                         | Mobile number (10 digits)          |
-| `email`               | `rahul@example.com`                  | Email address (optional)           |
-| `service_interest`    | `Hair Transplant`                    | Selected service (Hair Transplant, Rhinoplasty, PRP Therapy, etc.) |
-| `message`             | `Interested in FUE technique`        | Additional message from patient (optional) |
-| `source`              | `hero-form`                          | Form identifier (see Section 4)   |
-| `lead_id`             | `a1b2c3d4-e5f6-4g7h-8i9j-k0l1m2n3` | Auto-generated UUID                |
-| `status`              | `new`                                | Initial lead status                |
-| `submitted_at`        | `2026-04-11T10:30:00.000Z`          | ISO 8601 timestamp                 |
-| `page_url`            | `https://landing.monjoven.com/?utm_source=google` | Full page URL at submission   |
-| `user_agent`          | `Mozilla/5.0 ...`                    | Browser user-agent string          |
-| `utm_source`          | `google`                             | UTM source parameter               |
-| `utm_medium`          | `cpc`                                | UTM medium parameter               |
-| `utm_campaign`        | `hair_transplant_guwahati`           | UTM campaign parameter             |
-| `utm_term`            | `hair+transplant+guwahati`           | UTM term parameter                 |
-| `utm_content`         | `ad_variant_a`                       | UTM content parameter              |
-| `gclid`               | `EAIaIQobChMI...`                    | Google Click ID (from URL or stored) |
+1. Log in at https://www.pabbly.com/connect/
+2. Click **"Create Workflow"**
+3. Name it: `Landing Page - Lead Capture`
+4. For the **Trigger**, choose **Webhook**
+5. Pabbly shows a webhook URL like:
+   `https://connect.pabbly.com/webhook-listener/webhook/IjU3NjIwNTZ...`
+6. Click **Copy URL** — you'll paste it in the next step.
 
----
+### Step 2: Paste the URL into Your Code
 
-## 4. Form Sources
+Open the file **`src/utils/webhookSubmit.js`** and find these lines near the top:
 
-The `source` field identifies which form on `landing.monjoven.com` generated the lead:
+```js
+const WEBHOOK_URL = "PASTE_YOUR_PABBLY_URL_HERE";
+const USE_PABBLY = true;   // must be true for production
+const DUMMY_MODE = false;  // must be false for production
+```
 
-| Source Value                       | Form Location                              |
-|------------------------------------|--------------------------------------------|
-| `hero-form`                        | HeroSection — main consultation form       |
-| `contact-form`                     | ContactSection — enquiry form              |
-| `unified-lead-form`               | UnifiedLeadForm — default (no formId prop) |
-| `drawer-form-apply-now`           | LeadFormDrawer — Book Consultation         |
-| `drawer-form-request-callback`    | LeadFormDrawer — callback request          |
-| `drawer-form-get-details`         | LeadFormDrawer — general details request   |
-| `drawer-form-download-brochure`   | LeadFormDrawer — brochure download         |
+- Paste your Pabbly URL where it says `PASTE_YOUR_PABBLY_URL_HERE`.
+- Save the file.
 
----
+> **Tip:** While testing on your own computer, you can set `DUMMY_MODE = true` — then submissions are saved only in your browser and never sent anywhere.
 
-## 5. Google Sheets Mapping
+### Step 3: Add a Google Sheets Action in Pabbly
 
-In Pabbly, add a **Google Sheets** action and map columns like this:
+1. In your Pabbly workflow, click the **+** under the webhook trigger.
+2. Choose **Google Sheets** → Action: **Add Row**.
+3. Click **Connect** and sign in with the Google account that owns the sheet.
+4. Select your spreadsheet and worksheet (e.g., "Sheet1").
+5. Map the columns (see table below).
+6. Click **Save & Send Test Request**.
 
-| Column | Header               | Pabbly Field             |
-|--------|----------------------|--------------------------|
-| A      | Name                 | `{{name}}`               |
-| B      | Mobile               | `{{mobile}}`             |
-| C      | Email                | `{{email}}`              |
-| D      | Service Interest     | `{{service_interest}}`   |
-| E      | Message              | `{{message}}`            |
-| F      | Source               | `{{source}}`             |
-| G      | Lead ID              | `{{lead_id}}`            |
-| H      | Status               | `{{status}}`             |
-| I      | Submitted At         | `{{submitted_at}}`       |
-| J      | Page URL             | `{{page_url}}`           |
-| K      | UTM Source           | `{{utm_source}}`         |
-| L      | UTM Medium           | `{{utm_medium}}`         |
-| M      | UTM Campaign         | `{{utm_campaign}}`       |
-| N      | UTM Term             | `{{utm_term}}`           |
-| O      | UTM Content          | `{{utm_content}}`        |
-| P      | GCLID                | `{{gclid}}`              |
-| Q      | User Agent           | `{{user_agent}}`         |
+#### Column Mapping Template
 
-> Create the header row manually in your Google Sheet first, then map each column in Pabbly.
+Create these headers in Row 1 of your sheet first:
 
----
+| Column | Header           | Pabbly Field           |
+|--------|------------------|------------------------|
+| A      | Name             | `{{name}}`             |
+| B      | Mobile           | `{{mobile}}`           |
+| C      | Email            | `{{email}}`            |
+| D      | Service Interest | `{{service_interest}}` |
+| E      | Message          | `{{message}}`          |
+| F      | Source           | `{{source}}`           |
+| G      | Lead ID          | `{{lead_id}}`          |
+| H      | Status           | `{{status}}`           |
+| I      | Submitted At     | `{{submitted_at}}`     |
+| J      | Page URL         | `{{page_url}}`         |
+| K      | UTM Source       | `{{utm_source}}`       |
+| L      | UTM Medium       | `{{utm_medium}}`       |
+| M      | UTM Campaign     | `{{utm_campaign}}`     |
+| N      | UTM Term         | `{{utm_term}}`         |
+| O      | UTM Content      | `{{utm_content}}`      |
+| P      | GCLID            | `{{gclid}}`            |
+| Q      | User Agent       | `{{user_agent}}`       |
 
-## 6. Email Notification Setup
+### Step 4 (Optional): Add Email Notification
 
-Add an **Email** action step in your Pabbly workflow after the webhook trigger:
-
-1. **Action:** Select "Send Email" (use Pabbly's built-in SMTP or connect Gmail/Outlook).
-2. **Subject:**
-   ```
-   New Consultation: {{name}} - {{service_interest}}
-   ```
-3. **Body:**
+1. Add another action after Google Sheets.
+2. Choose **Email by Pabbly** (free, built-in) or **Gmail**.
+3. Subject: `New Consultation: {{name}} - {{service_interest}}`
+4. Body:
    ```
    New consultation request from {{source}}
 
@@ -124,168 +122,218 @@ Add an **Email** action step in your Pabbly workflow after the webhook trigger:
    UTM Source: {{utm_source}} | Campaign: {{utm_campaign}}
    ```
 
+### Step 5: Test It
+
+1. Open your landing page.
+2. Fill the consultation form with fake data and submit.
+3. Inside Pabbly, open your workflow → **History** tab. A new entry should appear within 30 seconds.
+4. Open your Google Sheet — a new row should be there.
+
+✅ **Main webhook done.** Leads are now reaching Google Sheets.
+
 ---
 
-## 7. Testing
+## 4. Part B — Set Up Lead Management (Admin Panel)
 
-### DUMMY_MODE (Local Development)
+The Admin Panel (`landing.yourdomain.com/admin`) lets you see, search, filter, and manage leads — from **any device**. For this to work across devices, leads need to be stored on your **server**, not just in one browser. Here's how to enable it.
 
-Set in `src/utils/webhookSubmit.js`:
-```js
-const DUMMY_MODE = true;
-const USE_PABBLY = false;
+### Step 1: Upload the PHP Files
+
+When you build and deploy the site, the folder **`public/api/`** gets copied to your server. Make sure these files end up in your server's `api/` folder:
+
+- `api/leads.php` ← the storage endpoint (already in the project)
+- `api/config.example.php` ← the template you'll copy
+
+### Step 2: Create `config.php` on Your Server
+
+On your server (via cPanel File Manager, FTP, or SSH):
+
+1. Navigate to the `api/` folder.
+2. Copy **`config.example.php`** → rename the copy to **`config.php`**.
+3. Open `config.php` in the editor and find this line near the bottom:
+   ```php
+   define('ADMIN_API_KEY', 'CHANGE_ME_TO_A_LONG_RANDOM_STRING');
+   ```
+4. Replace `CHANGE_ME_TO_A_LONG_RANDOM_STRING` with a **long random string** — e.g., run https://www.random.org/strings/ and paste something like:
+   ```php
+   define('ADMIN_API_KEY', 'Zk8pQ3mX9yL2wN7bV5rT1jH6cD4fG0aE');
+   ```
+5. Save the file.
+
+> **⚠️ Keep `config.php` private.** Never commit it to GitHub. It contains your secret key.
+
+### Step 3: Put the Same Key in Your `.env` File
+
+Open the `.env` file in your project and set:
+
+```env
+REACT_APP_LEADS_API_URL="/api/leads.php"
+REACT_APP_LEADS_ADMIN_KEY="Zk8pQ3mX9yL2wN7bV5rT1jH6cD4fG0aE"
 ```
-Submissions are logged to the browser console and stored in localStorage (no network requests).
 
-### Manual Webhook Test
+**The value of `REACT_APP_LEADS_ADMIN_KEY` must EXACTLY match `ADMIN_API_KEY` in `config.php`.** If they don't match, the admin panel will say "Unauthorized".
+
+If your PHP endpoint lives on a different domain than your landing page, use the full URL:
+```env
+REACT_APP_LEADS_API_URL="https://api.yourdomain.com/api/leads.php"
+```
+
+### Step 4: Rebuild & Redeploy
 
 ```bash
-curl -X POST "YOUR_PABBLY_WEBHOOK_URL" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "name": "Test Patient",
-    "mobile": "9876543210",
-    "email": "test@example.com",
-    "service_interest": "Hair Transplant",
-    "message": "Interested in FUE technique",
-    "source": "hero-form",
-    "lead_id": "test-001",
-    "status": "new",
-    "submitted_at": "2026-04-11T10:00:00.000Z",
-    "page_url": "https://landing.monjoven.com",
-    "user_agent": "curl/test",
-    "utm_source": "test",
-    "utm_medium": "",
-    "utm_campaign": "",
-    "utm_term": "",
-    "utm_content": "",
-    "gclid": ""
-  }'
+npm run build
 ```
 
-### Check localStorage for Test Leads
+Upload the fresh `build/` folder to your server. The env values get baked into the JavaScript during build — that's why a rebuild is required after changing `.env`.
 
-Open browser DevTools console and run:
+### Step 5: Make Sure the `data/` Folder Is Writable
+
+The first time a lead is submitted, `leads.php` creates a folder at `api/data/` to store `leads.json`. Your PHP process needs write permission.
+
+- On cPanel/shared hosting: usually works out of the box.
+- On a VPS: run `chmod 755 public_html/api && chown www-data:www-data public_html/api`.
+- If submissions fail silently, manually create `api/data/` and set permissions to `755`.
+
+### Step 6: Test the Admin Panel
+
+1. Open `https://yourdomain.com/admin/login`
+2. Log in with the credentials from `.env` (`REACT_APP_ADMIN_USERNAME` / `REACT_APP_ADMIN_PASSWORD`).
+3. Submit a new test lead from the landing page on a **different browser or phone**.
+4. Refresh the Admin Panel — the lead should appear in the Lead Management table.
+5. If it doesn't, see the Troubleshooting section at the end.
+
+✅ **Lead Management is live.** Every admin sees every lead, from every device.
+
+---
+
+## 5. Part C — The Admin Panel Pabbly Webhook (OPTIONAL — skip unless you need it)
+
+> **Short answer: You do NOT need this for Lead Management to work.** The setup above (Part B) already handles everything across all admin devices via your server.
+
+The Admin Panel Pabbly Webhook is only useful if you want admin actions — status changes, notes, deletions — to **also** land in a **second** Pabbly workflow (e.g., to update a separate Google Sheet or notify your team on Slack).
+
+### When to set it up
+
+Set `REACT_APP_ADMIN_PABBLY_WEBHOOK_URL` only if you answer **YES** to any of these:
+
+- "I want my Google Sheet to update the status column when an admin marks a lead as Contacted / Converted / Lost."
+- "I want to get a Slack/Email ping when any admin adds a note to a lead."
+- "I want a full audit log of admin actions inside Pabbly."
+
+### When to skip it
+
+Skip it (leave the value blank, or remove the line) if:
+
+- You manage lead statuses only inside the Admin Panel itself.
+- You don't need external tools to know about admin-side changes.
+
+### Setup (if you need it)
+
+1. Create a **second** Pabbly workflow with a Webhook trigger.
+2. Copy its URL.
+3. In `.env`:
+   ```env
+   REACT_APP_ADMIN_PABBLY_WEBHOOK_URL="https://connect.pabbly.com/webhook-listener/webhook/YOUR_SECOND_WORKFLOW_URL"
+   ```
+4. Rebuild and redeploy.
+
+### Payload Examples
+
+```json
+// status_update
+{ "action": "status_update", "lead_id": "...", "new_status": "contacted", "old_status": "new", "timestamp": "..." }
+
+// note_added
+{ "action": "note_added", "lead_id": "...", "note_text": "Called and left voicemail", "timestamp": "..." }
+
+// lead_deleted
+{ "action": "lead_deleted", "lead_id": "...", "timestamp": "..." }
+```
+
+Use Pabbly **Router/Filter** steps to branch each `action` to the right destination.
+
+---
+
+## 6. Environment Variables Cheat Sheet
+
+Put these in your project's `.env` file:
+
+| Variable | Required? | What it does |
+|----------|-----------|--------------|
+| *(none — set `WEBHOOK_URL` directly in `webhookSubmit.js`)* | **Yes** | The main Pabbly webhook for lead capture |
+| `REACT_APP_LEADS_API_URL` | **Yes** (for Admin Panel) | Path to your `leads.php` endpoint. Default: `/api/leads.php` |
+| `REACT_APP_LEADS_ADMIN_KEY` | **Yes** (for Admin Panel) | Secret that must match `ADMIN_API_KEY` in `config.php` |
+| `REACT_APP_ADMIN_PABBLY_WEBHOOK_URL` | **No (Optional)** | Second Pabbly webhook for admin-side actions only |
+| `REACT_APP_ADMIN_USERNAME` | **Yes** | Admin login username |
+| `REACT_APP_ADMIN_PASSWORD` | **Yes** | Admin login password |
+
+On your server, inside `public/api/config.php`:
+
+| Constant | Required? | What it does |
+|----------|-----------|--------------|
+| `ADMIN_API_KEY` | **Yes** (for Admin Panel) | Secret that must match `REACT_APP_LEADS_ADMIN_KEY` |
+
+---
+
+## 7. Fields Sent to the Webhook
+
+Every form submission sends these fields:
+
+| Field | Example | Description |
+|-------|---------|-------------|
+| `name` | `Rahul Sharma` | Visitor's full name |
+| `mobile` | `9876543210` | 10-digit mobile |
+| `email` | `rahul@example.com` | Email (optional) |
+| `service_interest` | `Hair Transplant` | Selected service |
+| `message` | `Interested in FUE` | Optional message |
+| `source` | `hero-form` | Which form was used (see below) |
+| `lead_id` | `a1b2-c3d4-...` | Auto-generated unique ID |
+| `status` | `new` | Always "new" at capture |
+| `submitted_at` | `2026-04-12T10:30:00.000Z` | Submission timestamp |
+| `page_url` | `https://landing.yourdomain.com/?utm_source=google` | Full page URL |
+| `user_agent` | `Mozilla/5.0 ...` | Browser info |
+| `utm_source` / `utm_medium` / `utm_campaign` / `utm_term` / `utm_content` | `google` / `cpc` / `spring_sale` / ... | Ad tracking parameters |
+| `gclid` | `EAIaIQobChMI...` | Google Ads click ID |
+
+### Form Source Values
+
+| Source | Where it came from |
+|--------|-------------------|
+| `hero-form` | Main form at the top of the page |
+| `contact-form` | Form in the Contact section |
+| `drawer-form-apply-now` | Sliding drawer — "Book Consultation" |
+| `drawer-form-request-callback` | Sliding drawer — "Request Callback" |
+| `drawer-form-get-details` | Sliding drawer — "Get Details" |
+| `drawer-form-download-brochure` | Sliding drawer — "Download Brochure" |
+| `unified-lead-form` | Default (fallback) |
+
+---
+
+## 8. Troubleshooting
+
+| Problem | Fix |
+|---------|-----|
+| Form submits but Pabbly shows nothing | In `webhookSubmit.js`: confirm `USE_PABBLY = true`, `DUMMY_MODE = false`, and the `WEBHOOK_URL` is correct. Rebuild + redeploy after changes. |
+| Admin Panel is empty even though Pabbly receives leads | (1) Verify `config.php` exists in `api/` with `ADMIN_API_KEY`. (2) Verify `REACT_APP_LEADS_ADMIN_KEY` in `.env` **exactly** matches `ADMIN_API_KEY`. (3) Verify `api/data/` folder is writable by the PHP process. (4) Open browser DevTools → Network tab → look for `/api/leads.php?action=list` and check its status code. |
+| Admin Panel says "Unauthorized" | The two keys don't match. Copy `ADMIN_API_KEY` from `config.php`, paste into `.env` as `REACT_APP_LEADS_ADMIN_KEY`, run `npm run build`, redeploy. |
+| 404 or 400 from Pabbly webhook | Regenerate the URL in Pabbly — the old one may have expired or been deleted. |
+| Leads missing UTM fields | UTMs must be in the landing page URL (e.g. `?utm_source=google&utm_medium=cpc`). |
+| GCLID not captured | Check that Google Ads auto-tagging is enabled in your Google Ads account. |
+| CORS error in console | Pabbly webhooks accept cross-origin POST; double-check the URL. For the leads API — make sure it's on the same domain or that CORS headers are set (already handled by `leads.php`). |
+| Duplicate leads appearing | `isDuplicateLead()` checks by mobile number — clear browser localStorage to reset. |
+| "leads.json permission denied" in server logs | `chmod 755 api/` and make sure PHP user can write. On cPanel, use File Manager → right-click `api/` → Change Permissions → set to `755`. |
+
+---
+
+## 9. Testing Modes Reference
+
+| Mode | `USE_PABBLY` | `DUMMY_MODE` | Behavior |
+|------|--------------|--------------|----------|
+| Local testing | `false` | `true` | Leads saved only in your browser. No network requests. Great for development. |
+| Production | `true` | `false` | Leads sent to Pabbly + stored on server. Admin panel shows all leads. |
+
+To inspect test leads in the browser, open DevTools → Console and run:
 ```js
-// Test leads (DUMMY_MODE)
-JSON.parse(localStorage.getItem("lp_test_leads"))
-
-// Production leads (stored locally as backup)
-JSON.parse(localStorage.getItem("lp_submitted_leads"))
+JSON.parse(localStorage.getItem("lp_test_leads"))   // dummy mode leads
+JSON.parse(localStorage.getItem("lp_submitted_leads")) // real leads captured on this device
 ```
-
----
-
-## 8. Admin Panel Webhooks
-
-When `USE_PABBLY = true` and `DUMMY_MODE = false`, the admin panel can sync status updates, notes, and deletions back to Pabbly via a second webhook.
-
-### Setup
-
-1. **Create a second Pabbly workflow** — Go to Pabbly Connect → Create Workflow → Select **Webhook** as the trigger.
-2. **Copy the webhook URL** — Pabbly generates a unique URL.
-3. **Set the URL in `.env`:**
-   ```env
-   REACT_APP_ADMIN_PABBLY_WEBHOOK_URL="https://connect.pabbly.com/webhook-listener/webhook/YOUR_ADMIN_WEBHOOK_ID"
-   ```
-
-### Payload Formats
-
-The admin webhook sends JSON payloads with an `action` field to identify the event type.
-
-**Status Update** — fired when a lead's status is changed:
-```json
-{
-  "action": "status_update",
-  "lead_id": "a1b2c3d4-e5f6-4g7h-8i9j-k0l1m2n3",
-  "new_status": "contacted",
-  "old_status": "new",
-  "timestamp": "2026-04-11T10:30:00.000Z"
-}
-```
-
-**Note Added** — fired when a note is added to a lead:
-```json
-{
-  "action": "note_added",
-  "lead_id": "a1b2c3d4-e5f6-4g7h-8i9j-k0l1m2n3",
-  "note_text": "Called and left voicemail",
-  "timestamp": "2026-04-11T11:00:00.000Z"
-}
-```
-
-**Lead Deleted** — fired when a lead is deleted:
-```json
-{
-  "action": "lead_deleted",
-  "lead_id": "a1b2c3d4-e5f6-4g7h-8i9j-k0l1m2n3",
-  "timestamp": "2026-04-11T11:30:00.000Z"
-}
-```
-
-### Google Sheets Mapping for Admin Actions
-
-Create a separate Google Sheet (or a new tab) and map columns:
-
-| Column | Header      | Pabbly Field        |
-|--------|-------------|---------------------|
-| A      | Action      | `{{action}}`        |
-| B      | Lead ID     | `{{lead_id}}`       |
-| C      | New Status  | `{{new_status}}`    |
-| D      | Old Status  | `{{old_status}}`    |
-| E      | Note Text   | `{{note_text}}`     |
-| F      | Timestamp   | `{{timestamp}}`     |
-
-> Use a Pabbly **Router** or **Filter** step to route different actions to different sheets or actions (e.g., only update the lead row status when `action = status_update`).
-
-### Mode Behavior
-
-| Mode | Behavior |
-|------|----------|
-| `DUMMY_MODE=true, USE_PABBLY=false` | All data stored in localStorage only. No webhooks fired. |
-| `USE_PABBLY=true, DUMMY_MODE=false` | Admin actions fire webhooks. Leftover test leads are auto-cleared on admin panel load. |
-
----
-
-## 9. Shared Lead Store (admin panel visibility)
-
-The admin panel's LMS reads from browser `localStorage` — which is **per
-device**. Without a shared backing store, a visitor submitting a lead on
-their phone would never appear in the admin's browser. To fix that, the
-project ships a lightweight PHP endpoint that every submission is mirrored
-to, and that the admin panel reads from on load.
-
-**Files:**
-- `public/api/leads.php` — storage endpoint (POST create / GET list / POST update / POST delete). Writes to `public/api/data/leads.json`.
-- `public/api/config.php` — defines `ADMIN_API_KEY` (copy from `config.example.php`).
-
-**Setup:**
-
-1. Copy `public/api/config.example.php` to `public/api/config.php` on your server.
-2. Set `ADMIN_API_KEY` to a long random string.
-3. In `.env`, set the matching shared secret for the admin build:
-   ```env
-   REACT_APP_LEADS_API_URL="/api/leads.php"
-   REACT_APP_LEADS_ADMIN_KEY="<same-value-as-ADMIN_API_KEY>"
-   ```
-4. Rebuild the admin panel (`npm run build`) so the env vars are baked in.
-5. Make sure `public/api/data/` is writable by the PHP process.
-
-**How it works:**
-- On lead submit, `webhookSubmit.js` POSTs to Pabbly **and** to `/api/leads.php?action=create` (fire-and-forget).
-- On admin panel load, `AdminLayout.jsx` calls `syncLeadsFromServer()` which GETs `?action=list` and merges any new leads into localStorage.
-- Status/notes/delete actions from the admin panel POST to `?action=update` / `?action=delete` so other admins stay in sync.
-
----
-
-## 10. Troubleshooting
-
-| Issue | Fix |
-|-------|-----|
-| Form submits but Pabbly shows nothing | Verify `USE_PABBLY = true` and `DUMMY_MODE = false` in `webhookSubmit.js` |
-| 404 / 400 from webhook | Double-check the `WEBHOOK_URL` — regenerate in Pabbly if expired |
-| Leads missing UTM data | Ensure landing page URL includes `?utm_source=...` query params (e.g., `landing.monjoven.com/?utm_source=google&utm_medium=cpc`) |
-| GCLID not captured | Check that `gclidManager.js` is imported and Google Ads auto-tagging is on |
-| CORS error in browser console | Pabbly webhooks accept cross-origin POST by default — check for typos in the URL |
-| Duplicate leads appearing | `isDuplicateLead()` checks localStorage by mobile number — clear storage to reset |
-| Admin panel empty even though Pabbly receives leads | Confirm `public/api/config.php` exists with `ADMIN_API_KEY`, that `REACT_APP_LEADS_ADMIN_KEY` matches, and that `public/api/data/` is writable. Check browser DevTools Network tab for calls to `/api/leads.php`. |
