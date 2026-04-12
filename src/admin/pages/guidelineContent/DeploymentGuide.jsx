@@ -257,6 +257,65 @@ cp -r build/* /home/master/applications/your-app/public_html/`}
         </ol>
       </div>
 
+      {/* Lead Management Server Setup */}
+      <h2 className={styles.guideTitle}>8b. Lead Management Server Setup (one-time)</h2>
+      <div className={styles.guideSection}>
+        <p className={styles.guideParagraph}>
+          After your site is uploaded, you need to enable the shared lead storage so the Admin
+          Panel can display leads from every device. Do this <strong>once</strong> after the first
+          deploy.
+        </p>
+        <div className={styles.guideNote}>
+          <strong>Requires PHP hosting.</strong> cPanel, Hostinger, Cloudways, VPS — all work.
+          Netlify/Vercel (static only) do not — host <code className={styles.guideInlineCode}>leads.php</code>{' '}
+          on any cheap PHP server and set <code className={styles.guideInlineCode}>REACT_APP_LEADS_API_URL</code>{' '}
+          to its full URL.
+        </div>
+        <ol className={styles.guideStepList}>
+          <li className={styles.guideStepItem}>
+            On the server, open the{' '}
+            <code className={styles.guideInlineCode}>api/</code> folder inside your deployed site.
+          </li>
+          <li className={styles.guideStepItem}>
+            Copy <code className={styles.guideInlineCode}>config.example.php</code> → rename the
+            copy to <code className={styles.guideInlineCode}>config.php</code>.
+          </li>
+          <li className={styles.guideStepItem}>
+            Edit <code className={styles.guideInlineCode}>config.php</code> and set{' '}
+            <code className={styles.guideInlineCode}>ADMIN_API_KEY</code> to a long random string:
+            <pre className={styles.guideCode}>{`define('ADMIN_API_KEY', 'Zk8pQ3mX9yL2wN7bV5rT1jH6cD4fG0aE');`}</pre>
+          </li>
+          <li className={styles.guideStepItem}>
+            In your local project, open <code className={styles.guideInlineCode}>.env</code> and
+            set <strong>the same value</strong>:
+            <pre className={styles.guideCode}>
+{`REACT_APP_LEADS_API_URL="/api/leads.php"
+REACT_APP_LEADS_ADMIN_KEY="Zk8pQ3mX9yL2wN7bV5rT1jH6cD4fG0aE"`}
+            </pre>
+          </li>
+          <li className={styles.guideStepItem}>
+            Run <code className={styles.guideInlineCode}>npm run build</code> again and re-upload
+            the <code className={styles.guideInlineCode}>build/</code> folder (env values get
+            baked in at build time).
+          </li>
+          <li className={styles.guideStepItem}>
+            Make sure <code className={styles.guideInlineCode}>api/data/</code> is writable by PHP
+            (<code className={styles.guideInlineCode}>chmod 755</code> on VPS; automatic on most
+            cPanel hosts).
+          </li>
+          <li className={styles.guideStepItem}>
+            Submit a test lead from any device, then refresh{' '}
+            <code className={styles.guideInlineCode}>/admin/lms</code> — it should appear.
+          </li>
+        </ol>
+        <div className={styles.guideTip}>
+          <strong>Optional:</strong>{' '}
+          <code className={styles.guideInlineCode}>REACT_APP_ADMIN_PABBLY_WEBHOOK_URL</code> is
+          NOT required. Only set it if you want admin actions (status changes, notes, deletions)
+          to also flow into a second Pabbly workflow. See the Pabbly Setup tab for details.
+        </div>
+      </div>
+
       {/* Section 9: Post-Deployment Checklist */}
       <h2 className={styles.guideTitle}>9. Post-Deployment Checklist</h2>
       <div className={styles.guideSection}>
@@ -303,6 +362,17 @@ cp -r build/* /home/master/applications/your-app/public_html/`}
               <td className={styles.guideTableCell}>7</td>
               <td className={styles.guideTableCell}>Pabbly receives form data</td>
               <td className={styles.guideTableCell}>Check Pabbly workflow history</td>
+            </tr>
+            <tr>
+              <td className={styles.guideTableCell}>7b</td>
+              <td className={styles.guideTableCell}>
+                Admin panel shows leads from other devices
+              </td>
+              <td className={styles.guideTableCell}>
+                Submit a lead from your phone, then open <code className={styles.guideInlineCode}>/admin/lms</code> on desktop — the lead should appear. If not, verify{' '}
+                <code className={styles.guideInlineCode}>config.php</code> and{' '}
+                <code className={styles.guideInlineCode}>REACT_APP_LEADS_ADMIN_KEY</code> match.
+              </td>
             </tr>
             <tr>
               <td className={styles.guideTableCell}>8</td>
