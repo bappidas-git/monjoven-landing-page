@@ -82,8 +82,7 @@ const storeLeadForLMS = (leadData, isTest = false) => {
  * @param {string} leadData.name - Applicant's full name
  * @param {string} leadData.mobile - Mobile number
  * @param {string} leadData.email - Email address
- * @param {string} leadData.investment_interest - Selected investment plan
- * @param {string} leadData.current_occupation - Applicant's current occupation
+ * @param {string} leadData.service_interest - Selected service of interest
  * @param {string} leadData.source - Form source identifier (e.g., 'hero-form', 'apply-now', 'contact-form')
  * @param {Object} [leadData.metadata] - Additional metadata
  * @returns {Promise<{success: boolean, message: string}>}
