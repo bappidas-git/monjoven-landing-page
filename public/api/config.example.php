@@ -23,3 +23,12 @@ define('META_API_VERSION', 'v19.0');
 // Test Event Code (from Events Manager > Test Events tab)
 // Remove or leave empty in production
 define('META_TEST_EVENT_CODE', '');
+
+// ============================================
+// Lead Storage API (leads.php)
+// Shared secret that gates admin-only endpoints
+// (list / update / delete). MUST match the value
+// of REACT_APP_LEADS_ADMIN_KEY used by the admin
+// panel build. Generate a long random string.
+// ============================================
+define('ADMIN_API_KEY', 'CHANGE_ME_TO_A_LONG_RANDOM_STRING');

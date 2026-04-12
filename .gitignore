@@ -21,3 +21,8 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Server-side PHP config (holds secrets)
+/public/api/config.php
+# Runtime-generated lead store
+/public/api/data/
