@@ -6,20 +6,20 @@
    ============================================ */
 
 // GCLID manager for persistent gclid storage
-import { getStoredGclid } from './gclidManager';
+import { getStoredGclid } from "./gclidManager";
 
 // =============================================
 // CONFIGURATION — REPLACE THIS URL WITH YOUR
 // PABBLY CONNECT WEBHOOK URL
 // =============================================
 const WEBHOOK_URL =
-  "https://connect.pabbly.com/webhook-listener/webhook/YOUR_WEBHOOK_ID_HERE";
+  "https://connect.pabbly.com/webhook-listener/webhook/IjU3NjIwNTZkMDYzZTA0Mzc1MjZmNTUzZCI_3D_pc/IjU3NjcwNTZmMDYzZjA0Mzc1MjZhNTUzNzUxM2Ei_pc";
 
 // Set to true when Pabbly webhook is configured
-const USE_PABBLY = false;
+const USE_PABBLY = true;
 
 // Dummy endpoint for testing (simulates success after 1.5s)
-const DUMMY_MODE = true;
+const DUMMY_MODE = false;
 
 // localStorage keys
 const LEADS_KEY = "lp_submitted_leads";
@@ -44,7 +44,10 @@ const storeLeadForLMS = (leadData, isTest = false) => {
   const existingLeads = JSON.parse(localStorage.getItem(key) || "[]");
 
   // Dedup: skip if lead_id already exists
-  if (leadData.lead_id && existingLeads.some(l => l.lead_id === leadData.lead_id)) {
+  if (
+    leadData.lead_id &&
+    existingLeads.some((l) => l.lead_id === leadData.lead_id)
+  ) {
     return leadData;
   }
 
@@ -96,7 +99,10 @@ export const submitLeadToWebhook = async (leadData) => {
     utm_term: new URLSearchParams(window.location.search).get("utm_term") || "",
     utm_content:
       new URLSearchParams(window.location.search).get("utm_content") || "",
-    gclid: new URLSearchParams(window.location.search).get("gclid") || getStoredGclid() || "",
+    gclid:
+      new URLSearchParams(window.location.search).get("gclid") ||
+      getStoredGclid() ||
+      "",
   };
 
   // === DUMMY MODE (for testing) ===
