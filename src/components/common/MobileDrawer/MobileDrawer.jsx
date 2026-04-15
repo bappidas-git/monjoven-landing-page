@@ -266,7 +266,7 @@ const MobileDrawer = ({ open, onClose, onOpen, onBookConsultation, activeSection
               <span>+91 9181956562</span>
             </a>
             <a
-              href="https://api.whatsapp.com/send?phone=919127062599&text=Hi%2C%20I%20would%20like%20to%20book%20a%20consultation"
+              href="https://api.whatsapp.com/send?phone=919127062599&text=Hi%20Doctor%2C%0AI%20want%20to%20check%20if%20i%20am%20suitable%20for%20transplant."
               className={styles.contactDetailItem}
               target="_blank"
               rel="noopener noreferrer"

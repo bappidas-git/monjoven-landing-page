@@ -71,7 +71,7 @@ const ContactSection = () => {
         {
           icon: "mdi:whatsapp",
           content: "+91 9127062599",
-          href: "https://api.whatsapp.com/send?phone=919127062599",
+          href: "https://api.whatsapp.com/send?phone=919127062599&text=Hi%20Doctor%2C%0AI%20want%20to%20check%20if%20i%20am%20suitable%20for%20transplant.",
           external: true,
           ariaLabel: "Chat with us on WhatsApp at +91 9127062599",
         },
@@ -129,7 +129,7 @@ const ContactSection = () => {
               <span>Call Now</span>
             </a>
             <a
-              href="https://api.whatsapp.com/send?phone=919127062599"
+              href="https://api.whatsapp.com/send?phone=919127062599&text=Hi%20Doctor%2C%0AI%20want%20to%20check%20if%20i%20am%20suitable%20for%20transplant."
               target="_blank"
               rel="noopener noreferrer"
               className={`${styles.quickActionBtn} ${styles.quickActionWhatsapp}`}
