@@ -64,9 +64,9 @@ const highlightsData = [
     id: 4,
     image:
       "https://res.cloudinary.com/dn9gyaiik/image/upload/v1775884050/FUT_Procedure_mkieqo.png",
-    title: "Our FUT Process",
+    title: "Advanced DHI & FUE Techniques",
     description:
-      "Strip harvesting under local anesthesia with individual graft separation for maximum coverage in a single session.",
+      "Advanced DHI technique combined with advanced FUE for precise, natural-looking results and maximum graft survival.",
   },
   {
     id: 5,
