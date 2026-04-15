@@ -61,8 +61,8 @@ const ContactSection = () => {
     {
       icon: "mdi:phone-outline",
       title: "Call Us",
-      content: "+91 8011002870",
-      href: "tel:+918011002870",
+      content: "+91 9181956562",
+      href: "tel:+919181956562",
     },
     {
       icon: "mdi:whatsapp",
@@ -118,7 +118,7 @@ const ContactSection = () => {
 
           {/* Quick Action Buttons (mobile-first, visible on all) */}
           <motion.div variants={itemVariants} className={styles.quickActions}>
-            <a href="tel:+918011002870" className={styles.quickActionBtn}>
+            <a href="tel:+919181956562" className={styles.quickActionBtn}>
               <Icon icon="mdi:phone" className={styles.quickActionIcon} />
               <span>Call Now</span>
             </a>

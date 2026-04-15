@@ -282,7 +282,7 @@ const LocationSection = () => {
               variant="outline"
               size="large"
               startIcon="mdi:phone"
-              href="tel:+918011002870"
+              href="tel:+919181956562"
               className={styles.callUsBtn}
             >
               Call Us

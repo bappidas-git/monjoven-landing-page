@@ -119,7 +119,7 @@ const SEOSetupGuide = ({ styles }) => {
 organization.name       → Your company's legal name
 organization.url        → https://landing.monjoven.com
 organization.logo       → URL to your logo image
-organization.phone      → +91-8011002870
+organization.phone      → +91-9181956562
 organization.email      → dr@monjoven.com
 organization.address    → Guwahati, Assam, India
 
