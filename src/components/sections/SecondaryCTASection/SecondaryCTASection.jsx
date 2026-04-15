@@ -14,7 +14,7 @@ import Button from "../../common/Button/Button";
 import styles from "./SecondaryCTASection.module.css";
 
 const benefits = [
-  { text: "Free initial consultation & assessment", icon: "mdi:check-circle" },
+  { text: "Get initial consultation & assessment", icon: "mdi:check-circle" },
   { text: "Personalized treatment plan", icon: "mdi:check-circle" },
   {
     text: "Transparent pricing with no hidden costs",

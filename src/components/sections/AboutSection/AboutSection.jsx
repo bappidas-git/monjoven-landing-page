@@ -38,7 +38,7 @@ const itemVariants = {
 // Stats data
 const keyStats = [
   {
-    value: "12",
+    value: "15",
     suffix: "+",
     label: "Years Experience",
     icon: "mdi:trophy-award",
