@@ -64,10 +64,10 @@
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
   margin-bottom: 2.5rem;
-  max-width: 1200px;
+  max-width: 1320px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -456,26 +456,39 @@
   }
 
   .coursesGrid {
-    gap: 2rem;
+    gap: 1.5rem;
   }
 
   .courseCard {
-    padding: 2rem 1.75rem;
+    padding: 1.875rem 1.5rem;
   }
 }
 
-/* ========== Responsive - Medium Desktop (1024-1439px) ========== */
-@media (min-width: 1024px) and (max-width: 1439px) {
+/* ========== Responsive - Medium Desktop (1200-1439px) ========== */
+@media (min-width: 1200px) and (max-width: 1439px) {
   .coursesGrid {
-    gap: 1.25rem;
+    gap: 1rem;
   }
 
   .courseCard {
-    padding: 1.5rem 1.25rem;
+    padding: 1.5rem 1.125rem;
   }
 
   .courseName {
     font-size: 1rem !important;
+  }
+}
+
+/* ========== Responsive - Small Desktop (1024-1199px) ========== */
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .coursesGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    max-width: 900px;
+  }
+
+  .courseCard {
+    padding: 1.75rem 1.5rem;
   }
 }
 
