@@ -55,7 +55,7 @@ export const seoConfig = {
     home: {
       title: "Monjoven | Hair Transplant & Cosmetic Surgery in Guwahati, Assam",
       description:
-        "Northeast India's first dedicated hair transplant clinic. Led by Dr. Porag Neog (MBBS, MS) with 25+ years of experience in plastic surgery and 15+ years in hair transplant. Advanced Micro-FUE technology, free post-op care. Book your consultation today.",
+        "Northeast India's first dedicated hair transplant clinic. Led by Dr. Porag Neog (MBBS, MS) with 25+ years of experience in plastic surgery and 15+ years in hair transplant. Advanced Micro-FUE technology, free post operative care. Book your consultation today.",
       keywords:
         "hair transplant guwahati, fue hair transplant assam, hair transplant northeast india, cosmetic surgery guwahati, dr porag neog, monjoven, beard transplant, rhinoplasty assam, prp therapy guwahati",
     },

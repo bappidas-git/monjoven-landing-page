@@ -72,7 +72,7 @@ const highlightsData = [
     id: 5,
     image:
       "https://res.cloudinary.com/dn9gyaiik/image/upload/v1775884051/post_up_care_h4wblq.png",
-    title: "Comprehensive Post-Op Care",
+    title: "Comprehensive Post Operative Care",
     description:
       "Free laser therapy for 4 months, 2 weeks follow-up care, and 24/7 telephonic support for complete peace of mind.",
   },
