@@ -54,7 +54,7 @@ const parseStatValue = (stat) => {
   // Handle "0.6mm" -> { value: 0.6, suffix: "mm", decimals: 1 }
   // Handle "5K+" -> { value: 5, suffix: "K+", decimals: 0 }
   // Handle "98%" -> { value: 98, suffix: "%", decimals: 0 }
-  // Handle "12+" -> { value: 12, suffix: "+", decimals: 0 }
+  // Handle "25+" -> { value: 25, suffix: "+", decimals: 0 }
   const match = String(stat).match(/^([\d.]+)(.*)$/);
   if (!match) return { value: 0, suffix: '', decimals: 0 };
 

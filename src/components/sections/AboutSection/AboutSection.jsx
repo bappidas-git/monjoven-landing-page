@@ -74,7 +74,7 @@ const doctorProfile = {
   name: "Dr. Porag Neog",
   credentials: "MBBS, MS",
   title: "Cosmetic Surgeon & Founder",
-  bio: "Highly trained cosmetic surgeon with 12+ years specializing in hair transplant using the smallest FUE punch (micro-FUE) technology.",
+  bio: "Highly trained cosmetic surgeon with 25+ years of experience in plastic surgery and 15+ years specializing in hair transplant using the smallest FUE punch (micro-FUE) technology.",
 };
 
 // Clinic image
@@ -87,9 +87,9 @@ const clinicImage = {
 const differentiators = [
   {
     icon: "mdi:medal-outline",
-    title: "12+ Years of Proven Excellence",
+    title: "25+ Years of Proven Excellence",
     description:
-      "Pioneering hair transplant and cosmetic surgery in Northeast India since 2012",
+      "25+ years in plastic surgery and 15+ years pioneering hair transplant in Northeast India",
   },
   {
     icon: "mdi:microscope",

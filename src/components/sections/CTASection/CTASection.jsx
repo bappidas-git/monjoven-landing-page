@@ -60,7 +60,7 @@ const testimonials = [
 const trustBadges = [
   { value: "5,000+", label: "Happy Patients", icon: "mdi:account-group" },
   { value: "4.9/5", label: "Average Rating", icon: "mdi:star-circle" },
-  { value: "12+", label: "Years Trusted", icon: "mdi:shield-check" },
+  { value: "25+", label: "Yrs Plastic Surgery", icon: "mdi:shield-check" },
 ];
 
 const CARDS_PER_VIEW = 3;
