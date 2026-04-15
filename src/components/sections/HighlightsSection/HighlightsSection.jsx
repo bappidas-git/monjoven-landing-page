@@ -82,7 +82,7 @@ const highlightsData = [
       "https://res.cloudinary.com/dn9gyaiik/image/upload/v1775884052/Monjoven_Clinic_Interior_pravha.png",
     title: "World-Class Facility",
     description:
-      "Clean, well-organized clinic environment with luxury amenities, complimentary meals, and a dedicated team of specialists.",
+      "Clean, well-organized clinic environment with luxury amenities, healthy & hygienic meals, and a dedicated team of specialists.",
   },
 ];
 
@@ -178,8 +178,8 @@ const HighlightsSection = () => {
                   Ready for Your Transformation?
                 </Typography>
                 <Typography className={styles.ctaDesc} sx={{ color: "#fff" }}>
-                  Book a consultation with our specialists and take the
-                  first step toward your new look. Personalized treatment plans
+                  Book a consultation with our specialists and take the first
+                  step toward your new look. Personalized treatment plans
                   tailored to your goals.
                 </Typography>
               </div>
