@@ -60,16 +60,22 @@ const ContactSection = () => {
     },
     {
       icon: "mdi:phone-outline",
-      title: "Call Us",
-      content: "+91 9181956562",
-      href: "tel:+919181956562",
-    },
-    {
-      icon: "mdi:whatsapp",
-      title: "WhatsApp",
-      content: "+91 9127062599",
-      href: "https://api.whatsapp.com/send?phone=919127062599",
-      external: true,
+      title: "Call / WhatsApp",
+      items: [
+        {
+          icon: "mdi:phone",
+          content: "+91 9181956562",
+          href: "tel:+919181956562",
+          ariaLabel: "Call us at +91 9181956562",
+        },
+        {
+          icon: "mdi:whatsapp",
+          content: "+91 9127062599",
+          href: "https://api.whatsapp.com/send?phone=919127062599",
+          external: true,
+          ariaLabel: "Chat with us on WhatsApp at +91 9127062599",
+        },
+      ],
     },
     {
       icon: "mdi:email-outline",
@@ -167,7 +173,31 @@ const ContactSection = () => {
                         >
                           {item.title}
                         </Typography>
-                        {item.href ? (
+                        {item.items ? (
+                          <div className={styles.contactLinkGroup}>
+                            {item.items.map((sub, subIndex) => (
+                              <a
+                                key={subIndex}
+                                href={sub.href}
+                                aria-label={sub.ariaLabel}
+                                className={styles.contactLinkItem}
+                                {...(sub.external
+                                  ? {
+                                      target: "_blank",
+                                      rel: "noopener noreferrer",
+                                    }
+                                  : {})}
+                              >
+                                <Icon
+                                  icon={sub.icon}
+                                  className={styles.contactSubIcon}
+                                  aria-hidden="true"
+                                />
+                                <span>{sub.content}</span>
+                              </a>
+                            ))}
+                          </div>
+                        ) : item.href ? (
                           <a
                             href={item.href}
                             className={styles.contactLink}

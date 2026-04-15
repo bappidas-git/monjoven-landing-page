@@ -196,6 +196,35 @@
   color: var(--accent-gold);
 }
 
+/* Multi-link contact group (e.g. Call + WhatsApp in one card) */
+.contactLinkGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.contactLinkItem {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--primary-dark);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+  line-height: 1.4;
+}
+
+.contactLinkItem:hover {
+  color: var(--accent-gold);
+}
+
+.contactSubIcon {
+  font-size: 1rem;
+  color: var(--accent-gold);
+  flex-shrink: 0;
+}
+
 /* Form Wrapper */
 .formWrapper {
   position: relative;
@@ -306,8 +335,13 @@
   }
 
   .contactContent,
-  .contactLink {
+  .contactLink,
+  .contactLinkItem {
     font-size: var(--fs-xs);
+  }
+
+  .contactSubIcon {
+    font-size: 0.9rem;
   }
 
   .formWrapper {
