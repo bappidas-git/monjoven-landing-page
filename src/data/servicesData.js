@@ -36,6 +36,24 @@ export const servicesData = [
     icon: "mdi:face-man-shimmer-outline",
   },
   {
+    id: "eyebrow-transplant",
+    name: "Eyebrow Transplant",
+    shortName: "EYEBROW",
+    target: "Thin or Sparse Eyebrows",
+    duration: "2-4 Hours Procedure",
+    description:
+      "Restore thin, sparse, or over-plucked eyebrows with our precision micro-FUE eyebrow transplant, designed to deliver natural shape, density, and symmetry.",
+    features: [
+      "Smallest micro-FUE punch technique",
+      "Natural shape & symmetry design",
+      "Permanent & natural-looking results",
+      "Minimally invasive, quick recovery",
+    ],
+    frequency: "Permanent natural eyebrow growth",
+    badge: null,
+    icon: "mdi:eye-outline",
+  },
+  {
     id: "cosmetic-surgery",
     name: "Cosmetic Surgery",
     shortName: "COSMETIC",
