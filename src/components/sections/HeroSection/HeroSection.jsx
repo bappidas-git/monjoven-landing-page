@@ -200,10 +200,10 @@ const HeroSection = () => {
                     marginTop: "1.5rem",
                   }}
                 >
-                  Restore Your Confidence with
+                  World-Class Hair Transplant —
                   <span className={styles.orangeText}>
                     {" "}
-                    World-Class Hair Transplant
+                    Natural Hair Back in 6–9 Months
                   </span>
                 </Typography>
               </motion.div>
