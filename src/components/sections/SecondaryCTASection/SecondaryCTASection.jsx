@@ -33,7 +33,7 @@ const trustIndicators = [
 ];
 
 const WHATSAPP_URL =
-  "https://api.whatsapp.com/send?phone=919127062599&text=Hi%20Dr.%20Neog%2C%20I%20want%20to%20book%20a%20consultation";
+  "https://api.whatsapp.com/send?phone=919127062599&text=Hi%20Doctor%2C%0AI%20want%20to%20check%20if%20i%20am%20suitable%20for%20transplant.";
 
 const SecondaryCTASection = () => {
   const { openLeadDrawer } = useModal();
