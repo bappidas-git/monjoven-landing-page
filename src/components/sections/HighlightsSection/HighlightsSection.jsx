@@ -74,7 +74,7 @@ const highlightsData = [
       "https://res.cloudinary.com/dn9gyaiik/image/upload/v1775884051/post_up_care_h4wblq.png",
     title: "Comprehensive Post Operative Care",
     description:
-      "Free laser therapy for 4 months, 2 weeks follow-up care, and 24/7 telephonic support for complete peace of mind.",
+      "Free laser therapy for 4 months, 2 weeks follow-up care, and long term guidance and support for complete peace of mind.",
   },
   {
     id: 6,
