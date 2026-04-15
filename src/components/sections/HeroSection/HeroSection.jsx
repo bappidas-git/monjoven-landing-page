@@ -84,7 +84,7 @@ const trustIndicators = [
   { icon: "mdi:calendar-check-outline", text: "12+ Years Experience" },
   { icon: "mdi:check-decagram-outline", text: "5000+ Successful Procedures" },
   { icon: "mdi:microscope", text: "Micro-FUE Technology" },
-  { icon: "mdi:laser-pointer", text: "Free Post-Op Laser Therapy" },
+  { icon: "mdi:laser-pointer", text: "Free Post operative" },
 ];
 
 const HeroSection = () => {
