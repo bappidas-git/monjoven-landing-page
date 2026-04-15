@@ -66,43 +66,6 @@ const cardVariants = {
   }),
 };
 
-// Comparison data
-const comparisonData = {
-  headers: [
-    "Feature",
-    "Hair Transplant",
-    "Beard Transplant",
-    "Cosmetic Surgery",
-  ],
-  rows: [
-    {
-      label: "Procedure Duration",
-      values: ["6-8 Hours", "4-6 Hours", "Varies"],
-    },
-    {
-      label: "Anesthesia",
-      values: ["Local", "Local", "Local / General"],
-    },
-    {
-      label: "Recovery Time",
-      values: ["7-10 Days", "5-7 Days", "1-4 Weeks"],
-    },
-    {
-      label: "Results Visible",
-      values: ["6-12 Months", "4-8 Months", "2-6 Months"],
-    },
-    {
-      label: "Sessions Required",
-      values: ["1 Session", "1 Session", "Consultation Based"],
-    },
-    {
-      label: "Follow-up Care",
-      values: ["Included", "Included", "Included"],
-      isBold: true,
-    },
-  ],
-};
-
 const ServicesSection = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
@@ -288,51 +251,6 @@ const ServicesSection = () => {
                 )}
               </div>
             )}
-          </motion.div>
-
-          {/* Comparison Table */}
-          <motion.div
-            variants={itemVariants}
-            className={styles.comparisonSection}
-          >
-            <Typography className={styles.comparisonTitle}>
-              <Icon icon="mdi:compare-horizontal" />
-              Quick Comparison
-            </Typography>
-            <div className={styles.comparisonTableWrapper}>
-              <table className={styles.comparisonTable}>
-                <thead>
-                  <tr>
-                    {comparisonData.headers.map((header, idx) => (
-                      <th key={idx}>{header}</th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {comparisonData.rows.map((row, rowIdx) => (
-                    <tr
-                      key={rowIdx}
-                      style={row.isBold ? { fontWeight: 700 } : undefined}
-                    >
-                      <td
-                        className={styles.comparisonLabel}
-                        style={row.isBold ? { fontWeight: 700 } : undefined}
-                      >
-                        {row.label}
-                      </td>
-                      {row.values.map((value, valIdx) => (
-                        <td
-                          key={valIdx}
-                          style={row.isBold ? { fontWeight: 700 } : undefined}
-                        >
-                          {value}
-                        </td>
-                      ))}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
           </motion.div>
 
           {/* Bottom CTA */}
