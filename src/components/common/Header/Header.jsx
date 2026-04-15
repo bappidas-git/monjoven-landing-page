@@ -213,14 +213,14 @@ const Header = ({ forceCloseMenu = false }) => {
               transition={{ delay: 0.5, duration: 0.3 }}
             >
               <a
-                href="tel:+918011002870"
+                href="tel:+919181956562"
                 className={styles.callButton}
                 onClick={() =>
-                  trackPhoneClick("+918011002870", "header_desktop")
+                  trackPhoneClick("+919181956562", "header_desktop")
                 }
               >
                 <Icon icon="mdi:phone" className={styles.callButtonIcon} />
-                +91 8011002870
+                +91 9181956562
               </a>
             </motion.div>
           )}
@@ -280,15 +280,15 @@ const Header = ({ forceCloseMenu = false }) => {
               </ul>
               <div className={styles.mobileNavCTA}>
                 <a
-                  href="tel:+918011002870"
+                  href="tel:+919181956562"
                   className={styles.mobileCallButton}
                   onClick={() => {
-                    trackPhoneClick("+918011002870", "header_mobile_menu");
+                    trackPhoneClick("+919181956562", "header_mobile_menu");
                     setIsMobileMenuOpen(false);
                   }}
                 >
                   <Icon icon="mdi:phone" className={styles.callButtonIcon} />
-                  +91 8011002870
+                  +91 9181956562
                 </a>
               </div>
             </nav>

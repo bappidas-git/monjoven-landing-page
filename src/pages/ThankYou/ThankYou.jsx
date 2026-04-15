@@ -34,7 +34,7 @@ const trustBadges = [
 
 // Contact details
 const contactInfo = {
-  phone: "+91 8011002870",
+  phone: "+91 9181956562",
   whatsapp: "+91 9127062599",
   email: "dr@monjoven.com",
   clinicHours: "Mon - Sat: 9:00 AM - 6:00 PM",
@@ -328,7 +328,7 @@ const ThankYou = () => {
                       Call Us
                     </span>
                     <a
-                      href="tel:+918011002870"
+                      href="tel:+919181956562"
                       className={styles.contactValue}
                     >
                       {contactInfo.phone}

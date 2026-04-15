@@ -27,7 +27,7 @@ export const seoConfig = {
     url: 'https://www.monjoven.com',
     logo: 'https://www.monjoven.com/assets/img/logo.png',
     email: 'dr@monjoven.com',
-    phone: '+91 8011002870',
+    phone: '+91 9181956562',
     description:
       'Monjoven is Northeast India\'s first dedicated hair transplant clinic, offering advanced FUE & FUT hair restoration, cosmetic surgery, and aesthetic treatments in Guwahati, Assam. Founded by Dr. Porag Neog with over 12 years of experience.',
     address: {
