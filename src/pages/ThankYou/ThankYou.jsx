@@ -17,7 +17,7 @@ import { seoConfig } from "../../config/seo";
 const trustBadges = [
   {
     icon: "mdi:calendar-check",
-    label: "12+ Years Experience",
+    label: "25+ Yrs Plastic Surgery | 15+ Yrs Hair Transplant",
     color: "#148F77",
   },
   {

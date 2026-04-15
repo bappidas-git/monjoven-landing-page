@@ -2,11 +2,11 @@ export const statsData = [
   {
     id: 1,
     icon: "mdi:calendar-check",
-    title: "12+ Years of Pioneering Excellence",
+    title: "25+ Years of Pioneering Excellence",
     description:
-      "Northeast India's first dedicated hair transplant clinic, delivering world-class results since 2012.",
-    stat: "12+",
-    statLabel: "Years Experience",
+      "25+ years of experience in plastic surgery and 15+ years in hair transplant, delivering world-class results.",
+    stat: "25+",
+    statLabel: "Years in Plastic Surgery",
   },
   {
     id: 2,

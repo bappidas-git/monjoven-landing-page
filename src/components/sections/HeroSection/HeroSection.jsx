@@ -81,7 +81,7 @@ const buttonVariants = {
 
 // Trust indicators data
 const trustIndicators = [
-  { icon: "mdi:calendar-check-outline", text: "12+ Years Experience" },
+  { icon: "mdi:calendar-check-outline", text: "25+ Yrs Plastic Surgery | 15+ Yrs Hair Transplant" },
   { icon: "mdi:check-decagram-outline", text: "5000+ Successful Procedures" },
   { icon: "mdi:microscope", text: "Micro-FUE Technology" },
   { icon: "mdi:laser-pointer", text: "Free Post-Op Laser Therapy" },
@@ -222,9 +222,10 @@ const HeroSection = () => {
                     lineHeight: 1.6,
                   }}
                 >
-                  Led by Dr. Porag Neog (MBBS, MS) with 12+ years of experience.
-                  We use the latest Micro-FUE technology to deliver natural,
-                  permanent results at par with international standards.
+                  Led by Dr. Porag Neog (MBBS, MS) with 25+ years of experience
+                  in plastic surgery and 15+ years in hair transplant. We use the
+                  latest Micro-FUE technology to deliver natural, permanent
+                  results at par with international standards.
                 </Typography>
               </motion.div>
 

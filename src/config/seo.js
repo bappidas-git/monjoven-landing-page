@@ -13,7 +13,7 @@ export const seoConfig = {
   defaultTitle: 'Monjoven | Hair Transplant & Cosmetic Surgery in Guwahati',
   titleTemplate: '%s | Monjoven',
   defaultDescription:
-    'Monjoven is the first dedicated hair transplant clinic in Northeast India with 12+ years of experience. Expert FUE & FUT hair transplant, cosmetic surgery, and aesthetic treatments in Guwahati, Assam. Consult Dr. Porag Neog today.',
+    'Monjoven is the first dedicated hair transplant clinic in Northeast India, led by Dr. Porag Neog with 25+ years of experience in plastic surgery and 15+ years in hair transplant. Expert FUE & FUT hair transplant, cosmetic surgery, and aesthetic treatments in Guwahati, Assam. Consult Dr. Porag Neog today.',
   defaultImage: 'https://www.monjoven.com/og-image.jpg',
   locale: 'en_IN',
   language: 'en',
@@ -29,7 +29,7 @@ export const seoConfig = {
     email: 'dr@monjoven.com',
     phone: '+91 9181956562',
     description:
-      'Monjoven is Northeast India\'s first dedicated hair transplant clinic, offering advanced FUE & FUT hair restoration, cosmetic surgery, and aesthetic treatments in Guwahati, Assam. Founded by Dr. Porag Neog with over 12 years of experience.',
+      'Monjoven is Northeast India\'s first dedicated hair transplant clinic, offering advanced FUE & FUT hair restoration, cosmetic surgery, and aesthetic treatments in Guwahati, Assam. Founded by Dr. Porag Neog with over 25 years of experience in plastic surgery and 15+ years in hair transplant.',
     address: {
       streetAddress: 'VIP Road, Borbari, Six Mile, Near Pratiksha Hospital',
       addressLocality: 'Guwahati',
@@ -55,7 +55,7 @@ export const seoConfig = {
     home: {
       title: 'Monjoven | Hair Transplant & Cosmetic Surgery in Guwahati, Assam',
       description:
-        'Northeast India\'s first dedicated hair transplant clinic. Led by Dr. Porag Neog (MBBS, MS) with 12+ years experience. Advanced Micro-FUE technology, free post-op care. Book your consultation today.',
+        'Northeast India\'s first dedicated hair transplant clinic. Led by Dr. Porag Neog (MBBS, MS) with 25+ years of experience in plastic surgery and 15+ years in hair transplant. Advanced Micro-FUE technology, free post-op care. Book your consultation today.',
       keywords:
         'hair transplant guwahati, fue hair transplant assam, hair transplant northeast india, cosmetic surgery guwahati, dr porag neog, monjoven, beard transplant, rhinoplasty assam, prp therapy guwahati',
     },
@@ -123,7 +123,7 @@ export const seoConfig = {
     {
       question: 'Why should I choose Monjoven for my hair transplant?',
       answer:
-        "Monjoven is Northeast India's first dedicated hair transplant clinic with 12+ years of experience. Led by Dr. Porag Neog (MBBS, MS), we use the smallest FUE punch technology, offer free post-operative laser therapy, 24/7 support, and have served patients from 10+ countries with results at par with international standards.",
+        "Monjoven is Northeast India's first dedicated hair transplant clinic, led by Dr. Porag Neog (MBBS, MS) with 25+ years of experience in plastic surgery and 15+ years in hair transplant. We use the smallest FUE punch technology, offer free post-operative laser therapy, 24/7 support, and have served patients from 10+ countries with results at par with international standards.",
     },
   ],
 
