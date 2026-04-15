@@ -133,7 +133,7 @@ const PrivacyPolicyContent = () => (
         <br />
         Email: dr@monjoven.com
         <br />
-        Phone: +91 8011002870
+        Phone: +91 9181956562
       </p>
     </section>
 
@@ -268,7 +268,7 @@ const TermsConditionsContent = () => (
         <br />
         Email: dr@monjoven.com
         <br />
-        Phone: +91 8011002870
+        Phone: +91 9181956562
       </p>
     </section>
 
@@ -307,7 +307,7 @@ const DisclaimerContent = () => (
       <h3>Contact</h3>
       <p>
         For any questions or concerns, please contact us at dr@monjoven.com or
-        call +91 8011002870.
+        call +91 9181956562.
       </p>
     </section>
 
@@ -519,8 +519,8 @@ const Footer = () => {
                       <Icon icon="mdi:phone" className={styles.contactIcon} />
                       <span className={styles.contactLabel}>Phone</span>
                     </div>
-                    <a href="tel:+918011002870" className={styles.contactValue}>
-                      +91 8011002870
+                    <a href="tel:+919181956562" className={styles.contactValue}>
+                      +91 9181956562
                     </a>
                   </li>
                   <li className={styles.contactItem}>

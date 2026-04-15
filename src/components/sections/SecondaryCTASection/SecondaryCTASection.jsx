@@ -158,9 +158,9 @@ const SecondaryCTASection = () => {
 
               {/* Phone Number */}
               <motion.div variants={itemVariants}>
-                <a href="tel:+918011002870" className={styles.phoneLink}>
+                <a href="tel:+919181956562" className={styles.phoneLink}>
                   <Icon icon="mdi:phone" className={styles.phoneIcon} />
-                  +91 8011002870
+                  +91 9181956562
                 </a>
               </motion.div>
 

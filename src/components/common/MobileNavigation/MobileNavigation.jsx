@@ -18,7 +18,7 @@ const navItems = [
     icon: "mdi:phone",
     color: "#E74C3C",
     action: "call",
-    href: "tel:+918011002870",
+    href: "tel:+919181956562",
   },
   {
     id: "whatsapp",
@@ -87,7 +87,7 @@ const MobileNavigation = ({
         window.open(item.href, "_blank");
         break;
       case "call":
-        trackPhoneClick('+918011002870', 'mobile_nav');
+        trackPhoneClick('+919181956562', 'mobile_nav');
         window.open(item.href, "_blank");
         break;
       case "enquiry":

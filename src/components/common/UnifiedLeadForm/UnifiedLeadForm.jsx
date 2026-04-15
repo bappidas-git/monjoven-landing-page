@@ -348,7 +348,7 @@ const PrivacyPolicyContent = () => (
         <br />
         Email: dr@monjoven.com
         <br />
-        Phone: +91-8011002870
+        Phone: +91-9181956562
       </p>
     </section>
 
@@ -736,7 +736,7 @@ const UnifiedLeadForm = ({
       console.error('Form submission error:', error);
       await showError(
         'Something went wrong',
-        'Please try again or call us directly at +91-8011002870.'
+        'Please try again or call us directly at +91-9181956562.'
       );
     } finally {
       setIsSubmitting(false);
@@ -1180,9 +1180,9 @@ const UnifiedLeadForm = ({
           >
             Or call us directly
           </Typography>
-          <a href="tel:+918011002870" className={styles.phoneLink}>
+          <a href="tel:+919181956562" className={styles.phoneLink}>
             <Icon icon="mdi:phone" />
-            <span>+91-8011002870</span>
+            <span>+91-9181956562</span>
           </a>
         </div>
       )}
