@@ -84,7 +84,7 @@ const WhyTransplantsFailCTA = () => {
     trackCTAClick(
       "why_fail_book_consultation",
       "why_fail_cta",
-      "Book Consultation"
+      "Book Consultation",
     );
     openLeadDrawer("consultation");
   };
@@ -111,7 +111,10 @@ const WhyTransplantsFailCTA = () => {
           {/* Section Header */}
           <motion.div variants={itemVariants} className={styles.header}>
             <span className={styles.badge}>
-              <Icon icon="mdi:alert-octagon-outline" className={styles.badgeIcon} />
+              <Icon
+                icon="mdi:alert-octagon-outline"
+                className={styles.badgeIcon}
+              />
               The Hard Truth
             </span>
             <Typography
@@ -123,9 +126,9 @@ const WhyTransplantsFailCTA = () => {
               <span className={styles.titleAccent}>Fail</span>
             </Typography>
             <Typography className={styles.subtitle}>
-              A hair transplant is a one-time opportunity. Here's what goes wrong
-              at unqualified clinics — and how Monjoven makes sure it doesn't
-              happen to you.
+              A hair transplant is a one-time opportunity. Here's what goes
+              wrong at unqualified clinics — and how Monjoven makes sure it
+              doesn't happen to you.
             </Typography>
           </motion.div>
 
@@ -157,12 +160,17 @@ const WhyTransplantsFailCTA = () => {
               {/* Left — reassurance copy */}
               <div className={styles.bannerLeft}>
                 <span className={styles.bannerBadge}>
-                  <Icon icon="mdi:shield-check" className={styles.bannerBadgeIcon} />
+                  <Icon
+                    icon="mdi:shield-check"
+                    className={styles.bannerBadgeIcon}
+                  />
                   The Monjoven Promise
                 </span>
                 <Typography variant="h3" className={styles.bannerTitle}>
                   Performed under the expert supervision of{" "}
-                  <span className={styles.bannerTitleAccent}>Dr. Porag Neog</span>
+                  <span className={styles.bannerTitleAccent}>
+                    Dr. Porag Neog
+                  </span>
                 </Typography>
 
                 <ul className={styles.reassuranceList}>
@@ -202,7 +210,7 @@ const WhyTransplantsFailCTA = () => {
                       icon="mdi:calendar-check"
                       className={styles.ctaButtonIcon}
                     />
-                    <span>Book Free Consultation</span>
+                    <span>Book Consultation</span>
                   </button>
 
                   <div className={styles.trustRow}>

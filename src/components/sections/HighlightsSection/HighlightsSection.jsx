@@ -39,7 +39,7 @@ const highlightsData = [
   {
     id: 1,
     image:
-      "https://placehold.co/600x400/2EC4B6/white?text=Hair+Transplant+Results\n600+X+400",
+      "https://placehold.co/600x400/2EC4B6/white?text=Hair+Transplant+Results+(600+x+400)",
     title: "Hair Transplant Results",
     description:
       "Natural, dense hair growth achieved through our Micro-FUE technique with the smallest punch size for minimal scarring.",
@@ -47,7 +47,7 @@ const highlightsData = [
   {
     id: 2,
     image:
-      "https://placehold.co/600x400/FF6B35/white?text=Beard+Transplant+Results\n600+X+400",
+      "https://placehold.co/600x400/FF6B35/white?text=Beard+Transplant+Results+(600+x+400)",
     title: "Beard Transplant Results",
     description:
       "Full, natural-looking beard achieved with precision FUE extraction and custom design for each patient.",
@@ -55,7 +55,7 @@ const highlightsData = [
   {
     id: 3,
     image:
-      "https://placehold.co/600x400/2D3561/white?text=Our+FUE+Process\n600+X+400",
+      "https://placehold.co/600x400/2D3561/white?text=Our+FUE+Process+(600+x+400)",
     title: "Our FUE Process",
     description:
       "Individual follicles extracted using micro punches (0.6-1.25mm) and reinserted at natural angles for seamless results.",
@@ -63,7 +63,7 @@ const highlightsData = [
   {
     id: 4,
     image:
-      "https://placehold.co/600x400/8E44AD/white?text=Advanced+DHI+%26+FUE+Techniques\n600+X+400",
+      "https://placehold.co/600x400/8E44AD/white?text=Advanced+DHI+%26+FUE+Techniques+(600+x+400)",
     title: "Advanced DHI & FUE Techniques",
     description:
       "Advanced DHI technique combined with advanced FUE for precise, natural-looking results and maximum graft survival.",
@@ -71,7 +71,7 @@ const highlightsData = [
   {
     id: 5,
     image:
-      "https://placehold.co/600x400/27AE60/white?text=Post+Operative+Care\n600+X+400",
+      "https://placehold.co/600x400/27AE60/white?text=Post+Operative+Care+(600+x+400)",
     title: "Comprehensive Post Operative Care",
     description:
       "Free laser therapy for 4 months, 2 weeks follow-up care, and long term guidance and support for complete peace of mind.",
@@ -79,7 +79,7 @@ const highlightsData = [
   {
     id: 6,
     image:
-      "https://placehold.co/600x400/E67E22/white?text=World-Class+Facility\n600+X+400",
+      "https://placehold.co/600x400/E67E22/white?text=World-Class+Facility+(600+x+400)",
     title: "World-Class Facility",
     description:
       "Clean, well-organized clinic environment with luxury amenities, healthy & hygienic meals, and a dedicated team of specialists.",

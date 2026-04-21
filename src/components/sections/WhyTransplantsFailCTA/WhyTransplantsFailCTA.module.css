@@ -7,12 +7,7 @@
 .section {
   position: relative;
   padding: var(--space-16) 0;
-  background: linear-gradient(
-    180deg,
-    #f8fafc 0%,
-    #eef4f8 50%,
-    #f8fafc 100%
-  );
+  background: linear-gradient(180deg, #f8fafc 0%, #eef4f8 50%, #f8fafc 100%);
   overflow: hidden;
   isolation: isolate;
 }
@@ -21,9 +16,9 @@
   position: absolute;
   inset: 0;
   background-image: radial-gradient(
-      rgba(26, 82, 118, 0.06) 1px,
-      transparent 1px
-    );
+    rgba(26, 82, 118, 0.06) 1px,
+    transparent 1px
+  );
   background-size: 24px 24px;
   mask-image: radial-gradient(
     ellipse at center,
@@ -284,13 +279,13 @@
   font-family: var(--font-heading);
   font-size: clamp(1.35rem, 1.8vw + 0.4rem, 2rem);
   font-weight: var(--fw-bold);
-  color: #ffffff;
+  color: #ffffff !important;
   line-height: var(--lh-snug);
   margin: 0;
 }
 
 .bannerTitleAccent {
-  color: #2ec4b6;
+  color: #2ec4b6 !important;
   white-space: nowrap;
 }
 

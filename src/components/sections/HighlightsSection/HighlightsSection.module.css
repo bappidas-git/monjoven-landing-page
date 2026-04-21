@@ -116,7 +116,7 @@
 .highlightTitle {
   font-family: "Poppins", sans-serif;
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 700 !important;
   color: #1a5276;
   line-height: 1.3;
 }
