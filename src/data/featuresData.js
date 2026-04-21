@@ -1,31 +1,19 @@
 export const featuresData = [
   {
     id: 1,
-    category: "Advanced Technology",
+    category: "Techniques",
     items: [
       {
         icon: "mdi:microscope",
-        title: "Micro-FUE Technology",
+        title: "FUE & DHI Techniques",
         description:
-          "Smallest FUE punch (0.6mm-1.25mm) for minimal scarring and maximum graft survival rate",
-      },
-      {
-        icon: "mdi:laser-pointer",
-        title: "Free Laser Therapy",
-        description:
-          "Complimentary 4-month post-transplant laser therapy to boost hair growth and healing",
+          "Hair transplant procedures performed using established techniques such as Follicular Unit Extraction (FUE) and Direct Hair Implantation (DHI), selected based on individual assessment.",
       },
       {
         icon: "mdi:needle",
         title: "PRP Therapy",
         description:
-          "Platelet-Rich Plasma therapy for non-surgical hair restoration and enhanced results",
-      },
-      {
-        icon: "mdi:image-filter-hdr",
-        title: "Natural Results",
-        description:
-          "Natural angle and density placement ensuring results at par with international standards",
+          "Platelet-Rich Plasma (PRP) therapy may be used in selected cases as an adjunct to support hair growth.",
       },
     ],
   },
