@@ -95,7 +95,7 @@ const highlightsData = [
   {
     id: 5,
     image:
-      "https://placehold.co/600x400/27AE60/white?text=Post+Procedure+Care+(600+x+400)",
+      "https://res.cloudinary.com/dn9gyaiik/image/upload/v1775884051/post_up_care_h4wblq.png",
     title: "Post-Procedure Care & Follow-Up",
     description:
       "Structured post-procedure care with guidance on recovery, hair growth cycle, and follow-up support.",
@@ -109,7 +109,7 @@ const highlightsData = [
   {
     id: 6,
     image:
-      "https://placehold.co/600x400/E67E22/white?text=Clinical+Environment+(600+x+400)",
+      "https://res.cloudinary.com/dn9gyaiik/image/upload/v1775887560/monjoven-clinic-interior_urbcsh.png",
     title: "Clinical Environment",
     description:
       "Procedures performed in a clean and controlled clinical setting, maintaining standard protocols for hygiene and patient safety.",

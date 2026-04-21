@@ -83,7 +83,8 @@ const FeaturesSection = () => {
     openLeadDrawer("consultation");
   };
 
-  const activeCategory = featuresData.find((c) => c.id === activeTab) || featuresData[0];
+  const activeCategory =
+    featuresData.find((c) => c.id === activeTab) || featuresData[0];
 
   return (
     <section className={styles.benefitsSection} id="why-us" ref={ref}>
@@ -122,8 +123,7 @@ const FeaturesSection = () => {
                 lineHeight: 1.2,
               }}
             >
-              The Monjoven{" "}
-              <span className={styles.accentText}>Advantage</span>
+              The Monjoven <span className={styles.accentText}>Approach</span>
             </Typography>
             <Typography
               className={styles.sectionSubtitle}
@@ -135,7 +135,8 @@ const FeaturesSection = () => {
                 marginTop: "0.75rem",
               }}
             >
-              Experience the difference of Northeast India's most trusted hair transplant and cosmetic surgery clinic
+              Experience the difference of Northeast India's most trusted hair
+              transplant and cosmetic surgery clinic
             </Typography>
           </motion.div>
 
@@ -181,7 +182,7 @@ const FeaturesSection = () => {
                   <Icon
                     icon={categoryAccentIcons[activeTab]}
                     className={styles.lottiePlayer}
-                    style={{ width: '100%', height: '100%', color: '#148F77' }}
+                    style={{ width: "100%", height: "100%", color: "#148F77" }}
                   />
                 </div>
 
@@ -222,7 +223,11 @@ const FeaturesSection = () => {
                   <div className={styles.mobileCategoryLottie}>
                     <Icon
                       icon={categoryAccentIcons[category.id]}
-                      style={{ width: '100%', height: '100%', color: '#148F77' }}
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        color: "#148F77",
+                      }}
                     />
                   </div>
                   <h3 className={styles.mobileCategoryTitle}>
@@ -241,10 +246,7 @@ const FeaturesSection = () => {
                       whileHover={{ y: -4, scale: 1.02 }}
                     >
                       <div className={styles.benefitIconWrapper}>
-                        <Icon
-                          icon={item.icon}
-                          className={styles.benefitIcon}
-                        />
+                        <Icon icon={item.icon} className={styles.benefitIcon} />
                       </div>
                       <div className={styles.benefitContent}>
                         <h4 className={styles.benefitTitle}>{item.title}</h4>
@@ -260,7 +262,10 @@ const FeaturesSection = () => {
           </div>
 
           {/* Course Highlights Strip */}
-          <motion.div variants={itemVariants} className={styles.highlightsStrip}>
+          <motion.div
+            variants={itemVariants}
+            className={styles.highlightsStrip}
+          >
             <div className={styles.highlightsTrack}>
               {courseHighlights.map((item, index) => (
                 <div key={index} className={styles.highlightChip}>
@@ -291,8 +296,7 @@ const FeaturesSection = () => {
               onClick={handleConsultation}
               endIcon={<Icon icon="mdi:arrow-right" />}
               sx={{
-                background:
-                  "linear-gradient(135deg, #148F77 0%, #1ABC9C 100%)",
+                background: "linear-gradient(135deg, #148F77 0%, #1ABC9C 100%)",
                 color: "#fff",
                 fontWeight: 700,
                 fontSize: { xs: "0.9rem", md: "1rem" },
