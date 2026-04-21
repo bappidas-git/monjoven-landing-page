@@ -22,28 +22,16 @@ export const featuresData = [
     category: "Patient Care & Support",
     items: [
       {
-        icon: "mdi:phone-in-talk",
-        title: "24/7 Telephonic Support",
+        icon: "mdi:clipboard-pulse-outline",
+        title: "Post-Procedure Care",
         description:
-          "Round-the-clock post-procedure support for any questions or concerns during recovery",
+          "Structured guidance provided for recovery, including instructions, follow-up evaluation, and ongoing support.",
       },
       {
         icon: "mdi:calendar-check",
-        title: "Free Follow-Up Care",
+        title: "Follow-Up & Monitoring",
         description:
-          "Complimentary 2-week follow-up care ensuring optimal healing and results",
-      },
-      {
-        icon: "mdi:food-apple",
-        title: "Luxury Clinic Experience",
-        description:
-          "Comfortable clinic environment with healthy & hygienic meals and snacks during procedures",
-      },
-      {
-        icon: "mdi:shield-check",
-        title: "Strict Safety Protocols",
-        description:
-          "Rigorous operative protocols with a fully dedicated team of trained surgeons and technicians",
+          "Patients are advised follow-up based on individual requirements to monitor progress and address concerns.",
       },
     ],
   },
@@ -53,27 +41,27 @@ export const featuresData = [
     items: [
       {
         icon: "mdi:doctor",
-        title: "Expert Surgeon",
+        title: "Experienced Plastic Surgeon",
         description:
-          "Led by Dr. Porag Neog (MBBS, MS) with 25+ years of experience in plastic surgery and 15+ years in hair transplant",
+          "Led by Dr. Porag Neog (MBBS, MS) with over 24 years of experience in plastic and reconstructive surgery and more than a decade of experience in hair transplant procedures.",
       },
       {
         icon: "mdi:trophy-outline",
-        title: "Pioneer in Northeast India",
+        title: "Early Practice in Hair Transplant in Northeast India",
         description:
-          "First dedicated hair transplant clinic in the entire Northeast India region since 2012",
+          "Earliest centre to offer dedicated hair transplant services in Northeast India since 2012.",
       },
       {
         icon: "mdi:earth",
-        title: "Global Patient Trust",
+        title: "Patients from India and Abroad",
         description:
-          "Patients from 10+ countries including US, UK, Canada, Norway, Saudi Arabia, and more",
+          "Patients from Northeast India as well as international locations including the USA, UK, Canada, Middle East, Bhutan and Nepal.",
       },
       {
-        icon: "mdi:star-outline",
-        title: "Celebrity Clientele",
+        icon: "mdi:shield-lock-outline",
+        title: "Confidential & Individualized Care",
         description:
-          "Trusted by notable personalities and celebrities for discreet, high-quality procedures",
+          "Treatment plans are discussed privately with each patient, with focus on individualized planning and discretion.",
       },
     ],
   },
