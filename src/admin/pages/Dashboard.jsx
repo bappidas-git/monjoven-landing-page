@@ -5,9 +5,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Icon } from '@iconify/react';
-import { Chip, IconButton } from '@mui/material';
+import { Chip, IconButton, Tooltip, Snackbar, Alert } from '@mui/material';
 import { useAdminAuth } from '../context/AdminAuthContext';
-import { getLeadStats, exportLeadsCSV, getLeads } from '../utils/leadService';
+import { getLeadStats, exportLeadsCSV, getLeads, syncLeadsFromServer } from '../utils/leadService';
 import styles from './Dashboard.module.css';
 
 const STATUS_COLORS = {
@@ -33,25 +33,61 @@ const Dashboard = () => {
   useAdminAuth();
   const navigate = useNavigate();
   const [stats, setStats] = useState(null);
+  const [refreshing, setRefreshing] = useState(false);
+  const [snackbar, setSnackbar] = useState({ open: false, message: "", severity: "success" });
 
   useEffect(() => {
     const refresh = () => setStats(getLeadStats());
     refresh();
+
+    // Initial server sync so leads from ad visitors on other devices appear.
+    syncLeadsFromServer().then((result) => {
+      if (!result.error && result.added > 0) refresh();
+    });
 
     const handleStorage = (e) => {
       if (e.key === "lp_submitted_leads" || e.key === "lp_test_leads") {
         refresh();
       }
     };
-    const handleVisibility = () => {
-      if (document.visibilityState === "visible") refresh();
+
+    // Poll the server every 15s while visible to catch new ad-driven leads.
+    const POLL_MS = 15000;
+    let intervalId = null;
+    const poll = () => {
+      if (document.visibilityState !== "visible") return;
+      syncLeadsFromServer().then((result) => {
+        if (!result.error && result.added > 0) refresh();
+      });
     };
+    const startPolling = () => {
+      if (!intervalId) intervalId = setInterval(poll, POLL_MS);
+    };
+    const stopPolling = () => {
+      if (intervalId) {
+        clearInterval(intervalId);
+        intervalId = null;
+      }
+    };
+
+    const handleVisibility = () => {
+      if (document.visibilityState === "visible") {
+        poll();
+        refresh();
+        startPolling();
+      } else {
+        stopPolling();
+      }
+    };
+
+    if (document.visibilityState === "visible") startPolling();
 
     window.addEventListener("lp:lead-submitted", refresh);
     window.addEventListener("storage", handleStorage);
     document.addEventListener("visibilitychange", handleVisibility);
 
     return () => {
+      stopPolling();
       window.removeEventListener("lp:lead-submitted", refresh);
       window.removeEventListener("storage", handleStorage);
       document.removeEventListener("visibilitychange", handleVisibility);
@@ -76,6 +112,28 @@ const Dashboard = () => {
     navigate(`/admin/lms/lead/${leadId}`);
   };
 
+  const handleRefresh = async () => {
+    if (refreshing) return;
+    setRefreshing(true);
+    try {
+      const result = await syncLeadsFromServer();
+      setStats(getLeadStats());
+      if (result.error) {
+        setSnackbar({ open: true, message: `Refresh failed: ${result.error}`, severity: "error" });
+      } else if (result.added > 0) {
+        setSnackbar({
+          open: true,
+          message: `Refreshed — ${result.added} new lead${result.added === 1 ? "" : "s"} synced`,
+          severity: "success",
+        });
+      } else {
+        setSnackbar({ open: true, message: "Refreshed — already up to date", severity: "success" });
+      }
+    } finally {
+      setRefreshing(false);
+    }
+  };
+
   return (
     <div className={styles.dashboard}>
       {/* Page Header */}
@@ -86,9 +144,36 @@ const Dashboard = () => {
             Welcome to Monjoven Lead Management. Here&rsquo;s your consultation overview.
           </p>
         </div>
-        <div className={styles.headerDate}>
-          <Icon icon="mdi:calendar-outline" width={18} height={18} />
-          <span>{formatDate()}</span>
+        <div className={styles.headerRight}>
+          <Tooltip title="Refresh leads">
+            <span>
+              <IconButton
+                size="small"
+                onClick={handleRefresh}
+                disabled={refreshing}
+                aria-label="Refresh leads"
+                sx={{
+                  border: "1px solid var(--admin-border)",
+                  borderRadius: "8px",
+                  color: "var(--admin-text-secondary)",
+                  "&:hover": {
+                    borderColor: "var(--admin-accent)",
+                    color: "var(--admin-accent)",
+                  },
+                }}
+              >
+                <Icon
+                  icon="mdi:refresh"
+                  width={20}
+                  className={refreshing ? styles.refreshSpinning : undefined}
+                />
+              </IconButton>
+            </span>
+          </Tooltip>
+          <div className={styles.headerDate}>
+            <Icon icon="mdi:calendar-outline" width={18} height={18} />
+            <span>{formatDate()}</span>
+          </div>
         </div>
       </div>
 
@@ -268,6 +353,22 @@ const Dashboard = () => {
       <p className={styles.footerBadge}>
         Monjoven Admin Panel | Lead Management System v1.0
       </p>
+
+      <Snackbar
+        open={snackbar.open}
+        autoHideDuration={3000}
+        onClose={() => setSnackbar((s) => ({ ...s, open: false }))}
+        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+      >
+        <Alert
+          onClose={() => setSnackbar((s) => ({ ...s, open: false }))}
+          severity={snackbar.severity}
+          variant="filled"
+          sx={{ width: "100%" }}
+        >
+          {snackbar.message}
+        </Alert>
+      </Snackbar>
     </div>
   );
 };
