@@ -635,11 +635,13 @@ const UnifiedLeadForm = ({
       return;
     }
 
-    // Check for duplicate — show alert ON TOP of drawer (don't close drawer)
-    if (isDuplicateLead(formData.mobile)) {
+    // Check for duplicate by mobile OR email — show alert ON TOP of drawer
+    // (don't close drawer). Prevents the same user from submitting twice
+    // from this device.
+    if (isDuplicateLead(formData.mobile, formData.email)) {
       await showInfo(
         'Already Registered!',
-        'This mobile number has already been registered. Our team will contact you soon.'
+        'An enquiry with this mobile number or email has already been submitted. Our team will contact you soon.'
       );
       return;
     }
