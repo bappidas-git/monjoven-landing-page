@@ -43,6 +43,12 @@ const highlightsData = [
     title: "Hair Transplant Results",
     description:
       "Outcomes following FUE/DHI hair transplant procedures, with focus on natural hairline design and appropriate density.",
+    bullets: [
+      "Natural hairline planning",
+      "Donor area preservation",
+      "Density based on individual case",
+      "Long-term planning approach",
+    ],
   },
   {
     id: 2,
@@ -51,6 +57,12 @@ const highlightsData = [
     title: "Beard Transplant Results",
     description:
       "Beard restoration procedures designed to improve density and coverage in patchy or sparse areas.",
+    bullets: [
+      "Custom beard design",
+      "Natural direction of growth",
+      "Gradual density improvement",
+      "Case-based planning",
+    ],
   },
   {
     id: 3,
@@ -59,6 +71,12 @@ const highlightsData = [
     title: "How We Plan Each Procedure",
     description:
       "Each case is evaluated individually to determine suitability, donor availability, and appropriate technique (FUE or DHI).",
+    bullets: [
+      "Clinical assessment before procedure",
+      "Technique selection based on case",
+      "Focus on natural appearance",
+      "Planning for future hair loss",
+    ],
   },
   {
     id: 4,
@@ -66,7 +84,13 @@ const highlightsData = [
       "https://placehold.co/600x400/8E44AD/white?text=FUI+%26+DHI+Techniques+(600+x+400)",
     title: "FUE & DHI Techniques",
     description:
-      "Advanced DHI technique combined with advanced FUE for precise, natural-looking results and maximum graft survival.",
+      "Hair transplant procedures performed using established techniques such as Follicular Unit Extraction (FUE) and Direct Hair Implantation (DHI), based on individual assessment.",
+    bullets: [
+      "Technique selection based on case",
+      "Focus on natural hairline design",
+      "Graft handling with care",
+      "Emphasis on donor area preservation",
+    ],
   },
   {
     id: 5,
@@ -75,6 +99,12 @@ const highlightsData = [
     title: "Post-Procedure Care & Follow-Up",
     description:
       "Structured post-procedure care with guidance on recovery, hair growth cycle, and follow-up support.",
+    bullets: [
+      "Post-procedure instructions",
+      "Scheduled follow-up evaluation",
+      "Guidance during recovery phase",
+      "Ongoing patient support",
+    ],
   },
   {
     id: 6,
@@ -83,6 +113,12 @@ const highlightsData = [
     title: "Clinical Environment",
     description:
       "Procedures performed in a clean and controlled clinical setting, maintaining standard protocols for hygiene and patient safety.",
+    bullets: [
+      "Sterile procedure environment",
+      "Trained clinical support team",
+      "Focus on patient safety",
+      "Standard operating protocols",
+    ],
   },
 ];
 
@@ -160,9 +196,36 @@ const HighlightsSection = () => {
                   <Typography className={styles.highlightDesc}>
                     {card.description}
                   </Typography>
+                  {card.bullets && card.bullets.length > 0 && (
+                    <ul className={styles.highlightBullets}>
+                      {card.bullets.map((bullet) => (
+                        <li key={bullet} className={styles.highlightBulletItem}>
+                          <Icon
+                            icon="mdi:check-circle"
+                            className={styles.highlightBulletIcon}
+                            aria-hidden="true"
+                          />
+                          <span>{bullet}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
               </motion.div>
             ))}
+          </motion.div>
+
+          {/* Disclaimer Note */}
+          <motion.div variants={itemVariants} className={styles.disclaimerNote}>
+            <Icon
+              icon="mdi:information-outline"
+              className={styles.disclaimerIcon}
+              aria-hidden="true"
+            />
+            <Typography className={styles.disclaimerText}>
+              All images shown are of treated cases at our clinic. Results may
+              vary from patient to patient.
+            </Typography>
           </motion.div>
 
           {/* CTA Banner */}
