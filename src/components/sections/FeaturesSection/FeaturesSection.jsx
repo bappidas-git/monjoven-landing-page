@@ -276,6 +276,16 @@ const FeaturesSection = () => {
             </div>
           </motion.div>
 
+          {/* Procedures Milestone Highlight */}
+          <motion.div variants={itemVariants} className={styles.milestoneWrapper}>
+            <div className={styles.milestoneBadge}>
+              <Icon icon="mdi:medal-outline" className={styles.milestoneIcon} />
+              <span className={styles.milestoneText}>
+                <strong>2000+</strong> hair transplant procedures performed
+              </span>
+            </div>
+          </motion.div>
+
           {/* Bottom CTA */}
           <motion.div variants={itemVariants} className={styles.ctaWrapper}>
             <Typography
