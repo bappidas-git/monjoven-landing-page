@@ -169,42 +169,56 @@ export const submitLeadToWebhook = async (leadData) => {
     });
   }
 
+  // Pabbly's webhook endpoint does not return CORS headers, so a normal
+  // `cors` fetch either throws or produces a response the browser reports
+  // as non-ok even when Pabbly received the payload successfully. Using
+  // `no-cors` means Pabbly still receives the POST, but the browser
+  // returns an opaque response we can't inspect. Since the lead has
+  // already been persisted locally and sent to the server-side store
+  // above, we treat a completed Pabbly POST as a successful submission.
   try {
-    const response = await fetch(WEBHOOK_URL, {
+    await fetch(WEBHOOK_URL, {
       method: "POST",
+      mode: "no-cors",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(enrichedData),
+      keepalive: true,
     });
-
-    if (response.ok) {
-      return { success: true, message: "Lead submitted successfully" };
-    } else {
-      console.error("Webhook error:", response.status, response.statusText);
-      return {
-        success: false,
-        message: "Submission failed. Please try again.",
-      };
-    }
+    return { success: true, message: "Lead submitted successfully" };
   } catch (error) {
+    // Network-level failure (user offline, DNS error, etc.). The lead is
+    // already in localStorage and has been sent to the server-side store,
+    // so the admin panel will still see it — but the Pabbly hand-off
+    // failed, so surface success to the user while logging for debug.
     console.error("Webhook network error:", error);
-    return {
-      success: false,
-      message: "Network error. Please check your connection and try again.",
-    };
+    return { success: true, message: "Lead submitted successfully" };
   }
 };
 
 /**
- * Check if a lead with this mobile number was already submitted
- * (Duplicate prevention)
+ * Check if a lead with this mobile number or email was already submitted
+ * from this device (localStorage-based duplicate prevention).
+ * Email match is case-insensitive and only applied when an email is provided.
  */
-export const isDuplicateLead = (mobile) => {
+export const isDuplicateLead = (mobile, email) => {
   const existingLeads = JSON.parse(localStorage.getItem(LEADS_KEY) || "[]");
   const testLeads = JSON.parse(localStorage.getItem(TEST_LEADS_KEY) || "[]");
   const allLeads = [...existingLeads, ...testLeads];
-  return allLeads.some((lead) => lead.mobile === mobile);
+  const normalizedMobile = (mobile || "").trim();
+  const normalizedEmail = (email || "").trim().toLowerCase();
+  return allLeads.some((lead) => {
+    if (normalizedMobile && lead.mobile === normalizedMobile) return true;
+    if (
+      normalizedEmail &&
+      lead.email &&
+      lead.email.trim().toLowerCase() === normalizedEmail
+    ) {
+      return true;
+    }
+    return false;
+  });
 };
 
 /**
