@@ -157,6 +157,9 @@ const LeadManagement = () => {
   // Sources from data
   const [availableSources, setAvailableSources] = useState([]);
 
+  // Manual refresh state
+  const [refreshing, setRefreshing] = useState(false);
+
   // Load data
   const loadData = useCallback(() => {
     const filters = {
@@ -175,6 +178,13 @@ const LeadManagement = () => {
     setAvailableSources(s.sources);
   }, [search, statusFilter, sourceFilter, dateRange, customStart, customEnd]);
 
+  // Keep the latest loadData in a ref so event listeners below don't need
+  // to re-bind every time filters change.
+  const loadDataRef = useRef(loadData);
+  useEffect(() => {
+    loadDataRef.current = loadData;
+  }, [loadData]);
+
   useEffect(() => {
     loadData();
   }, [loadData]);
@@ -184,11 +194,65 @@ const LeadManagement = () => {
   useEffect(() => {
     syncLeadsFromServer().then((result) => {
       if (!result.error && result.added > 0) {
-        loadData();
+        loadDataRef.current();
       }
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // Live-sync: reflect new leads without a hard reload.
+  //
+  // 1. `lp:lead-submitted` — custom event dispatched by webhookSubmit after
+  //    it writes to localStorage. Covers same-tab submissions (native
+  //    `storage` events don't fire in the originating tab).
+  // 2. `storage` — cross-tab changes to lp_submitted_leads.
+  // 3. `visibilitychange` — when the admin tab becomes visible again,
+  //    re-sync from the server to catch submissions from other devices.
+  useEffect(() => {
+    const handleLeadSubmitted = () => loadDataRef.current();
+
+    const handleStorage = (e) => {
+      if (e.key === "lp_submitted_leads" || e.key === "lp_test_leads") {
+        loadDataRef.current();
+      }
+    };
+
+    const handleVisibility = () => {
+      if (document.visibilityState !== "visible") return;
+      syncLeadsFromServer().then((result) => {
+        if (!result.error) loadDataRef.current();
+      });
+    };
+
+    window.addEventListener("lp:lead-submitted", handleLeadSubmitted);
+    window.addEventListener("storage", handleStorage);
+    document.addEventListener("visibilitychange", handleVisibility);
+
+    return () => {
+      window.removeEventListener("lp:lead-submitted", handleLeadSubmitted);
+      window.removeEventListener("storage", handleStorage);
+      document.removeEventListener("visibilitychange", handleVisibility);
+    };
+  }, []);
+
+  const handleRefresh = async () => {
+    if (refreshing) return;
+    setRefreshing(true);
+    try {
+      const result = await syncLeadsFromServer();
+      loadData();
+      if (result.error) {
+        showSnackbar(`Refresh failed: ${result.error}`, "error");
+      } else if (result.added > 0) {
+        showSnackbar(
+          `Refreshed — ${result.added} new lead${result.added === 1 ? "" : "s"} synced`,
+        );
+      } else {
+        showSnackbar("Refreshed — already up to date");
+      }
+    } finally {
+      setRefreshing(false);
+    }
+  };
 
   // Sorting
   const sortedLeads = useMemo(() => {
@@ -353,6 +417,31 @@ const LeadManagement = () => {
             style={{ display: "none" }}
             onChange={handleImport}
           />
+          <Tooltip title="Refresh leads">
+            <span>
+              <IconButton
+                size="small"
+                onClick={handleRefresh}
+                disabled={refreshing}
+                aria-label="Refresh leads"
+                sx={{
+                  border: "1px solid var(--admin-border)",
+                  borderRadius: "8px",
+                  color: "var(--admin-text-secondary)",
+                  "&:hover": {
+                    borderColor: "var(--admin-accent)",
+                    color: "var(--admin-accent)",
+                  },
+                }}
+              >
+                <Icon
+                  icon="mdi:refresh"
+                  width={20}
+                  className={refreshing ? styles.refreshSpinning : undefined}
+                />
+              </IconButton>
+            </span>
+          </Tooltip>
           <Button
             variant="outlined"
             size="small"
@@ -415,6 +504,21 @@ const LeadManagement = () => {
           open={Boolean(moreMenuAnchor)}
           onClose={() => setMoreMenuAnchor(null)}
         >
+          <MenuItem
+            onClick={() => {
+              handleRefresh();
+              setMoreMenuAnchor(null);
+            }}
+            disabled={refreshing}
+          >
+            <Icon
+              icon="mdi:refresh"
+              width={18}
+              style={{ marginRight: 8 }}
+              className={refreshing ? styles.refreshSpinning : undefined}
+            />{" "}
+            Refresh
+          </MenuItem>
           <MenuItem
             onClick={() => {
               fileInputRef.current?.click();

@@ -35,7 +35,27 @@ const Dashboard = () => {
   const [stats, setStats] = useState(null);
 
   useEffect(() => {
-    setStats(getLeadStats());
+    const refresh = () => setStats(getLeadStats());
+    refresh();
+
+    const handleStorage = (e) => {
+      if (e.key === "lp_submitted_leads" || e.key === "lp_test_leads") {
+        refresh();
+      }
+    };
+    const handleVisibility = () => {
+      if (document.visibilityState === "visible") refresh();
+    };
+
+    window.addEventListener("lp:lead-submitted", refresh);
+    window.addEventListener("storage", handleStorage);
+    document.addEventListener("visibilitychange", handleVisibility);
+
+    return () => {
+      window.removeEventListener("lp:lead-submitted", refresh);
+      window.removeEventListener("storage", handleStorage);
+      document.removeEventListener("visibilitychange", handleVisibility);
+    };
   }, []);
 
   const statCards = [

@@ -73,6 +73,20 @@ const storeLeadForLMS = (leadData, isTest = false) => {
   };
   existingLeads.push(leadWithMeta);
   localStorage.setItem(key, JSON.stringify(existingLeads));
+
+  // Notify any admin panel listeners in the SAME tab — the native
+  // `storage` event only fires across tabs, so we emit a custom event
+  // to cover the case where the form and admin share a browser tab.
+  try {
+    window.dispatchEvent(
+      new CustomEvent("lp:lead-submitted", {
+        detail: { lead: leadWithMeta, isTest },
+      }),
+    );
+  } catch (_err) {
+    // CustomEvent unsupported — ignore; storage event still covers cross-tab.
+  }
+
   return leadWithMeta;
 };
 
