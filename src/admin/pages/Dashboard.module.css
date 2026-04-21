@@ -41,6 +41,22 @@
   padding-top: 4px;
 }
 
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Spinning animation for the refresh icon while syncing */
+.refreshSpinning {
+  animation: dashRefreshSpin 0.8s linear infinite;
+}
+
+@keyframes dashRefreshSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
 /* ── Stats Grid ── */
 .statsGrid {
   display: grid;

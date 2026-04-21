@@ -191,6 +191,9 @@ const LeadManagement = () => {
 
   // Refresh from the server on mount so newly submitted leads from
   // other browsers/devices appear without requiring a full app reload.
+  // Leads from paid traffic (Meta/Google ads) are submitted from a visitor's
+  // browser, so the admin's localStorage is never the source of truth — the
+  // server is. We sync on mount, then poll on an interval below.
   useEffect(() => {
     syncLeadsFromServer().then((result) => {
       if (!result.error && result.added > 0) {
@@ -199,14 +202,55 @@ const LeadManagement = () => {
     });
   }, []);
 
+  // Auto-poll the server for new leads while the admin tab is visible.
+  // Without this, leads submitted by ad visitors on other devices don't
+  // appear until the admin clicks Refresh or the tab regains focus.
+  useEffect(() => {
+    const POLL_MS = 15000;
+    let intervalId = null;
+
+    const poll = () => {
+      if (document.visibilityState !== "visible") return;
+      syncLeadsFromServer().then((result) => {
+        if (!result.error && result.added > 0) {
+          loadDataRef.current();
+        }
+      });
+    };
+
+    const start = () => {
+      if (intervalId) return;
+      intervalId = setInterval(poll, POLL_MS);
+    };
+    const stop = () => {
+      if (!intervalId) return;
+      clearInterval(intervalId);
+      intervalId = null;
+    };
+
+    if (document.visibilityState === "visible") start();
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === "visible") {
+        poll();
+        start();
+      } else {
+        stop();
+      }
+    };
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    return () => {
+      stop();
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, []);
+
   // Live-sync: reflect new leads without a hard reload.
   //
   // 1. `lp:lead-submitted` — custom event dispatched by webhookSubmit after
   //    it writes to localStorage. Covers same-tab submissions (native
   //    `storage` events don't fire in the originating tab).
   // 2. `storage` — cross-tab changes to lp_submitted_leads.
-  // 3. `visibilitychange` — when the admin tab becomes visible again,
-  //    re-sync from the server to catch submissions from other devices.
   useEffect(() => {
     const handleLeadSubmitted = () => loadDataRef.current();
 
@@ -216,21 +260,12 @@ const LeadManagement = () => {
       }
     };
 
-    const handleVisibility = () => {
-      if (document.visibilityState !== "visible") return;
-      syncLeadsFromServer().then((result) => {
-        if (!result.error) loadDataRef.current();
-      });
-    };
-
     window.addEventListener("lp:lead-submitted", handleLeadSubmitted);
     window.addEventListener("storage", handleStorage);
-    document.addEventListener("visibilitychange", handleVisibility);
 
     return () => {
       window.removeEventListener("lp:lead-submitted", handleLeadSubmitted);
       window.removeEventListener("storage", handleStorage);
-      document.removeEventListener("visibilitychange", handleVisibility);
     };
   }, []);
 
