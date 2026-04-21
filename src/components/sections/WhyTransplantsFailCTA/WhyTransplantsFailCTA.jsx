@@ -17,30 +17,31 @@ import styles from "./WhyTransplantsFailCTA.module.css";
 const failureReasons = [
   {
     icon: "mdi:account-alert-outline",
-    title: "Untrained Technicians",
+    title: "Inexperienced Handling of Grafts",
     description:
-      "Inexperienced hands damage precious grafts, leading to poor survival rates and patchy, unnatural growth.",
+      "Improper handling of grafts may affect survival and growth, leading to suboptimal density and less natural-looking outcomes.",
   },
   {
     icon: "mdi:content-cut",
-    title: "Overharvesting the Donor Area",
+    title: "Overharvesting of Donor Area",
     description:
-      "Aggressive extraction depletes the donor zone permanently, leaving visible scarring and limiting future procedures.",
+      "Excessive extraction can reduce donor density and may impact future procedures, sometimes leading to visible thinning.",
   },
   {
     icon: "mdi:vector-polyline-edit",
-    title: "Wrong Hairline Design",
+    title: "Improper Hairline Design",
     description:
-      "An unnatural hairline ages you prematurely and is almost impossible to correct without another major procedure.",
+      "Hairline design that does not consider age, facial proportions, and future hair loss patterns may lead to unnatural appearance over time.",
   },
 ];
 
 // Reassurance bullet points from Dr. Porag Neog's clinic
 const reassurancePoints = [
-  "Every procedure performed under direct supervision of Dr. Porag Neog",
-  "25+ years of plastic surgery expertise — not just a technician-led clinic",
-  "Micro-FUE with donor-area preservation protocol",
-  "Custom, age-appropriate hairline design for natural results",
+  "Each procedure is carried out with involvement of a surgeon experienced in plastic & reconstructive  surgery.",
+  "Over 24 years of experience in plastic and reconstructive surgery",
+  "Use of established techniques such as FUE and DHI based on individual assessment",
+  "Emphasis on donor area preservation and long-term planning",
+  "Hairline design tailored to age, facial proportions and future hair loss pattern",
 ];
 
 // Animation variants
@@ -122,13 +123,13 @@ const WhyTransplantsFailCTA = () => {
               variant="h2"
               className={styles.title}
             >
-              Why Most Hair Transplants{" "}
-              <span className={styles.titleAccent}>Fail</span>
+              Why Hair Transplant Results Can Be{" "}
+              <span className={styles.titleAccent}>Unsatisfactory</span>
             </Typography>
-            <Typography className={styles.subtitle}>
-              A hair transplant is a one-time opportunity. Here's what goes
-              wrong at unqualified clinics — and how Monjoven makes sure it
-              doesn't happen to you.
+            <Typography className={styles.subtitle} sx={{ marginTop: "20px" }}>
+              A hair transplant is a carefully planned medical procedure. Here
+              are some common factors that can affect outcomes—and how
+              appropriate planning and technique help improve results.
             </Typography>
           </motion.div>
 
@@ -167,7 +168,7 @@ const WhyTransplantsFailCTA = () => {
                   The Monjoven Promise
                 </span>
                 <Typography variant="h3" className={styles.bannerTitle}>
-                  Performed under the expert supervision of{" "}
+                  Hair Transplant Planned & Performed Under the Care of{" "}
                   <span className={styles.bannerTitleAccent}>
                     Dr. Porag Neog
                   </span>
@@ -197,14 +198,12 @@ const WhyTransplantsFailCTA = () => {
                     <span className={styles.priceValue}>30,000</span>
                     <span className={styles.priceStar}>*</span>
                   </div>
-                  <span className={styles.priceNote}>
-                    Transparent pricing · No hidden costs
-                  </span>
 
                   <button
                     type="button"
                     className={styles.ctaButton}
                     onClick={handleBookConsultation}
+                    style={{ marginBottom: "25px" }}
                   >
                     <Icon
                       icon="mdi:calendar-check"
@@ -213,19 +212,40 @@ const WhyTransplantsFailCTA = () => {
                     <span>Book Consultation</span>
                   </button>
 
+                  <div className={styles.priceNotwWrapper}>
+                    <span className={styles.priceNote}>
+                      <Icon
+                        icon="mdi:check-decagram"
+                        className={styles.reassuranceIcon}
+                        style={{ marginRight: "10px", fontSize: "16px" }}
+                      />
+                      Treatment cost varies depending on graft requirement and
+                      individual case
+                    </span>
+                    <span className={styles.priceNote}>
+                      <Icon
+                        icon="mdi:check-decagram"
+                        className={styles.reassuranceIcon}
+                        style={{ marginRight: "10px", fontSize: "16px" }}
+                      />
+                      Detailed estimate provided after consultation
+                    </span>
+                  </div>
+
                   <div className={styles.trustRow}>
                     <div className={styles.trustItem}>
                       <Icon icon="mdi:shield-lock" />
-                      <span>100% Confidential</span>
+                      <span>Confidential Consultation</span>
                     </div>
                     <div className={styles.trustItem}>
                       <Icon icon="mdi:headset" />
-                      <span>24/7 Support</span>
+                      <span>Dedicated Patient Support</span>
                     </div>
                   </div>
 
                   <span className={styles.priceDisclaimer}>
-                    *Final cost depends on grafts required & treatment plan.
+                    * Final cost depends on graft requirement and treatment
+                    plan.
                   </span>
                 </div>
               </div>

@@ -381,12 +381,26 @@
   color: #ff6b35;
   margin-top: 6px;
 }
-
+.priceNotwWrapper {
+  width: 100%;
+  padding: 10px;
+  background-color: #f2f2f2;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-radius: 8px;
+}
 .priceNote {
   font-family: var(--font-body);
-  font-size: var(--fs-sm);
+  font-size: 10px;
   color: var(--text-gray);
   font-weight: var(--fw-medium);
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: left;
+  line-height: 1.2;
 }
 
 .ctaButton {
@@ -434,7 +448,7 @@
   justify-content: center;
   gap: var(--space-5);
   flex-wrap: wrap;
-  margin-top: var(--space-2);
+  margin-top: 20px;
 }
 
 .trustItem {
@@ -442,7 +456,7 @@
   align-items: center;
   gap: 6px;
   font-family: var(--font-body);
-  font-size: var(--fs-xs);
+  font-size: 10px;
   font-weight: var(--fw-medium);
   color: var(--text-gray);
 }
@@ -455,9 +469,10 @@
 
 .priceDisclaimer {
   font-family: var(--font-body);
-  font-size: var(--fs-xs);
+  font-size: 10px !important;
   color: var(--text-gray);
-  margin-top: var(--space-2);
+  margin-top: 0;
+  margin-bottom: -5px;
   opacity: 0.85;
   line-height: var(--lh-normal);
 }

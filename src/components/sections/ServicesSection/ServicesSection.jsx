@@ -221,8 +221,8 @@ const ServicesSection = () => {
                 maxWidth: "480px",
               }}
             >
-              World-class treatments tailored to your needs, performed by
-              experienced specialists using the latest technology
+              Treatments tailored to your needs, performed by experienced
+              specialists using the latest technology
             </Typography>
           </motion.div>
 
@@ -335,9 +335,11 @@ const ServicesSection = () => {
                       mt: 0.5,
                     }}
                   >
-                    Every procedure at Monjoven is performed with precision,
-                    care, and the latest techniques to ensure you get the best
-                    possible results. Your transformation journey starts here.
+                    Hair restoration and cosmetic procedures require careful
+                    planning and a thorough understanding of individual patient
+                    needs. At MONJOVEN, each procedure is approached with
+                    clinical evaluation, appropriate technique selection, and a
+                    focus on long-term outcomes.
                   </Typography>
                 </Box>
               </Box>

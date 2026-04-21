@@ -87,27 +87,27 @@ const clinicImage = {
 const differentiators = [
   {
     icon: "mdi:medal-outline",
-    title: "25+ Years of Proven Excellence",
+    title: "25+ Years of Surgical Experience",
     description:
-      "25+ years in plastic surgery and 15+ years pioneering hair transplant in Northeast India",
+      "Over 24 years of experience in plastic, reconstructive and aesthetic surgery, with more than a decade of experience in hair transplant procedures.",
   },
   {
     icon: "mdi:microscope",
-    title: "Smallest FUE Punch Technology",
+    title: "Advanced FUE & DHI Techniques",
     description:
-      "Advanced micro-FUE technology for natural, undetectable results with minimal scarring",
-  },
-  {
-    icon: "mdi:earth",
-    title: "International Standard Results",
-    description:
-      "World-class outcomes that match the best clinics globally, right here in Northeast India",
+      "Hair transplant procedures performed using established techniques such as Follicular Unit Extraction (FUE) and Direct Hair Implantation (DHI), depending on individual patient requirements.",
   },
   {
     icon: "mdi:account-group",
-    title: "Globally Trusted by Patients",
+    title: "Focus on Natural-Looking Outcomes",
     description:
-      "Patients from across India and internationally — US, Canada, UK, Norway, Saudi Arabia, France, Dubai, Bhutan, and Nepal",
+      "Treatment approach focused on achieving natural hairline design and density, tailored to individual patient characteristics.",
+  },
+  {
+    icon: "mdi:earth",
+    title: "Patients from Across India & Abroad",
+    description:
+      "Patients from Northeast India as well as international locations including the USA, UK, Canada, Middle East, Bhutan and Nepal.",
   },
 ];
 

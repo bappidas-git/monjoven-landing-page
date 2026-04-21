@@ -3,10 +3,10 @@ export const servicesData = [
     id: "hair-transplant",
     name: "Hair Transplant",
     shortName: "FUE/FUT",
-    target: "Hair Loss & Baldness",
-    duration: "6-8 Hours Procedure",
+    target: "Male & Female Pattern Hair Loss",
+    duration: "Typically 6-8 Hours Procedure",
     description:
-      "Advanced Micro-FUE and FUT hair transplant procedures using the smallest punch technology for natural, permanent results with minimal scarring.",
+      "Hair transplant procedures performed using established techniques such as FUE (Follicular Unit Extraction) and DHI (Direct Hair Implantation), based on individual assessment. ",
     features: [
       "Micro-FUE with smallest punch size",
       "Natural hairline design",
@@ -44,10 +44,10 @@ export const servicesData = [
     description:
       "Restore thin, sparse, or over-plucked eyebrows with our precision micro-FUE eyebrow transplant, designed to deliver natural shape, density, and symmetry.",
     features: [
-      "Smallest micro-FUE punch technique",
-      "Natural shape & symmetry design",
-      "Permanent & natural-looking results",
-      "Minimally invasive, quick recovery",
+      "Natural hairline design",
+      "Donor area preservation",
+      "Minimal downtime and scarring",
+      "Focus on natural-looking outcomes",
     ],
     frequency: "Permanent natural eyebrow growth",
     badge: null,
@@ -60,11 +60,11 @@ export const servicesData = [
     target: "Body Contouring & Enhancement",
     duration: "Varies by Procedure",
     description:
-      "Comprehensive cosmetic procedures including rhinoplasty, liposuction, and gynecomastia surgery performed by experienced cosmetic surgeons.",
+      "A range of aesthetic and reconstructive procedures performed by a qualified plastic surgeon.",
     features: [
-      "Rhinoplasty (Nose reshaping)",
-      "Liposuction",
-      "Gynecomastia treatment",
+      "Gynaecomastia",
+      "Abdominoplasty (Tummy Tuck)",
+      "Rhinoplasty (Nose reshaping) Liposuction",
       "International-standard techniques",
     ],
     frequency: "Customized treatment plans",

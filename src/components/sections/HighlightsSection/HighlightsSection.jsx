@@ -42,7 +42,7 @@ const highlightsData = [
       "https://placehold.co/600x400/2EC4B6/white?text=Hair+Transplant+Results+(600+x+400)",
     title: "Hair Transplant Results",
     description:
-      "Natural, dense hair growth achieved through our Micro-FUE technique with the smallest punch size for minimal scarring.",
+      "Outcomes following FUE/DHI hair transplant procedures, with focus on natural hairline design and appropriate density.",
   },
   {
     id: 2,
@@ -50,39 +50,39 @@ const highlightsData = [
       "https://placehold.co/600x400/FF6B35/white?text=Beard+Transplant+Results+(600+x+400)",
     title: "Beard Transplant Results",
     description:
-      "Full, natural-looking beard achieved with precision FUE extraction and custom design for each patient.",
+      "Beard restoration procedures designed to improve density and coverage in patchy or sparse areas.",
   },
   {
     id: 3,
     image:
-      "https://placehold.co/600x400/2D3561/white?text=Our+FUE+Process+(600+x+400)",
-    title: "Our FUE Process",
+      "https://placehold.co/600x400/2D3561/white?text=How+We+Plan+(600+x+400)",
+    title: "How We Plan Each Procedure",
     description:
-      "Individual follicles extracted using micro punches (0.6-1.25mm) and reinserted at natural angles for seamless results.",
+      "Each case is evaluated individually to determine suitability, donor availability, and appropriate technique (FUE or DHI).",
   },
   {
     id: 4,
     image:
-      "https://placehold.co/600x400/8E44AD/white?text=Advanced+DHI+%26+FUE+Techniques+(600+x+400)",
-    title: "Advanced DHI & FUE Techniques",
+      "https://placehold.co/600x400/8E44AD/white?text=FUI+%26+DHI+Techniques+(600+x+400)",
+    title: "FUE & DHI Techniques",
     description:
       "Advanced DHI technique combined with advanced FUE for precise, natural-looking results and maximum graft survival.",
   },
   {
     id: 5,
     image:
-      "https://placehold.co/600x400/27AE60/white?text=Post+Operative+Care+(600+x+400)",
-    title: "Comprehensive Post Operative Care",
+      "https://placehold.co/600x400/27AE60/white?text=Post+Procedure+Care+(600+x+400)",
+    title: "Post-Procedure Care & Follow-Up",
     description:
-      "Free laser therapy for 4 months, 2 weeks follow-up care, and long term guidance and support for complete peace of mind.",
+      "Structured post-procedure care with guidance on recovery, hair growth cycle, and follow-up support.",
   },
   {
     id: 6,
     image:
-      "https://placehold.co/600x400/E67E22/white?text=World-Class+Facility+(600+x+400)",
-    title: "World-Class Facility",
+      "https://placehold.co/600x400/E67E22/white?text=Clinical+Environment+(600+x+400)",
+    title: "Clinical Environment",
     description:
-      "Clean, well-organized clinic environment with luxury amenities, healthy & hygienic meals, and a dedicated team of specialists.",
+      "Procedures performed in a clean and controlled clinical setting, maintaining standard protocols for hygiene and patient safety.",
   },
 ];
 
@@ -120,14 +120,15 @@ const HighlightsSection = () => {
               }}
             >
               Real Patients, Real{" "}
-              <span className={styles.highlightText}>Transformations</span>
+              <span className={styles.highlightText}>Outcomes</span>
             </Typography>
             <div className={styles.titleUnderline}>
               <span className={styles.underlineBar} />
             </div>
             <Typography className={styles.sectionSubtitle}>
-              See the life-changing results our patients have achieved through
-              our advanced hair transplant and cosmetic procedures
+              Examples of results achieved following hair transplant and
+              cosmetic procedures. Outcomes may vary based on individual
+              factors.
             </Typography>
           </motion.div>
 
