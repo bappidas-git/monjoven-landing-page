@@ -39,7 +39,7 @@ const highlightsData = [
   {
     id: 1,
     image:
-      "https://placehold.co/600x400/2EC4B6/white?text=Hair+Transplant+Results+(600+x+400)",
+      "https://res.cloudinary.com/dn9gyaiik/image/upload/v1776865334/Hair_Transplant_xiz81x.png",
     title: "Hair Transplant Results",
     description:
       "Outcomes following FUE/DHI hair transplant procedures, with focus on natural hairline design and appropriate density.",
@@ -53,7 +53,7 @@ const highlightsData = [
   {
     id: 2,
     image:
-      "https://placehold.co/600x400/FF6B35/white?text=Beard+Transplant+Results+(600+x+400)",
+      "https://res.cloudinary.com/dn9gyaiik/image/upload/v1776865334/Beard_transplant_hyboxe.png",
     title: "Beard Transplant Results",
     description:
       "Beard restoration procedures designed to improve density and coverage in patchy or sparse areas.",
@@ -67,7 +67,7 @@ const highlightsData = [
   {
     id: 3,
     image:
-      "https://placehold.co/600x400/2D3561/white?text=How+We+Plan+(600+x+400)",
+      "https://res.cloudinary.com/dn9gyaiik/image/upload/v1776847985/How_we_Plan_qhfrxk.png",
     title: "How We Plan Each Procedure",
     description:
       "Each case is evaluated individually to determine suitability, donor availability, and appropriate technique (FUE or DHI).",
@@ -81,7 +81,7 @@ const highlightsData = [
   {
     id: 4,
     image:
-      "https://placehold.co/600x400/8E44AD/white?text=FUI+%26+DHI+Techniques+(600+x+400)",
+      "https://res.cloudinary.com/dn9gyaiik/image/upload/v1776847986/FUE_DHI_hbz0vf.png",
     title: "FUE & DHI Techniques",
     description:
       "Hair transplant procedures performed using established techniques such as Follicular Unit Extraction (FUE) and Direct Hair Implantation (DHI), based on individual assessment.",

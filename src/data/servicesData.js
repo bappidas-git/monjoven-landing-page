@@ -6,7 +6,7 @@ export const servicesData = [
     target: "Male & Female Pattern Hair Loss",
     duration: "Typically 6-8 Hours Procedure",
     description:
-      "Hair transplant procedures performed using established techniques such as FUE (Follicular Unit Extraction), based on individual assessment.",
+      "Hair transplant procedures performed using established techniques such as FUE (Follicular Unit Extraction) and DHI (Direct Hair Implantation), based on individual assessment.",
     features: [
       "Micro-FUE with smallest punch size",
       "Natural hairline design",
