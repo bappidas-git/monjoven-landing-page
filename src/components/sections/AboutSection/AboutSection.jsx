@@ -72,9 +72,21 @@ const doctorProfile = {
   image:
     "https://res.cloudinary.com/dn9gyaiik/image/upload/v1775884050/Dr._Image_Porag_neong_pyergn.png",
   name: "Dr. Porag Neog",
-  credentials: "MBBS, MS",
-  title: "Cosmetic Surgeon & Founder",
-  bio: "Highly trained cosmetic surgeon with 25+ years of experience in plastic surgery and 15+ years specializing in hair transplant using the smallest FUE punch (micro-FUE) technology.",
+  credentials: "MBBS, MS (General Surgery), FAM",
+  specialization: "Plastic, Reconstructive & Hair Transplant Surgeon",
+  roles: [
+    {
+      icon: "mdi:medical-bag",
+      label: "Founder",
+      detail: "MONJOVEN Hair Transplant & Cosmetic Surgery Clinic",
+    },
+    {
+      icon: "mdi:hospital-building",
+      label: "Consultant",
+      detail:
+        "Burns, Plastic & Maxillofacial Surgery, Hayat Hospital, Guwahati",
+    },
+  ],
 };
 
 // Clinic image
@@ -257,10 +269,24 @@ const AboutSection = () => {
                   <span className={styles.doctorCredentials}>
                     {doctorProfile.credentials}
                   </span>
-                  <span className={styles.doctorTitle}>
-                    {doctorProfile.title}
+                  <span className={styles.doctorSpecialization}>
+                    {doctorProfile.specialization}
                   </span>
-                  <p className={styles.doctorBio}>{doctorProfile.bio}</p>
+                  <ul className={styles.doctorRoles}>
+                    {doctorProfile.roles.map((role, index) => (
+                      <li key={index} className={styles.doctorRoleItem}>
+                        <span className={styles.doctorRoleIcon}>
+                          <Icon icon={role.icon} />
+                        </span>
+                        <span className={styles.doctorRoleText}>
+                          <strong>{role.label}</strong>
+                          <span className={styles.doctorRoleDetail}>
+                            {role.detail}
+                          </span>
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </motion.div>
               <motion.div

@@ -214,21 +214,35 @@
 /* Doctor Profile Card */
 .doctorCard {
   display: flex;
-  gap: 1.25rem;
+  gap: 1.5rem;
   background: #ffffff;
   border-radius: 16px;
-  padding: 1.5rem;
+  padding: 1.75rem;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
   border: 1px solid rgba(0, 0, 0, 0.04);
-  align-items: center;
+  align-items: flex-start;
+  position: relative;
+  overflow: hidden;
+}
+
+.doctorCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, #148F77 0%, #1A5276 100%);
 }
 
 .doctorImageWrapper {
   flex-shrink: 0;
-  width: 120px;
-  height: 150px;
+  width: 130px;
+  height: 160px;
   border-radius: 12px;
   overflow: hidden;
+  box-shadow: 0 4px 12px rgba(26, 82, 118, 0.12);
+  border: 2px solid #ffffff;
 }
 
 .doctorImage {
@@ -241,36 +255,91 @@
 .doctorInfo {
   display: flex;
   flex-direction: column;
+  flex: 1;
+  min-width: 0;
 }
 
 .doctorName {
-  font-size: 1.125rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: #1A5276;
   margin: 0 0 0.25rem;
   font-family: "Poppins", sans-serif;
+  line-height: 1.2;
 }
 
 .doctorCredentials {
-  font-size: 0.8125rem;
-  font-weight: 600;
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
   color: #148F77;
-  margin-bottom: 0.125rem;
+  background: rgba(20, 143, 119, 0.08);
+  padding: 4px 10px;
+  border-radius: 20px;
+  align-self: flex-start;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.02em;
 }
 
-.doctorTitle {
-  font-size: 0.8125rem;
-  font-weight: 500;
-  color: #6b7280;
-  margin-bottom: 0.625rem;
+.doctorSpecialization {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #1A5276;
+  margin-bottom: 0.875rem;
+  line-height: 1.4;
+  font-family: "Poppins", sans-serif;
 }
 
-.doctorBio {
+.doctorRoles {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  border-top: 1px solid rgba(26, 82, 118, 0.08);
+  padding-top: 0.75rem;
+}
+
+.doctorRoleItem {
+  display: flex;
+  gap: 0.625rem;
+  align-items: flex-start;
+}
+
+.doctorRoleIcon {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #148F77 0%, #1ABC9C 100%);
+  color: #ffffff;
+  border-radius: 8px;
+  font-size: 14px;
+  margin-top: 1px;
+}
+
+.doctorRoleText {
+  display: flex;
+  flex-direction: column;
   font-size: 0.8125rem;
   color: #374151;
-  line-height: 1.6;
-  margin: 0;
+  line-height: 1.5;
   font-family: "Inter", sans-serif;
+}
+
+.doctorRoleText strong {
+  font-weight: 700;
+  color: #1A5276;
+  font-size: 0.8125rem;
+}
+
+.doctorRoleDetail {
+  color: #4b5563;
+  font-weight: 500;
+  font-size: 0.8125rem;
 }
 
 /* ========== Key Differentiators ========== */
@@ -523,16 +592,39 @@
   .doctorCard {
     flex-direction: column;
     text-align: center;
-    padding: 1.25rem;
+    padding: 1.5rem 1.25rem;
+    align-items: center;
+  }
+
+  .doctorCard::before {
+    width: 100%;
+    height: 4px;
   }
 
   .doctorImageWrapper {
-    width: 100px;
-    height: 125px;
+    width: 110px;
+    height: 135px;
   }
 
   .doctorInfo {
     align-items: center;
+  }
+
+  .doctorName {
+    font-size: 1.125rem;
+  }
+
+  .doctorSpecialization {
+    font-size: 0.8125rem;
+    text-align: center;
+  }
+
+  .doctorRoles {
+    width: 100%;
+  }
+
+  .doctorRoleItem {
+    text-align: left;
   }
 
   .differentiatorsGrid {
