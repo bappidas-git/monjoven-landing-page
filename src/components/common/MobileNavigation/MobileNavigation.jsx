@@ -26,7 +26,7 @@ const navItems = [
     icon: "mdi:whatsapp",
     color: "#25D366",
     action: "whatsapp",
-    href: "https://api.whatsapp.com/send?phone=919127062599&text=Hi%20Doctor%2C%0AI%20want%20to%20check%20if%20i%20am%20suitable%20for%20transplant.",
+    href: "https://api.whatsapp.com/send?phone=919181956562&text=Hi%20Doctor%2C%0AI%20want%20to%20check%20if%20i%20am%20suitable%20for%20transplant.",
   },
   {
     id: "enquiry",

@@ -9,7 +9,7 @@ export const locationData = {
   tollFree: "",
   email: "dr@monjoven.com",
   website: "www.monjoven.com",
-  whatsapp: "919127062599",
+  whatsapp: "919181956562",
   mapUrl:
     "https://res.cloudinary.com/dn9gyaiik/image/upload/v1775885388/Map_Image_tezkg3.png",
   warehouses: [],

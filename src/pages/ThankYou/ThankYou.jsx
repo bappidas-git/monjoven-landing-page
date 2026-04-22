@@ -35,7 +35,7 @@ const trustBadges = [
 // Contact details
 const contactInfo = {
   phone: "+91 9181956562",
-  whatsapp: "+91 9127062599",
+  whatsapp: "+91 9181956562",
   email: "dr@monjoven.com",
   clinicHours: "Mon - Sat: 9:00 AM - 6:00 PM",
 };
@@ -351,7 +351,7 @@ const ThankYou = () => {
                       WhatsApp
                     </span>
                     <a
-                      href="https://wa.me/919127062599?text=Hi%20Doctor%2C%0AI%20want%20to%20check%20if%20i%20am%20suitable%20for%20transplant."
+                      href="https://wa.me/919181956562?text=Hi%20Doctor%2C%0AI%20want%20to%20check%20if%20i%20am%20suitable%20for%20transplant."
                       target="_blank"
                       rel="noopener noreferrer"
                       className={styles.contactValue}
@@ -422,7 +422,7 @@ const ThankYou = () => {
               <span>Back to Home</span>
             </motion.a>
             <motion.a
-              href="https://wa.me/919127062599?text=Hi%20Doctor%2C%0AI%20want%20to%20check%20if%20i%20am%20suitable%20for%20transplant."
+              href="https://wa.me/919181956562?text=Hi%20Doctor%2C%0AI%20want%20to%20check%20if%20i%20am%20suitable%20for%20transplant."
               target="_blank"
               rel="noopener noreferrer"
               className={styles.whatsappBtn}

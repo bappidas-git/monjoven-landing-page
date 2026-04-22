@@ -59,21 +59,27 @@ const ContactSection = () => {
       content: "VIP Road, Borbari, Six Mile, Near Pratiksha Hospital, Guwahati, Assam",
     },
     {
-      icon: "mdi:phone-outline",
-      title: "Call / WhatsApp",
-      items: [
+      icon: "mdi:phone-in-talk-outline",
+      title: "Call or WhatsApp",
+      primary: {
+        display: "+91 9181956562",
+        ariaLabel: "Primary contact number +91 9181956562",
+      },
+      actions: [
         {
           icon: "mdi:phone",
-          content: "+91 9181956562",
+          label: "Call",
           href: "tel:+919181956562",
           ariaLabel: "Call us at +91 9181956562",
+          variant: "call",
         },
         {
           icon: "mdi:whatsapp",
-          content: "+91 9127062599",
-          href: "https://api.whatsapp.com/send?phone=919127062599&text=Hi%20Doctor%2C%0AI%20want%20to%20check%20if%20i%20am%20suitable%20for%20transplant.",
+          label: "Chat",
+          href: "https://api.whatsapp.com/send?phone=919181956562&text=Hi%20Doctor%2C%0AI%20want%20to%20check%20if%20i%20am%20suitable%20for%20transplant.",
           external: true,
-          ariaLabel: "Chat with us on WhatsApp at +91 9127062599",
+          ariaLabel: "Chat with us on WhatsApp at +91 9181956562",
+          variant: "whatsapp",
         },
       ],
     },
@@ -129,7 +135,7 @@ const ContactSection = () => {
               <span>Call Now</span>
             </a>
             <a
-              href="https://api.whatsapp.com/send?phone=919127062599&text=Hi%20Doctor%2C%0AI%20want%20to%20check%20if%20i%20am%20suitable%20for%20transplant."
+              href="https://api.whatsapp.com/send?phone=919181956562&text=Hi%20Doctor%2C%0AI%20want%20to%20check%20if%20i%20am%20suitable%20for%20transplant."
               target="_blank"
               rel="noopener noreferrer"
               className={`${styles.quickActionBtn} ${styles.quickActionWhatsapp}`}
@@ -173,29 +179,37 @@ const ContactSection = () => {
                         >
                           {item.title}
                         </Typography>
-                        {item.items ? (
-                          <div className={styles.contactLinkGroup}>
-                            {item.items.map((sub, subIndex) => (
-                              <a
-                                key={subIndex}
-                                href={sub.href}
-                                aria-label={sub.ariaLabel}
-                                className={styles.contactLinkItem}
-                                {...(sub.external
-                                  ? {
-                                      target: "_blank",
-                                      rel: "noopener noreferrer",
-                                    }
-                                  : {})}
-                              >
-                                <Icon
-                                  icon={sub.icon}
-                                  className={styles.contactSubIcon}
-                                  aria-hidden="true"
-                                />
-                                <span>{sub.content}</span>
-                              </a>
-                            ))}
+                        {item.actions ? (
+                          <div className={styles.contactDualAction}>
+                            <span
+                              className={styles.contactPrimaryNumber}
+                              aria-label={item.primary.ariaLabel}
+                            >
+                              {item.primary.display}
+                            </span>
+                            <div className={styles.contactActionRow}>
+                              {item.actions.map((action, subIndex) => (
+                                <a
+                                  key={subIndex}
+                                  href={action.href}
+                                  aria-label={action.ariaLabel}
+                                  className={`${styles.contactActionPill} ${styles[`contactAction_${action.variant}`]}`}
+                                  {...(action.external
+                                    ? {
+                                        target: "_blank",
+                                        rel: "noopener noreferrer",
+                                      }
+                                    : {})}
+                                >
+                                  <Icon
+                                    icon={action.icon}
+                                    className={styles.contactActionIcon}
+                                    aria-hidden="true"
+                                  />
+                                  <span>{action.label}</span>
+                                </a>
+                              ))}
+                            </div>
                           </div>
                         ) : item.href ? (
                           <a

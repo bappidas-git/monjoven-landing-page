@@ -411,7 +411,7 @@ const socialLinks = [
   },
   {
     icon: "mdi:whatsapp",
-    href: "https://api.whatsapp.com/send?phone=919127062599&text=Hi%20Doctor%2C%0AI%20want%20to%20check%20if%20i%20am%20suitable%20for%20transplant.",
+    href: "https://api.whatsapp.com/send?phone=919181956562&text=Hi%20Doctor%2C%0AI%20want%20to%20check%20if%20i%20am%20suitable%20for%20transplant.",
     label: "WhatsApp",
   },
 ];
@@ -516,29 +516,35 @@ const Footer = () => {
                 <ul className={styles.contactList}>
                   <li className={styles.contactItem}>
                     <div className={styles.contactLabelRow}>
-                      <Icon icon="mdi:phone" className={styles.contactIcon} />
-                      <span className={styles.contactLabel}>Phone</span>
-                    </div>
-                    <a href="tel:+919181956562" className={styles.contactValue}>
-                      +91 9181956562
-                    </a>
-                  </li>
-                  <li className={styles.contactItem}>
-                    <div className={styles.contactLabelRow}>
                       <Icon
-                        icon="mdi:whatsapp"
+                        icon="mdi:phone-in-talk-outline"
                         className={styles.contactIcon}
                       />
-                      <span className={styles.contactLabel}>WhatsApp</span>
+                      <span className={styles.contactLabel}>
+                        Call or WhatsApp
+                      </span>
                     </div>
-                    <a
-                      href="https://api.whatsapp.com/send?phone=919127062599&text=Hi%20Doctor%2C%0AI%20want%20to%20check%20if%20i%20am%20suitable%20for%20transplant."
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={styles.contactValue}
-                    >
-                      +91 9127062599
-                    </a>
+                    <span className={styles.contactValue}>+91 9181956562</span>
+                    <div className={styles.contactChipRow}>
+                      <a
+                        href="tel:+919181956562"
+                        className={`${styles.contactChip} ${styles.contactChipCall}`}
+                        aria-label="Call +91 9181956562"
+                      >
+                        <Icon icon="mdi:phone" />
+                        <span>Call</span>
+                      </a>
+                      <a
+                        href="https://api.whatsapp.com/send?phone=919181956562&text=Hi%20Doctor%2C%0AI%20want%20to%20check%20if%20i%20am%20suitable%20for%20transplant."
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`${styles.contactChip} ${styles.contactChipWhatsapp}`}
+                        aria-label="Chat on WhatsApp with +91 9181956562"
+                      >
+                        <Icon icon="mdi:whatsapp" />
+                        <span>Chat</span>
+                      </a>
+                    </div>
                   </li>
                   <li className={styles.contactItem}>
                     <div className={styles.contactLabelRow}>
