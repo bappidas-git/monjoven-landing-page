@@ -6,7 +6,7 @@ export const servicesData = [
     target: "Male & Female Pattern Hair Loss",
     duration: "Typically 6-8 Hours Procedure",
     description:
-      "Hair transplant procedures performed using established techniques such as FUE (Follicular Unit Extraction), based on individual assessment. ",
+      "Hair transplant procedures performed using established techniques such as FUE (Follicular Unit Extraction), based on individual assessment.",
     features: [
       "Micro-FUE with smallest punch size",
       "Natural hairline design",
@@ -64,8 +64,9 @@ export const servicesData = [
     features: [
       "Gynaecomastia",
       "Abdominoplasty (Tummy Tuck)",
-      "Rhinoplasty (Nose reshaping) Liposuction",
-      "International-standard techniques",
+      "Rhinoplasty (Nose reshaping)",
+      "Liposuction",
+      "Treatment plan is finalised after clinical evaluation & patient discussion",
     ],
     frequency: "Customized treatment plans",
     badge: "Premium",
