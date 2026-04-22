@@ -189,10 +189,6 @@
   color: #6B7280 !important;
   line-height: 1.55 !important;
   margin-bottom: 1rem !important;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
   flex-grow: 0;
 }
 
