@@ -89,7 +89,7 @@ const differentiators = [
     icon: "mdi:medal-outline",
     title: "25+ Years of Surgical Experience",
     description:
-      "Over 24 years of experience in plastic, reconstructive and aesthetic surgery, with more than a decade of experience in hair transplant procedures.",
+      "Over 25+ years of experience in plastic, reconstructive and aesthetic surgery, with more than a decade of experience in hair transplant procedures.",
   },
   {
     icon: "mdi:microscope",

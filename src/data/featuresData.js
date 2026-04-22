@@ -43,7 +43,7 @@ export const featuresData = [
         icon: "mdi:doctor",
         title: "Experienced Plastic Surgeon",
         description:
-          "Led by Dr. Porag Neog (MBBS, MS) with over 24 years of experience in plastic and reconstructive surgery and more than a decade of experience in hair transplant procedures.",
+          "Led by Dr. Porag Neog (MBBS, MS) with over 25+ years of experience in plastic and reconstructive surgery and more than a decade of experience in hair transplant procedures.",
       },
       {
         icon: "mdi:trophy-outline",

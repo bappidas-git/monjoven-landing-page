@@ -38,7 +38,7 @@ const failureReasons = [
 // Reassurance bullet points from Dr. Porag Neog's clinic
 const reassurancePoints = [
   "Each procedure is carried out with involvement of a surgeon experienced in plastic & reconstructive  surgery.",
-  "Over 24 years of experience in plastic and reconstructive surgery",
+  "Over 25+ years of experience in plastic and reconstructive surgery",
   "Use of established techniques such as FUE and DHI based on individual assessment",
   "Emphasis on donor area preservation and long-term planning",
   "Hairline design tailored to age, facial proportions and future hair loss pattern",
