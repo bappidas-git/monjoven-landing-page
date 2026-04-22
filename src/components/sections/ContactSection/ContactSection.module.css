@@ -196,33 +196,71 @@
   color: var(--accent-gold);
 }
 
-/* Multi-link contact group (e.g. Call + WhatsApp in one card) */
-.contactLinkGroup {
+/* Unified Dual-Action: single number with Call + WhatsApp pills */
+.contactDualAction {
   display: flex;
   flex-direction: column;
-  gap: var(--space-1);
+  gap: var(--space-2);
 }
 
-.contactLinkItem {
+.contactPrimaryNumber {
+  display: inline-block;
+  color: var(--primary-dark);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+}
+
+.contactActionRow {
+  display: inline-flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.contactActionPill {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-2);
-  color: var(--primary-dark);
-  font-size: var(--fs-sm);
-  font-weight: var(--fw-medium);
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
   text-decoration: none;
-  transition: color var(--transition-fast);
-  line-height: 1.4;
+  letter-spacing: 0.02em;
+  transition: all var(--transition-fast);
+  border: 1px solid transparent;
+  line-height: 1;
 }
 
-.contactLinkItem:hover {
-  color: var(--accent-gold);
+.contactActionIcon {
+  font-size: 0.95rem;
 }
 
-.contactSubIcon {
-  font-size: 1rem;
+.contactAction_call {
+  background: rgba(20, 143, 119, 0.1);
   color: var(--accent-gold);
-  flex-shrink: 0;
+  border-color: rgba(20, 143, 119, 0.25);
+}
+
+.contactAction_call:hover {
+  background: var(--accent-gold);
+  color: var(--white);
+  border-color: var(--accent-gold);
+  transform: translateY(-1px);
+}
+
+.contactAction_whatsapp {
+  background: rgba(37, 211, 102, 0.12);
+  color: #1da851;
+  border-color: rgba(37, 211, 102, 0.3);
+}
+
+.contactAction_whatsapp:hover {
+  background: #25d366;
+  color: var(--white);
+  border-color: #25d366;
+  transform: translateY(-1px);
 }
 
 /* Form Wrapper */
@@ -335,13 +373,17 @@
   }
 
   .contactContent,
-  .contactLink,
-  .contactLinkItem {
+  .contactLink {
     font-size: var(--fs-xs);
   }
 
-  .contactSubIcon {
-    font-size: 0.9rem;
+  .contactPrimaryNumber {
+    font-size: var(--fs-sm);
+  }
+
+  .contactActionPill {
+    font-size: 11px;
+    padding: 5px 10px;
   }
 
   .formWrapper {

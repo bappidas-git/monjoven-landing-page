@@ -257,24 +257,41 @@ const MobileDrawer = ({ open, onClose, onOpen, onBookConsultation, activeSection
 
           {/* Contact Details */}
           <Box className={styles.contactDetails}>
-            <a
-              href="tel:+919181956562"
-              className={styles.contactDetailItem}
-              onClick={() => trackPhoneClick('+919181956562', 'mobile_drawer')}
-            >
-              <Icon icon="mdi:phone" style={{ color: '#E74C3C', fontSize: 18 }} />
-              <span>+91 9181956562</span>
-            </a>
-            <a
-              href="https://api.whatsapp.com/send?phone=919127062599&text=Hi%20Doctor%2C%0AI%20want%20to%20check%20if%20i%20am%20suitable%20for%20transplant."
-              className={styles.contactDetailItem}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => trackWhatsAppClick('mobile_drawer')}
-            >
-              <Icon icon="mdi:whatsapp" style={{ color: '#25D366', fontSize: 18 }} />
-              <span>+91 9127062599</span>
-            </a>
+            <Box className={styles.unifiedContact}>
+              <Box className={styles.unifiedContactHeader}>
+                <Icon
+                  icon="mdi:phone-in-talk-outline"
+                  style={{ color: '#148F77', fontSize: 18 }}
+                />
+                <span className={styles.unifiedContactNumber}>
+                  +91 9181956562
+                </span>
+              </Box>
+              <Box className={styles.unifiedContactActions}>
+                <a
+                  href="tel:+919181956562"
+                  className={`${styles.unifiedActionBtn} ${styles.unifiedActionCall}`}
+                  onClick={() =>
+                    trackPhoneClick('+919181956562', 'mobile_drawer')
+                  }
+                  aria-label="Call +91 9181956562"
+                >
+                  <Icon icon="mdi:phone" style={{ fontSize: 16 }} />
+                  <span>Call</span>
+                </a>
+                <a
+                  href="https://api.whatsapp.com/send?phone=919181956562&text=Hi%20Doctor%2C%0AI%20want%20to%20check%20if%20i%20am%20suitable%20for%20transplant."
+                  className={`${styles.unifiedActionBtn} ${styles.unifiedActionWhatsapp}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackWhatsAppClick('mobile_drawer')}
+                  aria-label="Chat on WhatsApp with +91 9181956562"
+                >
+                  <Icon icon="mdi:whatsapp" style={{ fontSize: 16 }} />
+                  <span>WhatsApp</span>
+                </a>
+              </Box>
+            </Box>
             <a
               href="mailto:dr@monjoven.com"
               className={styles.contactDetailItem}

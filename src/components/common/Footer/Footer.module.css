@@ -172,6 +172,57 @@ a.contactValue:hover {
   color: var(--accent-gold);
 }
 
+/* Unified Contact Chips (Call + WhatsApp) */
+.contactChipRow {
+  display: inline-flex;
+  gap: 8px;
+  margin-top: 6px;
+  flex-wrap: wrap;
+}
+
+.contactChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: var(--fw-semibold);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: all var(--transition-fast);
+  border: 1px solid transparent;
+  line-height: 1;
+}
+
+.contactChip svg {
+  font-size: 0.9rem;
+}
+
+.contactChipCall {
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.85);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.contactChipCall:hover {
+  background: var(--accent-gold);
+  color: var(--white);
+  border-color: var(--accent-gold);
+}
+
+.contactChipWhatsapp {
+  background: rgba(37, 211, 102, 0.15);
+  color: #4ade80;
+  border-color: rgba(37, 211, 102, 0.3);
+}
+
+.contactChipWhatsapp:hover {
+  background: #25d366;
+  color: var(--white);
+  border-color: #25d366;
+}
+
 /* Bottom Bar */
 .bottomBar {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
