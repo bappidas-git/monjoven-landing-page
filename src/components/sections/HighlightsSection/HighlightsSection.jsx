@@ -39,7 +39,7 @@ const highlightsData = [
   {
     id: 1,
     image:
-      "https://res.cloudinary.com/dn9gyaiik/image/upload/v1776865334/Hair_Transplant_xiz81x.png",
+      "https://res.cloudinary.com/dn9gyaiik/image/upload/v1776923115/Hair_Transplant_tllbkr.png",
     title: "Hair Transplant Results",
     description:
       "Outcomes following FUE/DHI hair transplant procedures, with focus on natural hairline design and appropriate density.",
@@ -53,7 +53,7 @@ const highlightsData = [
   {
     id: 2,
     image:
-      "https://res.cloudinary.com/dn9gyaiik/image/upload/v1776865334/Beard_transplant_hyboxe.png",
+      "https://res.cloudinary.com/dn9gyaiik/image/upload/v1776923115/Beard_transplant_farkrd.png",
     title: "Beard Transplant Results",
     description:
       "Beard restoration procedures designed to improve density and coverage in patchy or sparse areas.",
